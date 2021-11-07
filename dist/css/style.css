@@ -6,13 +6,46 @@ body {
     width: 100%;
 }
 
-.col {
+.about-col {
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.col p {
+.about-col p {
     font-size: 20px;
+}
+
+.register-header {
+    text-align: center;
+}
+
+.register-dob {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-dob label {
+    margin-bottom: 0.5rem;
+}
+
+.register-dob input {
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,
+        box-shadow .15s ease-in-out;
+}
+
+.register-row {
+    margin-bottom: 1rem;
+}
+
+.register-check {
+    margin-bottom: 1rem;
+}
+
+.register-btn:hover {
+    background-color: #d1d1d1;
+    border-color: #d1d1d1;
 }
