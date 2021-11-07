@@ -17,7 +17,9 @@
     <!-- AOS Animate on Scroll -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-
+    <!-- JQuery CDN  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,6 +30,34 @@
 
 </head>
 
-<body>
+<body class="bg-dark">
+    <!-- Insert Nav bar -->
 
+    <main class="container text-light">
+        <h1 class="login-header">Login Here!</h1>
+        <form action="">
+            <!-- Login details -->
+            <div class="row login-row">
+                <div class="col">
+                    <label for="email" class="form-label">Enter your email address:</label>
+                    <input type="email" class="form-control" aria-label="First name" id="email">
+                </div>
+            </div>
+            <div class="row login-row">
+                <div class="col">
+                    <label for="pwd" class="form-label">Enter your password:</label>
+                    <input type="password" class="form-control" aria-label="Last name" id="pwd">
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-light login-btn">Login</button>
+        </form>
+    </main>
+
+    <!-- Insert Footer bar -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
