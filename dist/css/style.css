@@ -1,5 +1,6 @@
 body {
     font-family: 'Red Hat Mono', serif;
+    box-sizing: border-box;
 }
 
 .game-img {
@@ -48,4 +49,39 @@ body {
 .register-btn:hover {
     background-color: #d1d1d1;
     border-color: #d1d1d1;
+}
+
+.login-header {
+    text-align: center;
+}
+
+.login-btn:hover {
+    background-color: #d1d1d1;
+    border-color: #d1d1d1;
+}
+
+.login-row {
+    margin-bottom: 1rem;
+}
+
+.account-header {
+    text-align: center;
+}
+
+.account-btn:hover {
+    background-color: #d1d1d1;
+    border-color: #d1d1d1;
+}
+
+.account-container {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+main .container:hover {
+    background-color: #3d3d3d;
+    border: 1px solid white;
+    transition: 1s;
 }
