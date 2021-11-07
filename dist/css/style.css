@@ -80,8 +80,86 @@ body {
     border: 1px solid transparent;
 }
 
-main .container:hover {
+main .account-container:hover {
     background-color: #3d3d3d;
     border: 1px solid white;
     transition: 1s;
+}
+
+.cart-container h1 {
+    text-align: center;
+}
+
+.cart-btn:hover {
+    background-color: #d1d1d1;
+    border-color: #d1d1d1;
+}
+
+.cart-info {
+    background-color: #494949;
+    padding: 1rem;
+    border-radius: 5px;
+    max-height: 230px;
+}
+
+.cart-subtotal {
+    display: block;
+    font-size: 2rem;
+}
+
+.cart-taxfees {
+    font-size: 1.2rem;
+}
+
+.cart-price {
+    color: #fff5f5;
+    font-weight: 700;
+}
+
+.cart-tax {
+    font-weight: 500;
+}
+
+.cart-main {
+    padding: 2rem;
+}
+
+.cart-item {
+    margin-bottom: 1.5rem;
+    border: 1px solid transparent;
+}
+
+.cart-item .item-info {
+    padding: 0.5rem;
+}
+
+.cart-item .item-img {
+    padding-left: 0;
+}
+
+.cart-item:hover {
+    background-color: #3d3d3d;
+    border: 1px solid white;
+    transition: 1s;
+}
+
+.cart-item img {
+    width: 100%;
+}
+
+.cart-item .item-name {
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.cart-item .item-price {
+    text-align: right;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.cart-item .item-company {
+    font-size: 0.8rem;
+    color: #c5c5c5;
+    font-style: italic;
 }

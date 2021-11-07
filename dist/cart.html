@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+
+    <!-- AOS Animate on Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- JQuery CDN  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body class="bg-dark">
+    <!-- Insert Nav Bar -->
+
+    <main class="container cart-container text-light">
+        <header>
+            <h1>Your shopping cart</h1>
+        </header>
+        <div class="container">
+            <div class="row cart-row">
+                <div class="col-8 cart-main">
+                    <h2>Items: 2</h2>
+                    <hr>
+                    <div class="cart-item row">
+                        <div class="col-3 item-img">
+                            <img src="./images/about_game.jpg" alt="item 1">
+                        </div>
+                        <div class="col-9 item-info">
+                            <div class="row">
+                                <span class="col item-name">
+                                    My Item Name
+                                </span>
+                                <span class="col item-price">
+                                    $10.00
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="col item-qty">Qty: 1</span>
+                            </div>
+                            <div class="row">
+                                <span class="item-company">Published by Riot Games</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-item row">
+                        <div class="col-3 item-img">
+                            <img src="./images/about_game.jpg" alt="item 1">
+                        </div>
+                        <div class="col-9 item-info">
+                            <div class="row">
+                                <span class="col item-name">
+                                    My Item Name
+                                </span>
+                                <span class="col item-price">
+                                    $10.00
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="col item-qty">Qty: 1</span>
+                            </div>
+                            <div class="row">
+                                <span class="item-company">Published by Riot Games</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 cart-info">
+                    <span class="cart-subtotal">Subtotal: <span class="cart-price">$20.00</span></span>
+                    <span class="cart-taxfees">Estimated Tax and Fees: <span class="cart-tax">$3.98</span></span>
+                    <hr>
+                    <form action="">
+                        <div class="form-check register-check">
+                            <input type="checkbox" class="form-check-input" id="gift">
+                            <label class="form-check-label" for="gift">This order contains a gift</label>
+                        </div>
+                        <button type="submit" class="btn btn-light register-btn">Proceed to checkout</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+
+    </main>
+
+    <!-- Insert Footer -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
