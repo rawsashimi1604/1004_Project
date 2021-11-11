@@ -2,351 +2,271 @@
  {
    "appid": 570,
    "name": "Dota 2",
+   "price": "$10.00",
+   "description": "",
+   "image": "images/dota2_1.jpg",
    "developer": "Valve",
-   "publisher": "Valve",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/570/header.jpg?t=1635466719"
+   "publisher": "Valve"
  },
  {
    "appid": 730,
    "name": "Counter-Strike: Global Offensive",
+   "price": "$15.10",
+   "description": "",
+   "image": "images/csgo_1.jpg",
    "developer": "Valve, Hidden Path Entertainment",
-   "publisher": "Valve",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg?t=1635269541"
- },
- {
-   "appid": 578080,
-   "name": "PUBG: BATTLEGROUNDS",
-   "developer": "KRAFTON, Inc.",
-   "publisher": "KRAFTON, Inc.",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/578080/header.jpg?t=1634810164"
+   "publisher": "Valve"
  },
  {
    "appid": 440,
    "name": "Team Fortress 2",
+   "price": "$23.33",
+   "description": "",
+   "image": "images/tf2_1.jpg",
    "developer": "Valve",
-   "publisher": "Valve",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/440/header.jpg?t=1592263852"
- },
- {
-   "appid": 304930,
-   "name": "Unturned",
-   "developer": "Smartly Dressed Games",
-   "publisher": "Smartly Dressed Games",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/304930/header.jpg?t=1630121162"
- },
- {
-   "appid": 230410,
-   "name": "Warframe",
-   "developer": "Digital Extremes",
-   "publisher": "Digital Extremes",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/230410/header.jpg?t=1635194042"
+   "publisher": "Valve"
  },
  {
    "appid": 550,
    "name": "Left 4 Dead 2",
+   "price": "$24.50",
+   "description": "",
+   "image": "images/l4d2_1.jpg",
    "developer": "Valve",
-   "publisher": "Valve",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/550/header.jpg?t=1630686839"
- },
- {
-   "appid": 271590,
-   "name": "Grand Theft Auto V",
-   "developer": "Rockstar North",
-   "publisher": "Rockstar Games",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/271590/header.jpg?t=1618856444"
- },
- {
-   "appid": 105600,
-   "name": "Terraria",
-   "developer": "Re-Logic",
-   "publisher": "Re-Logic",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/105600/header.jpg?t=1590092560"
- },
- {
-   "appid": 1172470,
-   "name": "Apex Legends",
-   "developer": "Respawn Entertainment",
-   "publisher": "Electronic Arts",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/1172470/header.jpg?t=1636148488"
- },
- {
-   "appid": 252490,
-   "name": "Rust",
-   "developer": "Facepunch Studios",
-   "publisher": "Facepunch Studios",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/252490/header.jpg?t=1635408135"
- },
- {
-   "appid": 291550,
-   "name": "Brawlhalla",
-   "developer": "Blue Mammoth Games",
-   "publisher": "Ubisoft",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/291550/header.jpg?t=1634157912"
- },
- {
-   "appid": 4000,
-   "name": "Garry's Mod",
-   "developer": "Facepunch Studios",
-   "publisher": "Valve",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/4000/header.jpg?t=1617307042"
- },
- {
-   "appid": 359550,
-   "name": "Tom Clancy's Rainbow Six Siege",
-   "developer": "Ubisoft Montreal",
-   "publisher": "Ubisoft",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/359550/header.jpg?t=1633545115"
- },
- {
-   "appid": 945360,
-   "name": "Among Us",
-   "developer": "Innersloth",
-   "publisher": "Innersloth",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/945360/header_alt_assets_2.jpg?t=1636485325"
- },
- {
-   "appid": 1063730,
-   "name": "New World",
-   "developer": "Amazon Games",
-   "publisher": "Amazon Games",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/1063730/header.jpg?t=1634799635"
- },
- {
-   "appid": 236390,
-   "name": "War Thunder",
-   "developer": "Gaijin Entertainment",
-   "publisher": "Gaijin Distribution KFT",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/236390/header.jpg?t=1635498262"
+   "publisher": "Valve"
  },
  {
    "appid": 340,
    "name": "Half-Life 2: Lost Coast",
+   "price": "$30.20",
+   "description": "",
+   "image": "images/halflife2lostcoast_1.jpg",
    "developer": "Valve",
-   "publisher": "Valve",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/340/header.jpg?t=1571757270"
- },
- {
-   "appid": 218620,
-   "name": "PAYDAY 2",
-   "developer": "OVERKILL - a Starbreeze Studio.",
-   "publisher": "Starbreeze Publishing AB",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/218620/header.jpg?t=1635426490"
- },
- {
-   "appid": 1085660,
-   "name": "Destiny 2",
-   "developer": "Bungie",
-   "publisher": "Bungie",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/1085660/header.jpg?t=1631638993"
- },
- {
-   "appid": 238960,
-   "name": "Path of Exile",
-   "developer": "Grinding Gear Games",
-   "publisher": "Grinding Gear Games",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/238960/header.jpg?t=1635819685"
+   "publisher": "Valve"
  },
  {
    "appid": 10,
    "name": "Counter-Strike",
+   "price": "$5.10",
+   "description": "",
+   "image": "images/counterstrike_1.jpg",
    "developer": "Valve",
-   "publisher": "Valve",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/10/header.jpg?t=1602535893"
- },
- {
-   "appid": 892970,
-   "name": "Valheim",
-   "developer": "Iron Gate AB",
-   "publisher": "Coffee Stain Publishing",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/892970/header.jpg?t=1635490453"
- },
- {
-   "appid": 444090,
-   "name": "Paladins",
-   "developer": "Evil Mojo Games",
-   "publisher": "Hi-Rez Studios",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/444090/header.jpg?t=1636002029"
- },
- {
-   "appid": 272060,
-   "name": "Serena",
-   "developer": "Senscape",
-   "publisher": "Senscape",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/272060/header.jpg?t=1447360032"
- },
- {
-   "appid": 431960,
-   "name": "Wallpaper Engine",
-   "developer": "Wallpaper Engine Team",
-   "publisher": "Wallpaper Engine Team",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/431960/header.jpg?t=1626972334"
- },
- {
-   "appid": 49520,
-   "name": "Borderlands 2",
-   "developer": "Gearbox Software, Aspyr (Mac), Aspyr (Linux)",
-   "publisher": "2K, Aspyr (Mac), Aspyr (Linux)",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/49520/header.jpg?t=1590450074"
- },
- {
-   "appid": 1091500,
-   "name": "Cyberpunk 2077",
-   "developer": "CD PROJEKT RED",
-   "publisher": "CD PROJEKT RED",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/1091500/header.jpg?t=1621944801"
- },
- {
-   "appid": 1097150,
-   "name": "Fall Guys: Ultimate Knockout",
-   "developer": "Mediatonic",
-   "publisher": "NormerSE",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/1097150/header.jpg?t=1630144986"
- },
- {
-   "appid": 227940,
-   "name": "Heroes & Generals",
-   "developer": "RETO MOTO",
-   "publisher": "RETO MOTO",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/227940/header.jpg?t=1636041096"
- },
- {
-   "appid": 292030,
-   "name": "The Witcher 3: Wild Hunt",
-   "developer": "CD PROJEKT RED",
-   "publisher": "CD PROJEKT RED",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/292030/header.jpg?t=1621939214"
- },
- {
-   "appid": 252950,
-   "name": "Rocket League",
-   "developer": "Psyonix LLC",
-   "publisher": "Psyonix LLC",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/252950/header.jpg?t=1628814130"
- },
- {
-   "appid": 381210,
-   "name": "Dead by Daylight",
-   "developer": "Behaviour Interactive Inc.",
-   "publisher": "Behaviour Interactive Inc.",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/381210/header.jpg?t=1635971443"
- },
- {
-   "appid": 291480,
-   "name": "Warface",
-   "developer": "MY.GAMES",
-   "publisher": "MY.GAMES",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/291480/header.jpg?t=1636393641"
- },
- {
-   "appid": 552990,
-   "name": "World of Warships",
-   "developer": "Wargaming Group Limited",
-   "publisher": "Wargaming Group Limited",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/552990/header.jpg?t=1636362240"
- },
- {
-   "appid": 301520,
-   "name": "Robocraft",
-   "developer": "Freejam",
-   "publisher": "Freejam",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/301520/header.jpg?t=1611659769"
+   "publisher": "Valve"
  },
  {
    "appid": 620,
    "name": "Portal 2",
+   "price": "$10.30",
+   "description": "",
+   "image": "images/portal2_1.jpg",
    "developer": "Valve",
-   "publisher": "Valve",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/620/header.jpg?t=1610490805"
+   "publisher": "Valve"
  },
  {
    "appid": 240,
    "name": "Counter-Strike: Source",
+   "price": "$17.45",
+   "description": "",
+   "image": "images/counterstrikesource_1.jpg",
    "developer": "Valve",
-   "publisher": "Valve",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/240/header.jpg?t=1602536047"
- },
- {
-   "appid": 227300,
-   "name": "Euro Truck Simulator 2",
-   "developer": "SCS Software",
-   "publisher": "SCS Software",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/227300/header.jpg?t=1635849426"
- },
- {
-   "appid": 550650,
-   "name": "Black Squad",
-   "developer": "VALOFE, NS STUDIO",
-   "publisher": "VALOFE",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/550650/header.jpg?t=1632909514"
+   "publisher": "Valve"
  },
  {
    "appid": 320,
    "name": "Half-Life 2: Deathmatch",
+   "price": "$14",
+   "description": "",
+   "image": "images/halflife2deathmatch_1.jpg",
    "developer": "Valve",
-   "publisher": "Valve",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/320/header.jpg?t=1602536087"
- },
- {
-   "appid": 1468810,
-   "name": "???? Tale of Immortal",
-   "developer": "?????",
-   "publisher": "?????, Lightning Games",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/1468810/header.jpg?t=1636425940"
- },
- {
-   "appid": 386360,
-   "name": "SMITE",
-   "developer": "Titan Forge Games",
-   "publisher": "Hi-Rez Studios",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/386360/header.jpg?t=1634660082"
- },
- {
-   "appid": 322330,
-   "name": "Don't Starve Together",
-   "developer": "Klei Entertainment",
-   "publisher": "Klei Entertainment",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/322330/header_alt_assets_26.jpg?t=1634835928"
- },
- {
-   "appid": 477160,
-   "name": "Human: Fall Flat",
-   "developer": "No Brakes Games",
-   "publisher": "Curve Games",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/477160/header.jpg?t=1636482668"
- },
- {
-   "appid": 304050,
-   "name": "Trove",
-   "developer": "Trion Worlds",
-   "publisher": "Trion Worlds",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/304050/header.jpg?t=1635175156"
- },
- {
-   "appid": 413150,
-   "name": "Stardew Valley",
-   "developer": "ConcernedApe",
-   "publisher": "ConcernedApe",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/413150/header.jpg?t=1608624324"
- },
- {
-   "appid": 433850,
-   "name": "Z1 Battle Royale",
-   "developer": "Daybreak Game Company",
-   "publisher": "Daybreak Game Company",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/433850/header.jpg?t=1579626820"
+   "publisher": "Valve"
  },
  {
    "appid": 220,
    "name": "Half-Life 2",
+   "price": "$4.20",
+   "description": "",
+   "image": "images/halflife2_1.jpg",
    "developer": "Valve",
-   "publisher": "Valve",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/220/header.jpg?t=1591063154"
+   "publisher": "Valve"
  },
  {
-   "appid": 10,
-   "name": "Counter-Strike",
+   "appid": 400,
+   "name": "Portal",
+   "price": "$4.80",
+   "description": "",
+   "image": "images/portal_1.jpg",
    "developer": "Valve",
-   "publisher": "Valve",
-   "image": "https://cdn.akamai.steamstatic.com/steam/apps/10/header.jpg?t=1602535893"
+   "publisher": "Valve"
+ },
+ {
+   "appid": 80,
+   "name": "Counter-Strike: Condition Zero",
+   "price": "$5.40",
+   "description": "",
+   "image": "images/counterstrikeconditionzero_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 70,
+   "name": "Half-Life",
+   "price": "$5.60",
+   "description": "",
+   "image": "images/halflife_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 1046930,
+   "name": "Dota Underlords",
+   "price": "$6.70",
+   "description": "",
+   "image": "images/dotaunderlords_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 60,
+   "name": "Ricochet",
+   "price": "$7.30",
+   "description": "",
+   "image": "images/richochet_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 360,
+   "name": "Half-Life Deathmatch: Source",
+   "price": "$7.70",
+   "description": "",
+   "image": "images/halflifedeathmatchsource_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 273110,
+   "name": "Counter-Strike Nexon: Studio",
+   "price": "$8.00",
+   "description": "",
+   "image": "images/counterstrikenexonstudio_1.jpg",
+   "developer": "Valve Corporation, Nexon Korea Corporation",
+   "publisher": "Nexon Korea Corporation"
+ },
+ {
+   "appid": 30,
+   "name": "Day of Defeat",
+   "price": "$8.80",
+   "description": "",
+   "image": "images/dayofdefeat_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 40,
+   "name": "Deathmatch Classic",
+   "price": "$8.90",
+   "description": "",
+   "image": "images/deathmatchclassic_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 300,
+   "name": "Day of Defeat: Source",
+   "price": "$11.20",
+   "description": "",
+   "image": "images/dayofdefeathsource_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 420,
+   "name": "Half-Life 2: Episode Two",
+   "price": "$13.20",
+   "description": "",
+   "image": "images/halflife2episode2_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 20,
+   "name": "Team Fortress Classic",
+   "price": "$14.10",
+   "description": "",
+   "image": "images/tfclassic_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 280,
+   "name": "Half-Life: Source",
+   "price": "$16.30",
+   "description": "",
+   "image": "images/halflifesource_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 630,
+   "name": "Alien Swarm",
+   "price": "$16.40",
+   "description": "",
+   "image": "images/alienswarm_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 500,
+   "name": "Left 4 Dead",
+   "price": "$16.70",
+   "description": "",
+   "image": "images/left4dead_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 380,
+   "name": "Half-Life 2: Episode One",
+   "price": "$18.30",
+   "description": "",
+   "image": "images/halflife2episode1_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 546560,
+   "name": "Half-Life: Alyx",
+   "price": "$27.90",
+   "description": "",
+   "image": "images/halflifealyx_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 250820,
+   "name": "SteamVR",
+   "price": "$4.49",
+   "description": "",
+   "image": "images/steamvr_1.jpg",
+   "developer": "Valve",
+   "publisher": "Bohemia Interactive"
+ },
+ {
+   "appid": 583950,
+   "name": "Artifact",
+   "price": "$6.43",
+   "description": "",
+   "image": "images/artifact_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
+ },
+ {
+   "appid": 450390,
+   "name": "The Lab",
+   "price": "$7.64",
+   "description": "",
+   "image": "images/thelab_1.jpg",
+   "developer": "Valve",
+   "publisher": "Valve"
  }
 ]

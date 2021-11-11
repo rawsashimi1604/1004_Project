@@ -1,5 +1,7 @@
-$(function() {
-});
+
+//$(function() {
+//  alert( "ready!" );
+//});
 
 function remove_table()
 {
