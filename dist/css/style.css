@@ -3,8 +3,9 @@ body {
     box-sizing: border-box;
 }
 
-.header {
-    max-height: 70% !important;
+.carousel-item img {
+    width: 90vw;
+    margin: auto;
 }
 
 .game-img {
