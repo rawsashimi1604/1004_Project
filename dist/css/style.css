@@ -182,6 +182,10 @@ main .account-container:hover {
     font-size: 2rem;
 }
 
+.game-header-img {
+    margin-bottom: 0.5rem;
+}
+
 .game-images {
     border-radius: 10px;
     overflow: hidden;
@@ -196,6 +200,7 @@ main .account-container:hover {
 .game-info .game-description {
     font-size: 0.9rem;
     line-height: 1.2;
+    letter-spacing: 0.1px;
 }
 
 .game-info h2 {
@@ -208,12 +213,12 @@ main .account-container:hover {
 
 .game-info>span {
     align-self: flex-start;
-    font-size: 1.5rem;
-    ;
+    font-size: 1.0rem;
 }
 
 .game-genres {
     align-self: flex-start;
+    flex-wrap: wrap;
     display: flex;
     flex-direction: row;
     justify-content: start;
@@ -226,6 +231,7 @@ main .account-container:hover {
     background-color: #c5c5c5;
     color: black;
     font-size: 0.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .game-genre:hover {
@@ -235,6 +241,7 @@ main .account-container:hover {
 
 .game-categories {
     align-self: flex-start;
+    flex-wrap: wrap;
     display: flex;
     flex-direction: row;
     justify-content: start;
@@ -247,6 +254,7 @@ main .account-container:hover {
     background-color: #c9baba;
     color: black;
     font-size: 0.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .game-category:hover {
@@ -256,6 +264,7 @@ main .account-container:hover {
 
 .game-dev-info {
     font-size: 1.4rem;
+    font-style: italic;
 }
 
 .game-purchase {
@@ -271,6 +280,7 @@ main .account-container:hover {
     padding: 0.4rem;
     background-color: #494949;
     border-radius: 2px;
+    margin-bottom: 0.5rem;
 }
 
 .game-price {
@@ -278,6 +288,12 @@ main .account-container:hover {
     padding-right: 0.5rem;
     margin-top: -0.3rem;
     font-weight: 700;
+}
+
+.game-dev-info {
+    text-align: end;
+    font-size: 1.0rem;
+    color: #c4b2b2;
 }
 
 /* .game-popover {
