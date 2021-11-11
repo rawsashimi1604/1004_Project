@@ -12,7 +12,7 @@ and open the template in the editor.
         session_start();
     ?>
     
-    <!-- MySQL Database Connect -->
+    <!-- MySQL Database Connect get ALL -->
     <?php
         include "DB_getall.inc.php";
     ?>

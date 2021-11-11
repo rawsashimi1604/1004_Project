@@ -11,19 +11,40 @@
         <?php
             include "nav.inc.php";
         ?>
+        <!-- MySQL Database Connection-->
+        <?php
+            include "DB_getall.inc.php";
+        ?>
         
         <?php
             if ($_SERVER["REQUEST_METHOD"] == "GET")
             {
-               $id = $_GET['id'];
-               echo "<div>'.$id.'</div>";
+                $id = $_GET['id'];
+                // Prepare the statement:
+                $stmt = $conn->prepare("SELECT * FROM apps_list WHERE appid = '$id'");
+                // Bind & execute the query statement:
+                $stmt->bind_param("issssss", $appid, $name, $price, $description, $image, $developer, $publisher);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if ($result->num_rows > 0)
+                {
+                    // Fetch all the results from our database
+                    while($row = $result->fetch_assoc()) {
+                        $name = $row["name"];
+                        $price = $row["price"];
+                        $description = $row["description"];
+                        $image = $row["image"];
+                        $developer = $row["developer"];
+                        $publisher = $row["publisher"];
+                    }
+                }
             }
         ?>
 
         <main class="container text-light game-container">
-            <h1 class="game-header">Counter-Strike</h1>
-            <h2 class="game-dev-info">developed by <span class="game-developer">Valve</span>, published by <span
-                    class="game-publisher">Valve</span></h2>
+            <h1 class="game-header"><?php echo "$name" ?></h1>
+            <h2 class="game-dev-info">developed by <span class="game-developer"><?php echo "$developer" ?></span>, published by <span
+                    class="game-publisher"><?php echo "$publisher" ?></span></h2>
             <div class="row">
                 <div class="col-7 game-images">
                     <div id="game-image-carousell" class="carousel slide" data-bs-ride="carousel">
@@ -37,15 +58,15 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/10\/0000000132.1920x1080.jpg?t=1602535893"
+                                <img src="<?php echo "$image" ?>"
                                     class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/10\/0000000133.1920x1080.jpg?t=1602535893"
+                                <img src="<?php echo "$image" ?>"
                                     class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/10\/0000000134.1920x1080.jpg?t=1602535893"
+                                <img src="<?php echo "$image" ?>"
                                     class="d-block w-100" alt="...">
                             </div>
                         </div>
@@ -81,7 +102,7 @@
                     </div>
                 </div>
                 <div class="col-5 game-info">
-                    <img src="https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/10\/header.jpg?t=1602535893"
+                    <img src="<?php echo "$image" ?>"
                         alt="header image" class="game-header-img">
 
                     <div class="game-description-container">
@@ -97,7 +118,7 @@
 
 
                     <div class="game-price-details" data-aos="fade-right" data-aos-duration="1500">
-                        <span class="game-price">$10.00</span>
+                        <span class="game-price"><?php echo "$price" ?></span>
                         <button type="button" class="btn btn-success">Add to Cart</button>
                     </div>
                     <span>Genres:</span>

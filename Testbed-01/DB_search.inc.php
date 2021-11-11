@@ -25,7 +25,7 @@
                                 . '<img class="img-ss-list" '
                                 . 'src="'.$row["image"].'" />'.$row["name"].'</a>'
                                 . '</td><td>'.$row["developer"].'</td><td>'
-                                .$row["publisher"].'</td></tr>';
+                                .$row["price"].'</td></tr>';
             }
         }
         else
