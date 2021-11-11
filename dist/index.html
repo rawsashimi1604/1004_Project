@@ -52,32 +52,36 @@ and open the template in the editor.
       aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarToggler">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="./index.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./games.php">Games</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./about.php">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./account.php">Account</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav mt-2 mt-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="./register.php">Register</a>
-        </li>
-        <li class="nav-item">
-          <!-- <a class="nav-link" href="./login.php">Login</a> -->
-          <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">
-            Login
-          </button>
-        </li>
-      </ul>
+    <div class="d-flex collapse navbar-collapse" id="navbarToggler">
+      <div class="me-auto">
+        <ul class="navbar-nav p-2">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./games.php">Games</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.php">About</a>
+          </li>
+        </ul>
+      </div>
+      <div class="p-2">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./account.php">Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./register.php">Register</a>
+          </li>
+          <li class="nav-item">
+            <!-- <a class="nav-link" href="./login.php">Login</a> -->
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">
+              Login
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
   <header class="jumbotron text-center bg-dark">
@@ -92,10 +96,6 @@ and open the template in the editor.
       <p class="text-center">Checkout new and popular products</p>
       <div class="row">
         <article class="col-sm">
-          <figure>
-            <img class="img-thumbnail" src="images/calico_small.jpg" alt="Calico" title="View larger image..." />
-            <figcaption>Call of Duty</figcaption>
-          </figure>
           <figure>
             <img class="img-thumbnail" src="https://cdn.akamai.steamstatic.com/steam/apps/10/header.jpg?t=1602535893" />
             <figcaption>Counter-Strike</figcaption>
