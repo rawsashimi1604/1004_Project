@@ -42,8 +42,16 @@ body {
     margin-bottom: 1rem;
 }
 
+
 .register-check {
     margin-bottom: 1rem;
+}
+
+.register-container {
+    width: 50%;
+    background-color: #353535;
+    border-radius: 5px;
+    padding: 2rem;
 }
 
 .register-btn:hover {
@@ -163,3 +171,128 @@ main .account-container:hover {
     color: #c5c5c5;
     font-style: italic;
 }
+
+.game-container {
+    background-color: #353535;
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.game-container .game-header {
+    font-size: 2rem;
+}
+
+.game-images {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-info .game-description {
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.game-info h2 {
+    align-self: start;
+}
+
+.game-info img {
+    width: 100%;
+}
+
+.game-info>span {
+    align-self: flex-start;
+    font-size: 1.5rem;
+    ;
+}
+
+.game-genres {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.game-genre {
+    padding: 0.3rem;
+    margin-right: 0.5rem;
+    border-radius: 3px;
+    background-color: #c5c5c5;
+    color: black;
+    font-size: 0.8rem;
+}
+
+.game-genre:hover {
+    transition: 0.5s;
+    background-color: #646464;
+}
+
+.game-categories {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.game-category {
+    padding: 0.3rem;
+    margin-right: 0.5rem;
+    border-radius: 3px;
+    background-color: #c9baba;
+    color: black;
+    font-size: 0.8rem;
+}
+
+.game-category:hover {
+    transition: 0.5s;
+    background-color: #c4b2b2;
+}
+
+.game-dev-info {
+    font-size: 1.4rem;
+}
+
+.game-purchase {
+    background-color: #d1d1d1;
+    color: black;
+    border-radius: 2px;
+    padding: 0.2rem;
+}
+
+.game-price-details {
+    display: inline;
+    align-self: flex-start;
+    padding: 0.4rem;
+    background-color: #494949;
+    border-radius: 2px;
+}
+
+.game-price {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-top: -0.3rem;
+    font-weight: 700;
+}
+
+/* .game-popover {
+    background: #646464;
+    border-color: white;
+}
+
+.game-popover:hover {
+    background-color: c5c5c5;
+} */
+
+/* .game-requirements .accordion {
+    color: white;
+}
+
+.game-requirements .accordion-item {
+    background-color: black;
+} */
