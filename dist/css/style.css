@@ -249,7 +249,7 @@ main .account-container:hover {
     border-radius: 3px;
     background-color: #c5c5c5;
     color: black;
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
 }
 
@@ -268,7 +268,7 @@ main .account-container:hover {
     border-radius: 3px;
     background-color: #c9baba;
     color: black;
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
 }
 
@@ -290,8 +290,9 @@ main .account-container:hover {
     align-self: flex-start;
     padding: 0.4rem;
     background-color: #494949;
-    border-radius: 2px;
+    border-radius: 5px;
     margin-bottom: 0.5rem;
+    border: 1px solid #616161;
 }
 
 .game-price {
