@@ -3,6 +3,10 @@ body {
     box-sizing: border-box;
 }
 
+.header {
+    max-height: 70% !important;
+}
+
 .game-img {
     width: 100%;
 }
