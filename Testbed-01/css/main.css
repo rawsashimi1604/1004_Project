@@ -1,0 +1,106 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 8 Sep 2021, 7:31:18 pm
+    Author     : yeong
+
+    ICT1004 Labs - Stylesheet
+*/
+
+
+.h2-class
+{
+    text-decoration: underline;
+}
+
+.img-class
+{
+    border-style: double;
+    border-color: grey;
+}
+
+.img-class-thumbnail
+{
+    width: 100%;
+    max-width: 400px;
+    max-height: 300px;
+    cursor: pointer;
+    border-style: double;
+    border-color: grey;
+}
+
+.img-class-popup
+{
+    border-style: double;
+    border-color: grey;
+    
+}
+
+.figure-class
+{
+    font-style: italic;
+    color: grey;
+    font-size: smaller;
+    display: inline-block;
+}
+
+.figcaption-class
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.footer-class
+{
+    border-top-style: solid;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-color: grey;
+}
+
+.p-class
+{
+    font-size: smaller;
+    text-align: center;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.image-popup
+{
+    cursor: pointer;
+    position: absolute;
+    left: 90px;
+    bottom: 125px;
+    animation-name: zoom;
+    animation-duration: 400ms;
+}
+
+.popup
+{
+    background-size: cover;
+    border-style: solid;
+    border-color: grey;
+    width: 140%;
+    height: 140%;
+    z-index: 1;
+}
+
+
+.img-class-thumbnail:hover
+{
+    opacity: 0.8;
+}
+
+
+@keyframes zoom
+{
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
