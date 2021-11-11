@@ -1,4 +1,11 @@
 <?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
     // Setup connection configuration
     $config = parse_ini_file('../../private/db-config.ini');
     $conn = new mysqli($config['servername'], $config['username'],
@@ -9,14 +16,5 @@
         $errorMsgDB = "Connection failed: " . $conn->connect_error;
         $success = false;
         alert($errorMsgDB);
-    }
-    else
-    {
-        // Prepare the statement:
-        $stmt = $conn->prepare("SELECT * FROM apps_list");
-        // Bind & execute the query statement:
-        $stmt->bind_param("issssss", $appid, $name, $price, $description, $image, $developer, $publisher);
-        $stmt->execute();
-        $result = $stmt->get_result();
     }
 ?>
