@@ -1,6 +1,6 @@
-$(function() {
-  alert( "ready!" );
-});
+//$(function() {
+//  alert( "ready!" );
+//});
 
 function remove_table()
 {
