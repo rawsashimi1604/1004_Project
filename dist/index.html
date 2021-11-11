@@ -87,6 +87,42 @@ and open the template in the editor.
   <header class="jumbotron text-center bg-dark">
     <h1 class="display-4 text-light">Steam Clone</h1>
     <h2 class="text-light">Get ready to rumble</h2>
+    <div class="game-images">
+      <div id="game-image-carousell" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+              <button type="button" data-bs-target="#game-image-carousell" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#game-image-carousell" data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#game-image-carousell" data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <img src="https://cdn.akamai.steamstatic.com/steam/apps/10/header.jpg?t=1602535893"
+                      class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                  <img src="https://cdn.akamai.steamstatic.com/steam/apps/220/header.jpg?t=1591063154"
+                      class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                  <img src="https://cdn.akamai.steamstatic.com/steam/apps/240/header.jpg?t=1602536047"
+                      class="d-block w-100" alt="...">
+              </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#game-image-carousell"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#game-image-carousell"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+          </button>
+      </div>
+  </div>
   </header>
 
   <!-- MAIN -->
