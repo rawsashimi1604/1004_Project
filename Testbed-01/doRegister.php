@@ -11,7 +11,7 @@
         include "nav.inc.php";
         ?>
         <?php
-        $fname = $email = $lname = $password = $errorMsg = "";
+        $fname = $lname = $password = $dob = $email = $errorMsg = "";
         $success = true;
         #Sanitization for email input
         if (empty($_POST["email"]))

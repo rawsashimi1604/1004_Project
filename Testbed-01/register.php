@@ -12,7 +12,7 @@
         <!-- MAIN -->
         <main class="container text-light">
             <h1 class="register-header">Register Here!</h1>
-            <form action="doRegister.php" method="post">
+            <form>
                 <!-- First name and last name -->
                 <div class="row register-row">
                     <div class="col">
