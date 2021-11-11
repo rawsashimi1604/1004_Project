@@ -40,24 +40,27 @@ and open the template in the editor.
                 </article>
                 <article class="col-sm">
                     <?php
+                    echo '<div class="container"><row class="row-cols-2">';
                     if ($result->num_rows > 0) {
                         // Fetch all the results from our database
                         while ($row = $result->fetch_assoc()) {
-                            echo '<figure><img class="img-thumbnail" src="' . $row["image"] . '" /><figcaption>' . $row["name"] . '</figcaption></figure><br />';
+                            echo '<div class="col"><figure><img class="img-thumbnail" src="' . $row["image"] . '" /><figcaption>' . $row["name"] . '</figcaption></figure></div>';
                         }
                     } else {
                         $errorMsgDB = "Looks like there's nothing here..";
                         $success = false;
                     }
+                    echo "</row></div>";
                     $stmt->close();
                     $conn->close();
+
                     ?>
                 </article>
             </div>
 
         </section>
     </main>
-
+    
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
