@@ -23,7 +23,10 @@
                 <a class="nav-link" href="./register.php">Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./login.php">Login</a>
+                <!-- <a class="nav-link" href="./login.php">Login</a> -->
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    Login
+                </button>
             </li>
         </ul>
     </div>

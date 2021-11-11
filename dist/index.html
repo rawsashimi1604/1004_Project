@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html lang="EN">
 
 <head>
+  <title>Steam clone</title>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Steam clone</title>
+
   <!-- JQuery CDN  -->
   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
     integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
@@ -16,6 +23,10 @@
   <!-- Bootstrap CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <!-- AOS Animate on Scroll -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <!-- Custom CSS  -->
   <link rel="stylesheet" href="./css/style.css">
   <!-- Custom Font (Red Hat MONO) -->
@@ -26,9 +37,16 @@
     rel="stylesheet">
   <!-- Custom JS  -->
   <script src="./js/scripts.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+  <script>
+    jQuery.noConflict();
+  </script>
 </head>
 
-<body class="bg-dark text-white">
+<!-- BODY -->
+
+<body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
       aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,16 +55,16 @@
     <div class="collapse navbar-collapse" id="navbarToggler">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="./index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./games.html">Games</a>
+          <a class="nav-link" href="./games.php">Games</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./about.html">About</a>
+          <a class="nav-link" href="./about.php">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./account.html">Account</a>
+          <a class="nav-link" href="./account.php">Account</a>
         </li>
       </ul>
       <ul class="navbar-nav mt-2 mt-lg-0">
@@ -54,7 +72,10 @@
           <a class="nav-link" href="./register.php">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#dogs">Login</a>
+          <!-- <a class="nav-link" href="./login.php">Login</a> -->
+          <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">
+            Login
+          </button>
         </li>
       </ul>
     </div>
@@ -63,20 +84,362 @@
     <h1 class="display-4 text-light">Steam Clone</h1>
     <h2 class="text-light">Get ready to rumble</h2>
   </header>
+
+  <!-- MAIN -->
   <main class="container mt-5">
     <section id="featured">
       <h2 class="text-center">Featured Products</h2>
       <p class="text-center">Checkout new and popular products</p>
       <div class="row">
-        <figure>
-          <img class="img-thumbnail" src="images/calico_small.jpg" alt="Calico" title="View larger image..." />
-          <figcaption>Call of Duty</figcaption>
-        </figure>
+        <article class="col-sm">
+          <figure>
+            <img class="img-thumbnail" src="images/calico_small.jpg" alt="Calico" title="View larger image..." />
+            <figcaption>Call of Duty</figcaption>
+          </figure>
+          <figure>
+            <img class="img-thumbnail" src="https://cdn.akamai.steamstatic.com/steam/apps/10/header.jpg?t=1602535893" />
+            <figcaption>Counter-Strike</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/220/header.jpg?t=1591063154" />
+            <figcaption>Half-Life 2</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/240/header.jpg?t=1602536047" />
+            <figcaption>Counter-Strike: Source</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/320/header.jpg?t=1602536087" />
+            <figcaption>Half-Life 2: Deathmatch</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/340/header.jpg?t=1571757270" />
+            <figcaption>Half-Life 2: Lost Coast</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/440/header.jpg?t=1592263852" />
+            <figcaption>Team Fortress 2</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/550/header.jpg?t=1630686839" />
+            <figcaption>Left 4 Dead 2</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/570/header.jpg?t=1635466719" />
+            <figcaption>Dota 2</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/620/header.jpg?t=1610490805" />
+            <figcaption>Portal 2</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg?t=1635269541" />
+            <figcaption>Counter-Strike: Global Offensive</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/4000/header.jpg?t=1617307042" />
+            <figcaption>Garry's Mod</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/49520/header.jpg?t=1590450074" />
+            <figcaption>Borderlands 2</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/105600/header.jpg?t=1590092560" />
+            <figcaption>Terraria</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/218620/header.jpg?t=1635426490" />
+            <figcaption>PAYDAY 2</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/227300/header.jpg?t=1635849426" />
+            <figcaption>Euro Truck Simulator 2</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/227940/header.jpg?t=1636041096" />
+            <figcaption>Heroes & Generals</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/230410/header.jpg?t=1635194042" />
+            <figcaption>Warframe</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/236390/header.jpg?t=1635498262" />
+            <figcaption>War Thunder</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/238960/header.jpg?t=1635819685" />
+            <figcaption>Path of Exile</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/252490/header.jpg?t=1635408135" />
+            <figcaption>Rust</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/252950/header.jpg?t=1628814130" />
+            <figcaption>Rocket League</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/271590/header.jpg?t=1618856444" />
+            <figcaption>Grand Theft Auto V</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/272060/header.jpg?t=1447360032" />
+            <figcaption>Serena</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/291480/header.jpg?t=1636393641" />
+            <figcaption>Warface</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/291550/header.jpg?t=1634157912" />
+            <figcaption>Brawlhalla</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/292030/header.jpg?t=1621939214" />
+            <figcaption>The Witcher 3: Wild Hunt</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/301520/header.jpg?t=1611659769" />
+            <figcaption>Robocraft</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/304050/header.jpg?t=1635175156" />
+            <figcaption>Trove</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/304930/header.jpg?t=1630121162" />
+            <figcaption>Unturned</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/322330/header_alt_assets_26.jpg?t=1634835928" />
+            <figcaption>Don't Starve Together</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/359550/header.jpg?t=1633545115" />
+            <figcaption>Tom Clancy's Rainbow Six Siege</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/381210/header.jpg?t=1635971443" />
+            <figcaption>Dead by Daylight</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/386360/header.jpg?t=1634660082" />
+            <figcaption>SMITE</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/413150/header.jpg?t=1608624324" />
+            <figcaption>Stardew Valley</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/431960/header.jpg?t=1626972334" />
+            <figcaption>Wallpaper Engine</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/433850/header.jpg?t=1579626820" />
+            <figcaption>Z1 Battle Royale</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/444090/header.jpg?t=1636002029" />
+            <figcaption>Paladins</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/477160/header.jpg?t=1636482668" />
+            <figcaption>Human: Fall Flat</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/550650/header.jpg?t=1632909514" />
+            <figcaption>Black Squad</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/552990/header.jpg?t=1636362240" />
+            <figcaption>World of Warships</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/578080/header.jpg?t=1634810164" />
+            <figcaption>PUBG: BATTLEGROUNDS</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/892970/header.jpg?t=1635490453" />
+            <figcaption>Valheim</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/945360/header_alt_assets_2.jpg?t=1636485325" />
+            <figcaption>Among Us</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/1063730/header.jpg?t=1634799635" />
+            <figcaption>New World</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/1085660/header.jpg?t=1631638993" />
+            <figcaption>Destiny 2</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/1091500/header.jpg?t=1621944801" />
+            <figcaption>Cyberpunk 2077</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/1097150/header.jpg?t=1630144986" />
+            <figcaption>Fall Guys: Ultimate Knockout</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/1172470/header.jpg?t=1636148488" />
+            <figcaption>Apex Legends</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img class="img-thumbnail"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/1468810/header.jpg?t=1636425940" />
+            <figcaption>Tale of Immortal</figcaption>
+          </figure>
+          <br />
+        </article>
+        <article class="col-sm"></article>
       </div>
     </section>
 
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginmodalTitle">Member Login</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="">
+              <!-- Login details -->
+              <div class="row login-row">
+                <div class="col">
+                  <label for="email" class="form-label">Enter your email address:</label>
+                  <input type="email" class="form-control" aria-label="First name" id="email">
+                </div>
+              </div>
+              <div class="row login-row">
+                <div class="col">
+                  <label for="pwd" class="form-label">Enter your password:</label>
+                  <input type="password" class="form-control" aria-label="Last name" id="pwd">
+                </div>
+
+              </div>
+
+              <button type="submit" class="btn btn-light login-btn">Login</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
+
+  <!-- FOOTER -->
   <footer class="container">
     <p>Copyright &copy; 2020 Singapore Institute of Technology</p>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </footer>
+
 </body>
