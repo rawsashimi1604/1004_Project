@@ -43,7 +43,7 @@ function authenticateUser() {
     global $email, $pwd_hashed, $errorMsg, $success;
     // Create database connection.
     $config = parse_ini_file('../../private/db-config.ini');
-    $conn = new mysqli($config['servername'], $config['email'],
+    $conn = new mysqli($config['servername'], $config['username'],
             $config['password'], $config['dbname']);
     // Check connection
     if ($conn->connect_error) {
@@ -51,7 +51,7 @@ function authenticateUser() {
         $success = false;
     } else {
         // Prepare the statement:
-        $stmt = $conn->prepare("SELECT * FROM world_of_pets_members WHERE email=?");
+        $stmt = $conn->prepare("SELECT * FROM steam_clone_members WHERE email=?");
         // Bind & execute the query statement:
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -62,6 +62,8 @@ function authenticateUser() {
             $row = $result->fetch_assoc();
             $fname = $row["fname"];
             $lname = $row["lname"];
+            echo "<br>" . $fname . "<br>";
+            echo $lname;
             $pwd_hashed = $row["password"];
             // Check if the password matches:
             if (!password_verify($_POST["pwd"], $pwd_hashed)) {
@@ -74,6 +76,7 @@ function authenticateUser() {
             $errorMsg = "Email not found or password doesn't match...";
             $success = false;
         }
+        
         $stmt->close();
     }
     $conn->close();
@@ -100,7 +103,7 @@ and open the template in the editor.
             <?php
             if ($success) {
                 echo "<h1>Login successful!</h1>";
-                echo "<h2>Welcome back, ", $fname, " ", $lname, ".</h2>";
+                echo "<h2>Welcome back, " . $fname . " " . $lname . ".</h2>";
                 ?><a href="index.php" class="btn btn-success" role="button">Return to Home</a> <?php
             } else {
                 echo "<h1>Oops!</h1>";
