@@ -48,12 +48,7 @@
         }
 
         #Sanitization for fname input
-        if (empty($_POST["fname"]))
-        {
-            $errorMsg .= "First name is required.<br>";
-            $success = false;
-        }
-        else
+        if ($_POST["fname"])
         {
             $fname = sanitize_input($_POST["fname"]);
             // Additional check to ensure fname input does not have funny char
@@ -81,7 +76,7 @@
                 <br>
                 <main class='container'>
                     <h1>Your registration is successful!</h1>
-                    <h4>Thank you for signing up <?php echo ($fname . " " . $lname)?></h4>
+                    <h4>Thank you for signing up with Steam Clone <?php echo ($fname . " " . $lname)?></h4>
                     <div class="form-group">
                     <button type="submit" class="btn btn-success">Log In</button>
                 </div>
@@ -141,7 +136,7 @@
         */
         function saveMemberToDB()
         {
-            global $fname, $lname, $email, $hashed_password, $errorMsg, $success;
+            global $fname, $lname, $hashed_password, $dob, $email, $errorMsg, $success;
             // Create database connection.
             $config = parse_ini_file('../../private/db-config.ini');
             $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
@@ -155,9 +150,9 @@
             else
             {
                 // Prepare the statement:
-                $stmt = $conn->prepare("INSERT INTO world_of_pets_members (fname, lname, email, password) VALUES (?, ?, ?, ?)");
+                $stmt = $conn->prepare("INSERT INTO steam_clone_members (fname, lname, dob, email, password) VALUES (?, ?, ?, ?, ?)");
                 // Bind & execute the query statement:
-                $stmt->bind_param("ssss", $fname, $lname, $email, $hashed_password);
+                $stmt->bind_param("sssss", $fname, $lname, $dob, $email, $hashed_password);
                 if (!$stmt->execute())
                 {
                     $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
