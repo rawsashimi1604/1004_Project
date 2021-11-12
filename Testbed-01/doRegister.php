@@ -59,7 +59,7 @@
             }
         }
         #Validation for pwd and pwd_confirm input
-        if(strcmp($_POST['pwd'], $_POST['pwd_confirm'])!= 0)
+        if(strcmp($_POST['pwd'], $_POST['cfm_pwd'])!= 0)
         {
             $errorMsg .= "Passwords do not match.<br>";
             $success = false;
