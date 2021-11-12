@@ -71,7 +71,7 @@ and open the template in the editor.
                                 echo '
                                 <div class="col">
                                     <div class="game-thumbnail-card card mb-3">
-                                        <a href="gamepage.php?id=' . $row["appid"] . '">
+                                        <a class href="gamepage.php?id=' . $row["appid"] . '">
                                             <div class"thumbnail-wrapper">
                                                 <img class="card-img-top" src="' . $row["image"] . '" />
                                             </div>
