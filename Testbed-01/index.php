@@ -30,15 +30,15 @@ and open the template in the editor.
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="https://cdn.akamai.steamstatic.com/steam/apps/10/header.jpg?t=1602535893"
-                                 class="d-block" alt="...">
+                                 class="d-md-block" alt="...">
                         </div>
                         <div class="carousel-item">
                             <img src="https://cdn.akamai.steamstatic.com/steam/apps/220/header.jpg?t=1591063154"
-                                 class="d-block" alt="...">
+                                 class="d-md-block" alt="...">
                         </div>
                         <div class="carousel-item">
                             <img src="https://cdn.akamai.steamstatic.com/steam/apps/240/header.jpg?t=1602536047"
-                                 class="d-block" alt="...">
+                                 class="d-md-block" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#game-image-carousell"
@@ -68,7 +68,15 @@ and open the template in the editor.
                         if ($result->num_rows > 0) {
                             // Fetch all the results from our database
                             while ($row = $result->fetch_assoc()) {
-                                echo '<div class="col"><figure><img class="img-thumbnail" src="' . $row["image"] . '" /><figcaption>' . $row["name"] . '</figcaption></figure></div>';
+                                echo '
+                                <div class="game-thumbnail col">
+                                    <div class="card mb-3">
+                                        <img class="card-img-top" src="' . $row["image"] . '" />
+                                        <div class="card-body">
+                                        <h5 class="card-title mb-0">' . $row["name"] . '</h5>
+                                    </div>
+                                </div>
+                                </div>';
                             }
                         } else {
                             $errorMsgDB = "Looks like there's nothing here..";
