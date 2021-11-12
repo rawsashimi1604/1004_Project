@@ -69,11 +69,15 @@ and open the template in the editor.
                             // Fetch all the results from our database
                             while ($row = $result->fetch_assoc()) {
                                 echo '
-                                <div class="game-thumbnail col">
-                                    <div class="card mb-3">
-                                        <img class="card-img-top" src="' . $row["image"] . '" />
-                                        <div class="card-body">
-                                        <h5 class="card-title mb-0">' . $row["name"] . '</h5>
+                                <div class="col">
+                                    <div class="game-thumbnail-card card mb-3">
+                                        <a href="gamepage.php?id=' . $row["appid"] . '">
+                                            <div class"thumbnail-wrapper">
+                                                <img class="card-img-top" src="' . $row["image"] . '" />
+                                            </div>
+                                            <div class="card-body">
+                                            <h5 class="card-title mb-0">' . $row["name"] . '</h5>
+                                        </a>
                                     </div>
                                 </div>
                                 </div>';
