@@ -114,7 +114,7 @@ and open the template in the editor.
                             <div class="row login-row">
                                 <div class="col">
                                     <label for="pwd" class="form-label">Enter your password:</label>
-                                    <input type="password" class="form-control" aria-label="Last name" id="pwd" name="email">
+                                    <input type="password" class="form-control" aria-label="Last name" id="pwd" name="pwd">
                                 </div>
 
                             </div>
