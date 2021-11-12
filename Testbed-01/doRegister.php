@@ -70,7 +70,6 @@
         
         #Date Of Birth
         $dob = $_POST['dateofbirth'];
-        echo $dob;
 
         if ($success)
         {
