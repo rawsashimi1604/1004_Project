@@ -6,7 +6,7 @@
     ?>
     </head>
     
-    <body>
+    <body class="bg-dark">
         <?php
         include "nav.inc.php";
         ?>
@@ -77,7 +77,7 @@
             if($success){
                 ?>
                 <br>
-                <main class='container'>
+                <main class='container text-light'>
                     <h1>Your registration is successful!</h1>
                     <h4>Thank you for signing up with Steam Clone <?php echo ($fname . " " . $lname)?></h4>
                     <div class="form-group">
@@ -90,7 +90,7 @@
             {
                 ?>
                 <br>
-                <main class='container'>
+                <main class='container text-light'>
                     <h1>Oops!</h1>
                     <h4>The following input errors were detected:<br></h4>
                     <?php 
@@ -111,7 +111,7 @@
         {
             ?>
             <br>
-            <main class='container'>
+            <main class='container text-light'>
                 <h1>Oops!</h1>
                 <h4>The following input errors were detected:<br></h4>
                 <?php 
@@ -166,9 +166,7 @@
             }
             $conn->close();
         }
+        include "footer.inc.php"
         ?>
     </body>
-    <?php
-    include "footer.inc.php"
-    ?>
 </html>
