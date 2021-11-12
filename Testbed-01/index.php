@@ -103,18 +103,18 @@ and open the template in the editor.
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="">
+                        <form action="doLogin.php" method="post">
                             <!-- Login details -->
                             <div class="row login-row">
                                 <div class="col">
                                     <label for="email" class="form-label">Enter your email address:</label>
-                                    <input type="email" class="form-control" aria-label="First name" id="email">
+                                    <input type="email" class="form-control" aria-label="First name" id="email" name="email">
                                 </div>
                             </div>
                             <div class="row login-row">
                                 <div class="col">
                                     <label for="pwd" class="form-label">Enter your password:</label>
-                                    <input type="password" class="form-control" aria-label="Last name" id="pwd">
+                                    <input type="password" class="form-control" aria-label="Last name" id="pwd" name="email">
                                 </div>
 
                             </div>
