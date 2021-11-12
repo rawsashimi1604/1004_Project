@@ -67,6 +67,10 @@
         
         #Password Hashing
         $hashed_password = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
+        
+        #Date Of Birth
+        $dob = $_POST['dateofbirth'];
+        echo $dob;
 
         if ($success)
         {
@@ -92,6 +96,7 @@
                     <h4>The following input errors were detected:<br></h4>
                     <?php 
                     echo "<p>" . $errorMsg . "</p>";
+                    echo "<p>" . $fname . "<br>" . $lname . "<br>" . $dob . "<br>" . $email . "</P>";
                     ?>
                     <div class="form-group">
                         <a href="register.php">
