@@ -5,6 +5,35 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
+<?php
+session_start();
+
+require_once "Auth.php";
+require_once "Util.php";
+
+$auth = new Auth();
+$db_handle = new DBController();
+$util = new Util();
+
+require_once "authCookieSessionValidate.php";
+
+function debug_to_console($data) {
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+
+    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+}
+
+if ($isLoggedIn) {
+    //$util->redirect("dashboard.php");
+    debug_to_console("Logged in");
+}
+else{
+    debug_to_console("Logged out");
+}
+?>
+
 
 <html lang="EN">
     <?php include "head.inc.php" ?>

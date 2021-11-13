@@ -13,7 +13,7 @@
         <!-- MAIN -->
         <main class="container text-light">
             <h1 class="login-header">Login Here!</h1>
-            <form action="">
+            <form action="doLogin.php" method="post">
                 <!-- Login details -->
                 <div class="row login-row">
                     <div class="col">

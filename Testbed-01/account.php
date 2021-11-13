@@ -1,5 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<?php 
+session_start();
+
+require_once "authCookieSessionValidate.php";
+
+if(!$isLoggedIn) {
+    header("Location: ./index.php");
+}
+
+$userId = $_SESSION['member_id'];
+
+/*
+function debug_to_console($data) {
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+
+    echo "<script>alert('Debug Objects: " . $output . "' );</script>";
+}
+debug_to_console($userId);
+*/
+?>
 
 <html lang="EN">
     <?php
@@ -34,19 +55,19 @@
             <div class="container account-container account-update-pw">
                 <h2>Update Password</h2>
                 <hr>
-                <form action="">
+                <form action="#">
                     <div class="row register-row">
                         <div class="col">
                             <label for="old_pwd" class="form-label">Your current password</label>
-                            <input type="password" class="form-control" aria-label="Old Password" id="old_pwd">
+                            <input type="password" class="form-control" aria-label="Old Password" id="old_pwd" name="old_pwd">
                         </div>
                         <div class="col">
                             <label for="new_pwd" class="form-label">Your new password</label>
-                            <input type="password" class="form-control" aria-label="New Password" id="new_pwd">
+                            <input type="password" class="form-control" aria-label="New Password" id="new_pwd" name="new_pwd">
                         </div>
                         <div class="col">
                             <label for="confirm_pwd" class="form-label">Confirm new password</label>
-                            <input type="password" class="form-control" aria-label="Confirm New Password" id="confirm_pwd">
+                            <input type="password" class="form-control" aria-label="Confirm New Password" id="confirm_pwd" name="cfm_pwd">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-light account-btn">Change password</button>
