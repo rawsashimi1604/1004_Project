@@ -27,9 +27,9 @@ body {
 }
 
 .card-img-top:hover {
-    -ms-transform:scale(1.2);
-    -webkit-transform:scale(1.2);
-    transform:scale(1.2);
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .game-img {
@@ -342,8 +342,8 @@ main .account-container:hover {
 .form-control {
     background-color: #fff;
     background-image: none;
-    border: 1px solid rgba(0,0,0,.07);
-    font-family: Arial,sans-serif;
+    border: 1px solid rgba(0, 0, 0, .07);
+    font-family: Arial, sans-serif;
     color: #2c2c2c;
     outline: 0;
     height: 35px;
@@ -368,7 +368,7 @@ main .account-container:hover {
 
 .table tbody tr td {
     background: #fff;
-    border-bottom: 1px solid rgba(230,230,230,.7);
+    border-bottom: 1px solid rgba(230, 230, 230, .7);
     border-top: 0;
     padding: 20px;
     font-size: 13.5px;
@@ -409,37 +409,43 @@ table.dataTable {
 }
 
 /* Formatting search box */
-.search-box{
+.search-box {
     width: 300px;
     position: relative;
     display: inline-block;
     font-size: 14px;
 }
-.search-box input[type="text"]{
+
+.search-box input[type="text"] {
     height: 32px;
     padding: 5px 10px;
     border: 1px solid #CCCCCC;
     font-size: 14px;
 }
-.result{
-    position: absolute;        
+
+.result {
+    position: absolute;
     z-index: 999;
     top: 100%;
     left: 0;
 }
-.search-box input[type="text"], .result{
+
+.search-box input[type="text"],
+.result {
     width: 100%;
     box-sizing: border-box;
 }
+
 /* Formatting result items */
-.result p{
+.result p {
     margin: 0;
     padding: 7px 10px;
     border: 1px solid #CCCCCC;
     border-top: none;
     cursor: pointer;
 }
-.result p:hover{
+
+.result p:hover {
     background: #f2f2f2;
 }
 
@@ -453,4 +459,143 @@ table.dataTable {
     text-decoration: underline;
     font-family: inherit;
     font-size: inherit;
+}
+
+.gamelist-container {
+    color: white;
+}
+
+.gamelist-container section>.container {
+    padding: 0;
+}
+
+.gamelist-games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gamelist-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(114, 114, 114);
+    padding: 1rem;
+    margin-right: 5rem;
+    margin-bottom: 5rem;
+    border-radius: 10px;
+}
+
+.gamelist-game:hover {
+    transition: 1s;
+    box-shadow: 0px 0px 10px rgb(151, 151, 151);
+    cursor: pointer;
+}
+
+.gamelist-title {
+    flex: 1 1 0;
+}
+
+.gamelist-title a {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    text-decoration: none;
+}
+
+.gamelist-title a>span:hover {
+    transition: 0.5s;
+    color: #b3b3b3;
+}
+
+.gamelist-title a>span {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+    letter-spacing: 0.5;
+    color: white;
+}
+
+.gamelist-title img {
+    width: auto;
+    align-self: center;
+}
+
+.gamelist-game>span {
+    align-self: flex-end;
+}
+
+.gamelist-dev {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: rgb(131, 130, 130);
+}
+
+.gamelist-price {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: rgb(55, 197, 55);
+}
+
+.search-box {
+    display: flex;
+    flex-direction: row;
+    font-weight: 100;
+    padding: 1rem;
+    padding-left: 0;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.search-box label {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.search-box form {
+    width: 50%;
+}
+
+#browsing_section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.gamelist-inputs {
+    display: flex;
+    flex-direction: row;
+}
+
+.gamelist-inputs input {
+    margin-right: 10px;
+}
+
+.gamelist-inputs input:first-child {
+    flex-basis: 70%;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgb(146, 146, 146);
+
+}
+
+.gamelist-inputs input:first-child::placeholder {
+    font-family: 'Red Hat Mono', serif;
+}
+
+.gamelist-inputs input:first-child[type=text] {
+    font-family: 'Red Hat Mono', serif;
+    font-weight: 500;
+}
+
+
+.gamelist-inputs input:nth-child(2) {
+    box-shadow: 2px 2px 2px rgb(146, 146, 146);
+}
+
+.gamelist-search-main {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }
