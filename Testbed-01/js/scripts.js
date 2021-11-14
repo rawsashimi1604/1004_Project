@@ -23,13 +23,12 @@
 //    });
 //}
 
-function remove_rows()
+function remove_rows($num_of_rows)
 {
     document.addEventListener("DOMContentLoaded", function()
     {
         var tb = document.getElementById("browsing_list"); 
-        while(tb.rows.length > 2) { tb.deleteRow(1); }
-        alert("Done!");
+        while(tb.rows.length > $num_of_rows) { tb.deleteRow(1); }
     });
 }
 

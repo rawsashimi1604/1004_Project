@@ -20,7 +20,7 @@ and open the template in the editor.
 
     
     <!-- BODY -->
-    <body class="bg-dark">
+    <body>
         <?php
             include "nav.inc.php";
         ?>
@@ -31,54 +31,43 @@ and open the template in the editor.
         </header>
         
         <!-- MAIN -->
-        <main class="container gamelist-container">
+        <main class="container">
             <section id="browsing_section">
-                <div class="search-box" data-aos="zoom-in-left" data-aos-duration="1000">
+                <div class="search-box">
                     <form method="post">
-                        <div class="gamelist-search-main">
-                            <span>Search Our Catalogue</span>
-                        </div>
-
-                        <div class="gamelist-inputs">
-                            <input type="text" name="search" autocomplete="off" class="form-control input-sm"
-                                placeholder="Enter Game Title" aria-controls="browsing_list">
-                            <input id="browse_search_button" type="submit" name="submit" value="Search">
-                        </div>
+                        <label><b>Search:</b></label>
+                        <input type="text" name="search" autocomplete="off" 
+                                        class="form-control input-sm" 
+                                        placeholder="Enter search term" 
+                                        aria-controls="browsing_list">
+                        <input id="browse_search_button" type="submit" name="submit">
                     </form>
                 </div>
-
-                <div class="container">
-                    <div class="gamelist-games" data-aos="fade-right" data-aos-duration="500">
-                        <?php
-                            if ($result->num_rows > 0)
-                            {
-                                // Fetch all the results from our database
-                                while($row = $result->fetch_assoc()) {
-                                    echo '<div class="gamelist-game"><div aria-controls="browsing_list" '
-                                    . 'class="gamelist-title"><a href="gamepage.php?id='.$row["appid"].'">'
-                                    . '<img class="img-ss-list" src="'.$row["image"].'" />' ."<span>"
-                                    .$row["name"].'</span></a></div><span class="gamelist-dev">'.$row["developer"].'</span><span class="gamelist-price">'
-                                    .$row["price"].'</span></div>';
-                                }
-                            }
-                            else
-                            {
-                                $errorMsgDB = "Looks like there's nothing here..";
-                                $success = false;
-                                alert($errorMsgDB);
-                            }
-                            $stmt->close();
-                            $conn->close();
-                            
-                            if ($_SERVER["REQUEST_METHOD"] == "POST")
-                            {
-                                echo '<script>jQuery(document).ready(remove_rows());</script>';
-                                include "DB_search.inc.php";
-                            }
-                        ?>
-                    </div>
                 </div>
-                
+                <table style="width:100%" id="browsing_list" class="table dataTable no-footer" role="grid">
+                    <tr>
+                        <th>Game</th>
+                        <th>Developer</th>
+                        <th>Cost</th>
+                    </tr>
+                    <?php
+                        require_once "DBController.php";
+                        $db_handle = new DBController();
+                        $query = "SELECT * FROM apps_list";
+                        $result = $db_handle->runBaseQuery($query);
+                        foreach ($result as $row){
+                            echo '<tr><td aria-controls="browsing_list" '
+                                . 'class="table tbody tr td"><a href="gamepage.php?id='.$row["appid"].'">'
+                                . '<img class="img-ss-list" src="'.$row["image"].'" />'
+                                .$row["name"].'</a></td><td>'.$row["developer"].'</td><td>'
+                                .$row["price"].'</td></tr>';
+                        }
+                        if ($_SERVER["REQUEST_METHOD"] == "POST")
+                        {
+                            include "DB_search.inc.php";
+                        }
+                    ?>
+                 </table>
             </section>
         </main>
         <?php
