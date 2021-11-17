@@ -55,7 +55,7 @@ debug_to_console($userId);
             <div class="container account-container account-update-pw">
                 <h2>Update Password</h2>
                 <hr>
-                <form action="#">
+                <form action="doAccount.php" method="post">
                     <div class="row register-row">
                         <div class="col">
                             <label for="old_pwd" class="form-label">Your current password</label>
