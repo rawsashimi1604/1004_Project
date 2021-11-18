@@ -1,3 +1,21 @@
+:root {
+    --dark-0: #000000;
+    --dark-1: #0C0C0C;
+    --dark-2: #202020;
+    --dark-3: #353535;
+    --dark-4: #494949;
+    --dark-5: #5d5d5d;
+    --dark-6: #727272;
+
+    --light-0: #353535;
+    --light-1: #515151;
+    --light-2: #6e6e6e;
+    --light-3: #8b8b8b;
+    --light-4: #a8a8a8;
+    --light-5: #c5c5c5;
+    --light-6: #e2e2e2;
+}
+
 body {
     font-family: 'Red Hat Mono', serif;
     box-sizing: border-box;
@@ -27,9 +45,9 @@ body {
 }
 
 .card-img-top:hover {
-    -ms-transform:scale(1.2);
-    -webkit-transform:scale(1.2);
-    transform:scale(1.2);
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .game-img {
@@ -342,8 +360,8 @@ main .account-container:hover {
 .form-control {
     background-color: #fff;
     background-image: none;
-    border: 1px solid rgba(0,0,0,.07);
-    font-family: Arial,sans-serif;
+    border: 1px solid rgba(0, 0, 0, .07);
+    font-family: Arial, sans-serif;
     color: #2c2c2c;
     outline: 0;
     height: 35px;
@@ -368,7 +386,7 @@ main .account-container:hover {
 
 .table tbody tr td {
     background: #fff;
-    border-bottom: 1px solid rgba(230,230,230,.7);
+    border-bottom: 1px solid rgba(230, 230, 230, .7);
     border-top: 0;
     padding: 20px;
     font-size: 13.5px;
@@ -409,37 +427,43 @@ table.dataTable {
 }
 
 /* Formatting search box */
-.search-box{
+.search-box {
     width: 300px;
     position: relative;
     display: inline-block;
     font-size: 14px;
 }
-.search-box input[type="text"]{
+
+.search-box input[type="text"] {
     height: 32px;
     padding: 5px 10px;
     border: 1px solid #CCCCCC;
     font-size: 14px;
 }
-.result{
-    position: absolute;        
+
+.result {
+    position: absolute;
     z-index: 999;
     top: 100%;
     left: 0;
 }
-.search-box input[type="text"], .result{
+
+.search-box input[type="text"],
+.result {
     width: 100%;
     box-sizing: border-box;
 }
+
 /* Formatting result items */
-.result p{
+.result p {
     margin: 0;
     padding: 7px 10px;
     border: 1px solid #CCCCCC;
     border-top: none;
     cursor: pointer;
 }
-.result p:hover{
+
+.result p:hover {
     background: #f2f2f2;
 }
 
