@@ -374,7 +374,7 @@ main .account-container:hover {
     font-size: 13.5px;
 }
 
-.table.dataTable.no-footer {
+/* .table.dataTable.no-footer {
     border: none;
     border-top-color: initial;
     border-top-style: none;
@@ -401,11 +401,27 @@ table.dataTable {
     margin-bottom: 6px !important;
     max-width: none !important;
     border-collapse: separate !important;
-}
+} */
 
-.img-ss-list {
+/* .img-ss-list {
     max-height: 35px;
     margin-right: 6px;
+} */
+
+.gameslist-thumbnail {
+    width: 100%;
+}
+
+.gameslist-desc {
+    max-width: 750px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: auto;
+}
+
+.gameslist-rows {
+    cursor: pointer;
 }
 
 /* Formatting search box */

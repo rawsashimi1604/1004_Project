@@ -41,9 +41,9 @@ else{
     <?php include "DB_getall.inc.php" ?>
     <!-- BODY -->
 
-    <body>
+    <body class="bg-dark">
         <?php include "nav.inc.php" ?>
-        <header class="jumbotron text-center bg-dark">
+        <header class="jumbotron text-center">
             <h1 class="display-4 text-light">Steam Clone</h1>
             <h2 class="text-light">Get ready to rumble</h2>
             <div class="game-images">
@@ -86,9 +86,9 @@ else{
 
 
         <!-- MAIN -->
-        <main class="container mt-5">
+        <main class="container my-4 bg-light">
             <section id="featured">
-                <h2 class="text-center">Featured Products</h2>
+                <h2 class="text-center py-5">Featured Products</h2>
                 <p class="text-center">Checkout new and popular products</p>
                 <div class="row">
                     <article>
