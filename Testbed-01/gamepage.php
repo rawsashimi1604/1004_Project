@@ -11,21 +11,16 @@
     ?>
     <!-- MySQL Database Connection-->
     <?php
-    include "DB_getall.inc.php";
-    ?>
-
-    <?php
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $id = $_GET['id'];
         // Prepare the statement:
-        $stmt = $conn->prepare("SELECT * FROM apps_list WHERE appid = '$id'");
-        // Bind & execute the query statement:
-        $stmt->bind_param("issssss", $appid, $name, $price, $description, $image, $developer, $publisher);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            // Fetch all the results from our database
-            while ($row = $result->fetch_assoc()) {
+        require_once "DBController.php";
+        $db_handle = new DBController();
+        $query = "SELECT * FROM apps_list WHERE appid = '$id'";
+        $result = $db_handle->runBaseQuery($query);
+        if (!empty($result)){
+            foreach ($result as $row){
+                // Fetch all the results from our database
                 $name = $row["name"];
                 $price = $row["price"];
                 $description = $row["description"];
@@ -37,6 +32,7 @@
                 $mac_requirements = $row["mac_requirements"];
             }
         }
+  
     }
     ?>
 
