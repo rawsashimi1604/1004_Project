@@ -34,7 +34,7 @@ class DBController {
         $resultset[] = $row;
         }		
         if(!empty($resultset)){
-        return $resultset;
+            return $resultset;
         }
         else{
             $errorMsgDB = "Looks like there's nothing here..";

@@ -36,6 +36,9 @@
                         $image = $row["image"];
                         $developer = $row["developer"];
                         $publisher = $row["publisher"];
+                        $windows_requirements = $row["windows_requirements"];
+                        $linux_requirements = $row["linux_requirements"];
+                        $mac_requirements = $row["mac_requirements"];
                     }
                 }
             }
@@ -88,15 +91,15 @@
                         <div class="container">
                             <button type="button" class="btn btn-lg btn-light game-popover" data-bs-toggle="popover"
                                 title="PC Requirements"
-                                data-bs-content="And here's some amazing content. It's very engaging. Right?">PC
+                                data-bs-content="<?php echo "$windows_requirements" ?>">PC
                                 Requirements</button>
                             <button type="button" class="btn btn-lg btn-light game-popover" data-bs-toggle="popover"
                                 title="Mac Requirements"
-                                data-bs-content="And here's some amazing content. It's very engaging. Right?">Mac
+                                data-bs-content="<?php echo "$mac_requirements" ?>">Mac
                                 Requirements</button>
                             <button type="button" class="btn btn-lg btn-light game-popover" data-bs-toggle="popover"
                                 title="Linux Requirements"
-                                data-bs-content="And here's some amazing content. It's very engaging. Right?">Linux
+                                data-bs-content="<?php echo "$linux_requirements" ?>">Linux
                                 Requirements</button>
                         </div>
                     </div>
