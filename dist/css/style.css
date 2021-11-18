@@ -1,17 +1,172 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
+:root {
+    --dark-0: #000000;
+    --dark-1: #0C0C0C;
+    --dark-2: #202020;
+    --dark-3: #353535;
+    --dark-4: #494949;
+    --dark-5: #5d5d5d;
+    --dark-6: #727272;
+
+    --light-0: #353535;
+    --light-1: #515151;
+    --light-2: #6e6e6e;
+    --light-3: #8b8b8b;
+    --light-4: #a8a8a8;
+    --light-5: #c5c5c5;
+    --light-6: #e2e2e2;
+}
+
 body {
     font-family: 'Red Hat Mono', serif;
     box-sizing: border-box;
+    background-image: url("/dist/images/background.jpg");
+    background-size: 100%;
 }
 
+main {
+    background-color: var(--dark-3);
+    box-shadow: 0px 0px 20px 2px var(--dark-3);
+}
+
+nav {
+    box-shadow: 0px 5px 10px 5px var(--dark-5);
+}
+
+nav .nav-home {
+    font-weight: 800;
+}
+
+.navbar {
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+}
+
+nav {
+    background-color: var(--dark-1);
+}
+
+.modal-container {
+    padding: 1rem;
+    background-color: var(--dark-3);
+    box-shadow: 0px 0px 20px 2px var(--light-2);
+    color: var(--light-5);
+}
+
+.modal-container .close:hover {
+    transition: 0.5s;
+    background-color: var(--light-5);
+}
+
+footer {
+    background-color: var(--dark-1);
+    box-shadow: 0px -5px 20px 5px var(--dark-3);
+}
+
+footer a {
+    border-radius: 100% !important;
+}
+
+
+footer i {
+    align-self: center !important;
+    width: 150%;
+    font-size: 2rem;
+
+}
+
+footer input::placeholder {
+    font-family: 'Red Hat Mono',
+        serif;
+}
+
+.footer-copy {
+    color: var(--light-2);
+    background-color: var(--dark-2);
+    box-shadow: 0px 0px 20px 3px var(--dark-3);
+}
+
+.footer-copy a {
+    color: var(--light-2);
+    text-decoration: none;
+    font-style: italic;
+}
+
+.footer-copy a:hover {
+    color: var(--light-4);
+}
+
+
+.footer-row {
+    display: flex;
+}
+
+.footer-btn {
+    margin-right: 1rem;
+    color: var(--light-6);
+}
+
+.footer-btn:hover {
+    transition: 0.5s;
+    color: var(--light-4);
+}
+
+.index-featured {
+    color: var(--light-6);
+    padding-bottom: 2rem;
+}
+
+.index-featured h2 {
+    text-decoration: underline;
+    font-weight: 300;
+}
+
+.home-container {
+    padding: 0;
+    border-radius: 0;
+    background: var(--light-6);
+    box-shadow: 0px 0px 20px 2px var(--dark-3);
+}
+
+.home-container .game-images {
+    border-radius: 0;
+}
+
+/* INDEX.PHP CSS HERE */
 .carousel-item img {
-    width: 90vw;
-    margin: auto;
+    width: 100%;
+}
+
+.game-thumbnail-card a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.thumbnail-wrapper {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+
+.card-img-top {
+    display: block;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.card-img-top:hover {
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .game-img {
     width: 100%;
 }
 
+
+/* ABOUT.PHP CSS HERE */
 .about-col {
     padding: 0;
     display: flex;
@@ -47,16 +202,8 @@ body {
     margin-bottom: 1rem;
 }
 
-
 .register-check {
     margin-bottom: 1rem;
-}
-
-.register-container {
-    width: 50%;
-    background-color: #353535;
-    border-radius: 5px;
-    padding: 2rem;
 }
 
 .register-btn:hover {
@@ -319,4 +466,142 @@ main .account-container:hover {
 
 .game-requirements .container {
     padding: 0;
+}
+
+.form-control {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid rgba(0, 0, 0, .07);
+    font-family: Arial, sans-serif;
+    color: #2c2c2c;
+    outline: 0;
+    height: 35px;
+    padding: 9px 12px;
+    line-height: normal;
+    font-size: 14px;
+    font-weight: 400;
+    vertical-align: middle;
+    min-height: 35px;
+    transition: all .12s ease;
+    box-shadow: none;
+    border-radius: 2px;
+    transition: background .2s linear 0s;
+}
+
+.input-sm {
+    font-size: 13px;
+    min-height: 32px;
+    height: 32px;
+    padding: 8px 9px;
+}
+
+.table tbody tr td {
+    background: #fff;
+    border-bottom: 1px solid rgba(230, 230, 230, .7);
+    border-top: 0;
+    padding: 20px;
+    font-size: 13.5px;
+}
+
+/* .table.dataTable.no-footer {
+    border: none;
+    border-top-color: initial;
+    border-top-style: none;
+    border-top-width: initial;
+    border-right-color: initial;
+    border-right-style: none;
+    border-right-width: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: initial;
+    border-left-color: initial;
+    border-left-style: none;
+    border-left-width: initial;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+}
+
+table.dataTable {
+    clear: both;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    max-width: none !important;
+    border-collapse: separate !important;
+} */
+
+/* .img-ss-list {
+    max-height: 35px;
+    margin-right: 6px;
+} */
+
+.gameslist-thumbnail {
+    width: 100%;
+}
+
+.gameslist-desc {
+    max-width: 750px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: auto;
+}
+
+.gameslist-rows {
+    cursor: pointer;
+}
+
+/* Formatting search box */
+.search-box {
+    width: 300px;
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.search-box input[type="text"] {
+    height: 32px;
+    padding: 5px 10px;
+    border: 1px solid #CCCCCC;
+    font-size: 14px;
+}
+
+.result {
+    position: absolute;
+    z-index: 999;
+    top: 100%;
+    left: 0;
+}
+
+.search-box input[type="text"],
+.result {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Formatting result items */
+.result p {
+    margin: 0;
+    padding: 7px 10px;
+    border: 1px solid #CCCCCC;
+    border-top: none;
+    cursor: pointer;
+}
+
+.result p:hover {
+    background: #f2f2f2;
+}
+
+.btn-link {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    color: #0000EE;
+    padding: 0;
+    text-decoration: underline;
+    font-family: inherit;
+    font-size: inherit;
 }

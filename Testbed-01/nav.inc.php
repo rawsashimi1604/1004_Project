@@ -5,7 +5,7 @@ require_once "authCookieSessionValidate.php";
 
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
       aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -13,7 +13,7 @@ require_once "authCookieSessionValidate.php";
     <div class="d-flex collapse navbar-collapse" id="navbarToggler">
       <div class="me-auto">
         <ul class="navbar-nav p-2">
-          <li class="nav-item">
+          <li class="nav-item nav-home">
             <a class="nav-link" href="./index.php">Home</a>
           </li>
           <li class="nav-item">

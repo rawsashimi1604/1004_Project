@@ -43,9 +43,7 @@ else{
 
     <body class="bg-dark">
         <?php include "nav.inc.php" ?>
-        <header class="jumbotron text-center">
-            <h1 class="display-4 text-light">Steam Clone</h1>
-            <h2 class="text-light">Get ready to rumble</h2>
+        <header class="container jumbotron text-center mb-0">
             <div class="game-images">
                 <div id="game-image-carousell" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -86,9 +84,9 @@ else{
 
 
         <!-- MAIN -->
-        <main class="container my-4 bg-light">
-            <section id="featured">
-                <h2 class="text-center py-5">Featured Products</h2>
+        <main class="container my-4 mt-0 mb-0">
+            <section id="featured" class="index-featured">
+                <h2 class="text-center py-3">Featured Products</h2>
                 <p class="text-center">Checkout new and popular products</p>
                 <div class="row">
                     <article>
@@ -121,42 +119,43 @@ else{
                 </div>
             </section>
         </main>
-
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+        
+        <!-- Modal-->
+        <div class="modal fade " id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="loginmodalTitle">Member Login</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="doLogin.php" method="post">
-                            <!-- Login details -->
-                            <div class="row login-row">
-                                <div class="col">
-                                    <label for="email" class="form-label">Enter your email address:</label>
-                                    <input type="email" class="form-control" aria-label="First name" id="email" name="email">
-                                </div>
-                            </div>
-                            <div class="row login-row">
-                                <div class="col">
-                                    <label for="pwd" class="form-label">Enter your password:</label>
-                                    <input type="password" class="form-control" aria-label="Last name" id="pwd" name="pwd">
-                                </div>
-
-                            </div>
-
-                            <button type="submit" class="btn btn-light login-btn">Login</button>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
+              <div class="modal-content modal-container">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="loginmodalTitle">Member Login</h5>
+                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
                 </div>
+                <div class="modal-body">
+                  <form action="doLogin.php" method="post">
+                    <!-- Login details -->
+                    <div class="row login-row">
+                      <div class="col">
+                        <label for="email" class="form-label">Enter your email address:</label>
+                        <input type="email" class="form-control" aria-label="First name" id="email" name="email">
+                      </div>
+                    </div>
+                    <div class="row login-row">
+                      <div class="col">
+                        <label for="pwd" class="form-label">Enter your password:</label>
+                        <input type="password" class="form-control" aria-label="Last name" id="pwd" name="pwd">
+                      </div>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-light login-btn">Login</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
             </div>
-        </div>
+          </div>
 
         <!-- FOOTER -->
         <?php include "footer.inc.php" ?>
