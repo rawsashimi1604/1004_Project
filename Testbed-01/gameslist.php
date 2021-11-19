@@ -40,7 +40,7 @@ include "DB_getall.inc.php";
             </div>
             </div>
 
-            <table id="browsing_list" class="table">
+            <table id="browsing_list" class="">
                 <thead>
                     <tr>
                         <th scope="col">Game</th>
