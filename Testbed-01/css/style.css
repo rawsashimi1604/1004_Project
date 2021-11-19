@@ -639,6 +639,7 @@ table.dataTable {
     z-index: 999;
     top: 100%;
     left: 0;
+    
 }
 
 .result {
@@ -653,6 +654,7 @@ table.dataTable {
     border: 1px solid #CCCCCC;
     border-top: none;
     cursor: pointer;
+    background: #212529;
 }
 
 .result p:hover {

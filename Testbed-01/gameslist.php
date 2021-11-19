@@ -12,6 +12,30 @@ include "head.inc.php";
 session_start();
 ?>
 
+<script>
+$(document).ready(function(){
+    $('.search-box input[type="text"]').on("keyup input", function(){
+        /* Get input value on change */
+        var inputVal = $(this).val();
+        var resultDropdown = $(this).siblings(".result");
+        if(inputVal.length){
+            $.get("DB_livesearch.php", {term: inputVal}).done(function(data){
+                // Display the returned data in browser
+                resultDropdown.html(data);
+            });
+        } else{
+            resultDropdown.empty();
+        }
+    });
+    
+    // Set search input value on click of result item
+    $(document).on("click", ".result p", function(){
+        $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+        $(this).parent(".result").empty();
+    });
+});
+</script>
+
 <!-- MySQL Database Connect get ALL -->
 <?php
 include "DB_getall.inc.php";
@@ -35,9 +59,9 @@ include "DB_getall.inc.php";
                 <form method="post">
                     <span class="search-txt">Search:</span>
                     <input type="text" name="search" autocomplete="off" class="form-control input-sm" placeholder="Enter search term" aria-controls="browsing_list">
+                    <div class="result"></div>
                     <input id="browse_search_button" type="submit" name="submit">
                 </form>
-            </div>
             </div>
 
             <table id="browsing_list" class="">

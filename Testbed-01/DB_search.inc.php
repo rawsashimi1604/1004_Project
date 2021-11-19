@@ -2,8 +2,8 @@
     require_once "DBController.php";
     $db_handle = new DBController();
     
-    $search = $_POST["search"];
-    $query = "SELECT * FROM apps_list WHERE name LIKE '%{$search}%'";
+    $search = strtolower($_POST["search"]);
+    $query = "SELECT * FROM apps_list WHERE lower(name) LIKE '%{$search}%'";
     $result = $db_handle->runBaseQuery($query);
     if (!empty($result)){
         echo '<script>jQuery(document).ready(remove_rows('.count($result).'));</script>';
@@ -20,8 +20,8 @@
         } 
     }
     else{
-        echo '<script>jQuery(document).ready(remove_rows(2));</script>';
-        echo '<tr><a>Looks like theres nothing here...</a></tr>';
+        echo '<script>jQuery(document).ready(remove_rows(1));</script>';
+        echo '<tr class="gameslist-rows"><td>Looks like theres nothing here...</td></tr>';
     }
     
 

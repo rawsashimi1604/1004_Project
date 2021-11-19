@@ -30,9 +30,17 @@
                 $windows_requirements = $row["windows_requirements"];
                 $linux_requirements = $row["linux_requirements"];
                 $mac_requirements = $row["mac_requirements"];
+                $genre_id = $row["genre"];
             }
         }
-  
+        $query = "SELECT * FROM apps_genres WHERE genre_id = '$genre_id'";
+        $result = $db_handle->runBaseQuery($query);
+        if (!empty($result)){
+            foreach ($result as $row){
+                // Fetch all the results from our database
+                $genre_name = $row["genre_name"];
+            }
+        }
     }
     ?>
 
@@ -98,8 +106,7 @@
                 </div>
                 <span>Genres:</span>
                 <div class="game-genres">
-                    <span class="game-genre">Action</span>
-                    <span class="game-genre">FPS</span>
+                    <span class="game-genre"><?php echo "$genre_name" ?></span>
                 </div>
                 <span>Categories:</span>
                 <div class="game-categories">

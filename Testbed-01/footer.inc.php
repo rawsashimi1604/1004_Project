@@ -24,7 +24,7 @@
             class="bi bi-linkedin"></i></a>
 
         <!-- Github -->
-        <a class="footer-btn" target="_blank" href="https://github.com/" role="button"><i class="bi bi-github"></i></a>
+        <a class="footer-btn" target="_blank" href="https://github.com/rawsashimi1604/1004_Project" role="button"><i class="bi bi-github"></i></a>
       </section>
       <!-- Section: Social media -->
 
