@@ -24,24 +24,23 @@ include "DB_getall.inc.php";
     include "nav.inc.php";
     ?>
     <!-- HEADER -->
-    <header class="jumbotron text-center bg-dark">
-        <h1 class="display-4 text-light">Browse</h1>
-        <h2 class="text-light">Look around! Fancy anything?</h2>
+    <header class="jumbotron text-center bg-dark gameslist-header">
+        <h1 class="display-4 text-light">Search for your favourite games!</h1>
     </header>
 
     <!-- MAIN -->
-    <main class="container">
+    <main class="container gameslist-container">
         <section id="browsing_section">
             <div class="search-box">
                 <form method="post">
-                    <label><b>Search:</b></label>
+                    <span class="search-txt">Search:</span>
                     <input type="text" name="search" autocomplete="off" class="form-control input-sm" placeholder="Enter search term" aria-controls="browsing_list">
                     <input id="browse_search_button" type="submit" name="submit">
                 </form>
             </div>
             </div>
 
-            <table id="browsing_list" class="table table-hover">
+            <table id="browsing_list" class="table">
                 <thead>
                     <tr>
                         <th scope="col">Game</th>

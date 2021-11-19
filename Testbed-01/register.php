@@ -10,7 +10,7 @@
         ?>
         
         <!-- MAIN -->
-        <main class="container text-light">
+        <main class="container text-light register-container">
             <h1 class="register-header">Register Here!</h1>
             <form action="doRegister.php" method="post">
                 <!-- First name and last name -->

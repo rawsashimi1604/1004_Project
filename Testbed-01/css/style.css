@@ -18,20 +18,32 @@
     --light-6: #e2e2e2;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     font-family: 'Red Hat Mono', serif;
     box-sizing: border-box;
     background-image: url("../images/background.jpg");
     background-size: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 main {
     background-color: var(--dark-3);
     box-shadow: 0px 0px 20px 2px var(--dark-3);
+    /* margin-right: 2rem !important;
+    margin-left: 2rem !important; */
+    width: 80vw;
+    margin: auto;
+    flex: 1 1 auto;
 }
 
 nav {
-    box-shadow: 0px 5px 10px 5px var(--dark-5);
+    box-shadow: 0px 5px 10px 5px var(--dark-3);
 }
 
 nav .nav-home {
@@ -85,6 +97,7 @@ footer input::placeholder {
     color: var(--light-2);
     background-color: var(--dark-2);
     box-shadow: 0px 0px 20px 3px var(--dark-3);
+    font-size: 0.8rem;
 }
 
 .footer-copy a {
@@ -178,8 +191,14 @@ footer input::placeholder {
     font-size: 20px;
 }
 
+.register-container {
+    padding: 2rem;
+}
+
 .register-header {
     text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
 }
 
 .register-dob {
@@ -203,7 +222,8 @@ footer input::placeholder {
 }
 
 .register-check {
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .register-btn:hover {
@@ -495,13 +515,6 @@ main .account-container:hover {
     padding: 8px 9px;
 }
 
-.table tbody tr td {
-    background: #fff;
-    border-bottom: 1px solid rgba(230, 230, 230, .7);
-    border-top: 0;
-    padding: 20px;
-    font-size: 13.5px;
-}
 
 /* .table.dataTable.no-footer {
     border: none;
@@ -537,9 +550,40 @@ table.dataTable {
     margin-right: 6px;
 } */
 
-.gameslist-thumbnail {
+.gameslist-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    color: var(--light-6);
+}
+
+.gameslist-container th {
+    color: var(--light-5);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+}
+
+.gameslist-container td {
+    color: var(--light-5);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+
+.gameslist-container tbody tr:hover {
+    background-color: var(--dark-5);
+    box-shadow: 0px 0px 10px 5px var(--light-3);
+    transition: 0.3s;
+}
+
+.gameslist-container .gameslist-thumbnail {
     width: 100%;
 }
+
 
 .gameslist-desc {
     max-width: 750px;
@@ -553,19 +597,41 @@ table.dataTable {
     cursor: pointer;
 }
 
-/* Formatting search box */
-.search-box {
-    width: 300px;
-    position: relative;
-    display: inline-block;
-    font-size: 14px;
+.gameslist-header {
+    padding: 2rem;
 }
 
-.search-box input[type="text"] {
-    height: 32px;
-    padding: 5px 10px;
-    border: 1px solid #CCCCCC;
+.search-box {
+    width: 100%;
+    position: relative;
+    display: block;
     font-size: 14px;
+    margin-bottom: 2rem;
+}
+
+.search-box form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.search-txt {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.search-box form input[name="search"] {
+    width: 600px;
+    margin-right: 1rem;
+    font-family: 'Red Hat Mono',
+        serif;
+}
+
+.search-box .search-box input {
+    font-family: 'Red Hat Mono',
+        serif;
 }
 
 .result {
@@ -575,7 +641,6 @@ table.dataTable {
     left: 0;
 }
 
-.search-box input[type="text"],
 .result {
     width: 100%;
     box-sizing: border-box;
