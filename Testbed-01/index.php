@@ -43,7 +43,7 @@ else{
 
     <body class="bg-dark">
         <?php include "nav.inc.php" ?>
-        <header class="container jumbotron text-center mb-0">
+        <header class="container jumbotron text-center mb-0 home-container">
             <div class="game-images">
                 <div id="game-image-carousell" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">

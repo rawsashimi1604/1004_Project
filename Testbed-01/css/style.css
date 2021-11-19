@@ -21,7 +21,7 @@
 body {
     font-family: 'Red Hat Mono', serif;
     box-sizing: border-box;
-    background-image: url("/dist/images/background.jpg");
+    background-image: url("../images/background.jpg");
     background-size: 100%;
 }
 
