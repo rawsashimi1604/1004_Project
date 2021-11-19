@@ -27,9 +27,9 @@
                 $image = $row["image"];
                 $developer = $row["developer"];
                 $publisher = $row["publisher"];
-                $windows_requirements = $row["windows_requirements"];
-                $linux_requirements = $row["linux_requirements"];
-                $mac_requirements = $row["mac_requirements"];
+                $windows_requirements = strip_tags($row["windows_requirements"]);
+                $linux_requirements = strip_tags($row["linux_requirements"]);
+                $mac_requirements = strip_tags($row["mac_requirements"]);
                 $genre_id = $row["genre"];
             }
         }

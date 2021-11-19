@@ -56,7 +56,7 @@ include "DB_getall.inc.php";
     <main class="container gameslist-container">
         <section id="browsing_section">
             <div class="search-box">
-                <form method="post">
+                <form method="get">
                     <span class="search-txt">Search:</span>
                     <input type="text" name="search" autocomplete="off" class="form-control input-sm" placeholder="Enter search term" aria-controls="browsing_list">
                     <div class="result"></div>
@@ -95,7 +95,7 @@ include "DB_getall.inc.php";
                         //     .$row["name"].'</a></td><td>'.$row["developer"].'</td><td>'
                         //     .$row["price"].'</tr>';
                     }
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    if ($_SERVER["REQUEST_METHOD"] == "GET") {
                         include "DB_search.inc.php";
                     }
                     echo

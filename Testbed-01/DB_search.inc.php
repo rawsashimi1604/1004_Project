@@ -2,7 +2,7 @@
     require_once "DBController.php";
     $db_handle = new DBController();
     
-    $search = strtolower($_POST["search"]);
+    $search = strtolower($_GET["search"]);
     $query = "SELECT * FROM apps_list WHERE lower(name) LIKE '%{$search}%'";
     $result = $db_handle->runBaseQuery($query);
     if (!empty($result)){
