@@ -415,6 +415,8 @@ main .account-container:hover {
     justify-content: start;
 }
 
+
+
 .game-genre {
     padding: 0.3rem;
     margin-right: 0.5rem;
@@ -423,6 +425,11 @@ main .account-container:hover {
     color: black;
     font-size: 1rem;
     margin-bottom: 0.5rem;
+}
+
+.game-genre:hover {
+    background-color: #5f5f5f;
+    cursor: pointer;
 }
 
 

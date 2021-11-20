@@ -1,9 +1,16 @@
 <?php
     require_once "DBController.php";
     $db_handle = new DBController();
+    $genresearch = ($_GET["genre_id"]);
+    $namesearch = strtolower($_GET["search"]);
     
-    $search = strtolower($_GET["search"]);
-    $query = "SELECT * FROM apps_list WHERE lower(name) LIKE '%{$search}%'";
+    if (!empty($genresearch)){
+        $query = "SELECT * FROM apps_list WHERE genre LIKE '$genresearch'";
+    }
+    else{
+        $query = "SELECT * FROM apps_list WHERE lower(name) LIKE '%{$namesearch}%'";
+    }
+    
     $result = $db_handle->runBaseQuery($query);
     if (!empty($result)){
         echo '<script>jQuery(document).ready(remove_rows('.count($result).'));</script>';

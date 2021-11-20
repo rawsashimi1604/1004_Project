@@ -18,7 +18,7 @@
 
     if(isset($_REQUEST["term"])){
     
-        $param_term = $_REQUEST["term"];
+        $param_term = strtolower($_REQUEST["term"]);
         // Prepare the statement:
         $stmt = $conn->prepare("SELECT * FROM apps_list WHERE lower(name) LIKE '%{$param_term}%'");
         

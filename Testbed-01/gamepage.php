@@ -106,7 +106,7 @@
                 </div>
                 <span>Genres:</span>
                 <div class="game-genres">
-                    <span class="game-genre"><?php echo "$genre_name" ?></span>
+                    <span class="game-genre" onclick="window.location.href='gameslist.php?genre_id=<?php echo "$genre_id" ?>';"><?php echo "$genre_name" ?></span>
                 </div>
                 <span>Categories:</span>
                 <div class="game-categories">
