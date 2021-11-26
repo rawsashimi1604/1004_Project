@@ -3,6 +3,9 @@ session_start();
 
 require_once "authCookieSessionValidate.php";
 
+include_once "Cart.inc.php";
+$cart = new Cart;
+
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark">
@@ -26,6 +29,18 @@ require_once "authCookieSessionValidate.php";
       </div>
       <div class="p-2">
         <ul class="navbar-nav">
+          <li class="nav-item" style="padding-top:7px;">
+            <?php
+                if ($cart->total_items() > 0){ 
+                    echo "<a style='text-decoration:none; color:#FFFFFF' href='./viewCart.php'> <img src='images/cart.png'>"; 
+                    echo " (";
+                    echo ($cart->total_items() > 0)?$cart->total_items().' Items':'Empty';
+                    echo ") ";
+                    echo "</a>";
+                    
+                }
+            ?>
+          </li>
           <li class="nav-item">
             <!--<a class="nav-link" href="./account.php">Account</a>-->
             <?php

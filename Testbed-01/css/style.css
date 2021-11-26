@@ -679,3 +679,9 @@ table.dataTable {
     font-family: inherit;
     font-size: inherit;
 }
+
+.cart-item .item-cancel {
+    text-align: right;
+    font-weight: 500;
+    font-size: 1.2rem;
+}

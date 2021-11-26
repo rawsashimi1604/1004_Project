@@ -9,7 +9,7 @@ if(!$isLoggedIn) {
 }
 
 $userId = $_SESSION['member_id'];
-
+$total = 0;
 /*
 function debug_to_console($data) {
     $output = $data;
@@ -75,8 +75,9 @@ debug_to_console($userId);
             </div>
 
             <!-- Account statistics -->
+            <!--
             <div class="container account-container">
-                <h2>Account statistics</h2>
+                <h2>Account Transactions</h2>
                 <hr>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ad placeat nesciunt esse voluptatum nemo
@@ -85,11 +86,151 @@ debug_to_console($userId);
                     perferendis incidunt libero voluptatum id provident?
                 </p>
             </div>
+            -->
+            
+            <div class="row container account-container">
+                <div class="col-8 cart-main">
 
+                    <h2>Account Transactions</h2>
+                    <hr>
+                    
+                    <?php 
+                    require_once "DBController.php";
+                    $db_handle = new DBController();
+                   
+                    $config = parse_ini_file('../../private/db-config.ini');
+                    $db = new mysqli($config['servername'], $config['username'],
+                            $config['password'], $config['dbname']);    
+                    //$query = "SELECT DISTINCT r.*, o.gift_id FROM steam_clone_members as s INNER JOIN orders as r ON r.customer_id = s.member_id INNER JOIN order_items as o ON r.id = o.order_id WHERE s.member_id = " . $userId . " ORDER BY r.id DESC;";
+                    $query = "SELECT r.* FROM steam_clone_members as s INNER JOIN orders as r ON r.customer_id = s.member_id WHERE s.member_id = " . $userId . " ORDER BY r.id DESC;";
+                    $result = $db->query($query);
+                    
+                    if($result->num_rows > 0){ 
+                        foreach ($result as $row) {
+                            $total += $row["grand_total"]
+                    ?>
+                    <div class="cart-item row">
+                        <div class="col-3 item-img">
+                            <!--<img src="<?php //echo $item['image'] ?>" alt="item1">-->
+                            <img src="./images/about_game.jpg" alt="item 1">
+                        </div>
+                        <div class="col-9 item-info">
+                            <div class="row">
+                                <span class="col item-name">
+                                    <?php echo 'Order Number: '. $row["id"]; ?>
+                                </span>
+                                <span class="col item-price">
+                                    <?php echo '$'.$row["grand_total"]; ?>
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="col-8 item-qty">
+                                    <?php echo 'Purchase Date: '.$row["created"]; ?>
+                                </span>
+                                <span class="col item-cancel">
+                                    <button class="btn btn-sm btn-success" onclick="window.location.href='orderSuccess.php?id=<?php echo $row["id"]; ?>';">View Order</button>
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="item-company">
+                                    <?php echo 'Status: '.$row["status"]; ?>
+                                </span>
+                            </div>
+                            <?php
+                            $result = $db->query("SELECT o.gift_id FROM orders as r INNER JOIN order_items as o ON r.id = o.order_id WHERE r.customer_id = ".$row['customer_id'] . " ORDER BY o.gift_id DESC LIMIT 1"); 
+                            if($result->num_rows > 0){  
+                                foreach ($result as $item) {
+                                    if($item["gift_id"] != 0 && !is_null($item["gift_id"])){
+                                        echo "<div class='row'>";
+                                        echo "<span class='item-company'>";
+                                        echo "*Include gifts to others";
+                                        echo "</span>";
+                                        echo "</div>";
+                                    }
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <?php } }
+                    else{ 
+                    ?>
+                        <tr><td colspan="5"><p>Your cart is empty.....</p></td>
+                    <?php } ?>
+                    <?php if($cart->total_items() > 0){ ?>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <!--<td><strong>Cart Total</strong></td>-->
+                        <!--<td class="text-right"><strong><?php echo '$'.$cart->total(); ?></strong></td>-->
+                        <td></td>
+                    </tr>
+                    <?php } ?>
+
+                </div>
+
+                <div class="col-4 cart-info">
+                    <span class="cart-subtotal">Total Spent: <span class="cart-price">$<?php echo $total; ?></span></span>
+                    <hr>
+                    You are our most loyal customer!
+                </div>
+                
+            </div>
+            <div class="row container account-container">
+                <div class="col-12 cart-main">
+                    <h2>Received Game Gifts</h2>
+                    <hr>
+                    <?php 
+                    $db_handle = new DBController();
+                   
+                    $config = parse_ini_file('../../private/db-config.ini');
+                    $db = new mysqli($config['servername'], $config['username'],
+                            $config['password'], $config['dbname']);    
+                    //$query = "SELECT DISTINCT r.*, o.gift_id FROM steam_clone_members as s INNER JOIN orders as r ON r.customer_id = s.member_id INNER JOIN order_items as o ON r.id = o.order_id WHERE s.member_id = " . $userId . " ORDER BY r.id DESC;";
+                    $query = "SELECT a.*, s.fname, s.lname, i.created FROM order_items as o INNER JOIN apps_list as a ON o.product_id = a.appid INNER JOIN orders as i ON o.order_id = i.id INNER JOIN steam_clone_members as s ON i.customer_id = s.member_id where o.gift_id = " . $userId . " ORDER BY i.created DESC;";
+                    $result = $db->query($query);
+                    
+                    if($result->num_rows > 0){ 
+                        foreach ($result as $row) {
+                    ?>
+                    <div class="cart-item row">
+                        <div class="col-3 item-img">
+                            <img src="<?php echo $row['image'] ?>" alt="item1">
+                        </div>
+                        <div class="col-9 item-info">
+                            <div class="row">
+                                <span class="col item-name">
+                                    <?php echo 'Game: '. $row["name"]; ?>
+                                </span>
+                                <span class="col item-price">
+                                    <?php echo $row["fname"] . " " . $row["lname"]; ?>
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="col-8 item-qty">
+                                    <?php echo 'Received on: '.$row["created"]; ?>
+                                </span>
+                                <span class="col item-cancel">
+                                    <button class="btn btn-sm btn-success" onclick="window.location.href='#">Accept</button>
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="item-company">
+                                    <?php echo 'Status: '.$row["status"]; ?>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } }
+                    else{ 
+                        
+                    ?>
+                        <tr><td colspan="5"><p>No Gifts.....</p></td>
+                    <?php } ?>
+                </div>
+            </div>
         </main>
-        <!-- Update Password -->
-
-
+        
         <!-- FOOTER -->
         <?php
         include "footer.inc.php";

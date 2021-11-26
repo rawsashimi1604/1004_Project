@@ -21,6 +21,7 @@
         if (!empty($result)){
             foreach ($result as $row){
                 // Fetch all the results from our database
+                $id = $row["appid"];
                 $name = $row["name"];
                 $price = $row["price"];
                 $description = $row["description"];
@@ -102,8 +103,8 @@
 
                 <div class="game-price-details" data-aos="fade-right" data-aos-duration="1500">
                     <span class="game-price"><?php echo "$price" ?></span>
-                    <button type="button" class="btn btn-success">Add to Cart</button>
-                </div>
+                    <button type="button" class="btn btn-success" onclick="location.href='cartAction.php?action=addToCart&id=<?php echo "$id" ?>'">Add to Cart</button>
+                </div>             
                 <span>Genres:</span>
                 <div class="game-genres">
                     <span class="game-genre" onclick="window.location.href='gameslist.php?genre_id=<?php echo "$genre_id" ?>';"><?php echo "$genre_name" ?></span>
