@@ -56,19 +56,19 @@ else{
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <a href="./gamepage.php?id=10">
+                            <a href="./gamepage.php?id=570">
                                 <img src="./images/indexCarousel-1.jpg"
                                  class="d-md-block" alt="carousel-img-1">
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="./gamepage.php?id=220">
+                            <a href="./gamepage.php?id=730">
                                 <img src="./images/indexCarousel-2.jpg"
                                  class="d-md-block" alt="carousel-img-3">
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="./gamepage.php?id=240">
+                            <a href="./gamepage.php?id=570">
                                 <img src="./images/indexCarousel-3.jpg"
                                  class="d-md-block" alt="carousel-img-3">
                             </a>
