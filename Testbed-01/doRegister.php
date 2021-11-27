@@ -77,7 +77,7 @@
             if($success){
                 ?>
                 <br>
-                <main class='container text-light'>
+                <main class='container text-light register-success-container'>
                     <h1>Your registration is successful!</h1>
                     <h4>Thank you for signing up with Steam Clone <?php echo ($fname . " " . $lname)?></h4>
                     <div class="form-group">
