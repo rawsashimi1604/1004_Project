@@ -737,7 +737,7 @@ table.dataTable {
         display: none !important;
     }
 
-    .about-container p {}
+    /* .about-container p {} */
 }
 
 @media screen and (max-width: 768px) {}

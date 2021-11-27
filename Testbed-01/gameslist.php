@@ -67,7 +67,7 @@ include "DB_getall.inc.php";
             <table id="browsing_list" class="">
                 <thead>
                     <tr>
-                        <th scope="col">Game</th>
+                        <th scope="col" class="mobile-none">Game</th>
                         <th scope="col">Title</th>
                         <th scope="col" class="mobile-none">Description</th>
                         <th scope="col">Developer</th>
@@ -82,7 +82,7 @@ include "DB_getall.inc.php";
                         $result = $db_handle->runBaseQuery($query);
                         foreach ($result as $row) {
                             echo '<tr class="gameslist-rows" onclick="window.location=\'gamepage.php?id=' . $row["appid"] . '\';">
-                                    <td valign="middle" scope="row">
+                                    <td valign="middle" class="mobile-none">
                                         <img class="gameslist-thumbnail" src="' . $row["image"] . '" />
                                     </td>
                                     <td valign="middle">' . $row["name"] . '</td>
