@@ -10,6 +10,9 @@ $userId = $_SESSION['member_id'];
 // Include the database config file 
 require_once 'DBController.php'; 
 
+// Include Paypal configuration file 
+include_once 'paypal_config.php'; 
+
 // Initialize shopping cart class 
 include_once 'Cart.inc.php'; 
 $cart = new Cart; 
@@ -50,9 +53,6 @@ if(!empty($sessData['status']['msg'])){
 </script>
 
 <html lang="EN">
-    <head>
-        
-    </head>
     <?php include "head.inc.php" ?>
     <!-- BODY -->
     <body class="bg-dark">
@@ -110,7 +110,7 @@ if(!empty($sessData['status']['msg'])){
                             </div>
 
                             <?php
-                            if (isset($_POST['gift']) || $statusMsg) { 
+                            if (isset($_POST['gift']) || $statusMsg) { // <-- IF THE GIFT OPTION SELECTED
                                 ?>
                             <div class="col-md-8 order-md-1">
                                 
@@ -134,6 +134,9 @@ if(!empty($sessData['status']['msg'])){
                                             </span>
                                             <span class="col item-price">
                                                 <?php echo '$'.$item["price"]; ?>
+                                            </span>
+                                            <span>
+                                                <input type="hidden" name="item_number" value="<?php echo $row['id']; ?>">
                                             </span>
                                         </div>
                                         <div class="row">
@@ -176,7 +179,8 @@ if(!empty($sessData['status']['msg'])){
                                     ?>
                             <div class="col-md-8 order-md-1">
                                 <h4 class="mb-3">Please check your particulars. If needed, please change in <a href='./account.php'>Account</a></h4>
-                                <form method="post" action="cartAction.php">
+                                <!-- <form method="post" action="cartAction.php"> -->
+                                <form action="<?php echo PAYPAL_URL; ?>" method="post">
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="first_name">First Name</label>
@@ -191,6 +195,20 @@ if(!empty($sessData['status']['msg'])){
                                         <label for="email">Email</label>
                                         <h4><?php echo $row['email'] ?></h4>
                                     </div>
+                                    
+                                    <!-- Specify a Buy Now button. -->
+                                    <input type="hidden" name="cmd" value="_xclick">
+                                    <input type="hidden" name="business" value="<?php echo PAYPAL_ID; ?>">
+                                    <input type="hidden" name="item_name" value="<?php echo $row['name']; ?>">
+                                    <input type="hidden" name="item_number" value="<?php echo $row['appid']; ?>">
+                                    <input type="hidden" name="amount" value="<?php echo $row['price']; ?>">
+                                    <input type="hidden" name="currency_code" value="<?php echo PAYPAL_CURRENCY; ?>">
+                                    
+                                    <!-- Specify URLs -->
+                                    <input type="hidden" name="return" value="<?php echo PAYPAL_RETURN_URL; ?>">
+                                    <input type="hidden" name="cancel_return" value="<?php echo PAYPAL_CANCEL_URL; ?>">
+                                    <input type="hidden" name="notify_url" value="<?php echo PAYPAL_NOTIFY_URL; ?>">
+                                    
                                     <input type="hidden" name="action" value="placeOrder"/>
                                     <input class="btn btn-success btn-lg btn-block" type="submit" name="checkoutSubmit" value="Place Order">
                                 </form>
