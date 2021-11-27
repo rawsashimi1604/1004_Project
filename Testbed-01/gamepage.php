@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-5 game-info">
+            <div class="col-md-5 game-info">
                 <img src="<?php echo "$image" ?>" alt="header image" class="game-header-img">
 
                 <div class="game-description-container">
@@ -112,7 +112,9 @@
 
                 <div class="game-price-details" data-aos="fade-right" data-aos-duration="1500">
                     <span class="game-price"><?php echo "$price" ?></span>
-                    <button type="button" class="btn btn-success" onclick="location.href='cartAction.php?action=addToCart&id=<?php echo "$id" ?>'">Add to Cart</button>
+                    <button type="button" class="btn btn-success" onclick="location.href='cartAction.php?action=addToCart&id=<?php echo "$id" ?>'">
+                        Add to Cart
+                    </button>
                 </div>             
                 <span>Genres:</span>
                 <div class="game-genres">
