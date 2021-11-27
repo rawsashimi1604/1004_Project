@@ -125,7 +125,7 @@ if(!empty($sessData['status']['msg'])){
                                 ?>
                                 <div class="cart-item row">
                                     <div class="col-3 item-img">
-                                        <img src="<?php echo $item['image'] ?>" alt="item1">
+                                        <img src="<?php echo $item['image']; ?>" alt="item1">
                                     </div>
                                     <div class="col-9 item-info">
                                         <div class="row">
@@ -195,13 +195,17 @@ if(!empty($sessData['status']['msg'])){
                                         <label for="email">Email</label>
                                         <h4><?php echo $row['email'] ?></h4>
                                     </div>
+                                     <?php } } 
+                                    } 
                                     
+                                    foreach($cartItems as $item){
+                                    ?>
                                     <!-- Specify a Buy Now button. -->
                                     <input type="hidden" name="cmd" value="_xclick">
                                     <input type="hidden" name="business" value="<?php echo PAYPAL_ID; ?>">
-                                    <input type="hidden" name="item_name" value="<?php echo $row['name']; ?>">
-                                    <input type="hidden" name="item_number" value="<?php echo $row['appid']; ?>">
-                                    <input type="hidden" name="amount" value="<?php echo $row['price']; ?>">
+                                    <input type="hidden" name="item_name" value="<?php echo $item['name']; ?>">
+                                    <input type="hidden" name="item_number" value="<?php echo $item['appid']; ?>">
+                                    <input type="hidden" name="amount" value="<?php echo $item['price']; ?>">
                                     <input type="hidden" name="currency_code" value="<?php echo PAYPAL_CURRENCY; ?>">
                                     
                                     <!-- Specify URLs -->
@@ -210,11 +214,13 @@ if(!empty($sessData['status']['msg'])){
                                     <input type="hidden" name="notify_url" value="<?php echo PAYPAL_NOTIFY_URL; ?>">
                                     
                                     <input type="hidden" name="action" value="placeOrder"/>
-                                    <input class="btn btn-success btn-lg btn-block" type="submit" name="checkoutSubmit" value="Place Order">
+                                    <input class="btn btn-success btn-lg btn-block" type="submit" name="submit" value="Place Order">
                                 </form>
+                                    <?php
+                                    }
+                                     ?>
                             </div> 
-                            <?php } } 
-                                } ?>
+                            
                         </div>
                     </div>
                 </div>
