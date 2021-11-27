@@ -91,7 +91,7 @@ else{
                 <div class="row">
                     <article>
                         <?php
-                        echo '<div class="container"><div class="row row-cols-3">';
+                        echo '<div class="container"><div class="row row-cols-lg-3 row-cols-1">';
                         if ($result->num_rows > 0) {
                             // Fetch all the results from our database
                             while ($row = $result->fetch_assoc()) {
