@@ -13,7 +13,7 @@ $cart = new Cart;
       aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="d-flex collapse navbar-collapse" id="navbarToggler">
+    <div class="collapse navbar-collapse" id="navbarToggler">
       <div class="me-auto">
         <ul class="navbar-nav p-2">
           <li class="nav-item nav-home">
