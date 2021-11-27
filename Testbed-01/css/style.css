@@ -42,6 +42,10 @@ main {
     flex: 1 1 auto;
 }
 
+section {
+    overflow: hidden;
+}
+
 nav {
     box-shadow: 0px 5px 10px 5px var(--dark-3);
 }
@@ -696,11 +700,7 @@ table.dataTable {
     margin-top: -2rem;
 }
 
-@media screen and (max-width: 768px) {
-    .footer-email {
-        margin-bottom: 0 !important;
-    }
-
+@media screen and (max-width: 992px) {
     .footer-btn-subscribe {
         width: 100%;
     }
@@ -710,7 +710,17 @@ table.dataTable {
         width: 100%;
     }
 
+    .footer-email {
+        margin-bottom: 0 !important;
+    }
+
     .mobile-none {
         display: none !important;
     }
+
+    .gameslist-desc {
+        display: none !important;
+    }
 }
+
+@media screen and (max-width: 768px) {}
