@@ -32,7 +32,7 @@ debug_to_console($userId);
             include "nav.inc.php";
         ?>
         <!-- MAIN -->
-        <main class="container text-light">
+        <main class="container text-light pt-4 account-main-container">
             <header>
                 <h1 class="account-header">Your Account Details</h1>
             </header>
@@ -128,7 +128,7 @@ debug_to_console($userId);
                                     <?php echo 'Purchase Date: '.$row["created"]; ?>
                                 </span>
                                 <span class="col item-cancel">
-                                    <button class="btn btn-sm btn-success" onclick="window.location.href='orderSuccess.php?id=<?php echo $row["id"]; ?>';">View Order</button>
+                                    <button class="btn btn-sm btn-dark" onclick="window.location.href='orderSuccess.php?id=<?php echo $row["id"]; ?>';">View Order</button>
                                 </span>
                             </div>
                             <div class="row">
