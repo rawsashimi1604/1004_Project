@@ -49,7 +49,7 @@
         <h1 class="game-header"><?php echo "$name" ?></h1>
         <h2 class="game-dev-info">Developed by <span class="game-developer"><?php echo "$developer" ?></span>, published by <span class="game-publisher"><?php echo "$publisher" ?></span></h2>
         <div class="row">
-            <div class="col-7 game-images">
+            <div class="col-md-7 game-images">
                 <div id="game-image-carousell" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#game-image-carousell" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -81,12 +81,21 @@
                     <h2>Game Requirements</h2>
                     <hr>
                     <div class="container">
-                        <button type="button" class="btn btn-lg btn-light game-popover" data-bs-toggle="popover" title="PC Requirements" data-bs-content="<?php echo "$windows_requirements" ?>">PC
-                            Requirements</button>
-                        <button type="button" class="btn btn-lg btn-light game-popover" data-bs-toggle="popover" title="Mac Requirements" data-bs-content="<?php echo "$mac_requirements" ?>">Mac
-                            Requirements</button>
-                        <button type="button" class="btn btn-lg btn-light game-popover" data-bs-toggle="popover" title="Linux Requirements" data-bs-content="<?php echo "$linux_requirements" ?>">Linux
-                            Requirements</button>
+                        <button type="button" class="btn btn-lg btn-light game-popover mr-5" 
+                        data-bs-toggle="popover" title="PC Requirements" 
+                        data-bs-content="<?php echo "$windows_requirements" ?>">
+                            PC
+                        </button>
+                        <button type="button" class="btn btn-lg btn-light game-popover mr-5" 
+                        data-bs-toggle="popover" title="Mac Requirements" 
+                        data-bs-content="<?php echo "$mac_requirements" ?>">
+                            Mac
+                        </button>
+                        <button type="button" class="btn btn-lg btn-light game-popover mr-5" 
+                        data-bs-toggle="popover" title="Linux Requirements" 
+                        data-bs-content="<?php echo "$linux_requirements" ?>">
+                            Linux
+                        </button>
                     </div>
                 </div>
             </div>
