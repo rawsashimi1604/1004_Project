@@ -94,14 +94,14 @@
                         <button type="button" class="btn btn-lg btn-light game-popover mr-5 px-3 py-1" 
                         data-bs-toggle="popover" title="PC Requirements" 
                         data-bs-content="<?php echo "$windows_requirements" ?>">
-                            PC
+                            Windows
                         </button>
                     </span>
                     <span>
                         <button type="button" class="btn btn-lg btn-light game-popover mr-5 px-3 py-1" 
                         data-bs-toggle="popover" title="Mac Requirements" 
                         data-bs-content="<?php echo "$mac_requirements" ?>">
-                            Mac
+                            MacOS
                         </button>
                     </span>
                     <span>
