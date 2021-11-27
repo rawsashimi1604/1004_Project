@@ -57,21 +57,21 @@ include "DB_getall.inc.php";
         <section id="browsing_section">
             <div class="search-box">
                 <form method="get">
-                    <span class="search-txt">Search:</span>
+                    <span class="search-txt mobile-none">Search:</span>
                     <input type="text" name="search" autocomplete="off" class="form-control input-sm" placeholder="Enter search term" aria-controls="browsing_list">
                     <div class="result"></div>
                     <input id="browse_search_button" type="submit" name="submit">
                 </form>
             </div>
 
-            <table id="browsing_list" class="">
+            <table id="browsing_list" class="table table-sm table-dark table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col" class="mobile-none">Game</th>
+                        <th scope="col">Game</th>
                         <th scope="col">Title</th>
                         <th scope="col" class="mobile-none">Description</th>
                         <th scope="col">Developer</th>
-                        <th scope="col">Cost</th>
+                        <th scope="col">Price</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -82,7 +82,7 @@ include "DB_getall.inc.php";
                         $result = $db_handle->runBaseQuery($query);
                         foreach ($result as $row) {
                             echo '<tr class="gameslist-rows" onclick="window.location=\'gamepage.php?id=' . $row["appid"] . '\';">
-                                    <td valign="middle" class="mobile-none">
+                                    <td valign="middle">
                                         <img class="gameslist-thumbnail" src="' . $row["image"] . '" />
                                     </td>
                                     <td valign="middle">' . $row["name"] . '</td>
