@@ -57,19 +57,19 @@ else{
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <a href="./gamepage.php?id=10">
-                                <img src="https://cdn.akamai.steamstatic.com/steam/apps/10/header.jpg?t=1602535893"
+                                <img src="./images/indexCarousel-1.jpg"
                                  class="d-md-block" alt="carousel-img-1">
                             </a>
                         </div>
                         <div class="carousel-item">
                             <a href="./gamepage.php?id=220">
-                                <img src="https://cdn.akamai.steamstatic.com/steam/apps/220/header.jpg?t=1591063154"
+                                <img src="./images/indexCarousel-2.jpg"
                                  class="d-md-block" alt="carousel-img-3">
                             </a>
                         </div>
                         <div class="carousel-item">
                             <a href="./gamepage.php?id=240">
-                                <img src="https://cdn.akamai.steamstatic.com/steam/apps/240/header.jpg?t=1602536047"
+                                <img src="./images/indexCarousel-3.jpg"
                                  class="d-md-block" alt="carousel-img-3">
                             </a>
                         </div>

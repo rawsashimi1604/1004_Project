@@ -717,6 +717,7 @@ table.dataTable {
 
 @media screen and (max-width: 992px) {
     .footer-btn-subscribe {
+        margin-top: 0.8rem;
         width: 100%;
     }
 
@@ -736,14 +737,16 @@ table.dataTable {
     .gameslist-desc {
         display: none !important;
     }
-    
-    td:nth-child(1), th:nth-child(1) {
-        display:none !important;
+
+    td:nth-child(1),
+    th:nth-child(1) {
+        display: none !important;
     }
 
     .gameslist-container th {
         font-size: 1.1em !important;
     }
+
     /* .about-container p {} */
 }
 
