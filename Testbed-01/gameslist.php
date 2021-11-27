@@ -69,38 +69,38 @@ include "DB_getall.inc.php";
                     <tr>
                         <th scope="col">Game</th>
                         <th scope="col">Title</th>
-                        <th scope="col">Description</th>
+                        <th scope="col" class="mobile-none">Description</th>
                         <th scope="col">Developer</th>
                         <th scope="col">Cost</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    require_once "DBController.php";
-                    $db_handle = new DBController();
-                    $query = "SELECT * FROM apps_list";
-                    $result = $db_handle->runBaseQuery($query);
-                    foreach ($result as $row) {
-                        echo '<tr class="gameslist-rows" onclick="window.location=\'gamepage.php?id=' . $row["appid"] . '\';">
-                                <td valign="middle" scope="row">
-                                    <img class="gameslist-thumbnail" src="' . $row["image"] . '" />
-                                </td>
-                                <td valign="middle">' . $row["name"] . '</td>
-                                <td valign="middle" class="gameslist-desc">' . $row["description"] . '</td>
-                                <td valign="middle">' . $row["developer"] . '</td>
-                                <td valign="middle">' . $row["price"] . '</td>
-                            </tr>';
-                        // echo '<tr aria-controls="browsing_list"><a href="gamepage.php?id='.$row["appid"].'">'
-                        //     . '<img class="img-ss-list" src="'.$row["image"].'" />'
-                        //     .$row["name"].'</a></td><td>'.$row["developer"].'</td><td>'
-                        //     .$row["price"].'</tr>';
-                    }
-                    if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                        include "DB_search.inc.php";
-                    }
-                    echo
-                    '</tbody>
-                    </table>';
+                        require_once "DBController.php";
+                        $db_handle = new DBController();
+                        $query = "SELECT * FROM apps_list";
+                        $result = $db_handle->runBaseQuery($query);
+                        foreach ($result as $row) {
+                            echo '<tr class="gameslist-rows" onclick="window.location=\'gamepage.php?id=' . $row["appid"] . '\';">
+                                    <td valign="middle" scope="row">
+                                        <img class="gameslist-thumbnail" src="' . $row["image"] . '" />
+                                    </td>
+                                    <td valign="middle">' . $row["name"] . '</td>
+                                    <td valign="middle" class="gameslist-desc mobile-none">' . $row["description"] . '</td>
+                                    <td valign="middle">' . $row["developer"] . '</td>
+                                    <td valign="middle">' . $row["price"] . '</td>
+                                </tr>';
+                            // echo '<tr aria-controls="browsing_list"><a href="gamepage.php?id='.$row["appid"].'">'
+                            //     . '<img class="img-ss-list" src="'.$row["image"].'" />'
+                            //     .$row["name"].'</a></td><td>'.$row["developer"].'</td><td>'
+                            //     .$row["price"].'</tr>';
+                        }
+                        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                            include "DB_search.inc.php";
+                        }
+                        echo
+                        '</tbody>
+                        </table>';
                     ?>
         </section>
     </main>

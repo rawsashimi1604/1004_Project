@@ -709,4 +709,8 @@ table.dataTable {
         margin-top: -1rem;
         width: 100%;
     }
+
+    .mobile-none {
+        display: none !important;
+    }
 }
