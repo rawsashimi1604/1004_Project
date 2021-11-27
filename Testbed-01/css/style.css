@@ -695,3 +695,18 @@ table.dataTable {
     flex-grow: 1;
     margin-top: -2rem;
 }
+
+@media screen and (max-width: 768px) {
+    .footer-email {
+        margin-bottom: 0 !important;
+    }
+
+    .footer-btn-subscribe {
+        width: 100%;
+    }
+
+    .footer-btn-container {
+        margin-top: -1rem;
+        width: 100%;
+    }
+}

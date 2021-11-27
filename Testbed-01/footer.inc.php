@@ -44,7 +44,7 @@
             <!--Grid column-->
             <div class="col-md-5 col-12">
               <!-- Email input -->
-              <div class="form-outline form-white mb-4">
+              <div class="form-outline form-white mb-4 footer-email">
                 <input type="email" id="form5Example21" class="form-control" placeholder="Email Address">
                 <label class="form-label" for="form5Example21"></label>
               </div>
@@ -52,9 +52,9 @@
             <!--Grid column-->
 
             <!--Grid column-->
-            <div class="col-auto">
+            <div class="col-auto footer-btn-container">
               <!-- Submit button -->
-              <button type="submit" class="btn btn-outline-light mb-4">
+              <button type="submit" class="btn btn-outline-light mb-4 footer-btn-subscribe">
                 Subscribe
               </button>
             </div>
