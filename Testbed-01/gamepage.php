@@ -78,56 +78,59 @@
                 </div>
 
                 <div class="game-requirements">
-                    <h2>Game Requirements</h2>
+                    <h2>Description</h2>
                     <hr>
-                    <div class="container">
-                        <button type="button" class="btn btn-lg btn-light game-popover mr-5" 
-                        data-bs-toggle="popover" title="PC Requirements" 
-                        data-bs-content="<?php echo "$windows_requirements" ?>">
-                            PC
-                        </button>
-                        <button type="button" class="btn btn-lg btn-light game-popover mr-5" 
-                        data-bs-toggle="popover" title="Mac Requirements" 
-                        data-bs-content="<?php echo "$mac_requirements" ?>">
-                            Mac
-                        </button>
-                        <button type="button" class="btn btn-lg btn-light game-popover mr-5" 
-                        data-bs-toggle="popover" title="Linux Requirements" 
-                        data-bs-content="<?php echo "$linux_requirements" ?>">
-                            Linux
-                        </button>
-                    </div>
+                    <p class="game-description">
+                        <?php echo "$description" ?>
+                    </p>
                 </div>
             </div>
             <div class="col-md-5 game-info">
                 <img src="<?php echo "$image" ?>" alt="header image" class="game-header-img">
 
-                <div class="game-description-container">
-                    <span class="game-description-header">Description</span>
-                    <p class="game-description">
-                        <?php echo "$description" ?>
-                    </p>
+                <span>Game requirements:</span>
+                <div class="game-requirements mt-0 mb-1">
+                    <span>
+                        <button type="button" class="btn btn-lg btn-light game-popover mr-5 px-3 py-1" 
+                        data-bs-toggle="popover" title="PC Requirements" 
+                        data-bs-content="<?php echo "$windows_requirements" ?>">
+                            PC
+                        </button>
+                    </span>
+                    <span>
+                        <button type="button" class="btn btn-lg btn-light game-popover mr-5 px-3 py-1" 
+                        data-bs-toggle="popover" title="Mac Requirements" 
+                        data-bs-content="<?php echo "$mac_requirements" ?>">
+                            Mac
+                        </button>
+                    </span>
+                    <span>
+                        <button type="button" class="btn btn-lg btn-light game-popover mr-5 px-3 py-1" 
+                        data-bs-toggle="popover" title="Linux Requirements" 
+                        data-bs-content="<?php echo "$linux_requirements" ?>">
+                            Linux
+                        </button>
+                    </span>
                 </div>
-
-
-                <div class="game-price-details" data-aos="fade-right" data-aos-duration="1500">
-                    <span class="game-price"><?php echo "$price" ?></span>
-                    <button type="button" class="btn btn-success" onclick="location.href='cartAction.php?action=addToCart&id=<?php echo "$id" ?>'">
-                        Add to Cart
-                    </button>
-                </div>             
+  
                 <span>Genres:</span>
                 <div class="game-genres">
                     <span class="game-genre" onclick="window.location.href='gameslist.php?genre_id=<?php echo "$genre_id" ?>';"><?php echo "$genre_name" ?></span>
                 </div>
                 <span>Categories:</span>
                 <div class="game-categories">
-                    <span class="game-category">Multi-player</span>
-                    <span class="game-category">PvP</span>
-                    <span class="game-category">Online PvP</span>
-                    <span class="game-category">Shared\/Split Screen PvP</span>
-                    <span class="game-category">Valve Anti-Cheat enabled</span>
+                    <span class="game-category px-2 py-1">Multi-player</span>
+                    <span class="game-category px-2 py-1">PvP</span>
+                    <span class="game-category px-2 py-1">Online PvP</span>
+                    <span class="game-category px-2 py-1">Shared/Split Screen PvP</span>
+                    <span class="game-category px-2 py-1">Valve Anti-Cheat enabled</span>
                 </div>
+                <div class="game-price-details" data-aos="fade-right" data-aos-duration="1500">
+                    <span class="game-price"><?php echo "$price" ?></span>
+                    <button type="button" class="btn btn-success" onclick="location.href='cartAction.php?action=addToCart&id=<?php echo "$id" ?>'">
+                        Add to Cart
+                    </button>
+                </div>   
             </div>
         </div>
     </main>

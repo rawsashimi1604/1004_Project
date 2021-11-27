@@ -370,7 +370,7 @@ main .account-container:hover {
 .game-info {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .game-description-container {
@@ -391,7 +391,6 @@ main .account-container:hover {
     line-height: 1.2;
     letter-spacing: 0.1px;
     color: #b3b3b3;
-
 }
 
 .game-info .game-description-header {
@@ -411,6 +410,10 @@ main .account-container:hover {
     font-size: 1.0rem;
 }
 
+.game-requirements button {
+    font-size: 1rem;
+}
+
 .game-genres {
     align-self: flex-start;
     flex-wrap: wrap;
@@ -418,8 +421,6 @@ main .account-container:hover {
     flex-direction: row;
     justify-content: start;
 }
-
-
 
 .game-genre {
     padding: 0.3rem;
@@ -446,7 +447,7 @@ main .account-container:hover {
 }
 
 .game-category {
-    padding: 0.3rem;
+    /* padding: 0.3rem; */
     margin-right: 0.5rem;
     border-radius: 3px;
     background-color: #aae0f5;
