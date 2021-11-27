@@ -248,6 +248,23 @@ footer input::placeholder {
     margin-bottom: 1rem;
 }
 
+.account-main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-main-container .account-container:nth-child(4) {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+}
+
+.account-main-container .account-container:nth-child(5) {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+}
+
 .account-header {
     text-align: center;
 }
@@ -321,11 +338,6 @@ main .account-container:hover {
     padding-left: 0;
 }
 
-.cart-item:hover {
-    background-color: #3d3d3d;
-    border: 1px solid white;
-    transition: 1s;
-}
 
 .cart-item img {
     width: 100%;
@@ -722,6 +734,8 @@ table.dataTable {
     .gameslist-desc {
         display: none !important;
     }
+
+    .about-container p {}
 }
 
 @media screen and (max-width: 768px) {}
