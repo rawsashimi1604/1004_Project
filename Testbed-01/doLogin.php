@@ -145,8 +145,7 @@ if (! empty($_POST["login"])) {
         <?php
             include "nav.inc.php";
         ?>
-        <main class="container text-light">
-            <hr>
+        <main class="container text-light login-success-container">
             <?php
                 if ($success) 
                 {
@@ -167,7 +166,6 @@ if (! empty($_POST["login"])) {
                     echo "<a href='index.php' data-bs-target='#loginModal' class='btn btn-danger' role='button'>Return to Login</a>";
                 }
             ?>
-            <hr>
         </main>
         <?php
             include "footer.inc.php";

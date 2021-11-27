@@ -646,7 +646,7 @@ table.dataTable {
     z-index: 999;
     top: 100%;
     left: 0;
-    
+
 }
 
 .result {
@@ -684,4 +684,8 @@ table.dataTable {
     text-align: right;
     font-weight: 500;
     font-size: 1.2rem;
+}
+
+.login-success-container {
+    padding: 2rem;
 }
