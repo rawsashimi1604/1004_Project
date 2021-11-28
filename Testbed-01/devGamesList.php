@@ -13,8 +13,8 @@ session_start();
 ?>
 
 <script>
-$(document).ready(function(){
-    $('.search-box input[type="text"]').on("keyup input", function(){
+$(document).ready(function() {
+    $('.search-box input[type="text"]').on("keyup input", function() {
         /* Get input value on change */
         var inputVal = $(this).val();
         var resultDropdown = $(this).siblings(".result");
@@ -56,12 +56,20 @@ include "DB_getall.inc.php";
     <main class="container gameslist-container">
         <section id="browsing_section">
             <div class="search-box">
-                <form method="get">
-                    <span class="search-txt">Search:</span>
-                    <input type="text" name="search" autocomplete="off" class="form-control input-sm" placeholder="Enter search term" aria-controls="browsing_list">
-                    <div class="result"></div>
-                    <input id="browse_search_button" type="submit" name="submit">
-                </form>
+                <div class="row">
+                    <div class="col-md-10">
+                        <form method="get">
+                            <span class="search-txt">Search:</span>
+                            <input type="text" name="search" autocomplete="off" class="form-control input-sm" placeholder="Enter search term" aria-controls="browsing_list">
+                            <div class="result"></div>
+                            <input id="browse_search_button" type="submit" name="submit">
+                        </form>
+                    </div>
+                    <div class="col-md-2">
+                        <!-- <button type="button" class="btn btn-primary"><a Add Game</button> -->
+                        <a class="btn btn-primary" href="./devGamePage.php" role="button">Add Game</a>
+                    </div>
+                </div>
             </div>
 
             <table id="browsing_list" class="">
@@ -71,7 +79,7 @@ include "DB_getall.inc.php";
                         <th scope="col">Title</th>
                         <th scope="col" class="mobile-none">Description</th>
                         <th scope="col">Developer</th>
-                        <th scope="col">Cost</th>
+                        <th scope="col">Price</th>
                     </tr>
                 </thead>
                 <tbody>
