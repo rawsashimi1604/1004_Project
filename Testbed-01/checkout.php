@@ -181,9 +181,8 @@ if(!empty($sessData['status']['msg'])){
                     <div class="col-md-7 order-md-1 checkout-left">
                         <h1>Checkout</h1>
                         <span class="mb-3">Please check your particulars. If needed, please change in <a href='./account.php'>Account</a></span>
-                        <!-- <form method="post" action="cartAction.php"> -->
                         <hr>
-                        <form action="<?php echo PAYPAL_URL; ?>" method="post">
+                        <form method="post" action="cartAction.php">
                             <div class="col">
                                 <label for="first_name">First Name</label>
                                 <span><?php echo $row['fname'] ?></span>
@@ -197,30 +196,11 @@ if(!empty($sessData['status']['msg'])){
                                 <span><?php echo $row['email'] ?></span>
                             </div>
                             <hr>
-                             <?php } } 
-                            } 
-
-                            foreach($cartItems as $item){
-                            ?>
-                            <!-- Specify a Buy Now button. -->
-                            <input type="hidden" name="cmd" value="_xclick">
-                            <input type="hidden" name="business" value="<?php echo PAYPAL_ID; ?>">
-                            <input type="hidden" name="item_name" value="<?php echo $item['name']; ?>">
-                            <input type="hidden" name="item_number" value="<?php echo $item['appid']; ?>">
-                            <input type="hidden" name="amount" value="<?php echo $item['price']; ?>">
-                            <input type="hidden" name="currency_code" value="<?php echo PAYPAL_CURRENCY; ?>">
-
-                            <!-- Specify URLs -->
-                            <input type="hidden" name="return" value="<?php echo PAYPAL_RETURN_URL; ?>">
-                            <input type="hidden" name="cancel_return" value="<?php echo PAYPAL_CANCEL_URL; ?>">
-                            <input type="hidden" name="notify_url" value="<?php echo PAYPAL_NOTIFY_URL; ?>">
                             <input type="hidden" name="action" value="placeOrder"/>
-                            
-                            <input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="submit" value="Place Order">
+                            <input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Place Order">
                         </form>
-                        <?php
-                            }
-                        ?>
+                            <?php } } 
+                                } ?>
                     </div> 
                 </div>
             </div>
