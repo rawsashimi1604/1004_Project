@@ -1,4 +1,9 @@
 <?php
+
+session_start();
+
+require_once "authCookieSessionValidate.php";
+
 //Define and initialize variables to hold our form data:
 $app_id = $gameTitle = $gamePrice = $gameDesc = $errorMsg = ""; 
 $success = true;
@@ -7,7 +12,33 @@ $success = true;
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {  
     //Game Name
-    
+    $app_id = $_POST['gameID'];
+    $name = $_POST['gameName'];
+    $price = $_POST['gamePrice'];
+    $desc = $_POST['gameDesc'];
+    $dev = $_POST['gameDev'];
+    $publisher = $_POST['gamePublisher'];
+    $windows_requirements = $_POST['gameWindows'];
+    $linux_requirements = $_POST['gameLinux'];
+    $btnVal = $_POST['btnAct'];
+    //echo $btnVal;
+    if(!empty($btnVal)){
+        if($btnVal == "Submit"){
+            //submitGame();
+            echo "<h1>New Game added!</h1>";
+        }
+        elseif($btnVal == "Update"){
+            updateGame();
+            echo "app id is " . $app_id;
+            echo "</br>".$name;
+            echo "<h1>Game " . $name . " details has been updated!";
+        }
+        elseif($btnVal == "Delete"){
+            //deleteGame();
+            echo "<h1>Game " . $name . " has been successfully deleted! wowowow well done.</h1></br>";
+            echo "sike not implemented yet";
+        }
+    }
 }
 else
 {
@@ -17,6 +48,42 @@ else
     exit();
 }
 
+function updateGame()
+{
+  global $app_id, $name;
+  //, $price, $desc, $dev, $publisher, $windows_requirements, $linux_requirements
+  // Create database connection.    
+  $config = parse_ini_file('../../private/db-config.ini');
+  $conn = new mysqli(
+    $config['servername'],
+    $config['username'],
+    $config['password'],
+    $config['dbname']
+  );
+
+  // Check connection    
+  if ($conn->connect_error) {
+    $errorMsg = "Connection failed: " . $conn->connect_error;
+    $success = false;
+    $isAuthenticated = false;
+    echo "<script>alert('Ooops something wrong with database connection')</script>";
+  } else {
+    // Prepare the statement:
+    $stmt = $conn->prepare("UPDATE apps_list SET name = '$name' WHERE appid = '$appid'");
+    //, price = '$price', description = '$desc', developer = '$developer', publisher = '$publisher', windows_requirement = '$windows_requirements', linux_requirement = '$linux_requirements', mac_requirements = '$mac_requirements', genre = '$genre_id', category = '$category_id', category2 = '$category_id2' 
+    // Bind & execute the query statement:        
+    // $stmt->bind_param("si", $lname, $userId);
+    // $fname, $dob, $email, $userId
+    if (!$stmt->execute()) {
+      $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+      $success = false;
+      //echo "<script>alert('Failed to update details')</script>";
+    }
+    $stmt->close();
+  }
+
+  $conn->close();
+}
 /*
 if (! empty($_POST["login"])) {
     $isAuthenticated = false;
