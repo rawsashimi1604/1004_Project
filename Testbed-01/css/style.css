@@ -51,8 +51,12 @@ nav {
     box-shadow: 0px 5px 10px 5px var(--dark-3);
 }
 
-nav .nav-home {
-    font-weight: 800;
+.nav .nav-link:hover {
+    font-weight: 600;
+}
+
+nav .active {
+    font-weight: 800 !important;
 }
 
 .navbar {
