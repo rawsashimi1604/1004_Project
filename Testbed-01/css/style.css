@@ -510,6 +510,7 @@ main .account-container:hover {
     display: flex;
     flex-direction: row;
     justify-content: start;
+    cursor: pointer;
 }
 
 .game-category {

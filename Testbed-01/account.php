@@ -43,43 +43,44 @@ debug_to_console($userId);
                 <h2>User Details</h2>
                 <hr>
                 <div class="account-stats">
-                    <div class="row"></div>
-                    <?php
-                    require_once "DBController.php";
-                    $db_handle = new DBController();
-                    
-                    $query = "SELECT * FROM steam_clone_members WHERE member_id='" . $userId . "'";
-                    $result = $db_handle->runBaseQuery($query);
-                    if (!empty($result)){
-                        foreach ($result as $row){
-                        echo    '<div class="row">
-                                    <label for="lname" class="col-sm-2 col-form-label">Last Name:</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" class="form-control" id="lname" aria-label="Last Name Input Field" value="'. $row["lname"] . '">
-                                    </div>
-                                </div>' .
-                                '<div class="row">
-                                    <label for="fname" class="col-sm-2 col-form-label">First Name:</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" class="form-control" id="fname" aria-label="First Name Input Field" value="'. $row["fname"] . '">
-                                    </div>
-                                  </div>' .
-                                '<div class="row">
-                                    <label for="dob" class="col-sm-2 col-form-label">Date of Birth:</label>
-                                    <div class="col-sm-5">
-                                        <input type="date" class="form-control" id="dob" aria-label="DOB Input Field" value="'. $row["dob"] . '">
-                                    </div>
-                                  </div>' .
-                                '<div class="row">
-                                    <label for="email" class="col-sm-2 col-form-label">Email:</label>
-                                    <div class="col-sm-5">
-                                        <input type="email" class="form-control" id="email" aria-label="Email Input Field" value="'. $row["email"] . '">
-                                    </div>
-                                </div>' ;
-                        } 
-                    }
-                    ?>
-                    <button type="button" class="btn btn-light col-sm-1">Update</button>
+                    <form action="doUpdate.php" method="post">
+                        <?php
+                        require_once "DBController.php";
+                        $db_handle = new DBController();
+                        
+                        $query = "SELECT * FROM steam_clone_members WHERE member_id='" . $userId . "'";
+                        $result = $db_handle->runBaseQuery($query);
+                        if (!empty($result)){
+                            foreach ($result as $row){
+                            echo    '<div class="row">
+                                        <label for="lname" class="col-sm-2 col-form-label">Last Name:</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="lname" name="lname" aria-label="Last Name Input Field" value="'. $row["lname"] . '">
+                                        </div>
+                                    </div>' .
+                                    '<div class="row">
+                                        <label for="fname" class="col-sm-2 col-form-label">First Name:</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="fname" name="fname" aria-label="First Name Input Field" value="'. $row["fname"] . '">
+                                        </div>
+                                    </div>' .
+                                    '<div class="row">
+                                        <label for="dob" class="col-sm-2 col-form-label">Date of Birth:</label>
+                                        <div class="col-sm-5">
+                                            <input type="date" class="form-control" id="dob" name="dob" aria-label="DOB Input Field" value="'. $row["dob"] . '">
+                                        </div>
+                                    </div>' .
+                                    '<div class="row">
+                                        <label for="email" class="col-sm-2 col-form-label">Email:</label>
+                                        <div class="col-sm-5">
+                                            <input type="email" class="form-control" id="email" name="email" aria-label="Email Input Field" value="'. $row["email"] . '">
+                                        </div>
+                                    </div>' ;
+                            } 
+                        }
+                        ?>
+                        <button type="submit" class="btn btn-light col-sm-1 updateButton">Update</button>
+                    </form>
                 </div>
                 
             </div>
