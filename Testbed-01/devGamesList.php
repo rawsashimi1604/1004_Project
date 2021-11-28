@@ -72,7 +72,7 @@ include "DB_getall.inc.php";
                 </div>
             </div>
 
-            <table id="browsing_list" class="">
+            <table id="browsing_list" class="table table-sm table-dark table-striped table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Game</th>
