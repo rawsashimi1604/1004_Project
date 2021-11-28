@@ -32,6 +32,8 @@
                 $linux_requirements = strip_tags($row["linux_requirements"]);
                 $mac_requirements = strip_tags($row["mac_requirements"]);
                 $genre_id = $row["genre"];
+                $gameCat = $row["category"];
+                $gameCat2 = $row["category2"];
             }
         }
         $query = "SELECT * FROM apps_genres WHERE genre_id = '$genre_id'";
@@ -56,12 +58,18 @@
                 }?>
                 
                 <tbody>
+                    <?php if(empty($name)){
+                        ?>
                     <tr>
                         <td width ="130" valign='top'>Game ID</td>
                         <td>
                             <input type='text' name='gameID' value='<?php echo "$id"?>'>
                         </td>
                     </tr>
+                        <?php
+                    }
+                    ?>
+                    <input type='hidden' name='gameID' value='<?php echo "$id"?>'>
                     <tr>
                         <td width ="130" valign='top'>Game Title</td>
                         <td>
@@ -90,7 +98,7 @@
                     <tr>
                         <td width ="130" valign='top'>Game Publisher</td>
                         <td>
-                            <input type='text' name='gamePublisher' value='<?php echo "$price"?>'>
+                            <input type='text' name='gamePublisher' value='<?php echo "$publisher"?>'>
                         </td>
                     </tr>
                     <tr>
@@ -102,7 +110,31 @@
                     <tr>
                         <td width ="130" valign='top'>Linux Requirements</td>
                         <td>
-                            <textarea name='gameDesc' rows='4' cols='50'> <?php echo "$linux_requirements"?></textarea>
+                            <textarea name='gameLinux' rows='4' cols='50'> <?php echo "$linux_requirements"?></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="130" valign='top'>Mac Requirements</td>
+                        <td>
+                            <textarea name='gameLinux' rows='4' cols='50'> <?php echo "$mac_requirements"?></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="130" valign='top'>Game Genre</td>
+                        <td>
+                            <input type='text' rows='4' cols='50' value='<?php echo "$genre_id"?>'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="130" valign='top'>Game Category</td>
+                        <td>
+                            <input type='text' rows='4' cols='50' value='<?php echo "$gameCat"?>'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="130" valign='top'>Game Category 2</td>
+                        <td>
+                            <input type='text' name='gameCat' rows='4' cols='50' value='<?php echo "$gameCat2"?>'> 
                         </td>
                     </tr>
                     
@@ -112,14 +144,14 @@
                 <div class='mt8 bt8' style='text-align: center'>
                     <?php
                     if (empty($name)){
-                        ?><input type="submit" class="btn btn-light" name="Submit">
+                        ?><input type="submit" class="btn btn-light" name="btnAct" value="Submit">
                         <?php
                     }else{
-                        ?><input type="submit" class="btn btn-light" name="Update" value="Update"><?php
+                        ?><input type="submit" class="btn btn-light" name="btnAct" value="Update"><?php
                     }?>
                     
-                    <input type="submit" class="btn btn-danger" name="Delete" value="Delete">
-                    <a href="devGamesList.php" class="button">Cancel</a>
+                    <input type="submit" class="btn btn-danger" name="btnAct" value="Delete">
+                    <a class="btn btn-primary" href="./devGamesList.php" role="button">Cancel</a>
                 </div>
             </div>
         </form>
