@@ -44,40 +44,87 @@
         }
     }
     ?>
-
+    
     <main class="container text-light game-container">
-        <h1 class="game-header"><?php echo "$name" ?></h1>
-        <table border="0" cellpadding="5" cellspacing="0" width="100%">
-            <tbody>
-                <tr>
-                    <td width ="130" valign='top'>Game Title</td>
-                    <td>
-                        <input type='text' name='gameName' value='<?php echo "$name"?>'>
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td width ="130" valign='top'>Game Price</td>
-                    <td>
-                        <input type='text' name='gamePrice' value='<?php echo "$price"?>'>
-                    </td>
-                </tr>
-                <tr>
-                    <td width ="130" valign='top'>Game Description</td>
-                    <td>
-                        <textarea name='gameDesc' rows='4' cols='50'> <?php echo "$description"?></textarea>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="row">
-            <div class='mt8 bt8' style='text-align: center'>
-                <input type='button' class='btn btn-light login-btn' value='Submit'>
-                <input type='button' class='btn btn-light login-btn' value='Delete'>
-            </div>
-        </div>
-    </main>
+        <form action="doGameChange.php" method="post">
+            <table border="0" cellpadding="5" cellspacing="0" width="100%">
+                <?php
+                if(empty($name)){
+                    ?><h1 class="game-header">Add a new Game</h1><?php
+                }else{
+                    ?><h1 class="game-header"><?php echo "$name" ?></h1><?php
+                }?>
+                
+                <tbody>
+                    <tr>
+                        <td width ="130" valign='top'>Game ID</td>
+                        <td>
+                            <input type='text' name='gameID' value='<?php echo "$id"?>'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="130" valign='top'>Game Title</td>
+                        <td>
+                            <input type='text' name='gameName' value='<?php echo "$name"?>'>
+                        </td>
 
+                    </tr>
+                    <tr>
+                        <td width ="130" valign='top'>Game Price</td>
+                        <td>
+                            <input type='text' name='gamePrice' value='<?php echo "$price"?>'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="130" valign='top'>Game Description</td>
+                        <td>
+                            <textarea name='gameDesc' rows='4' cols='50'> <?php echo "$description"?></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="130" valign='top'>Game Developer</td>
+                        <td>
+                            <input type='text' name='gameDev' value='<?php echo "$developer"?>'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="130" valign='top'>Game Publisher</td>
+                        <td>
+                            <input type='text' name='gamePublisher' value='<?php echo "$price"?>'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="130" valign='top'>Windows Requirements</td>
+                        <td>
+                            <textarea name='gameWindows' rows='4' cols='50'> <?php echo "$windows_requirements"?></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="130" valign='top'>Linux Requirements</td>
+                        <td>
+                            <textarea name='gameDesc' rows='4' cols='50'> <?php echo "$linux_requirements"?></textarea>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <div class="row">
+                <div class='mt8 bt8' style='text-align: center'>
+                    <?php
+                    if (empty($name)){
+                        ?><input type="submit" class="btn btn-light" name="Submit">
+                        <?php
+                    }else{
+                        ?><input type="submit" class="btn btn-light" name="Update" value="Update"><?php
+                    }?>
+                    
+                    <input type="submit" class="btn btn-danger" name="Delete" value="Delete">
+                    <a href="devGamesList.php" class="button">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </main>
+    
     <!-- FOOTER -->
     <?php
     include "footer.inc.php";
