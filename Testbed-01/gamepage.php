@@ -20,7 +20,7 @@
         $result = $db_handle->runBaseQuery($query);
         if (!empty($result)){
             foreach ($result as $row){
-                // Fetch all the results from our database
+                // Fetch all Game details from table:
                 $id = $row["appid"];
                 $name = $row["name"];
                 $price = $row["price"];
@@ -32,14 +32,38 @@
                 $linux_requirements = strip_tags($row["linux_requirements"]);
                 $mac_requirements = strip_tags($row["mac_requirements"]);
                 $genre_id = $row["genre"];
+                $category_id = $row["category"];
+                $category_id2 = $row["category2"];
             }
         }
+        
+        //Fetching Game Genre from different table:
         $query = "SELECT * FROM apps_genres WHERE genre_id = '$genre_id'";
         $result = $db_handle->runBaseQuery($query);
         if (!empty($result)){
             foreach ($result as $row){
-                // Fetch all the results from our database
+                // Fetch results from our database
                 $genre_name = $row["genre_name"];
+            }
+        }
+        
+        //Fetching Game Category from different table:
+        $query = "SELECT * FROM apps_category WHERE category_id = '$category_id'";
+        $result = $db_handle->runBaseQuery($query);
+        if (!empty($result)){
+            foreach ($result as $row){
+                // Fetch results from our database
+                $category_name = $row["category_name"];
+            }
+        }
+        
+        //Fetching Game Category 2 from different table:
+        $query = "SELECT * FROM apps_category WHERE category_id = '$category_id2'";
+        $result = $db_handle->runBaseQuery($query);
+        if (!empty($result)){
+            foreach ($result as $row){
+                // Fetch results from our database
+                $category_name2 = $row["category_name"];
             }
         }
     }
@@ -119,11 +143,8 @@
                 </div>
                 <span>Categories:</span>
                 <div class="game-categories">
-                    <span class="game-category px-2 py-1">Multi-player</span>
-                    <span class="game-category px-2 py-1">PvP</span>
-                    <span class="game-category px-2 py-1">Online PvP</span>
-                    <span class="game-category px-2 py-1">Shared/Split Screen PvP</span>
-                    <span class="game-category px-2 py-1">Valve Anti-Cheat enabled</span>
+                    <span class="game-category px-2 py-1" onclick="window.location.href='gameslist.php?category_id=<?php echo "$category_id" ?>';"><?php echo "$category_name" ?></span>
+                    <span class="game-category px-2 py-1" onclick="window.location.href='gameslist.php?category_id=<?php echo "$category_id2" ?>';"><?php echo "$category_name2" ?></span>
                 </div>
                 <div class="game-price-details" data-aos="fade-right" data-aos-duration="1500">
                     <span class="game-price"><?php echo "$price" ?></span>

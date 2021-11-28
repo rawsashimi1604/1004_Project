@@ -2,10 +2,14 @@
     require_once "DBController.php";
     $db_handle = new DBController();
     $genresearch = ($_GET["genre_id"]);
+    $categorysearch = ($_GET["category_id"]);
     $namesearch = strtolower($_GET["search"]);
     
     if (!empty($genresearch)){
         $query = "SELECT * FROM apps_list WHERE genre LIKE '$genresearch'";
+    }
+    else if (!empty($categorysearch)){
+        $query = "SELECT * FROM apps_list WHERE category LIKE '$categorysearch' OR category2 LIKE '$categorysearch'";
     }
     else{
         $query = "SELECT * FROM apps_list WHERE lower(name) LIKE '%{$namesearch}%'";
