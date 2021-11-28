@@ -49,6 +49,7 @@ section {
 
 nav {
     box-shadow: 0px 5px 10px 5px var(--dark-3);
+    position: relative;
 }
 
 nav .nav-home {
@@ -513,7 +514,6 @@ main .account-container:hover {
     display: flex;
     flex-direction: row;
     justify-content: start;
-    cursor: pointer;
 }
 
 .game-category {
@@ -740,6 +740,48 @@ main .account-container:hover {
 
 .checkout-container {
     padding: 0;
+}
+
+.checkout-gift-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+}
+
+.checkout-gift-container h4 {
+    font-weight: 300;
+    color: var(--light-5);
+}
+
+.checkout-gift-container div {
+    width: 100%;
+}
+
+.checkout-gift-container input {
+    font-family: 'Red Hat Mono', sans-serif;
+    border-radius: 5px;
+}
+
+.checkout-container .cart-item {
+    margin: 0;
+}
+
+.checkout-container .item-info {
+    padding-left: 0;
+}
+
+.checkout-gift-btn {
+    width: 50%;
+    font-size: 0.9rem;
+}
+
+.checkout-right .item-row {
+    padding: 1rem;
+}
+
+.checkout-right .item-img {
+    padding-right: 0;
 }
 
 .checkout-container form {
