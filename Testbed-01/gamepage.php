@@ -151,7 +151,11 @@
                     <button type="button" class="btn btn-success" onclick="location.href='cartAction.php?action=addToCart&id=<?php echo "$id" ?>'">
                         Add to Cart
                     </button>
-                </div>   
+                </div>
+                
+                <div class="game-badges">
+                    <img src="./images/ecommerce-badges.png" alt="">
+                </div>
             </div>
         </div>
     </main>
