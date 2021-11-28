@@ -20,7 +20,7 @@ $cart = new Cart;
             </header>
             <div class="container">
                 <div class="row cart-row">
-                    <div class="col-8 cart-main">
+                    <div class="col-md-8 cart-main">
                         
                         <hr>
                         <h2>Items: <?php echo $cart->total_items(); ?></h2>
@@ -122,21 +122,22 @@ $cart = new Cart;
                         -->
                     </div>
 
-                    <div class="col-4 cart-info">
+                    <div class="col-md-4 cart-info">
                         <span class="cart-subtotal">Subtotal: <span class="cart-price"><?php echo '$'.$cart->total(); ?></span></span>
                         <span class="cart-taxfees">Estimated Tax and Fees: <span class="cart-tax">$3.98</span></span>
                         <hr>
                         <form action="checkout.php" method="post">
-                            <div class="form-check register-check">
+                            <div class="form-check cart-check">
                                 <input type="checkbox" class="form-check-input" id="gift" name="gift">
                                 <label class="form-check-label" for="gift">This order contains a gift</label>
                             </div>
-                            <button type="submit" class="btn btn-light register-btn">Proceed to checkout</button>
+                            <button type="submit" class="btn btn-light cart-btn">Proceed to checkout</button>
                         </form>
                     </div>
                 </div>
+                <button onclick="location.href='./gameslist.php'" type="submit" class="btn btn-light cart-btn">Continue Shopping</button>
             </div>
-            <button onclick="location.href='./gameslist.php'" type="submit" class="btn btn-light register-btn">Continue Shopping</button>
+            
             <br>
         </main>
 
