@@ -131,7 +131,7 @@ $cart = new Cart;
                                 <input type="checkbox" class="form-check-input" id="gift" name="gift">
                                 <label class="form-check-label" for="gift">This order contains a gift</label>
                             </div>
-                            <button type="submit" class="btn btn-light cart-btn">Proceed to checkout</button>
+                            <button type="submit" class="btn btn-light cart-checkout-btn">Proceed to checkout</button>
                         </form>
                     </div>
                 </div>
