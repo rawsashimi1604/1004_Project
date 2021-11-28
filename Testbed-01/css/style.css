@@ -51,12 +51,8 @@ nav {
     box-shadow: 0px 5px 10px 5px var(--dark-3);
 }
 
-.nav .nav-link:hover {
-    font-weight: 600;
-}
-
-nav .active {
-    font-weight: 800 !important;
+nav .nav-home {
+    font-weight: 800;
 }
 
 .navbar {
@@ -346,9 +342,10 @@ main .account-container:hover {
     border-color: #d1d1d1;
 }
 
-.cart-container .cart-btn:nth-child(2) {
+.cart-container .cart-btn:last-child {
     margin-left: 0.5rem;
 }
+
 
 .cart-info {
     background-color: #494949;
@@ -412,6 +409,12 @@ main .account-container:hover {
     font-size: 0.8rem;
     color: #c5c5c5;
     font-style: italic;
+}
+
+.cart-item .item-cancel {
+    text-align: right;
+    font-weight: 500;
+    font-size: 1.2rem;
 }
 
 .game-container {
@@ -601,41 +604,6 @@ main .account-container:hover {
     padding: 8px 9px;
 }
 
-
-/* .table.dataTable.no-footer {
-    border: none;
-    border-top-color: initial;
-    border-top-style: none;
-    border-top-width: initial;
-    border-right-color: initial;
-    border-right-style: none;
-    border-right-width: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: initial;
-    border-left-color: initial;
-    border-left-style: none;
-    border-left-width: initial;
-    border-image-source: initial;
-    border-image-slice: initial;
-    border-image-width: initial;
-    border-image-outset: initial;
-    border-image-repeat: initial;
-}
-
-table.dataTable {
-    clear: both;
-    margin-top: 6px !important;
-    margin-bottom: 6px !important;
-    max-width: none !important;
-    border-collapse: separate !important;
-} */
-
-/* .img-ss-list {
-    max-height: 35px;
-    margin-right: 6px;
-} */
-
 .gameslist-container {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -759,12 +727,6 @@ table.dataTable {
     font-size: inherit;
 }
 
-.cart-item .item-cancel {
-    text-align: right;
-    font-weight: 500;
-    font-size: 1.2rem;
-}
-
 .login-success-container {
     padding: 2rem;
 }
@@ -774,6 +736,145 @@ table.dataTable {
     flex-grow: 1;
     margin-top: -2rem;
 }
+
+.checkout-container {
+    padding: 0;
+}
+
+.checkout-container form {
+    margin-bottom: 1.5rem;
+}
+
+.checkout-left {
+    padding: 1.5rem;
+}
+
+.checkout-left h1 {
+    font-size: 1.7rem;
+    font-weight: 300;
+    color: var(--light-4);
+}
+
+.checkout-left span a:first-child {
+    text-decoration: none;
+    color: var(--light-4);
+    background-color: var(--light-1);
+    border-radius: 5px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.checkout-left hr {
+    margin-top: 0.5rem;
+}
+
+.checkout-left span a:first-child:hover {
+    color: var(--light-6);
+    text-decoration: underline;
+}
+
+.checkout-left form>div {
+    display: flex;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.checkout-left form>div>label {
+    min-width: 100px;
+    font-size: 0.9rem;
+}
+
+.checkout-left form>div>span {
+    flex-grow: 1;
+    display: inline-block;
+    background-color: var(--light-3);
+    padding: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.checkout-left .checkout-main-btn {
+    width: 100%;
+}
+
+.checkout-container .checkout-right {
+    background-color: var(--light-5);
+    padding: 1.2rem;
+    color: var(--dark-3);
+}
+
+.checkout-right h2 {
+    margin-top: 0.5rem;
+    font-size: 1.8rem;
+    color: var(--light-2);
+    border-bottom: 1px solid var(--light-3);
+    font-weight: 300;
+}
+
+.checkout-btn {
+    width: 100%;
+    font-weight: 600;
+}
+
+.checkout-right h3 {
+    font-size: 1rem;
+}
+
+.checkout-right .checkout-promo div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.checkout-right .checkout-promo div>input {
+    flex-grow: 1;
+    margin-right: 0.5rem;
+    border-radius: 6px;
+    font-family: 'Red Hat Mono', sans-serif;
+}
+
+.checkout-right .checkout-promo div>button:hover {
+    background-color: var(--light-3);
+    border-color: var(--light-4);
+    color: var(--dark-2);
+}
+
+.checkout-btn:hover {
+    border-color: var(--dark-4);
+    background-color: var(--dark-4);
+    color: var(--light-6);
+}
+
+.checkout-right .badge-pill {
+    font-size: 1rem !important;
+    color: var(--dark-4);
+    border-radius: 100%;
+    background-color: var(--light-4);
+    animation: pulse 3s 3s infinite;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(0.95);
+        opacity: 0.9;
+        color: var(--light-5);
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
 
 @media screen and (max-width: 992px) {
     .footer-btn-subscribe {
