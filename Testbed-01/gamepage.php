@@ -110,7 +110,7 @@
                 </div>
             </div>
             <div class="col-md-5 game-info">
-                <img src="<?php echo "$image" ?>" alt="header image" class="game-header-img">
+                <img class="mobile-none" src="<?php echo "$image" ?>" alt="header image" class="game-header-img">
 
                 <span>Game requirements:</span>
                 <div class="game-requirements mt-0 mb-1">
