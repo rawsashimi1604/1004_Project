@@ -37,17 +37,29 @@ debug_to_console($userId);
                 <h1 class="account-header">Your Account Details</h1>
             </header>
 
-
+            
             <!-- Account statistics -->
             <div class="container account-container">
-                <h2>Account statistics</h2>
+                <h2>User Details</h2>
                 <hr>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ad placeat nesciunt esse voluptatum nemo
-                    ut! Laboriosam fugiat molestias, impedit officiis quasi culpa quam consequatur optio veniam eius sed
-                    nulla, magnam beatae itaque amet in nobis repellat reiciendis quibusdam aliquam vel quos quis? Quisquam
-                    perferendis incidunt libero voluptatum id provident?
-                </p>
+                <div class="account-stats">
+                    <?php
+                    require_once "DBController.php";
+                    $db_handle = new DBController();
+                    
+                    $query = "SELECT * FROM steam_clone_members WHERE member_id='" . $userId . "'";
+                    $result = $db_handle->runBaseQuery($query);
+                    if (!empty($result)){
+                        foreach ($result as $row){
+                        echo '<div><span>Last Name: </span><span class="account-lname">'. $row["lname"] . '</span></div>' .
+                             '<div><span>First Name: </span><span class="account-fname">'. $row["fname"] . '</span></div>' .
+                             '<div><span>Date of Birth: </span><span class="account-dob">'. $row["dob"] . '</span></div>' .
+                             '<div><span>Email: </span><span class="account-email">'. $row["email"] . '</span></div>';
+                        } 
+                    }
+                    ?>
+                </div>
+                
             </div>
 
 
@@ -57,15 +69,15 @@ debug_to_console($userId);
                 <hr>
                 <form action="doAccount.php" method="post">
                     <div class="row register-row">
-                        <div class="col">
+                        <div class="col-md-4">
                             <label for="old_pwd" class="form-label">Your current password</label>
                             <input type="password" class="form-control" aria-label="Old Password" id="old_pwd" name="old_pwd">
                         </div>
-                        <div class="col">
+                        <div class="col-md-4">
                             <label for="new_pwd" class="form-label">Your new password</label>
                             <input type="password" class="form-control" aria-label="New Password" id="new_pwd" name="new_pwd">
                         </div>
-                        <div class="col">
+                        <div class="col-md-4">
                             <label for="confirm_pwd" class="form-label">Confirm new password</label>
                             <input type="password" class="form-control" aria-label="Confirm New Password" id="confirm_pwd" name="cfm_pwd">
                         </div>
@@ -89,7 +101,7 @@ debug_to_console($userId);
             -->
             
             <div class="row container account-container">
-                <div class="col-8 cart-main">
+                <div class="col-md-8 cart-main">
 
                     <h2>Account Transactions</h2>
                     <hr>
@@ -110,11 +122,11 @@ debug_to_console($userId);
                             $total += $row["grand_total"]
                     ?>
                     <div class="cart-item row">
-                        <div class="col-3 item-img">
+                        <div class="col-md-3 item-img">
                             <!--<img src="<?php //echo $item['image'] ?>" alt="item1">-->
                             <img src="./images/about_game.jpg" alt="item 1">
                         </div>
-                        <div class="col-9 item-info">
+                        <div class="col-md-9 item-info">
                             <div class="row">
                                 <span class="col item-name">
                                     <?php echo 'Order Number: '. $row["id"]; ?>
@@ -128,7 +140,7 @@ debug_to_console($userId);
                                     <?php echo 'Purchase Date: '.$row["created"]; ?>
                                 </span>
                                 <span class="col item-cancel">
-                                    <button class="btn btn-sm btn-dark" onclick="window.location.href='orderSuccess.php?id=<?php echo $row["id"]; ?>';">View Order</button>
+                                    <button class="btn btn-sm btn-light" onclick="window.location.href='orderSuccess.php?id=<?php echo $row["id"]; ?>';">View Order</button>
                                 </span>
                             </div>
                             <div class="row">
@@ -169,7 +181,7 @@ debug_to_console($userId);
 
                 </div>
 
-                <div class="col-4 cart-info">
+                <div class="col-md-4 cart-info">
                     <span class="cart-subtotal">Total Spent: <span class="cart-price">$<?php echo $total; ?></span></span>
                     <hr>
                     You are our most loyal customer!

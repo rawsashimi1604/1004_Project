@@ -283,6 +283,40 @@ footer input::placeholder {
     border: 1px solid transparent;
 }
 
+.account-stats {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-stats div {
+    display: flex;
+    padding: 0.5rem;
+    align-items: center;
+}
+
+.account-stats span:first-child {
+    min-width: 130px;
+}
+
+.account-stats span:nth-child(2) {
+    min-width: 200px;
+    background-color: var(--light-4);
+    color: var(--dark-3);
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.account-stats span:nth-child(2):hover {
+    background-color: var(--light-3);
+    transition: 0.3s;
+}
+
+
 main .account-container:hover {
     background-color: #3d3d3d;
     border: 1px solid white;
@@ -746,6 +780,31 @@ table.dataTable {
     .gameslist-container th {
         font-size: 1.1em !important;
     }
+
+    .cart-subtotal {
+        font-size: 1.6rem;
+    }
+
+    .account-main-container .row {
+        margin-bottom: 0.5rem;
+    }
+
+    .account-main-container .cart-main {
+        padding-bottom: 0;
+    }
+
+    .account-main-container .item-name {
+        font-size: 1rem;
+    }
+
+    .account-main-container .account-update-pw .register-row div {
+        margin-bottom: 1rem;
+    }
+
+    .account-main-container .account-update-pw .register-row div:last-child {
+        margin-bottom: 1.3rem;
+    }
+
 
     /* .about-container p {} */
 }
