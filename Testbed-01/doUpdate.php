@@ -10,16 +10,15 @@ $success = true;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $lname = $_POST["lname"];
-  // $fname = ($_POST["fname"]);
-  // $dob = ($_POST["dob"]);
-  // $email = ($_POST["email"]);
-  // echo $lname;
+   $fname = ($_POST["fname"]);
+   $dob = ($_POST["dob"]);
+   $email = ($_POST["email"]);
   updateDetails();
 }
 
 function updateDetails()
 {
-  global $lname, $userId;
+  global $lname, $fname, $dob, $email, $userId, $errorMsg;
   // , $fname, $dob, $email, $userId, $errorMsg, $success;
 
   if (empty($lname)) {
@@ -43,11 +42,7 @@ function updateDetails()
     echo "<script>alert('Ooops something wrong with database connection')</script>";
   } else {
     // Prepare the statement:
-    $stmt = $conn->prepare("UPDATE steam_clone_members SET lname = '$lname' WHERE member_id= $userId");
-    // fname = ?, dob = ?, email = ?,
-    // Bind & execute the query statement:        
-    // $stmt->bind_param("si", $lname, $userId);
-    // $fname, $dob, $email, $userId
+    $stmt = $conn->prepare("UPDATE steam_clone_members SET lname = '$lname', fname = '$fname', dob='$dob', email='$email' WHERE member_id= $userId");
     if (!$stmt->execute()) {
       $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
       $success = false;
