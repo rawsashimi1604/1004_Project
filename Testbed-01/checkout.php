@@ -174,6 +174,7 @@ if(!empty($sessData['status']['msg'])){
                         $db_handle = new DBController();
                         $query = "SELECT * FROM steam_clone_members where member_id =". $userId;
                         $result = $db_handle->runBaseQuery($query);
+                        
                         if (!empty($result)){
                             foreach ($result as $row) {
                                 $fname = $row["fname"];
@@ -182,7 +183,8 @@ if(!empty($sessData['status']['msg'])){
                         <h1>Checkout</h1>
                         <span class="mb-3">Please check your particulars. If needed, please change in <a href='./account.php'>Account</a></span>
                         <hr>
-                        <form method="post" action="cartAction.php">
+                        <!--<form method="post" action="cartAction.php">-->
+                        <form class="" id="payment_gateway" action="<?php echo PAYPAL_URL; ?>" method="post">
                             <div class="col">
                                 <label for="first_name">First Name</label>
                                 <span><?php echo $row['fname'] ?></span>
@@ -196,11 +198,28 @@ if(!empty($sessData['status']['msg'])){
                                 <span><?php echo $row['email'] ?></span>
                             </div>
                             <hr>
-                            <input type="hidden" name="action" value="placeOrder"/>
-                            <input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Place Order">
-                        </form>
-                            <?php } } 
-                                } ?>
+                            
+                            <!-- Specify a Buy Now button. -->
+                            <input type="hidden" name="cmd" value="_xclick">
+                            <input type="hidden" name="business" value="<?php echo PAYPAL_ID; ?>">
+                            <input type="hidden" name="item_name" value="<?php echo "Game Bundle"; ?>">
+                            <input type="hidden" name="item_number" value="<?php echo "1"; ?>">
+                            <input type="hidden" name="amount" value="<?php echo $cart->total(); ?>">
+                            <input type="hidden" name="currency_code" value="<?php echo PAYPAL_CURRENCY; ?>">
+
+                            <!-- Specify URLs -->
+                            <input type="hidden" name="return" value="<?php echo PAYPAL_RETURN_URL; ?>">
+                            <input type="hidden" name="cancel_return" value="<?php echo PAYPAL_CANCEL_URL; ?>">
+                            <input type="hidden" name="notify_url" value="<?php echo PAYPAL_NOTIFY_URL; ?>">
+
+                            
+                        
+                            <?php } } ?>
+                            <!--<input type="hidden" name="action" value="placeOrder"/>-->
+                            <input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="submit" value="Place Order">
+                            <!--<input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Place Order">-->
+                            </form>
+                            <?php } ?>
                     </div> 
                 </div>
             </div>

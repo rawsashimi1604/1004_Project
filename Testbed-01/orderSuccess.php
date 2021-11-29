@@ -20,6 +20,10 @@ include_once 'paypal_config.php';
 // Include the database config file 
 require_once 'DBController.php'; 
 
+// Initialize shopping cart class 
+include_once 'Cart.inc.php'; 
+$cart = new Cart; 
+
 //$config = parse_ini_file('../../private/db-config.ini');
 //$db = new mysqli($config['servername'], $config['username'],
         //$config['password'], $config['dbname']);
@@ -72,18 +76,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 </head>
 <?php include "head.inc.php" ?> 
 <body class="bg-dark">
-    <?php include "nav.inc.php" ?>
     <header class="container jumbotron text-center mb-0 home-container">
         <h1>ORDER STATUS</h1>
         <div class="col-12">
             <?php 
                 // Check if transaction data exists with the same TXN ID. 
                 if(!empty($txn_id)){ 
-                    $query = "SELECT * FROM user_payments WHERE txn_id = '".$txn_id."'"; 
+                    $query = "SELECT * FROM user_payments WHERE txn_id = '$txn_id'"; 
                     $prevPaymentResult = $db_handle->runBaseQuery($query);
 
-                    if($prevPaymentResult->num_rows > 0){ 
-                        $paymentRow = $prevPaymentResult->fetch_assoc(); 
+                    if(!empty($prevPaymentResult)){ 
+                        $paymentRow = mysqli_fetch_assoc($prevPaymentResult); 
                         $payment_id = $paymentRow['payment_id']; 
                         $payment_gross = $paymentRow['payment_gross']; 
                         $payment_status = $paymentRow['payment_status'];
@@ -112,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                     <p><b>Buyer Name:</b> <?php echo $buyer_name; ?></p>
                     <p><b>Email:</b> <?php echo $buyer_email; ?></p>
                 </div>
-            <?php } ?>
+            
                 <!-- Order items -->
                 <div class="row col-lg-12">
                     <table class="table table-hover">
@@ -164,14 +167,18 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                         </tbody>
                     </table>
                 </div>
-            <?php //} else{ ?>
+        </div>
+        <form method="post" action="cartAction.php">
+        <input type="hidden" name="action" value="placeOrder"/>
+        <input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Back to Games">
+        </form>
+        <?php } else{?>
             <div class="col-md-12">
                 <div class="alert alert-danger">Your order submission failed.</div>
             </div>
-            <?php //} ?>
         </div>
         <input class="btn btn-success btn-lg btn-block" type="submit" name="checkoutSubmit" value="Back to Gamelist" onclick="location.href='./gameslist.php'">
+        <?php } ?>
     </header>
-<?php include "footer.inc.php"; ?>
 </body>
 </html>

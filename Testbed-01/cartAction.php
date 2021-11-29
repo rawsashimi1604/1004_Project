@@ -139,7 +139,7 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
             $config = parse_ini_file('../../private/db-config.ini');
             $db = new mysqli($config['servername'], $config['username'],
                     $config['password'], $config['dbname']);
-            $insertOrder = $db->query("INSERT INTO orders (customer_id, grand_total, created, status) VALUES ($userId, '".$cart->total()."', NOW(), 'Pending')"); 
+            $insertOrder = $db->query("INSERT INTO orders (customer_id, grand_total, created, status) VALUES ($userId, '".$cart->total()."', NOW(), 'Completed')"); 
             
             
             
@@ -189,14 +189,15 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
                     $cart->destroy(); 
 
                     // Redirect to the status page 
-                    $redirectLoc = 'orderSuccess.php?id='.$orderID; 
+                    //$redirectLoc = 'orderSuccess.php?id='.$orderID;
+                    $redirectLoc = 'index.php';
                 }else{ 
                     $sessData['status']['type'] = 'error'; 
-                    $sessData['status']['msg'] = 'Some problem occurred, please try again.'; 
+                    $sessData['status']['msg'] = 'Some problem occurred, please try again.1'; 
                 } 
             }else{ 
                 $sessData['status']['type'] = 'error'; 
-                $sessData['status']['msg'] = 'Some problem occurred, please try again.'; 
+                $sessData['status']['msg'] = 'Some problem occurred, please try again.2'; 
             } 
             
         }else{ 
