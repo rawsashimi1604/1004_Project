@@ -26,6 +26,7 @@ body {
     font-family: 'Red Hat Mono', serif;
     box-sizing: border-box;
     background-image: url("../images/background.jpg");
+    background-blend-mode: multiply;
     background-size: 100%;
     height: 100%;
     display: flex;
@@ -35,7 +36,7 @@ body {
 
 main {
     background-color: var(--dark-3);
-    box-shadow: 0px 0px 20px 2px var(--dark-3);
+    box-shadow: 0px 0px 15px 2px var(--dark-3);
     /* margin-right: 2rem !important;
     margin-left: 2rem !important; */
     width: 80vw;
@@ -48,7 +49,7 @@ section {
 }
 
 nav {
-    box-shadow: 0px 5px 10px 5px var(--dark-3);
+    box-shadow: 0px 5px 7px 5px var(--dark-3);
     position: relative;
 }
 
@@ -68,7 +69,7 @@ nav {
 .modal-container {
     padding: 1rem;
     background-color: var(--dark-3);
-    box-shadow: 0px 0px 20px 2px var(--light-2);
+    box-shadow: 0px 0px 10px 2px var(--light-2);
     color: var(--light-5);
 }
 
@@ -79,7 +80,7 @@ nav {
 
 footer {
     background-color: var(--dark-1);
-    box-shadow: 0px -5px 20px 5px var(--dark-3);
+    box-shadow: 0px -5px 10px 5px var(--dark-3);
 }
 
 footer a {
@@ -102,7 +103,7 @@ footer input::placeholder {
 .footer-copy {
     color: var(--light-2);
     background-color: var(--dark-2);
-    box-shadow: 0px 0px 20px 3px var(--dark-3);
+    box-shadow: 0px 0px 10px 3px var(--dark-3);
     font-size: 0.8rem;
 }
 
@@ -145,7 +146,7 @@ footer input::placeholder {
     padding: 0;
     border-radius: 0;
     background: var(--light-6);
-    box-shadow: 0px 0px 20px 2px var(--dark-3);
+    box-shadow: 0px 0px 10px 2px var(--dark-3);
 }
 
 .home-container .game-images {
