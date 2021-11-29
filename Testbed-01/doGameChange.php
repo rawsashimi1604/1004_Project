@@ -13,32 +13,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {  
     //Game Name
     $app_id = $_POST['gameID'];
-    $name = $_POST['gameName'];
-    $price = $_POST['gamePrice'];
-    $desc = $_POST['gameDesc'];
+    $gameTitle = $_POST['gameName'];
+    $gamePrice = $_POST['gamePrice'];
+    $gameDesc = $_POST['gameDesc'];
     $dev = $_POST['gameDev'];
     $publisher = $_POST['gamePublisher'];
     $windows_requirements = $_POST['gameWindows'];
     $linux_requirements = $_POST['gameLinux'];
     $btnVal = $_POST['btnAct'];
     //echo $btnVal;
-    if(!empty($btnVal)){
-        if($btnVal == "Submit"){
-            //submitGame();
-            echo "<h1>New Game added!</h1>";
-        }
-        elseif($btnVal == "Update"){
-            updateGame();
-            echo "app id is " . $app_id;
-            echo "</br>".$name;
-            echo "<h1>Game " . $name . " details has been updated!";
-        }
-        elseif($btnVal == "Delete"){
-            //deleteGame();
-            echo "<h1>Game " . $name . " has been successfully deleted! wowowow well done.</h1></br>";
-            echo "sike not implemented yet";
-        }
+    if($btnVal == "Submit"){
+        //submitGame();
+        echo "<h1>New Game added!</h1>";
     }
+    elseif($btnVal == "Update"){
+//        echo "app id is " . $app_id;
+//        echo "</br>".$name;
+//        echo "<h1>Game " . $name . " details has been updated!";
+        updateGame();
+    }
+    elseif($btnVal == "Delete"){
+        //deleteGame();
+        echo "<h1>Game " . $gameTitle . " has been successfully deleted! wowowow well done.</h1></br>";
+        echo "sike not implemented yet";
+    }
+    
 }
 else
 {
@@ -50,8 +49,12 @@ else
 
 function updateGame()
 {
-  global $app_id, $name;
+  global $app_id, $gameTitle;
   //, $price, $desc, $dev, $publisher, $windows_requirements, $linux_requirements
+  
+  if (empty($gameTitle) || empty($app_id)) {
+    echo "name is empty";
+  } else {
   // Create database connection.    
   $config = parse_ini_file('../../private/db-config.ini');
   $conn = new mysqli(
@@ -69,10 +72,10 @@ function updateGame()
     echo "<script>alert('Ooops something wrong with database connection')</script>";
   } else {
     // Prepare the statement:
-    $stmt = $conn->prepare("UPDATE apps_list SET name = '$name' WHERE appid = '$appid'");
+    $stmt = $conn->prepare("UPDATE apps_list SET name = '$gameTitle' WHERE appid = $app_id");
     //, price = '$price', description = '$desc', developer = '$developer', publisher = '$publisher', windows_requirement = '$windows_requirements', linux_requirement = '$linux_requirements', mac_requirements = '$mac_requirements', genre = '$genre_id', category = '$category_id', category2 = '$category_id2' 
     // Bind & execute the query statement:        
-    // $stmt->bind_param("si", $lname, $userId);
+    //$stmt->bind_param("i", $app_id);
     // $fname, $dob, $email, $userId
     if (!$stmt->execute()) {
       $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
@@ -84,6 +87,39 @@ function updateGame()
 
   $conn->close();
 }
+}
+?>
+<html lang="en">
+  <head>
+    <title>Game Details</title>
+    <?php include "head.inc.php"; ?>
+  </head>
+
+  <body class="bg-dark">
+    <?php include "nav.inc.php"; ?>
+    <main class="container text-light">
+      <hr>
+      <?php
+      if ($success) {
+          echo $app_id;
+          echo $gameTitle;
+        echo "<h1>Game details changed successfully</h1>";
+        echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
+        echo "<a href='devGamesList' class='btn btn-success'>Return to Home</a>";
+      } else {
+        echo "<h1>Oops!</h2>";
+        echo "<h2>The following errors were detected:</h4>";
+        echo "<p>" . $errorMsg . "</p>";
+        echo "<p>You can login again at the link below</p>";
+        echo "<a href='index.php data-bs-target='#loginModal' class='btn btn-danger' role='button'>Return to Login</a>";
+      }
+      ?>
+      <hr>
+    </main>
+    <?php include "footer.inc.php"; ?>
+  </body>
+</html>
+<?php
 /*
 if (! empty($_POST["login"])) {
     $isAuthenticated = false;
@@ -144,3 +180,4 @@ if (! empty($_POST["login"])) {
     </body>
 </html>
 */
+?>
