@@ -11,7 +11,7 @@ $success = true;
 //only process if the form has been submitted via POST.
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {  
-    //Game Name
+    //Game Details
     $app_id = $_POST['gameID'];
     $gameTitle = $_POST['gameName'];
     $gamePrice = $_POST['gamePrice'];
@@ -20,16 +20,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $publisher = $_POST['gamePublisher'];
     $windows_requirements = $_POST['gameWindows'];
     $linux_requirements = $_POST['gameLinux'];
+    $mac_requirements = $_POST['gameMac'];
+    $genre_id = $_POST['genre_id'];
+    $category_id = $_POST['category'];
+    $category_id2 = $_POST['category2'];
     $btnVal = $_POST['btnAct'];
     //echo $btnVal;
     if($btnVal == "Submit"){
-        //submitGame();
+        addGame();
         echo "<h1>New Game added!</h1>";
+        echo "GameID: " . $app_id . "<br>Game Title: " . $gameTitle . "<br>Game Price: " . $gamePrice . "<br>GameDesc: " . $gameDesc . "<br>Gamedev: " . $dev . "<br>Publisher: " . $publisher . "<br>winreq: " . $windows_requirements . "<br>linreq: " . $linux_requirements . "<br>Macreq: " . $mac_requirements . "<br>GenreID: " . $genre_id . "<br>Cat1: " . $category_id . "<br>Cat2: " . $category_id2;
     }
     elseif($btnVal == "Update"){
 //        echo "app id is " . $app_id;
 //        echo "</br>".$name;
 //        echo "<h1>Game " . $name . " details has been updated!";
+        echo "GameID: " . $app_id . "<br>Game Title: " . $gameTitle . "<br>Game Price: " . $gamePrice . "<br>GameDesc: " . $gameDesc . "<br>Gamedev: " . $dev . "<br>Publisher: " . $publisher . "<br>winreq: " . $windows_requirements . "<br>linreq: " . $linux_requirements . "<br>Macreq: " . $mac_requirements . "<br>GenreID: " . $genre_id . "<br>Cat1: " . $category_id . "<br>Cat2: " . $category_id2;
         updateGame();
     }
     elseif($btnVal == "Delete"){
@@ -49,7 +55,7 @@ else
 
 function updateGame()
 {
-  global $app_id, $gameTitle;
+  global $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2;
   //, $price, $desc, $dev, $publisher, $windows_requirements, $linux_requirements
   
   if (empty($gameTitle) || empty($app_id)) {
@@ -72,7 +78,7 @@ function updateGame()
     echo "<script>alert('Ooops something wrong with database connection')</script>";
   } else {
     // Prepare the statement:
-    $stmt = $conn->prepare("UPDATE apps_list SET name = '$gameTitle' WHERE appid = $app_id");
+    $stmt = $conn->prepare("UPDATE apps_list SET name = '$gameTitle', price = $gamePrice, description = '$gameDesc', developer = '$dev', publisher = '$publisher', windows_requirements = '$windows_requirements', linux_requirements = '$linux_requirements', mac_requirements = '$mac_requirements', genre = $genre_id, category = $category_id, category2 = $category_id2 WHERE appid = $app_id");
     //, price = '$price', description = '$desc', developer = '$developer', publisher = '$publisher', windows_requirement = '$windows_requirements', linux_requirement = '$linux_requirements', mac_requirements = '$mac_requirements', genre = '$genre_id', category = '$category_id', category2 = '$category_id2' 
     // Bind & execute the query statement:        
     //$stmt->bind_param("i", $app_id);
@@ -85,6 +91,44 @@ function updateGame()
     $stmt->close();
   }
 
+  $conn->close();
+}
+}
+function addGame()
+{
+  global $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2;
+  
+  if (empty($gameTitle) || empty($app_id) || empty($gamePrice) || empty($gameDesc) || empty($dev) || empty($windows_requirements) || empty($linux_requirements) || empty($mac_requirements) || empty($genre_id) || empty($category_id) || empty($category_id2)) {
+    echo "something is empty";
+  } else {
+  // Create database connection.    
+  $config = parse_ini_file('../../private/db-config.ini');
+  $conn = new mysqli(
+    $config['servername'],
+    $config['username'],
+    $config['password'],
+    $config['dbname']
+  );
+  
+  // Check connection    
+  if ($conn->connect_error) {
+    $errorMsg = "Connection failed: " . $conn->connect_error;
+    $success = false;
+    $isAuthenticated = false;
+    echo "<script>alert('Ooops something wrong with database connection')</script>";
+  } else {
+    // Prepare the statement:
+    $stmt = $conn->prepare("INSERT INTO apps_list (appid, name, price, description, developer, publisher, windows_requirements, linux_requirements, mac_requirements, genre, category, category2) VALUES ($app_id, '$gameTitle', $gamePrice, '$gameDesc', '$dev', '$publisher', '$windows_requirements', '$linux_requirements', '$mac_requirements', $genre_id, $category_id, $category_id2)");
+    //$app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $gameCat, $gameCat2
+    // Bind & execute the query statement:        
+    //$stmt->bind_param("isissssssiii", $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $gameCat, $gameCat2);
+    if (!$stmt->execute()) {
+      $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+      $success = false;
+      //echo "<script>alert('Failed to update details')</script>";
+    }
+    $stmt->close();
+  }
   $conn->close();
 }
 }

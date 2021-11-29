@@ -63,13 +63,20 @@
                     <tr>
                         <td width ="130" valign='top'>Game ID</td>
                         <td>
-                            <input type='text' name='gameID' value='<?php echo "$id"?>'>
+                            <input type='text' name='gameID'>
                         </td>
                     </tr>
                         <?php
+                    } else {
+                        ?>
+                    <tr>
+                        <td>
+                            <input type='hidden' name='gameID' value='<?php echo "$id"?>'>
+                        </td>
+                    </tr><?php
                     }
                     ?>
-                    <input type='hidden' name='gameID' value='<?php echo "$id"?>'>
+                    
                     <tr>
                         <td width ="130" valign='top'>Game Title</td>
                         <td>
@@ -116,25 +123,25 @@
                     <tr>
                         <td width ="130" valign='top'>Mac Requirements</td>
                         <td>
-                            <textarea name='gameLinux' rows='4' cols='50'> <?php echo "$mac_requirements"?></textarea>
+                            <textarea name='gameMac' rows='4' cols='50'> <?php echo "$mac_requirements"?></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td width ="130" valign='top'>Game Genre</td>
                         <td>
-                            <input type='text' rows='4' cols='50' value='<?php echo "$genre_id"?>'>
+                            <input type='text' rows='4' cols='50' name='genre_id' value='<?php echo "$genre_id"?>'>
                         </td>
                     </tr>
                     <tr>
                         <td width ="130" valign='top'>Game Category</td>
                         <td>
-                            <input type='text' rows='4' cols='50' value='<?php echo "$gameCat"?>'>
+                            <input type='text' rows='4' cols='50' name='category' value='<?php echo "$gameCat"?>'>
                         </td>
                     </tr>
                     <tr>
                         <td width ="130" valign='top'>Game Category 2</td>
                         <td>
-                            <input type='text' name='gameCat' rows='4' cols='50' value='<?php echo "$gameCat2"?>'> 
+                            <input type='text' name='category2' rows='4' cols='50' name='category2' value='<?php echo "$gameCat2"?>'> 
                         </td>
                     </tr>
                     
