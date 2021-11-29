@@ -52,19 +52,35 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     $payment_gross = $_GET['amt']; 
     $currency_code = $_GET['cc']; 
     $payment_status = $_GET['st']; 
-    $payment_date = $_GET["payment_date"];
-    $buyer_name = $_GET["address_name"];
-    $buyer_email = $_GET["payer_email"];
-
+    $payment_date = $_GET['payment_date'];
+    $buyer_name = $_GET['address_name'];
+    $buyer_email = $_GET['payer_email'];
 
     $db_handle = new DBController();
     
-
+    // Transaction History redirect from Accounts Page clause
+    $payment_id = $_GET['id'];
+    if(!empty($payment_id)){
+        $query = "SELECT * FROM user_payments WHERE payment_id = '$payment_id'";
+        $payment_history = $db_handle->runBaseQuery($query);
+        foreach ($payment_history as $row) {
+                            $txn_id  = $row['txn_id'];
+                        }
+    }
     // Get product info from the database 
     //    $query = "SELECT * FROM apps_list WHERE appid = '".$item_number."'"; 
     //    $productResult = $db_handle->runBaseQuery($query);
     //    $productRow = $productResult->fetch_assoc(); 
     
+    ////<?php
+    //$to = "somebody@example.com";
+    //$subject = "My subject";
+    //$txt = "Hello world!";
+    //$headers = "From: webmaster@example.com" . "\r\n" .
+    //"CC: somebodyelse@example.com";
+    //
+    //mail($to,$subject,$txt,$headers);
+    //
 } 
 
 ?>
@@ -86,19 +102,25 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                     $prevPaymentResult = $db_handle->runBaseQuery($query);
                     
                     if(!empty($prevPaymentResult)){ 
-                        $paymentRow = mysqli_fetch_assoc($prevPaymentResult); 
-                        $payment_id = $paymentRow['payment_id']; 
-                        $payment_gross = $paymentRow['payment_gross']; 
-                        $payment_status = $paymentRow['payment_status'];
-                        $payment_date = $paymentRow['payment_date'];
-                        $buyer_name = $paymentRow['buyer_name'];
-                        $buyer_email = $paymentRow['buyer_email'];
+                        foreach ($prevPaymentResult as $paymentrow) { 
+                            $payment_gross = $paymentrow['payment_gross']; 
+                            $payment_status = $paymentrow['payment_status'];
+                            $payment_date = $paymentrow['payment_date'];
+                            $buyer_name = $paymentrow['buyer_name'];
+                            $buyer_email = $paymentrow['buyer_email'];
+                        } 
+                        echo "Hello";
                     }else{ 
                         // Insert tansaction data into the database 
                         $query = "INSERT INTO user_payments(item_number,txn_id,payment_gross,currency_code,payment_status, payment_date, buyer_name , buyer_email, customer_id)"
                                 . "VALUES('".$item_number."','".$txn_id."','".$payment_gross."','".$currency_code."','".$payment_status."','".$payment_date."','".$buyer_name."','".$buyer_email."','".$userId."')";
                         $insert = $db_handle->runBaseQuery($query);
-                        $payment_id = $insert["payment_id"]; 
+                        
+                        $query = "SELECT * FROM user_payments WHERE txn_id = '$txn_id'";
+                        $result = $db_handle->runBaseQuery($query);
+                        foreach ($result as $row) {
+                            $payment_id = $row['payment_id'];
+                        }
                     } 
 
             ?>

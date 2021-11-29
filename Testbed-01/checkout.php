@@ -163,11 +163,10 @@ if(!empty($sessData['status']['msg'])){
                                 <input type="email" class="form-control" name="email" placeholder="Email to send gift" value="<?php echo !empty($postData['email'])?$postData['email']:''; ?>" required>
                             </div>
                             </div>
-
+                            <input type="hidden" name="action" value="placeOrder"/>
+                            <input type="hidden" name="gift"/>                      
                             <input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Place Order">
-                            <input type="hidden" name="action" value="placeOrder"/>
-                            <input type="hidden" name="gift"/>
-                            <input type="hidden" name="action" value="placeOrder"/>
+                            
                         </form>
                     </div>
                     <?php } else {
@@ -183,7 +182,6 @@ if(!empty($sessData['status']['msg'])){
                         <h1>Checkout</h1>
                         <span class="mb-3">Please check your particulars. If needed, please change in <a href='./account.php'>Account</a></span>
                         <hr>
-                        <!--<form method="post" action="cartAction.php">-->
                         <form class="" id="payment_gateway" action="<?php echo PAYPAL_URL; ?>" method="post">
                             <div class="col">
                                 <label for="first_name">First Name</label>
@@ -198,12 +196,12 @@ if(!empty($sessData['status']['msg'])){
                                 <span><?php echo $row['email'] ?></span>
                             </div>
                             <hr>
-                            
+                            <?php } } ?>
                             <!-- Specify a Buy Now button. -->
                             <input type="hidden" name="cmd" value="_xclick">
                             <input type="hidden" name="business" value="<?php echo PAYPAL_ID; ?>">
-                            <input type="hidden" name="item_name" value="<?php echo "Game Bundle"; ?>">
-                            <input type="hidden" name="item_number" value="<?php echo "1"; ?>">
+                            <input type="hidden" name="item_name" value="<?php if($cart->total_items() > 1){echo "Game Bundle";}else{echo $item["name"];} ?>">
+                            <input type="hidden" name="item_number" value="<?php if($cart->total_items() > 1){echo "1";}else{echo $item["id"];} ?>">
                             <input type="hidden" name="amount" value="<?php echo $cart->total(); ?>">
                             <input type="hidden" name="currency_code" value="<?php echo PAYPAL_CURRENCY; ?>">
 
@@ -212,12 +210,8 @@ if(!empty($sessData['status']['msg'])){
                             <input type="hidden" name="cancel_return" value="<?php echo PAYPAL_CANCEL_URL; ?>">
                             <input type="hidden" name="notify_url" value="<?php echo PAYPAL_NOTIFY_URL; ?>">
 
-                            
-                        
-                            <?php } } ?>
-                            <!--<input type="hidden" name="action" value="placeOrder"/>-->
-                            <input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="submit" value="Place Order">
-                            <!--<input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Place Order">-->
+                            <!--<input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="submit" value="Place Order">-->
+                            <button type="submit" name="submit" value="Place Order" alt="Check out with PayPal" class="btn btn-success btn-lg btn-block checkout-main-btn"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal"></button>
                             </form>
                             <?php } ?>
                     </div> 

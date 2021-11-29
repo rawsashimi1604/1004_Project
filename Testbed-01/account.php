@@ -136,13 +136,13 @@ debug_to_console($userId);
                     $config = parse_ini_file('../../private/db-config.ini');
                     $db = new mysqli($config['servername'], $config['username'],
                             $config['password'], $config['dbname']);    
-                    //$query = "SELECT DISTINCT r.*, o.gift_id FROM steam_clone_members as s INNER JOIN orders as r ON r.customer_id = s.member_id INNER JOIN order_items as o ON r.id = o.order_id WHERE s.member_id = " . $userId . " ORDER BY r.id DESC;";
-                    $query = "SELECT r.* FROM steam_clone_members as s INNER JOIN orders as r ON r.customer_id = s.member_id WHERE s.member_id = " . $userId . " ORDER BY r.id DESC;";
+                    //$query = "SELECT DISTINCT r.*, o.gift_id FROM steam_clone_members as s INNER JOIN user_payments as r ON r.customer_id = s.member_id INNER JOIN order_items as o ON r.id = o.payment_id WHERE s.member_id = " . $userId . " ORDER BY r.id DESC;";
+                    $query = "SELECT r.* FROM steam_clone_members as s INNER JOIN user_payments as r ON r.customer_id = s.member_id WHERE s.member_id = " . $userId . " ORDER BY r.payment_id DESC;";
                     $result = $db->query($query);
                     
                     if($result->num_rows > 0){ 
                         foreach ($result as $row) {
-                            $total += $row["grand_total"]
+                            $total += $row["payment_gross"]
                     ?>
                     <div class="cart-item row">
                         <div class="col-md-3 item-img">
@@ -152,27 +152,27 @@ debug_to_console($userId);
                         <div class="col-md-9 item-info">
                             <div class="row">
                                 <span class="col item-name">
-                                    <?php echo 'Order Number: '. $row["id"]; ?>
+                                    <?php echo 'Transaction Number: '. $row["txn_id"]; ?>
                                 </span>
                                 <span class="col item-price">
-                                    <?php echo '$'.$row["grand_total"]; ?>
+                                    <?php echo '$'.$row["payment_gross"]; ?>
                                 </span>
                             </div>
                             <div class="row">
                                 <span class="col-8 item-qty">
-                                    <?php echo 'Purchase Date: '.$row["created"]; ?>
+                                    <?php echo 'Purchase Date: '.$row["payment_date"]; ?>
                                 </span>
                                 <span class="col item-cancel">
-                                    <button class="btn btn-sm btn-light" onclick="window.location.href='orderSuccess.php?id=<?php echo $row["id"]; ?>';">View Order</button>
+                                    <button class="btn btn-sm btn-light" onclick="window.location.href='orderSuccess.php?id=<?php echo $row["payment_id"]; ?>';">View Order</button>
                                 </span>
                             </div>
                             <div class="row">
                                 <span class="item-company">
-                                    <?php echo 'Status: '.$row["status"]; ?>
+                                    <?php echo 'Status: '.$row["payment_status"]; ?>
                                 </span>
                             </div>
                             <?php
-                            $result = $db->query("SELECT o.gift_id FROM orders as r INNER JOIN order_items as o ON r.id = o.order_id WHERE r.customer_id = ".$row['customer_id'] . " ORDER BY o.gift_id DESC LIMIT 1"); 
+                            $result = $db->query("SELECT o.gift_id FROM user_payments as r INNER JOIN order_items as o ON r.id = o.payment_id WHERE r.customer_id = ".$row['customer_id'] . " ORDER BY o.gift_id DESC LIMIT 1"); 
                             if($result->num_rows > 0){  
                                 foreach ($result as $item) {
                                     if($item["gift_id"] != 0 && !is_null($item["gift_id"])){
@@ -221,8 +221,8 @@ debug_to_console($userId);
                     $config = parse_ini_file('../../private/db-config.ini');
                     $db = new mysqli($config['servername'], $config['username'],
                             $config['password'], $config['dbname']);    
-                    //$query = "SELECT DISTINCT r.*, o.gift_id FROM steam_clone_members as s INNER JOIN orders as r ON r.customer_id = s.member_id INNER JOIN order_items as o ON r.id = o.order_id WHERE s.member_id = " . $userId . " ORDER BY r.id DESC;";
-                    $query = "SELECT a.*, s.fname, s.lname, i.created FROM order_items as o INNER JOIN apps_list as a ON o.product_id = a.appid INNER JOIN orders as i ON o.order_id = i.id INNER JOIN steam_clone_members as s ON i.customer_id = s.member_id where o.gift_id = " . $userId . " ORDER BY i.created DESC;";
+                    //$query = "SELECT DISTINCT r.*, o.gift_id FROM steam_clone_members as s INNER JOIN user_payments as r ON r.customer_id = s.member_id INNER JOIN order_items as o ON r.id = o.payment_id WHERE s.member_id = " . $userId . " ORDER BY r.id DESC;";
+                    $query = "SELECT a.*, s.fname, s.lname, i.payment_date FROM order_items as o INNER JOIN apps_list as a ON o.product_id = a.appid INNER JOIN user_payments as i ON o.payment_id = i.id INNER JOIN steam_clone_members as s ON i.customer_id = s.member_id where o.gift_id = " . $userId . " ORDER BY i.payment_date DESC;";
                     $result = $db->query($query);
                     
                     if($result->num_rows > 0){ 
@@ -243,7 +243,7 @@ debug_to_console($userId);
                             </div>
                             <div class="row">
                                 <span class="col-8 item-qty">
-                                    <?php echo 'Received on: '.$row["created"]; ?>
+                                    <?php echo 'Received on: '.$row["payment_date"]; ?>
                                 </span>
                                 <span class="col item-cancel">
                                     <button class="btn btn-sm btn-success" onclick="window.location.href='#">Accept</button>
@@ -251,7 +251,7 @@ debug_to_console($userId);
                             </div>
                             <div class="row">
                                 <span class="item-company">
-                                    <?php echo 'Status: '.$row["status"]; ?>
+                                    <?php echo 'Status: '.$row["payment_status"]; ?>
                                 </span>
                             </div>
                         </div>

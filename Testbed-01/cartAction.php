@@ -145,7 +145,6 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
 //            if($insertOrder){ 
                 
             $orderID = $_REQUEST['orderid'];
-            //$orderID = $_POST["orderid"];
 
             // Retrieve cart items 
             $cartItems = $cart->contents(); 
