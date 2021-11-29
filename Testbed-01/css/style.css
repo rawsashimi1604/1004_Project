@@ -496,15 +496,15 @@ main .account-container:hover {
     padding: 0.3rem;
     margin-right: 0.5rem;
     border-radius: 3px;
-    background-color: #c5c5c5;
+    background-color: var(--light-5);
     color: black;
     font-size: 1rem;
     margin-bottom: 0.5rem;
+    cursor: pointer;
 }
 
 .game-genre:hover {
-    background-color: #5f5f5f;
-    cursor: pointer;
+    background-color: var(--light-4);
 }
 
 
@@ -520,11 +520,17 @@ main .account-container:hover {
     /* padding: 0.3rem; */
     margin-right: 0.5rem;
     border-radius: 3px;
-    background-color: #aae0f5;
-    color: black;
+    background-color: var(--dark-2);
+    color: var(--light-5);
     font-size: 1rem;
     margin-bottom: 0.5rem;
+    cursor: pointer;
 }
+
+.game-category:hover {
+    background-color: var(--dark-3);
+}
+
 
 
 .game-dev-info {
@@ -571,8 +577,13 @@ main .account-container:hover {
     padding: 0;
 }
 
+.game-requirements>span {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
 .game-badges {
-    background-color: var(--light-4);
+    background-color: var(--light-6);
     padding: 0.5rem;
     border-radius: 5px;
     margin-top: 1rem;
@@ -773,7 +784,6 @@ main .account-container:hover {
 
 .checkout-gift-btn {
     width: 50%;
-    font-size: 0.9rem;
 }
 
 .checkout-right .item-row {
