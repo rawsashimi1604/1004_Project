@@ -1,5 +1,5 @@
 <?php 
-// Include configuration file 
+// Include PayPal configuration file 
 include_once 'paypal_config.php'; 
  
 // Include database connection file 
@@ -71,7 +71,10 @@ if (strcmp($res, "VERIFIED") == 0 || strcasecmp($res, "VERIFIED") == 0) {
     $txn_id         = $_POST['txn_id']; 
     $payment_gross     = $_POST['mc_gross']; 
     $currency_code     = $_POST['mc_currency']; 
-    $payment_status = $_POST['payment_status']; 
+    $payment_status = $_POST['payment_status'];
+    $payment_date     = $_POST['payment_date']; 
+    $buyer_name     = $_POST['address_name']; 
+    $buyer_email = $_POST['payment_email'];
      
     
     $db_handle = new DBController();
@@ -79,11 +82,11 @@ if (strcmp($res, "VERIFIED") == 0 || strcasecmp($res, "VERIFIED") == 0) {
     // Check if transaction data exists with the same TXN ID 
     $query = "SELECT payment_id FROM user_payments WHERE txn_id = '".$txn_id."'";
     $prevPayment = $db_handle->runBaseQuery($query); 
-    if($prevPayment->num_rows > 0){ 
+    if(!empty($prevPayment)){ 
         exit(); 
     }else{ 
         // Insert transaction data into the database 
-        $query = "INSERT INTO user_payments(item_number,txn_id,payment_gross,currency_code,payment_status) VALUES('".$item_number."','".$txn_id."','".$payment_gross."','".$currency_code."','".$payment_status."')";
+        $query = "INSERT INTO user_payments(item_number,txn_id,payment_gross,currency_code,payment_status, payment_date, buyer_name , buyer_email) VALUES('".$item_number."','".$txn_id."','".$payment_gross."','".$currency_code."','".$payment_status."','".$payment_date."','".$buyer_name."','".$buyer_email."')";
         $insert = $db_handle->runBaseQuery($query);
     } 
  

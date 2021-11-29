@@ -147,7 +147,7 @@
                     <span class="game-category px-2 py-1" onclick="window.location.href='gameslist.php?category_id=<?php echo "$category_id2" ?>';"><?php echo "$category_name2" ?></span>
                 </div>
                 <div class="game-price-details" data-aos="fade-right" data-aos-duration="1500">
-                    <span class="game-price"><?php echo "$price" ?></span>
+                    <span class="game-price"><?php echo '$'."$price" ?></span>
                     <button type="button" class="btn btn-success" onclick="location.href='cartAction.php?action=addToCart&id=<?php echo "$id" ?>'">
                         Add to Cart
                     </button>

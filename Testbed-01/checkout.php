@@ -10,7 +10,7 @@ $userId = $_SESSION['member_id'];
 // Include the database config file 
 require_once 'DBController.php'; 
 
-// Include Paypal configuration file 
+// Include PayPal configuration file 
 include_once 'paypal_config.php'; 
 
 // Initialize shopping cart class 

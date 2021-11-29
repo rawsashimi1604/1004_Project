@@ -133,74 +133,73 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
         }
         
         if(empty($errorMsg)){
-            // Insert order info in the database 
-            //$insertOrder = $db->query("INSERT INTO orders (customer_id, grand_total, created, status) VALUES ($userId, '".$cart->total()."', NOW(), 'Pending')"); 
-            
+            // Insert order info in the database  
             $config = parse_ini_file('../../private/db-config.ini');
             $db = new mysqli($config['servername'], $config['username'],
                     $config['password'], $config['dbname']);
-            $insertOrder = $db->query("INSERT INTO orders (customer_id, grand_total, created, status) VALUES ($userId, '".$cart->total()."', NOW(), 'Completed')"); 
+            //$insertOrder = $db->query("INSERT INTO orders (customer_id, grand_total, created, status) VALUES ($userId, '".$cart->total()."', NOW(), 'Pending')"); 
+            //$insertOrder = $db->query("INSERT INTO orders (customer_id, grand_total, created, status) VALUES ($userId, '".$cart->total()."', NOW(), 'Completed')"); 
             
             
             
-            if($insertOrder){ 
+//            if($insertOrder){ 
                 
-                $orderID = $db->insert_id; 
+            $orderID = $_REQUEST['orderid'];
+            //$orderID = $_POST["orderid"];
 
-                // Retrieve cart items 
-                $cartItems = $cart->contents(); 
+            // Retrieve cart items 
+            $cartItems = $cart->contents(); 
 
-                // Prepare SQL to insert order items 
-                $sql = ''; 
+            // Prepare SQL to insert order items 
+            $sql = ''; 
                 
-                
-                
-                if(!empty($_POST["isgift"])){
-                    
-                    $it = new MultipleIterator;
-                    $a1 = new ArrayIterator($cartItems);
-                    $a2 = new ArrayIterator($isagift);
-                    $it->attachIterator($a1);
-                    $it->attachIterator($a2);
-                    
-                   
-                    foreach($it as $e){ 
-                       $sql .= "INSERT INTO order_items (order_id, product_id, quantity, gift_id) VALUES ('".$orderID."', '".$e[0]['id']."', '1', '".(int)$e[1]."');"; 
-                    }
+            if(!empty($_POST["isgift"])){
+
+                $it = new MultipleIterator;
+                $a1 = new ArrayIterator($cartItems);
+                $a2 = new ArrayIterator($isagift);
+                $it->attachIterator($a1);
+                $it->attachIterator($a2);
+
+
+                foreach($it as $e){ 
+                   $sql .= "INSERT INTO order_items (payment_id, product_id, quantity, gift_id) VALUES ('".$orderID."', '".$e[0]['id']."', '1', '".(int)$e[1]."');"; 
                 }
-                else{
-                    foreach($cartItems as $item){ 
-                        $sql .= "INSERT INTO order_items (order_id, product_id, quantity) VALUES ('".$orderID."', '".$item['id']."', '1');"; 
-                    }  
-                }
-                /*
-                //foreach($values as $test)
+            }
+            else{
                 foreach($cartItems as $item){ 
-                    $sql .= "INSERT INTO order_items (order_id, product_id, quantity) VALUES ('".$orderID."', '".$item['id']."', '1');"; 
-                }
-                 * 
-                 */ 
+                    $sql .= "INSERT INTO order_items (payment_id, product_id, quantity) VALUES ('".$orderID."', '".$item['id']."', '1');"; 
+                }  
+            }
+            /*
+            //foreach($values as $test)
+            foreach($cartItems as $item){ 
+                $sql .= "INSERT INTO order_items (payment_id, product_id, quantity) VALUES ('".$orderID."', '".$item['id']."', '1');"; 
+            }
+             * 
+             */ 
 
-                // Insert order items in the database 
-                $insertOrderItems = $db->multi_query($sql); 
+            // Insert order items in the database 
+            $insertOrderItems = $db->multi_query($sql); 
 
-                if($insertOrderItems){ 
-                    // Remove all items from cart 
-                    $cart->destroy(); 
+            if($insertOrderItems){ 
+                // Remove all items from cart 
+                $cart->destroy(); 
 
-                    // Redirect to the status page 
-                    //$redirectLoc = 'orderSuccess.php?id='.$orderID;
-                    $redirectLoc = 'index.php';
-                }else{ 
-                    $sessData['status']['type'] = 'error'; 
-                    $sessData['status']['msg'] = 'Some problem occurred, please try again.1'; 
-                } 
-            }else{ 
+                // Redirect to the status page 
+                //$redirectLoc = 'orderSuccess.php?id='.$orderID;
+                $redirectLoc = 'index.php';
+            }
+            // Unable to execute Query
+            else{                                                              
                 $sessData['status']['type'] = 'error'; 
-                $sessData['status']['msg'] = 'Some problem occurred, please try again.2'; 
+                $sessData['status']['msg'] = 'An internal error has occurred, please contact our support, and try again.'.$orderID; 
             } 
-            
-        }else{ 
+//            }else{ 
+//                $sessData['status']['type'] = 'error'; 
+//                $sessData['status']['msg'] = 'Some problem occurred, please try again.2'; 
+//            }      
+        } else{ 
             $sessData['status']['type'] = 'error'; 
             $sessData['status']['msg'] = 'Please correct the following mistakes.<br>'.$errorMsg;
         } 

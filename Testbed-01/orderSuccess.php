@@ -14,7 +14,7 @@ if(!$isLoggedIn) {
     header("Location: ./index.php");
 }
 
-// Include configuration file 
+// Include PayPal configuration file 
 include_once 'paypal_config.php';  
 
 // Include the database config file 
@@ -28,7 +28,7 @@ $cart = new Cart;
 //$db = new mysqli($config['servername'], $config['username'],
         //$config['password'], $config['dbname']);
 
-//$userId = $_SESSION['member_id'];
+$userId = $_SESSION['member_id'];
 
 // Fetch order details from database 
 //$result = $db->query("SELECT r.*, c.fname, c.lname, c.email FROM orders as r LEFT JOIN steam_clone_members as c ON c.member_id = r.customer_id WHERE r.id = ".$_REQUEST['id']); 
@@ -53,8 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     $currency_code = $_GET['cc']; 
     $payment_status = $_GET['st']; 
     $payment_date = $_GET["payment_date"];
-    $buyer_name = $_GET["buyer_name"];
-    $buyer_email = $_GET["buyer_email"];
+    $buyer_name = $_GET["address_name"];
+    $buyer_email = $_GET["payer_email"];
 
 
     $db_handle = new DBController();
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                 if(!empty($txn_id)){ 
                     $query = "SELECT * FROM user_payments WHERE txn_id = '$txn_id'"; 
                     $prevPaymentResult = $db_handle->runBaseQuery($query);
-
+                    
                     if(!empty($prevPaymentResult)){ 
                         $paymentRow = mysqli_fetch_assoc($prevPaymentResult); 
                         $payment_id = $paymentRow['payment_id']; 
@@ -95,9 +95,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                         $buyer_email = $paymentRow['buyer_email'];
                     }else{ 
                         // Insert tansaction data into the database 
-                        $query = "INSERT INTO user_payments(item_number,txn_id,payment_gross,currency_code,payment_status, payment_date, buyer_name , buyer_email) VALUES('".$item_number."','".$txn_id."','".$payment_gross."','".$currency_code."','".$payment_status."','".$payment_date."','".$buyer_name."','".$buyer_email."')";
+                        $query = "INSERT INTO user_payments(item_number,txn_id,payment_gross,currency_code,payment_status, payment_date, buyer_name , buyer_email, customer_id)"
+                                . "VALUES('".$item_number."','".$txn_id."','".$payment_gross."','".$currency_code."','".$payment_status."','".$payment_date."','".$buyer_name."','".$buyer_email."','".$userId."')";
                         $insert = $db_handle->runBaseQuery($query);
-                        $payment_id = $db_handle->insert_id; 
+                        $payment_id = $insert["payment_id"]; 
                     } 
 
             ?>
@@ -140,12 +141,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 //                                    $quantity = $item["quantity"]; 
 //                                    $sub_total = $price * $quantity;
 //                                    $remarks = $item['gift_id'];
+                                if($cart->total_items() > 0){                   // Grab all items again from user's cart to display
+                                    //get cart items from session 
+                                    $cartItems = $cart->contents(); 
+                                    foreach($cartItems as $item){               // Iterate through all items with cart
                             ?>
                             <tr>
-                                <td><?php //echo $item["name"]; ?></td>
-                                <td><?php //echo '$'.$price; ?></td>
-                                <td><?php //echo $quantity; ?></td>
-                                <td><?php //echo '$'.$sub_total; ?></td>
+                                <td><?php echo $item["name"]; ?></td>           <!-- List name from cart -->
+                                <td><?php echo '$'.$item["price"]; ?></td>      <!-- List name from price -->
+                                <td><?php echo $item["quantity"]; ?></td>       <!-- List name from quantity -->
+                                <td><?php echo '$'.$item["subtotal"]; ?></td>   <!-- List name from subtotal -->
                                 <td><?php 
                                     //echo "<script>alert(" . $remarks . ");</script>";
 //                                    if($remarks != 0 && !is_null($remarks)){
@@ -162,22 +167,26 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                                     //}?>
                                 </td>
                             </tr>
-                            <?php //} 
-                            //} ?>
+                                <?php
+                                    } 
+                                }?>
                         </tbody>
                     </table>
                 </div>
         </div>
         <form method="post" action="cartAction.php">
         <input type="hidden" name="action" value="placeOrder"/>
+        <input type="hidden" name="orderid" value="<?php echo "$payment_id" ?>"/>
         <input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Back to Games">
         </form>
-        <?php } else{?>
+        <br>
+        <?php } else {?>
             <div class="col-md-12">
                 <div class="alert alert-danger">Your order submission failed.</div>
             </div>
         </div>
         <input class="btn btn-success btn-lg btn-block" type="submit" name="checkoutSubmit" value="Back to Gamelist" onclick="location.href='./gameslist.php'">
+        <br>
         <?php } ?>
     </header>
 </body>
