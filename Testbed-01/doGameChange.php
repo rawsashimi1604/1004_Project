@@ -27,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $btnVal = $_POST['btnAct'];
     //echo $btnVal;
     if($btnVal == "Submit"){
+        //if($app_id)
         addGame();
         echo "<h1>New Game added!</h1>";
         echo "GameID: " . $app_id . "<br>Game Title: " . $gameTitle . "<br>Game Price: " . $gamePrice . "<br>GameDesc: " . $gameDesc . "<br>Gamedev: " . $dev . "<br>Publisher: " . $publisher . "<br>winreq: " . $windows_requirements . "<br>linreq: " . $linux_requirements . "<br>Macreq: " . $mac_requirements . "<br>GenreID: " . $genre_id . "<br>Cat1: " . $category_id . "<br>Cat2: " . $category_id2;
@@ -74,7 +75,7 @@ function updateGame()
   if ($conn->connect_error) {
     $errorMsg = "Connection failed: " . $conn->connect_error;
     $success = false;
-    $isAuthenticated = false;
+    //$isAuthenticated = false;
     echo "<script>alert('Ooops something wrong with database connection')</script>";
   } else {
     // Prepare the statement:
@@ -114,23 +115,83 @@ function addGame()
   if ($conn->connect_error) {
     $errorMsg = "Connection failed: " . $conn->connect_error;
     $success = false;
-    $isAuthenticated = false;
+    //$isAuthenticated = false;
     echo "<script>alert('Ooops something wrong with database connection')</script>";
   } else {
-    // Prepare the statement:
-    $stmt = $conn->prepare("INSERT INTO apps_list (appid, name, price, description, developer, publisher, windows_requirements, linux_requirements, mac_requirements, genre, category, category2) VALUES ($app_id, '$gameTitle', $gamePrice, '$gameDesc', '$dev', '$publisher', '$windows_requirements', '$linux_requirements', '$mac_requirements', $genre_id, $category_id, $category_id2)");
-    //$app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $gameCat, $gameCat2
-    // Bind & execute the query statement:        
-    //$stmt->bind_param("isissssssiii", $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $gameCat, $gameCat2);
-    if (!$stmt->execute()) {
-      $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-      $success = false;
-      //echo "<script>alert('Failed to update details')</script>";
-    }
-    $stmt->close();
-  }
-  $conn->close();
+          // Prepare the statement:
+          $checkId = $conn->prepare("SELECT * FROM apps_list WHERE appid=?");
+          $checkId->bind_param("i", $app_id);
+          $checkId->execute();
+          $result = $checkId->get_result();
+          if ($result->num_rows > 0){
+              $errorMsg = "Game ID already exists";
+              $success = false;
+          }
+          else{
+              $stmt = $conn->prepare("INSERT INTO apps_list (appid, name, price, description, developer, publisher, windows_requirements, linux_requirements, mac_requirements, genre, category, category2) VALUES ($app_id, '$gameTitle', $gamePrice, '$gameDesc', '$dev', '$publisher', '$windows_requirements', '$linux_requirements', '$mac_requirements', $genre_id, $category_id, $category_id2)");
+              // Bind & execute the query statement:        
+              //$stmt->bind_param("isissssssiii", $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $gameCat, $gameCat2);
+              if (!$stmt->execute()) {
+                  $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+                  $success = false;
+              }
+          }
+          
+          $stmt->close();
+          
+          }
+          $conn->close();
+          
+          }
 }
+function deleteGame()
+{
+  global $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2;
+  
+  if (empty($gameTitle) || empty($app_id) || empty($gamePrice) || empty($gameDesc) || empty($dev) || empty($windows_requirements) || empty($linux_requirements) || empty($mac_requirements) || empty($genre_id) || empty($category_id) || empty($category_id2)) {
+    echo "something is empty";
+  } else {
+  // Create database connection.    
+  $config = parse_ini_file('../../private/db-config.ini');
+  $conn = new mysqli(
+    $config['servername'],
+    $config['username'],
+    $config['password'],
+    $config['dbname']
+  );
+  
+  // Check connection    
+  if ($conn->connect_error) {
+    $errorMsg = "Connection failed: " . $conn->connect_error;
+    $success = false;
+    //$isAuthenticated = false;
+    echo "<script>alert('Ooops something wrong with database connection')</script>";
+  } else {
+          // Prepare the statement:
+          $checkId = $conn->prepare("SELECT * FROM apps_list WHERE appid=?");
+          $checkId->bind_param("i", $app_id);
+          $checkId->execute();
+          $result = $checkId->get_result();
+          if ($result->num_rows > 0){
+              $errorMsg = "Game ID already exists";
+              $success = false;
+          }
+          else{
+              $stmt = $conn->prepare("INSERT INTO apps_list (appid, name, price, description, developer, publisher, windows_requirements, linux_requirements, mac_requirements, genre, category, category2) VALUES ($app_id, '$gameTitle', $gamePrice, '$gameDesc', '$dev', '$publisher', '$windows_requirements', '$linux_requirements', '$mac_requirements', $genre_id, $category_id, $category_id2)");
+              // Bind & execute the query statement:        
+              //$stmt->bind_param("isissssssiii", $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $gameCat, $gameCat2);
+              if (!$stmt->execute()) {
+                  $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+                  $success = false;
+              }
+          }
+          
+          $stmt->close();
+          
+          }
+          $conn->close();
+          
+          }
 }
 ?>
 <html lang="en">

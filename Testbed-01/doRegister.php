@@ -21,15 +21,23 @@
         }
         else
         {
-            $email = sanitize_input($_POST["email"]);
-            // Additional check to make sure e-mail address is well-formed.
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-            {
-                $errorMsg .= "Invalid email format.<br>";
-                $success = false;
-            }
-        }
+            //$email = $_POST['email'];
+            $config = parse_ini_file('../../private/db-config.ini');
+            $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+            $stmt = $conn->prepare("SELECT * FROM steam_clone_members WHERE email=?");
 
+            // Bind & execute the query statement:
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0)
+            {
+                    $errorMsg = "Email has been used";
+                    $success = false;
+                }
+            }
+            $stmt->close();
+            
         #Santization for lname input
         if (empty($_POST["lname"]))
         {
@@ -153,10 +161,14 @@
             }
             else
             {
-                // Prepare the statement:
-                $stmt = $conn->prepare("INSERT INTO steam_clone_members (fname, lname, dob, email, password) VALUES (?, ?, ?, ?, ?)");
-                // Bind & execute the query statement:
-                $stmt->bind_param("sssss", $fname, $lname, $dob, $email, $hashed_password);
+                //something wrong with checking email variable
+                
+                
+                    // Prepare the statement:
+                    $stmt = $conn->prepare("INSERT INTO steam_clone_members (fname, lname, dob, email, password) VALUES (?, ?, ?, ?, ?)");
+                    // Bind & execute the query statement:
+                    $stmt->bind_param("sssss", $fname, $lname, $dob, $email, $hashed_password);
+                
                 if (!$stmt->execute())
                 {
                     $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
