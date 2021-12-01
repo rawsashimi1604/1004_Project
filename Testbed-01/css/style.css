@@ -423,6 +423,7 @@
     .account-stats div {
         display: flex;
         align-items: center;
+        margin-bottom: 0.5rem;
     }
 
     .account-stats button {
@@ -1177,6 +1178,10 @@
 
         .account-main-container .account-update-pw .register-row div:last-child {
             margin-bottom: 1.3rem;
+        }
+
+        .account-stats div {
+            margin-bottom: 0;
         }
 
 
