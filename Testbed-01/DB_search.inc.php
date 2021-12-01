@@ -23,7 +23,7 @@
         foreach ($result as $row){
         echo '<tr class="gameslist-rows" onclick="window.location=\'gamepage.php?id=' . $row["appid"] . '\';">
                                 <td class="align-items-center">
-                                    <img class="gameslist-thumbnail" src="' . $row["image"] . '" />
+                                    <img class="gameslist-thumbnail" src="' . $row["image"] . '" alt="' . $row["name"] . ' Mini Image"/>
                                 </td>
                                 <td class="align-items-center">' . $row["name"] . '</td>
                                 <td class="align-items-center gameslist-desc mobile-none">' . $row["description"] . '</td>

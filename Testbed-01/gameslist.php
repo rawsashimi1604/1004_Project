@@ -17,14 +17,10 @@ include "DB_getall.inc.php";
     <?php
     include "nav.inc.php";
     ?>
-    <!-- HEADER -->
-    <header class="jumbotron text-center bg-dark gameslist-header">
-        <h1 class="display-4 text-light">Search for your favourite games!</h1>
-    </header>
-
     <!-- MAIN -->
     <main class="container gameslist-container">
         <section id="browsing_section">
+            <h1 class="display-4 text-light text-center mb-5">Search for your favourite games!</h1>
             <div class="search-box">
                 <form method="get">
                     <span class="search-txt mobile-none">Search:</span>
@@ -77,8 +73,7 @@ include "DB_getall.inc.php";
     <?php
     include "footer.inc.php";
     ?>
-</body>
-<script>
+    <script>
     $(document).ready(function() {
         $('.search-box input[type="text"]').on("keyup input", function() {
             /* Get input value on change */
@@ -103,4 +98,6 @@ include "DB_getall.inc.php";
         });
     });
 </script>
+</body>
+
 </html>
