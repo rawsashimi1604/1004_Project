@@ -14,6 +14,9 @@ if(!$isLoggedIn) {
     header("Location: ./index.php");
 }
 
+// Include PHPMailer function file
+include_once 'email.php';
+
 // Include PayPal configuration file 
 include_once 'paypal_config.php';  
 
@@ -88,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="EN">
 <?php
     include "head.inc.php";
 ?>
@@ -126,37 +129,38 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                         foreach ($result as $row) {
                             $payment_id = $row['payment_id'];
                         }
-//                            // Email transaction details to customer
-//                            
-//                            // Always set content-type when sending HTML email
-//                            $headers = "MIME-Version: 1.0" . "\r\n";
-//                            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-//
-//                            // Headers
-//                            $headers .= 'From: <webmaster@example.com>' . "\r\n";
-//                            $to = "2102090@sit.singaporetech.edu.sg";
-//                            $subject = "GameDex: Invoice for Transaction No: '$txn_id'";
-//                            $message = "
-//                            <html>
-//                            <head>
-//                            <title>Transaction Details</title>
-//                            </head>
-//                            <body>
-//                            <p>Testing</p>
-//                            <table>
-//                            <tr>
-//                            <th>Firstname</th>
-//                            <th>Lastname</th>
-//                            </tr>
-//                            <tr>
-//                            <td>John</td>
-//                            <td>Doe</td>
-//                            </tr>
-//                            </table>
-//                            </body>
-//                            </html>
-//                            ";
-//                            mail($to,$subject,$txt,$headers);  
+                        
+                        $gamekey = generateGameKey();
+                        
+                        //get cart items from session 
+                        $cartItems = $cart->contents(); 
+                        
+                        
+                        $message = "
+                            <html>
+                            <head>
+                            <title>Transaction Details</title>
+                            </head>
+                            <body>
+                            <p>'$buyer_name'</p>
+                            <table>
+                            <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>QTY</th>
+                            <th>Sub Total</th>
+                            <th>Remarks</th>
+                            </tr>
+                            
+                            </table>
+                            </body>
+                            </html>
+                            ";
+                        
+                        
+                        
+                        // Send email receipt to customer
+                        SendEmail($buyer_email, $buyer_name, $txn_id, $message);
                     } 
 
             ?>
@@ -241,8 +245,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                                 <?php
                                     } 
                                 } else if($cart->total_items() > 0){                   // Grab all items again from user's cart to display
-                                    //get cart items from session 
-                                    $cartItems = $cart->contents(); 
                                     foreach($cartItems as $item){
                                     ?>
                             <tr>

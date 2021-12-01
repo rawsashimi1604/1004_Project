@@ -50,6 +50,7 @@ include "DB_getall.inc.php";
                     $db_handle = new DBController();
                     $query = "SELECT * FROM apps_list";
                     $result = $db_handle->runBaseQuery($query);
+                    
                     foreach ($result as $row) { ?>
                         <tr class="gameslist-rows" onclick="window.location=\'gamepage.php?id=' . $row["appid"] . '\';">
                             <td class="align-items-center">
@@ -60,7 +61,7 @@ include "DB_getall.inc.php";
                             <td class="align-items-center">' . $row["developer"] . '</td>
                             <td class="align-items-center">' . $row["price"] . '</td>
                         </tr>
-                    <?php }
+                     <?php }
                     if ($_SERVER["REQUEST_METHOD"] == "GET") {
                         include "DB_search.inc.php";
                     }
