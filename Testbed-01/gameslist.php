@@ -22,7 +22,6 @@ include "DB_getall.inc.php";
     <!-- MAIN -->
     <main class="container gameslist-container">
         <section id="browsing_section">
-            <?php echo "Role: " .$_SESSION["role"];?>
             <h1 class="display-4 text-light text-center mb-5">Search for your favourite games!</h1>
             <div class="search-box">
                 <form method="get">

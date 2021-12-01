@@ -93,6 +93,33 @@ function addGame()
 {
   global $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2;
   
+  if(isset($_FILES['image'])){
+      $errors= array();
+      $file_name = $_FILES['image']['name'];
+      $file_size = $_FILES['image']['size'];
+      $file_tmp = $_FILES['image']['tmp_name'];
+      $file_type = $_FILES['image']['type'];
+      $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
+      
+      $extensions= array("jpeg","jpg","png");
+      
+      if(in_array($file_ext,$extensions)=== false){
+         $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+      }
+      
+      if($file_size > 2097152) {
+         $errors[]='File size must be excately 2 MB';
+      }
+      
+      if(empty($errors)==true) {
+          $target = "/var/www/html/project/images/";
+          $complete_path = $target . basename($_FILES['image']['name']);
+         move_uploaded_file($file_tmp, $complete_path);
+         echo "File has been uploaded";
+      }else{
+         print_r($errors);
+      }
+   }
   if (empty($gameTitle) || empty($app_id) || empty($gamePrice) || empty($gameDesc) || empty($dev) || empty($windows_requirements) || empty($linux_requirements) || empty($mac_requirements) || empty($genre_id) || empty($category_id) || empty($category_id2)) {
     echo "something is empty";
   } else {
@@ -122,7 +149,8 @@ function addGame()
               $success = false;
           }
           else{
-              $stmt = $conn->prepare("INSERT INTO apps_list (appid, name, price, description, developer, publisher, windows_requirements, linux_requirements, mac_requirements, genre, category, category2) VALUES ($app_id, '$gameTitle', $gamePrice, '$gameDesc', '$dev', '$publisher', '$windows_requirements', '$linux_requirements', '$mac_requirements', $genre_id, $category_id, $category_id2)");
+              $filedir = "images/" . $file_name;
+              $stmt = $conn->prepare("INSERT INTO apps_list (appid, name, price, description, image, developer, publisher, windows_requirements, linux_requirements, mac_requirements, genre, category, category2) VALUES ($app_id, '$gameTitle', $gamePrice, '$gameDesc', '$filedir', '$dev', '$publisher', '$windows_requirements', '$linux_requirements', '$mac_requirements', $genre_id, $category_id, $category_id2)");
               // Bind & execute the query statement:        
               //$stmt->bind_param("isissssssiii", $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $gameCat, $gameCat2);
               if (!$stmt->execute()) {

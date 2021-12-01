@@ -50,7 +50,7 @@
     ?>
     
     <main class="container text-light game-container">
-        <form action="doGameChange.php" method="post">
+        <form action="doGameChange.php" method="post" enctype="multipart/form-data"></form>">
             <table border="0" cellpadding="5" cellspacing="0" width="100%">
                 <?php
                 if(empty($name)){
@@ -146,7 +146,15 @@
                             <input type='text' name='category2' rows='4' cols='50' name='category2' value='<?php echo "$gameCat2"?>'>
                         </td>
                     </tr>
-                    
+                    <?php
+                    if(empty($name)){?>
+                        <tr>
+                            <td width ="130" valign='top'>Game image</td>
+                            <td>
+                                <input type="file" name="image" />
+                            </td>
+                        </tr><?php
+                    }?>
                 </tbody>
             </table>
             <div class="row">
@@ -154,12 +162,12 @@
                     <?php
                     if (empty($name)){
                         ?><input type="submit" class="btn btn-light" name="btnAct" value="Submit">
+                        <input type="submit" class="btn btn-danger" name="btnAct" value="Delete">
                         <?php
                     }else{
                         ?><input type="submit" class="btn btn-light" name="btnAct" value="Update"><?php
                     }?>
-                    
-                    <input type="submit" class="btn btn-danger" name="btnAct" value="Delete">
+                        
                     <a class="btn btn-primary" href="./gameslist.php" role="button">Cancel</a>
                 </div>
             </div>
