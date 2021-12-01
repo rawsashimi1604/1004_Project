@@ -113,6 +113,10 @@
             serif;
     }
 
+    footer .footer-email input {
+        font-family: 'Red Hat Mono', sans-serif;
+    }
+
     .footer-copy {
         color: var(--light-2);
         background-color: var(--dark-2);

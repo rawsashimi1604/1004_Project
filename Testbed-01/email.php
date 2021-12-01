@@ -18,7 +18,7 @@ function generateGameKey($length = 16) {
     return $gameKey;
 }
 
-function SendEmail($recipient_email, $recipient_name, $transaction_id, $message){
+function SendEmail($recipient_email, $recipient_name, $transaction_id, $message, $subject){
     $mail = new PHPMailer;
     $mail->SMTPDebug = false; // Enable verbose debug output
     $mail->isSMTP(); // Set mailer to use SMTP
@@ -29,13 +29,13 @@ function SendEmail($recipient_email, $recipient_name, $transaction_id, $message)
     $mail->SMTPSecure = 'TRUE'; // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587; // TCP port to connect to
 
-    $mail->addAddress('2102090@sit.singaporetech.edu.sg', $recipient_name); // Add a recipient
+    $mail->addAddress($recipient_email, $recipient_name); // Add a recipient
     //$mail->addReplyTo('2102090@sit.singaporetech.edu.sg', 'Name');
-    $mail->setFrom('dummy1004ict@gmail.com', 'GameDex');
+    $mail->setFrom("dummy1004ict@gmail.com", 'GameDex');
 
     $mail->isHTML(true); // Set email format to HTML
 
-    $mail->Subject = "GameDex: Invoice for Transaction No: '$transaction_id'";
+    $mail->Subject = $subject;
     $mail->Body = $message;
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
