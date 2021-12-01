@@ -89,13 +89,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-</head>
-<?php include "head.inc.php" ?> 
+<?php
+    include "head.inc.php";
+?>
+
 <body class="bg-dark">
-    <header class="container jumbotron text-center mb-0 home-container">
-        <h1>ORDER STATUS</h1>
+    <?php
+            include "nav.inc.php";
+        ?>
+    
+    <main class="container jumbotron text-center mb-0 ord-container">
+        <h1>Your Order Details</h1>
         <div class="col-12">
             <?php 
                 // Check if transaction data exists with the same TXN ID. 
@@ -157,23 +161,41 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
             ?>
                 <div class="col-md-12">
-                    <div class="alert alert-success">Your order has been placed successfully.</div>
+                    <span class="ord-success-text" data-aos="fade-right" data-aos-duration="1500">Your order has been placed
+                    successfully!</span>
                 </div>
 
                 <!-- Order status & shipping info -->
-                <div class="row col-lg-12 ord-addr-info">
-                    <div class="hdr">Order Info</div>
-                    <p><b>Transaction ID:</b> <?php echo $txn_id; ?></p>
-                    <p><b>Paid Amount:</b> <?php echo $payment_gross; ?></p>
-                    <p><b>Payment Status:</b> <?php echo $payment_status; ?></p>
-                    <p><b>Placed On:</b> <?php echo $payment_date; ?></p>
-                    <p><b>Buyer Name:</b> <?php echo $buyer_name; ?></p>
-                    <p><b>Email:</b> <?php echo $buyer_email; ?></p>
+                <div class="row ord-addr-info ord-info">
+                    <div class="col-lg-6">
+                        <span><b>Transaction ID:</b></span>
+                        <span><?php echo $txn_id; ?></span>
+                    </div>
+                    <div class="col-lg-6">
+                        <span><b>Paid Amount:</b></span>
+                        <span><?php echo $payment_gross; ?></span>
+                    </div>
+                    <div class="col-lg-6">
+                        <span><b>Payment Status:</b></span>
+                        <span><?php echo $payment_status; ?></span>
+                    </div>
+                    <div class="col-lg-6">
+                        <span><b>Placed On:</b></span>
+                        <span><?php echo $payment_date; ?></span>
+                    </div>
+                    <div class="col-lg-6">
+                        <span><b>Buyer Name:</b></span>
+                        <span><?php echo $buyer_name; ?></span>
+                    </div>
+                    <div class="col-lg-6">
+                        <span><b>Email:</b></span>
+                        <span><?php echo $buyer_email; ?></span>
+                    </div>
                 </div>
             
                 <!-- Order items -->
                 <div class="row col-lg-12">
-                    <table class="table table-hover">
+                    <table class="table text-light">
                         <thead>
                             <tr>
                                 <th>Product</th>
@@ -252,7 +274,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
         <form method="post" action="cartAction.php">
         <input type="hidden" name="action" value="placeOrder"/>
         <input type="hidden" name="orderid" value="<?php echo "$payment_id" ?>"/>
-        <input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Back to Games">
+        <input class="btn btn-light btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Back to Games">
         </form>
         <br>
         <?php } else {?>
@@ -260,9 +282,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                 <div class="alert alert-danger">Your order submission failed.</div>
             </div>
         </div>
-        <input class="btn btn-success btn-lg btn-block" type="submit" name="checkoutSubmit" value="Back to Gamelist" onclick="location.href='./gameslist.php'">
+        <input class="btn btn-light btn-lg btn-block" type="submit" name="checkoutSubmit" value="Back to Gamelist" onclick="location.href='./gameslist.php'">
         <br>
         <?php } ?>
-    </header>
+    </main>
+    
+    <!-- FOOTER -->
+    <?php
+        include "footer.inc.php";
+    ?>
 </body>
 </html>
