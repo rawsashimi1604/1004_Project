@@ -1,3 +1,63 @@
+<?php  
+    include "email.php";
+
+    // If submit button was pressed,
+    if(isset($_POST['submitButton'])) {
+        $input = $_POST['inputText'];
+        
+        $subject = "Enjoy the greatest games at GamesDex";
+
+        $message = "
+            <!DOCTYPE html>
+                <html lang='en'>
+                    <head>
+                        <title>Heyy</title>
+                    </head>
+
+                    <body>
+                        <style>
+
+                        </style>
+
+                        <main>
+                            <h1>Welcome to GamesDex!</h1>
+                            <p>We are a team of students from Singapore Institute of Technology currently studying ICT1004 (Web Systems and
+                                Techonologies). We hope that through this project, we would be able to apply what we have learnt in class
+                                and improve our Web Development skills.
+                            </p>
+                            <p>
+                                For our project, we decided to do a gaming ecommerce site as we were all passionate about video games.
+                            </p>
+                            <p>
+                                The main technologies we used were:
+                            </p>
+                            <ul>
+                                <li>HTML -> HTML templating</li>
+                                <li>CSS -> Styling</li>
+                                <li>Bootstrap -> CSS library to accelarate styling process</li>
+                                <li>Vanilla JS -> Client-side scripting</li>
+                                <li>PHP -> Main Server-side technology</li>
+                                <li>Google Cloud -> Cloud hosting service</li>
+                                <li>Apache -> Web server software</li>
+                                <li>MySQL -> Database management system (DBMS)</li>
+                            </ul>
+                            <p>Visit our <a href='https://github.com/rawsashimi1604/1004_Project/'>Github Page</a> to view our source code!
+                            </p>
+                        </main>
+                    </body>
+
+            </html>
+        ";
+        // Send email
+        SendEmail($input, "Guest", 123, $message, $subject);
+
+        echo '<div style="position:absolute; left:50%;"class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Email Sent!</strong> Thank you for subscribing to our newsletter :)
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+    }
+?>
+
 <footer class="text-center text-white">
     <!-- Grid container -->
     <div class="container p-4">
@@ -25,61 +85,8 @@
 
         <!-- Section: Form -->
         <div class="">
-            <?php  
-                include "email.php";
-
-                // If submit button was pressed,
-                if(isset($_POST['submitButton'])) {
-                    $input = $_POST['inputText'];
-                    
-                    $subject = "Enjoy the greatest games at GamesDex";
-
-                    $message = "
-                        <!DOCTYPE html>
-                            <html lang='en'>
-                                <head>
-                                    <title>Heyy</title>
-                                </head>
-
-                                <body>
-                                    <style>
-
-                                    </style>
-
-                                    <main>
-                                        <h1>Welcome to GamesDex!</h1>
-                                        <p>We are a team of students from Singapore Institute of Technology currently studying ICT1004 (Web Systems and
-                                            Techonologies). We hope that through this project, we would be able to apply what we have learnt in class
-                                            and improve our Web Development skills.
-                                        </p>
-                                        <p>
-                                            For our project, we decided to do a gaming ecommerce site as we were all passionate about video games.
-                                        </p>
-                                        <p>
-                                            The main technologies we used were:
-                                        </p>
-                                        <ul>
-                                            <li>HTML -> HTML templating</li>
-                                            <li>CSS -> Styling</li>
-                                            <li>Bootstrap -> CSS library to accelarate styling process</li>
-                                            <li>Vanilla JS -> Client-side scripting</li>
-                                            <li>PHP -> Main Server-side technology</li>
-                                            <li>Google Cloud -> Cloud hosting service</li>
-                                            <li>Apache -> Web server software</li>
-                                            <li>MySQL -> Database management system (DBMS)</li>
-                                        </ul>
-                                        <p>Visit our <a href='https://github.com/rawsashimi1604/1004_Project/'>Github Page</a> to view our source code!
-                                        </p>
-                                    </main>
-                                </body>
-
-                        </html>
-                    ";
-                    // Send email
-                    SendEmail($input, "Guest", 123, $message, $subject);
-                }
-            ?>
-            <form action="#" method="post">
+            
+            <form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
                 <!--Grid row-->
                 <div class="row d-lg-flex justify-content-between">
                     <!--Grid column-->
