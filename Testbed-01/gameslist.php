@@ -50,21 +50,32 @@ include "DB_getall.inc.php";
                     $db_handle = new DBController();
                     $query = "SELECT * FROM apps_list";
                     $result = $db_handle->runBaseQuery($query);
-                    foreach ($result as $row) { ?>
+                    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                        include "DB_search.inc.php";
+                    } else {
+                        foreach ($result as $row) { ?>
                         <tr class="gameslist-rows" onclick="window.location=\'gamepage.php?id=' . $row["appid"] . '\';">
-                            <td class="align-items-center">
+                            <td class="align-middle">
                                 <img class="gameslist-thumbnail" src="' . $row["image"] . '" alt="' . $row["name"] . ' Mini Image"/>
                             </td>
-                            <td class="align-items-center">' . $row["name"] . '</td>
-                            <td class="align-items-center gameslist-desc mobile-none">' . $row["description"] . '</td>
-                            <td class="align-items-center">' . $row["developer"] . '</td>
-                            <td class="align-items-center">' . $row["price"] . '</td>
+                            <td class="align-middle"><?php $row["name"]?></td>
+                            <td class="align-middle gameslist-desc mobile-none"><?php $row["description"] ?></td>
+                            <td class="align-middle"><?php $row["developer"] ?></td>
+                            <td class="align-middle"><?php $row["price"] ?></td>
                         </tr>
+<<<<<<< Updated upstream
                     <?php }
                     if ($_SERVER["REQUEST_METHOD"] == "GET") {
                         include "DB_search.inc.php";
                     }
                     echo '</tbody>
+=======
+                    
+                    <?php } }
+
+                    echo
+                    '</tbody>
+>>>>>>> Stashed changes
                         </table>';
                     ?>
         </section>
