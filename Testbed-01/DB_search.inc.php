@@ -1,6 +1,8 @@
 <?php
-    require_once "DBController.php";
-    $db_handle = new DBController();
+    /*
+     * Database Search Include function
+     * To be used on gameslist for searching based on name, genre, or category
+     */
     $genresearch = ($_GET["genre_id"]);
     $categorysearch = ($_GET["category_id"]);
     $namesearch = strtolower($_GET["search"]);
@@ -20,13 +22,13 @@
         echo '<script>jQuery(document).ready(remove_rows('.count($result).'));</script>';
         foreach ($result as $row){
         echo '<tr class="gameslist-rows" onclick="window.location=\'gamepage.php?id=' . $row["appid"] . '\';">
-                                <td valign="middle" scope="row">
+                                <td class="align-items-center">
                                     <img class="gameslist-thumbnail" src="' . $row["image"] . '" />
                                 </td>
-                                <td valign="middle">' . $row["name"] . '</td>
-                                <td valign="middle" class="gameslist-desc">' . $row["description"] . '</td>
-                                <td valign="middle">' . $row["developer"] . '</td>
-                                <td valign="middle">' . $row["price"] . '</td>
+                                <td class="align-items-center">' . $row["name"] . '</td>
+                                <td class="align-items-center gameslist-desc mobile-none">' . $row["description"] . '</td>
+                                <td class="align-items-center">' . $row["developer"] . '</td>
+                                <td class="align-items-center">' . $row["price"] . '</td>
                             </tr>';
         } 
     }

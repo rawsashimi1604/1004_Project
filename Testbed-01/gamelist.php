@@ -37,11 +37,11 @@ include "DB_getall.inc.php";
             <table id="browsing_list" class="table table-sm table-dark table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>Game</th>
-                        <th>Title</th>
-                        <th class="mobile-none">Description</th>
-                        <th>Developer</th>
-                        <th>Price</th>
+                        <th scope="col">Game</th>
+                        <th scope="col">Title</th>
+                        <th scope="col" class="mobile-none">Description</th>
+                        <th scope="col">Developer</th>
+                        <th scope="col">Price</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +50,7 @@ include "DB_getall.inc.php";
                     $db_handle = new DBController();
                     $query = "SELECT * FROM apps_list";
                     $result = $db_handle->runBaseQuery($query);
+                    
                     foreach ($result as $row) { ?>
                         <tr class="gameslist-rows" onclick="window.location=\'gamepage.php?id=' . $row["appid"] . '\';">
                             <td class="align-items-center">
@@ -60,11 +61,12 @@ include "DB_getall.inc.php";
                             <td class="align-items-center">' . $row["developer"] . '</td>
                             <td class="align-items-center">' . $row["price"] . '</td>
                         </tr>
-                    <?php }
+                     <?php }
                     if ($_SERVER["REQUEST_METHOD"] == "GET") {
                         include "DB_search.inc.php";
                     }
-                    echo '</tbody>
+                    echo
+                    '</tbody>
                         </table>';
                     ?>
         </section>

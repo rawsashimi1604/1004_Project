@@ -8,7 +8,6 @@
     {
         $errorMsgDB = "Connection failed: " . $conn->connect_error;
         $success = false;
-        alert($errorMsgDB);
     }
     else
     {
