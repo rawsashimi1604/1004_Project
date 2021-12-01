@@ -13,7 +13,7 @@
             <div class="about-wrapper">
                 <div class="content">
                     <h1 class="about-header">Who we are</h1>
-                    <p class="about-author"><b>Yong Jing Kang</b>, Backend Developer</p>
+                    <p class="about-author"><b>Yeong Jing Kang</b>, Backend Developer</p>
                     <p class="about-main-text">
                         We are a team of students from Singapore Institute of Technology currently studying ICT1004 (Web
                         Systems and Techonologies). We hope that through this project, we would be able to apply what we

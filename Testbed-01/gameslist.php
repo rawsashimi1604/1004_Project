@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<title>GamesDex: Search for your favourite games!</title>
+<meta name="List of Games" content="width=device-width, initial-scale=1.0">
 <!-- HEAD SETUP -->
 <?php
 include "head.inc.php";

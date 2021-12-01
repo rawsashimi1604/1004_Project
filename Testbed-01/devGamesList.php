@@ -6,6 +6,8 @@ and open the template in the editor.
 
 
 <html lang="EN">
+<title>GamesDex: Developers List</title>
+<meta name="List of Games" content="width=device-width, initial-scale=1.0">
 <!-- HEAD SETUP -->
 <?php
 include "head.inc.php";

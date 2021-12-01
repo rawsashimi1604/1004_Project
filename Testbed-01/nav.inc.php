@@ -17,7 +17,7 @@ $cart = new Cart;
   <div class="collapse navbar-collapse" id="navbarToggler">
     <div class="me-auto">
       <div class="d-flex navbar-nav p-2 align-items-lg-center">
-        <a class="nav-link brand" aria-current="page" href="./index.php">GamesDéx</a>
+        <a title="Home" class="nav-link brand" aria-current="page" href="./index.php">GamesDéx</a>
         <a class="nav-link" href="./gameslist.php">Games</a>
         <a class="nav-link" href="./about.php">About</a>
       </div>

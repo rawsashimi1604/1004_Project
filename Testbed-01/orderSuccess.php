@@ -27,10 +27,6 @@ require_once 'DBController.php';
 include_once 'Cart.inc.php'; 
 $cart = new Cart; 
 
-//$config = parse_ini_file('../../private/db-config.ini');
-//$db = new mysqli($config['servername'], $config['username'],
-        //$config['password'], $config['dbname']);
-
 // Ensure only logged in users can access this page
 $userId = $_SESSION['member_id'];
 if (empty($userId)){
@@ -61,37 +57,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
         foreach ($payment_history as $row) {
             $txn_id  = $row['txn_id'];
         }
-        
-//        $result = $db->query("SELECT r.*, c.fname, c.lname, c.email FROM user_payments as r LEFT JOIN steam_clone_members as c ON c.member_id = r.customer_id WHERE r.id = ".$payment_id); 
-//        if($result->num_rows > 0){ 
-//            $orderInfo = $result->fetch_assoc(); 
-//            if ($userId != $orderInfo['customer_id']){
-//                echo "<script>alert('You are not authorized!');</script>";
-//                header("Location: index.php"); 
-//            }
-//        }else{ 
-//            header("Location: index.php"); 
-//        }
-    }
-
-    // Fetch order details from database 
-    
-     
-    // Get product info from the database 
-    //    $query = "SELECT * FROM apps_list WHERE appid = '".$item_number."'"; 
-    //    $productResult = $db_handle->runBaseQuery($query);
-    //    $productRow = $productResult->fetch_assoc(); 
-    
-
 } else {
     header("Location: ./index.php");
 }
-
+}
 
 ?>
 
 <!DOCTYPE html>
 <html lang="EN">
+<title>GamesDex: Order Successful</title>
+<meta name="Successful Order" content="width=device-width, initial-scale=1.0">
 <?php
     include "head.inc.php";
 ?>
@@ -136,26 +112,80 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                         $cartItems = $cart->contents(); 
                         
                         
-                        $message = "
-                            <html>
-                            <head>
-                            <title>Transaction Details</title>
-                            </head>
-                            <body>
-                            <p>'$buyer_name'</p>
-                            <table>
-                            <tr>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>QTY</th>
-                            <th>Sub Total</th>
-                            <th>Remarks</th>
-                            </tr>
-                            
-                            </table>
-                            </body>
-                            </html>
-                            ";
+                        $message = "<html>
+                                    <head>
+                                    <title>Heyy</title>
+                                    </head>
+                                    <body>                
+                                    <div style='width:800px;background:#fff;border-style:groove;'>
+                                    <div style='width:50%;text-align:left;'><a href='your website url'> <img 
+                                    src=\"cid:logo_p2t\" height=60 width=200;'></a></div>
+                                    <hr width='100%' size='2' color='#A4168E'>
+                                    <div style='width:50%;height:20px; text-align:right;margin-
+                                    top:-32px;padding-left:390px;'><a href='your url' style='color:#00BDD3;text-
+                                    decoration:none;'> 
+                                    My Bookings</a> | <a href='your url' style='color:#00BDD3;text-
+                                    decoration:none;'>Dashboard </a> </div>
+                                    <h2 style='width:50%;height:40px; text-align:right;margin:0px;padding-
+                                    left:390px;color:#B24909;'>Booking Confirmation</h2>
+                                    <div style='width:50%;text-align:right;margin:0px;padding-
+                                    left:390px;color:#0A903B'> Booking ID:1150 </div>
+                                    <h4 style='color:#ea6512;margin-top:-20px;'> Hello, " .$buyer_name."
+                                    </h4>
+                                    <p>Thank You for booking with us.Your Booking Order is Confirmed Now. Please 
+                                    find the trip details along with the invoice. </p>
+                                    <hr/>
+                                    <div style='height:210px;'>
+                                    <table cellspacing='0' width='100%' >
+                                    <thead>
+                                    <col width='80px' />
+                                    <col width='40px' />
+                                    <col width='40px' />
+                                    <tr>          
+                                    <th style='color:#0A903B;text-align:center;'>" .$txn_id."</th>                           
+                                    <th style='color:#0A903B;text-align:left;'>Traveller Info</th>
+                                    <th style='color:#0A903B;text-align:left;'>Your Pickup Details: </th>                                                                            
+                                    </tr>
+                                    </thead>
+                                    <tbody>   
+                                    <tr>
+                                    <td style='color:#0A903B;text-align:left;padding-bottom:5px;text-
+                                    align:center;'><img src=\"cid:logo_p2t1\" height='90' width='120'></td>
+                                    <td style='text-align:left;'>" .$txn_id." <br> " .$txn_id." 
+                                    <br> " .$txn_id." <br>" .$txn_id." </td>
+                                    <td style='text-align:left;'>" .$txn_id." <br> Pickuptime:" 
+                                    .$txn_id." <br> Pickup Date:" .$txn_id." 
+                                    <br> Dropoff: " .$txn_id."</td>
+                                    </tr>   
+                                    <tr>
+                                    </tbody> 
+                                    </table>                        
+                                    <hr width='100%' size='1' color='black' style='margin-top:10px;'>                          
+                                    <table cellspacing='0' width='100%' style='padding-left:300px;'>
+                                    <thead>                                                                       
+                                    <tr>                                        
+                                    <th style='color:#0A903B;text-align:right;padding-bottom:5px;width:70%'>Base 
+                                    Price:</th>
+                                    <th style='color:black;text-align:left;padding-bottom:5px;padding-
+                                    left:10px;width:30%'>" .$payment_gross."</th>
+                                    </tr>
+                                    <tr>                                        
+                                    <th style='color:#0A903B;text-align:right;padding-bottom:5px;'>GST(5%):</th>
+                                    <th style='color:black;text-align:left;padding-bottom:5px;padding-
+                                    left:10px;'>" .$txn_id."</th>                                        
+                                    </tr>
+                                    <tr>                                        
+                                    <th style='color:#0A903B;text-align:right;'>Total Price:</th>
+                                    <th style='color:black;text-align:left;padding-bottom:5px;padding-
+                                    left:10px;'>" .$payment_gross."</th>                                        
+                                    </tr>
+                                    </thead>   
+                                    </table>             
+                                    </div> 
+                                    </div>              
+                                    </body>
+                                    </html>";
+
                         
                         
                         
@@ -223,7 +253,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                                     $remarks = $item['gift_id'];
                             ?>
                             <tr>
-                                <td><?php echo $item["name"]; ?></td>           <!-- List name from cart -->
+                                <td><?php echo $item["name"]; ?></td>           <!-- List name from query -->
                                 <td><?php echo '$'.$price; ?></td>              <!-- List name from price -->
                                 <td><?php echo $quantity; ?></td>               <!-- List name from quantity -->
                                 <td><?php echo '$'.$sub_total; ?></td>          <!-- List name from subtotal -->
@@ -254,9 +284,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                                 <td><?php echo '$'.$item["subtotal"]; ?></td>   <!-- List name from subtotal -->
                                 <td><?php 
                                     //echo "<script>alert(" . $remarks . ");</script>";
-                                    if($remarks != 0 && !is_null($remarks)){
+                                    if($item['gift_id'] != 0 && !is_null($item['gift_id'])){
 //                                        //echo "<script>alert('You are authorized!');</script>";
-                                        $query = "SELECT * FROM steam_clone_members where member_id =". $remarks;
+                                        $query = "SELECT * FROM steam_clone_members where member_id =".$item['gift_id'];
                                         $result = $db_handle->runBaseQuery($query);
                                         if (!empty($result)){
                                             foreach ($result as $row) {
@@ -276,6 +306,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
         <form method="post" action="cartAction.php">
         <input type="hidden" name="action" value="placeOrder"/>
         <input type="hidden" name="orderid" value="<?php echo "$payment_id" ?>"/>
+        
+        <input type="email" class="form-control" name="email" placeholder="Email to send gift" value="<?php echo !empty($postData['email'])?$postData['email']:''; ?>" required>
+        <input type="hidden" name="action" value="placeOrder"/>
+        <input type="hidden" name="gift"/> 
+        
         <input class="btn btn-light btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Back to Games">
         </form>
         <br>

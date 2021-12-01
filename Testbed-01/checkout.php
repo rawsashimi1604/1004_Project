@@ -1,7 +1,5 @@
 <?php 
 
-//include "head.inc.php";
-
 session_start();
 
 require_once "authCookieSessionValidate.php";
@@ -53,6 +51,8 @@ if(!empty($sessData['status']['msg'])){
 </script>
 
 <html lang="EN">
+    <title>GamesDex: Checkout for your games</title>
+    <meta name="Shopping Cart checkout" content="width=device-width, initial-scale=1.0">
     <?php include "head.inc.php" ?>
     <!-- BODY -->
     <body class="bg-dark">
@@ -143,6 +143,7 @@ if(!empty($sessData['status']['msg'])){
                                         <span class="col item-qty">Qty: 1</span>
                                         <span class="col item-cancel">
                                             <input class="btn btn-info btn-lg btn-block checkout-gift-btn" id="isgift" type="isgift" name="isgift[]" value="For Me!" onclick="changeText(event);" readonly="readonly">
+                                            
                                         </span>
                                     </div>
                                     <div class="row">
@@ -160,7 +161,7 @@ if(!empty($sessData['status']['msg'])){
                                 <h4>Contact Details</h4>
                                 <div class="mb-1">
                                 <label for="email">Email:</label>
-                                <input type="email" class="form-control" name="email" placeholder="Email to send gift" value="<?php echo !empty($postData['email'])?$postData['email']:''; ?>" required>
+                                <input type="email" id="inputemail" onkeyup="inputvalue()" class="form-control" name="email" placeholder="Email to send gift" value="<?php echo !empty($postData['email'])?$postData['email']:''; ?>" required>
                             </div>
                             </div>
                             <input type="hidden" name="action" value="placeOrder"/>
@@ -218,10 +219,17 @@ if(!empty($sessData['status']['msg'])){
                 </div>
             </div>
         </main>
-
+        <script>
+            function inputvalue(){
+                /* Get input value on change */
+                var inputVal = document.getElementById("inputemail").value;
+            }
+        </script>
         <!-- FOOTER -->
         <?php
             include "footer.inc.php";
         ?>
     </body>
+    
+    
 </html>

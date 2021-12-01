@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="EN">
+<title>GamesDex: Login</title>
+<meta name="Login Page" content="width=device-width, initial-scale=1.0">
+
     <!-- HEAD -->
     <?php
         include "head.inc.php";
