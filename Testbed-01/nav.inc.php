@@ -4,6 +4,7 @@ session_start();
 require_once "authCookieSessionValidate.php";
 
 include_once "Cart.inc.php";
+$userName = $_SESSION['lname'];
 $cart = new Cart;
 
 ?>
@@ -39,7 +40,7 @@ $cart = new Cart;
           <!--<a class="nav-link" href="./account.php">Account</a>-->
           <?php
               if ($isLoggedIn){ 
-                  echo "<a class='nav-link' href='./account.php'>Account</a>";
+                  echo "<a class='nav-link' href='./account.php'>" . $userName . "</a>";
               }
           ?>
         <!-- </li> -->
