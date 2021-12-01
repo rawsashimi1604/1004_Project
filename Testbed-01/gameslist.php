@@ -71,7 +71,7 @@ include "DB_getall.inc.php";
                     ?>
                     <?php } ?>
                 </tbody>
-            </thead>
+            </table>
         </section>
     </main>
     <?php
