@@ -422,8 +422,19 @@
 
     .account-stats div {
         display: flex;
-        padding: 0.5rem;
         align-items: center;
+    }
+
+    .account-stats button {
+        margin-top: 1.5rem;
+    }
+
+    .account-stats>form {
+        margin-bottom: 0;
+    }
+
+    .account-stats>form input {
+        font-family: 'Red Hat Mono', sans-serif;
     }
 
     .account-stats span:first-child {
