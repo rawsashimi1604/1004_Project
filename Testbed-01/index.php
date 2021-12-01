@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<title>GamesDex: Welcome!</title>
+<meta name="Home Page" content="width=device-width, initial-scale=1.0">
 <?php include "head.inc.php" ?>
 
 <?php include "DB_getall.inc.php" ?>

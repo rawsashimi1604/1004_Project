@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php 
 session_start();
-
 require_once "authCookieSessionValidate.php";
 
 if(!$isLoggedIn) {
@@ -23,6 +22,8 @@ debug_to_console($userId);
 ?>
 
 <html lang="EN">
+    <title>GamesDex: Your Account</title>
+    <meta name="User Accounts Page" content="width=device-width, initial-scale=1.0"> 
     <?php
         include "head.inc.php";
     ?>
@@ -79,7 +80,7 @@ debug_to_console($userId);
                             } 
                         }
                         ?>
-                        <button type="submit" class="btn btn-light updateButton">Update</button>
+                        <button type="submit" class="btn btn-light col-sm-1 updateButton">Update</button>
                     </form>
                 </div>
                 
