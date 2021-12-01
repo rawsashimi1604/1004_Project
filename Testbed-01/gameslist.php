@@ -63,21 +63,15 @@ include "DB_getall.inc.php";
                             <td class="align-middle"><?php $row["developer"] ?></td>
                             <td class="align-middle"><?php $row["price"] ?></td>
                         </tr>
-<<<<<<< Updated upstream
+
                     <?php }
                     if ($_SERVER["REQUEST_METHOD"] == "GET") {
                         include "DB_search.inc.php";
                     }
-                    echo '</tbody>
-=======
-                    
-                    <?php } }
-
-                    echo
-                    '</tbody>
->>>>>>> Stashed changes
-                        </table>';
                     ?>
+                    <?php } ?>
+                </tbody>
+            </thead>
         </section>
     </main>
     <?php
