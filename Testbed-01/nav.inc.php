@@ -13,16 +13,16 @@ $cart = new Cart;
     aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarToggler">
+  <div class="d-flex collapse navbar-collapse" id="navbarToggler">
     <div class="me-auto">
-      <div class="navbar-nav p-2">
-        <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+      <div class="navbar-nav p-2 align-items-lg-center">
+        <a class="nav-link brand" aria-current="page" href="./index.php">GamesDéx</a>
         <a class="nav-link" href="./gameslist.php">Games</a>
         <a class="nav-link" href="./about.php">About</a>
       </div>
     </div>
     <!-- <div class="p-2"> -->
-      <div class="navbar-nav p-2">
+      <div class="d-flex navbar-nav p-2 align-items-lg-center">
         <!-- <li class="nav-item" style="padding-top:7px;"> -->
           <?php
               if ($cart->total_items() > 0){ 
