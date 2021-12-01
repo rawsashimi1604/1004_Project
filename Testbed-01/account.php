@@ -79,7 +79,7 @@ debug_to_console($userId);
                             } 
                         }
                         ?>
-                        <button type="submit" class="btn btn-light col-sm-1 updateButton">Update</button>
+                        <button type="submit" class="btn btn-light updateButton">Update</button>
                     </form>
                 </div>
                 
