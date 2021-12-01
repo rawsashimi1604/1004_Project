@@ -29,11 +29,14 @@
                 <div class="row register-row">
                     <div class="col-md">
                         <label for="pwd" class="form-label">Password</label>
-                        <input type="password" class="form-control" aria-label="First name" id="pwd" name="pwd" onkeyup="checkpw();">
+                        <input type="password" class="form-control" aria-label="First name" id="pwd" name="pwd" onkeyup="checkpw()">
+                        <progress max="100" value="0" id="meter"></progress>
+                        <h6>Password Strength</h6>
+                        <div class="textbox text-center"></div>
                     </div>
                     <div class="col-md">
                         <label for="cfm_pwd" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" aria-label="Last name" id="cfm_pwd" name="cfm_pwd" onkeyup="checkpw();">
+                        <input type="password" class="form-control" aria-label="Last name" id="cfm_pwd" name="cfm_pwd" onkeyup="checkpw()">
                         <span id='errMsg'></span>
                     </div>
                 </div>
