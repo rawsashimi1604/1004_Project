@@ -282,7 +282,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                 <div class="alert alert-danger">Your order submission failed.</div>
             </div>
         </div>
-        <input class="btn btn-success btn-lg btn-block" type="submit" name="checkoutSubmit" value="Back to Gamelist" onclick="location.href='./gameslist.php'">
+        <input class="btn btn-light btn-lg btn-block" type="submit" name="checkoutSubmit" value="Back to Gamelist" onclick="location.href='./gameslist.php'">
         <br>
         <?php } ?>
     </main>
