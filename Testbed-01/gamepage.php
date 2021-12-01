@@ -82,13 +82,13 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="<?php echo "$image" ?>" class="d-block w-100" alt="...">
+                            <img src="<?php echo "$image" ?>" class="d-block w-100" alt="Homepage Carousel Image 1">
                         </div>
                         <div class="carousel-item">
-                            <img src="<?php echo "$image" ?>" class="d-block w-100" alt="...">
+                            <img src="<?php echo "$image" ?>" class="d-block w-100" alt="Homepage Carousel Image 2">
                         </div>
                         <div class="carousel-item">
-                            <img src="<?php echo "$image" ?>" class="d-block w-100" alt="...">
+                            <img src="<?php echo "$image" ?>" class="d-block w-100" alt="Homepage Carousel Image 3">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#game-image-carousell" data-bs-slide="prev">
@@ -110,7 +110,7 @@
                 </div>
             </div>
             <div class="col-md-5 game-info">
-                <img class="mobile-none" src="<?php echo "$image" ?>" alt="header image" class="game-header-img">
+                <img class="game-header-img mobile-none" src="<?php echo "$image" ?>" alt="header image">
 
                 <span>Game requirements:</span>
                 <div class="game-requirements mt-0 mb-1">
@@ -154,7 +154,7 @@
                 </div>
                 
                 <div class="game-badges">
-                    <img src="./images/ecommerce-badges.png" alt="">
+                    <img src="./images/ecommerce-badges.png" alt="Ecommerce Badge">
                 </div>
             </div>
         </div>
