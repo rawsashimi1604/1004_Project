@@ -70,7 +70,7 @@
     ?>
 
     <main class="container text-light game-container">
-        <h1 class="game-header" name="<?php echo "$name" ?>"><?php echo "$name" ?></h1>
+        <h1 class="game-header"><?php echo "$name" ?></h1>
         <h2 class="game-dev-info">Developed by <span class="game-developer"><?php echo "$developer" ?></span>, published by <span class="game-publisher"><?php echo "$publisher" ?></span></h2>
         <div class="row">
             <div class="col-md-7 game-images">
@@ -110,7 +110,7 @@
                 </div>
             </div>
             <div class="col-md-5 game-info">
-                <img class="mobile-none" src="<?php echo "$image" ?>" alt="header image" class="game-header-img">
+                <img class="mobile-none game-header-img" src="<?php echo "$image" ?>" alt="header image">
 
                 <span>Game requirements:</span>
                 <div class="game-requirements mt-0 mb-1">

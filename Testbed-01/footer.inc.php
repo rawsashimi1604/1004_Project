@@ -2,7 +2,7 @@
     <!-- Grid container -->
     <div class="container p-4">
         <!-- Section: Social media -->
-        <section class="mb-4">
+        <div class="mb-4">
             <!-- Facebook -->
             <a class="footer-btn" target="_blank" href="https://www.facebook.com/" role="button"><i class="bi bi-facebook"></i></a>
 
@@ -20,11 +20,11 @@
 
             <!-- Github -->
             <a class="footer-btn" target="_blank" href="https://github.com/rawsashimi1604/1004_Project" role="button"><i class="bi bi-github"></i></a>
-        </section>
+        </div>
         <!-- Section: Social media -->
 
         <!-- Section: Form -->
-        <section class="">
+        <div class="">
             <form action="">
                 <!--Grid row-->
                 <div class="row d-lg-flex justify-content-between">
@@ -57,17 +57,17 @@
                 </div>
                 <!--Grid row-->
             </form>
-        </section>
+        </div>
         <!-- Section: Form -->
 
         <!-- Section: Text -->
-        <section class="mb-4">
+        <div class="mb-4">
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
                 repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
                 eum harum corrupti dicta, aliquam sequi voluptate quas.
             </p>
-        </section>
+        </div>
     </div>
     <!-- Grid container -->
 

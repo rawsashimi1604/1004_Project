@@ -1,35 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-session_start();
-
-require_once "Auth.php";
-require_once "Util.php";
-
-$auth = new Auth();
-$db_handle = new DBController();
-$util = new Util();
-
-require_once "authCookieSessionValidate.php";
-
-function debug_to_console($data)
-{
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-}
-
-if ($isLoggedIn) {
-    //$util->redirect("dashboard.php");
-    debug_to_console("Logged in");
-} else {
-    debug_to_console("Logged out");
-}
-?>
-
 <?php include "head.inc.php" ?>
 
 <?php include "DB_getall.inc.php" ?>
@@ -115,6 +86,35 @@ if ($isLoggedIn) {
 
     <!-- FOOTER -->
     <?php include "footer.inc.php" ?>
+    
+    <?php
+        session_start();
+
+        require_once "Auth.php";
+        require_once "Util.php";
+
+        $auth = new Auth();
+        $db_handle = new DBController();
+        $util = new Util();
+
+        require_once "authCookieSessionValidate.php";
+
+        function debug_to_console($data)
+        {
+            $output = $data;
+            if (is_array($output))
+                $output = implode(',', $output);
+
+            echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+        }
+
+        if ($isLoggedIn) {
+            //$util->redirect("dashboard.php");
+            debug_to_console("Logged in");
+        } else {
+            debug_to_console("Logged out");
+        }
+    ?>
 </body>
 
 </html>

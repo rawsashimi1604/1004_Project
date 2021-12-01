@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
     
     //Password
-    if (empty($_POST["pwd"]))
+    if (empty($_POST["pwd_"]))
     {
         $errorMsg .= "Password is required.<br>";
         $success = false;
@@ -91,7 +91,7 @@ function authenticateUser()
             $pwd_hashed = $row["password"];            
 
             // Check if the password matches:            
-            if (!password_verify($_POST["pwd"], $pwd_hashed))            
+            if (!password_verify($_POST["pwd_"], $pwd_hashed))            
             {                
                 // Don't be too specific with the error message - hackers don't                
                 // need to know which one they got right or wrong. :)                

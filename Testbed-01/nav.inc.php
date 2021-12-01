@@ -92,8 +92,8 @@ $cart = new Cart;
           </div>
           <div class="row login-row">
             <div class="col">
-              <label for="pwd" class="form-label">Enter your password:</label>
-              <input type="password" class="form-control" aria-label="Last name" id="pwd" name="pwd">
+              <label for="pwd_" class="form-label">Enter your password:</label>
+              <input type="password" class="form-control" aria-label="Last name" id="pwd_" name="pwd_">
             </div>
 
           </div>

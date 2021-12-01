@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php 
 // Initialize shopping cart class 
 include_once 'Cart.inc.php'; 
@@ -59,18 +60,14 @@ $cart = new Cart;
                             </div>
                         </div>
                         <?php } }
-                        else{ 
-                            
+                            else{    
                         ?>
-                            <tr><td colspan="5"><p>Your cart is empty.....</p></td>
+                            <p>Your cart is empty.....</p>
                         <?php } ?>
                         <?php if($cart->total_items() > 0){ ?>
                         <tr>
-                            <td></td>
-                            <td></td>
                             <!--<td><strong>Cart Total</strong></td>-->
                             <!--<td class="text-right"><strong><?php echo '$'.$cart->total(); ?></strong></td>-->
-                            <td></td>
                         </tr>
                         <?php } ?>
                         

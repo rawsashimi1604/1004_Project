@@ -42,11 +42,11 @@
                 <div class="row register-row">
                     <div class="col register-dob">
                         <label for="dateofbirth">Date Of Birth</label>
-                        <input type="date" class="form-control" name="dateofbirth" id="dateofbirth" name="dateofbirth">
+                        <input type="date" class="form-control" name="dateofbirth" id="dateofbirth">
                     </div>
                     <div class="col">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="email">
                     </div>
                 </div>
 
