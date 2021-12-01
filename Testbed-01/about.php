@@ -13,7 +13,7 @@
             <div class="about-wrapper">
                 <div class="content">
                     <h1 class="about-header">Who we are</h1>
-                    <p class="about-author"><b>Yong Jing Kiang</b>, Chief Executive Officer</p>
+                    <p class="about-author"><b>Yong Jing Kang</b>, Backend Developer</p>
                     <p class="about-main-text">
                         We are a team of students from Singapore Institute of Technology currently studying ICT1004 (Web
                         Systems and Techonologies). We hope that through this project, we would be able to apply what we
@@ -48,34 +48,34 @@
                 <p class="about-author">And find out more about their favourite games...</p>
                 <div class="about-member-profiles">
                     <div class="member">
-                        <img src="./images/profile-filler.jpg" alt="" width="120" height="120">
-                        <span class="member-name">Jing Kiang</span>
-                        <span class="member-title">Carry</span>
-                        <span class="member-game">Dota 2, Pokemon</span>
+                        <img src="./images/JingKang.jpeg" alt="" width="120" height="120">
+                        <span class="member-name">Jing Kang</span>
+                        <span class="member-title">Backend Developer</span>
+                        <span class="member-game">Zelda</span>
                     </div>
                     <div class="member">
-                        <img src="./images/profile-filler.jpg" alt="" width="120" height="120">
+                        <img src="./images/Hakiim.jpeg" alt="" width="120" height="120">
                         <span class="member-name">Hakiim</span>
-                        <span class="member-title">Carry</span>
-                        <span class="member-game">Dota 2, Pokemon</span>
+                        <span class="member-title">Backend Developer</span>
+                        <span class="member-game">Starcraft</span>
                     </div>
                     <div class="member">
-                        <img src="./images/profile-filler.jpg" alt="" width="120" height="120">
+                        <img src="./images/Kenneth.PNG" alt="" width="120" height="120">
                         <span class="member-name">Kenneth</span>
-                        <span class="member-title">Carry</span>
-                        <span class="member-game">Dota 2, Pokemon</span>
+                        <span class="member-title">Backend Developer</span>
+                        <span class="member-game">Pokemon</span>
                     </div>
                     <div class="member">
-                        <img src="./images/profile-filler.jpg" alt="" width="120" height="120">
+                        <img src="./images/KangChen.jpg" alt="" width="120" height="120">
                         <span class="member-name">Kang Chen</span>
-                        <span class="member-title">Carry</span>
-                        <span class="member-game">Dota 2, Pokemon</span>
+                        <span class="member-title">Full Stack Developer</span>
+                        <span class="member-game">COD Mobile</span>
                     </div>
                     <div class="member">
-                        <img src="./images/profile-filler.jpg" alt="" width="120" height="120">
+                        <img src="./images/Gavin.jpg" alt="" width="120" height="120">
                         <span class="member-name">Gavin</span>
-                        <span class="member-title">Carry</span>
-                        <span class="member-game">Dota 2, Pokemon</span>
+                        <span class="member-title">Frontend Developer</span>
+                        <span class="member-game">FIFA</span>
                     </div>
                 </div>
             </div>
