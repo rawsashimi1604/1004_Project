@@ -1045,12 +1045,56 @@ main .account-container:hover {
     }
 }
 
+.ord-container {
+    color: var(--light-6);
+    text-align: start;
+}
+
+.ord-container h1 {
+    margin-top: 2rem;
+    text-align: start;
+    font-weight: 300;
+    text-decoration: underline;
+}
+
+.ord-success-text {
+    display: inline-block;
+    background-color: rgb(38, 102, 38);
+    color: var(--light-6);
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.ord-info {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    padding-top: 0;
+}
+
+.ord-info>div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.2rem;
+}
+
+.ord-info>div>span:nth-child(2) {
+    background-color: var(--dark-5);
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    border-radius: 5px;
+    min-width: 400px;
+    text-align: start;
+}
+
+
 @media screen and (min-width: 992px) {
     .mobile-img {
         display: none;
     }
-
-
 }
 
 @media screen and (max-width: 992px) {
