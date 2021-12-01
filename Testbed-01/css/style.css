@@ -170,6 +170,8 @@
         border-radius: 0;
     }
 
+
+
     /* INDEX.PHP CSS HERE */
     .carousel-item img {
         width: 100%;
@@ -602,6 +604,13 @@
 
     .game-header-img {
         margin-bottom: 0.5rem;
+        max-width: 509px;
+        max-height: 238px;
+    }
+
+    .game-container .game-images img {
+        max-width: 722px;
+        max-height: 337px;
     }
 
     .game-images {
