@@ -29,11 +29,12 @@
                 <div class="row register-row">
                     <div class="col">
                         <label for="pwd" class="form-label">Password</label>
-                        <input type="password" class="form-control" aria-label="First name" id="pwd" name="pwd">
+                        <input type="password" class="form-control" aria-label="First name" id="pwd" name="pwd" onkeyup="checkpw();">
                     </div>
                     <div class="col">
                         <label for="cfm_pwd" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" aria-label="Last name" id="cfm_pwd" name="cfm_pwd">
+                        <input type="password" class="form-control" aria-label="Last name" id="cfm_pwd" name="cfm_pwd" onkeyup="checkpw();">
+                        <span id='errMsg'></span>
                     </div>
                 </div>
 

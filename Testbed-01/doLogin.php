@@ -124,6 +124,7 @@ if (! empty($_POST["login"])) {
     
     if ($isAuthenticated) {
         $_SESSION["member_id"] = $user[0]["member_id"];
+        $_SESSION["role"] = $user[0]["role"];
         $isAuthenticated = true;
         
     } else {
@@ -152,6 +153,7 @@ if (! empty($_POST["login"])) {
                     $isAuthenticated = true;
                     $user = $auth->getMemberByEmail($email);
                     $_SESSION["member_id"] = $user[0]["member_id"];
+                    $_SESSION["role"] = $user[0]["role"];
                     
                     echo "<h1>Login successful!</h1>"; 
                     echo "<h2>Welcome back, " . $fname . " " . $lname . ".</h2>";

@@ -29,20 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     if($btnVal == "Submit"){
         //if($app_id)
         addGame();
-        echo "<h1>New Game added!</h1>";
-        echo "GameID: " . $app_id . "<br>Game Title: " . $gameTitle . "<br>Game Price: " . $gamePrice . "<br>GameDesc: " . $gameDesc . "<br>Gamedev: " . $dev . "<br>Publisher: " . $publisher . "<br>winreq: " . $windows_requirements . "<br>linreq: " . $linux_requirements . "<br>Macreq: " . $mac_requirements . "<br>GenreID: " . $genre_id . "<br>Cat1: " . $category_id . "<br>Cat2: " . $category_id2;
+        //echo "<h1>New Game added!</h1>";
+        //echo "GameID: " . $app_id . "<br>Game Title: " . $gameTitle . "<br>Game Price: " . $gamePrice . "<br>GameDesc: " . $gameDesc . "<br>Gamedev: " . $dev . "<br>Publisher: " . $publisher . "<br>winreq: " . $windows_requirements . "<br>linreq: " . $linux_requirements . "<br>Macreq: " . $mac_requirements . "<br>GenreID: " . $genre_id . "<br>Cat1: " . $category_id . "<br>Cat2: " . $category_id2;
     }
     elseif($btnVal == "Update"){
-//        echo "app id is " . $app_id;
-//        echo "</br>".$name;
-//        echo "<h1>Game " . $name . " details has been updated!";
-        echo "GameID: " . $app_id . "<br>Game Title: " . $gameTitle . "<br>Game Price: " . $gamePrice . "<br>GameDesc: " . $gameDesc . "<br>Gamedev: " . $dev . "<br>Publisher: " . $publisher . "<br>winreq: " . $windows_requirements . "<br>linreq: " . $linux_requirements . "<br>Macreq: " . $mac_requirements . "<br>GenreID: " . $genre_id . "<br>Cat1: " . $category_id . "<br>Cat2: " . $category_id2;
         updateGame();
     }
     elseif($btnVal == "Delete"){
-        //deleteGame();
-        echo "<h1>Game " . $gameTitle . " has been successfully deleted! wowowow well done.</h1></br>";
-        echo "sike not implemented yet";
+        deleteGame();
     }
     
 }
@@ -146,9 +140,9 @@ function addGame()
 }
 function deleteGame()
 {
-  global $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2;
+  global $app_id;
   
-  if (empty($gameTitle) || empty($app_id) || empty($gamePrice) || empty($gameDesc) || empty($dev) || empty($windows_requirements) || empty($linux_requirements) || empty($mac_requirements) || empty($genre_id) || empty($category_id) || empty($category_id2)) {
+  if (empty($app_id)) {
     echo "something is empty";
   } else {
   // Create database connection.    
@@ -167,31 +161,19 @@ function deleteGame()
     //$isAuthenticated = false;
     echo "<script>alert('Ooops something wrong with database connection')</script>";
   } else {
-          // Prepare the statement:
-          $checkId = $conn->prepare("SELECT * FROM apps_list WHERE appid=?");
-          $checkId->bind_param("i", $app_id);
-          $checkId->execute();
-          $result = $checkId->get_result();
-          if ($result->num_rows > 0){
-              $errorMsg = "Game ID already exists";
-              $success = false;
-          }
-          else{
-              $stmt = $conn->prepare("INSERT INTO apps_list (appid, name, price, description, developer, publisher, windows_requirements, linux_requirements, mac_requirements, genre, category, category2) VALUES ($app_id, '$gameTitle', $gamePrice, '$gameDesc', '$dev', '$publisher', '$windows_requirements', '$linux_requirements', '$mac_requirements', $genre_id, $category_id, $category_id2)");
-              // Bind & execute the query statement:        
-              //$stmt->bind_param("isissssssiii", $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $gameCat, $gameCat2);
-              if (!$stmt->execute()) {
-                  $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-                  $success = false;
-              }
-          }
-          
-          $stmt->close();
-          
-          }
-          $conn->close();
-          
-          }
+      $stmt = $conn->prepare("DELETE FROM apps_list WHERE appid=?");
+      // Bind & execute the query statement:        
+      $stmt->bind_param("i", $app_id);
+      if (!$stmt->execute()) {
+          $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+          $success = false;
+      }
+      $stmt->close();
+      
+      }
+      $conn->close();
+
+    }
 }
 ?>
 <html lang="en">
@@ -206,17 +188,31 @@ function deleteGame()
       <hr>
       <?php
       if ($success) {
-          echo $app_id;
-          echo $gameTitle;
-        echo "<h1>Game details changed successfully</h1>";
-        echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
-        echo "<a href='devGamesList' class='btn btn-success'>Return to Home</a>";
-      } else {
-        echo "<h1>Oops!</h2>";
-        echo "<h2>The following errors were detected:</h4>";
-        echo "<p>" . $errorMsg . "</p>";
-        echo "<p>You can login again at the link below</p>";
-        echo "<a href='index.php data-bs-target='#loginModal' class='btn btn-danger' role='button'>Return to Login</a>";
+          if($btnVal == "Submit")
+          {
+              echo "<h1>Game details changed successfully</h1>";
+              echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
+              echo "<a href='devGamesList.php' class='btn btn-success'>Return to Home</a>";
+          }
+          elseif($btnVal == "Update")
+          {
+              echo "<h1>Game details changed successfully</h1>";
+              echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
+              echo "<a href='devGamesList.php' class='btn btn-success'>Return to Home</a>";
+          }
+          else
+          {
+              echo "<h1>Game " . $gameTitle . " has been successfully deleted!</h1></br>";
+              echo "<a href='devGamesList.php' class='btn btn-success'>Return to Home</a>";
+          }
+          
+      } 
+      else {
+          echo "<h1>Oops!</h2>";
+          echo "<h2>The following errors were detected:</h4>";
+          echo "<p>" . $errorMsg . "</p>";
+          echo "<p>You can login again at the link below</p>";
+          echo "<a href='index.php data-bs-target='#loginModal' class='btn btn-danger' role='button'>Return to Home</a>";
       }
       ?>
       <hr>

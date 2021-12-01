@@ -51,7 +51,14 @@ include "DB_getall.inc.php";
     <header class="jumbotron text-center bg-dark gameslist-header">
         <h1 class="display-4 text-light">Search for your favourite games!</h1>
     </header>
-
+    <?php
+    if($_SESSION['role'] == "dev"){
+        echo "YO HERE I AM";
+    }else{
+        echo "not working";
+        echo "<br>ID= " . $_SESSION["member_id"];
+    }
+?>
     <!-- MAIN -->
     <main class="container gameslist-container">
         <section id="browsing_section">

@@ -21,22 +21,14 @@
         }
         else
         {
-            //$email = $_POST['email'];
-            $config = parse_ini_file('../../private/db-config.ini');
-            $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
-            $stmt = $conn->prepare("SELECT * FROM steam_clone_members WHERE email=?");
-
-            // Bind & execute the query statement:
-            $stmt->bind_param("s", $email);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            if ($result->num_rows > 0)
+            $email = sanitize_input($_POST["email"]);
+            // Additional check to make sure e-mail address is well-formed.
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL))
             {
-                    $errorMsg = "Email has been used";
-                    $success = false;
-                }
+                $errorMsg .= "Invalid email format.<br>";
+                $success = false;
             }
-            $stmt->close();
+        }
             
         #Santization for lname input
         if (empty($_POST["lname"]))
@@ -103,7 +95,6 @@
                     <h4>The following input errors were detected:<br></h4>
                     <?php 
                     echo "<p>" . $errorMsg . "</p>";
-                    echo "<p>" . $fname . "<br>" . $lname . "<br>" . $dob . "<br>" . $email . "</P>";
                     ?>
                     <div class="form-group">
                         <a href="register.php">
@@ -149,6 +140,7 @@
         function saveMemberToDB()
         {
             global $fname, $lname, $hashed_password, $dob, $email, $errorMsg, $success;
+            $role = 'member';
             // Create database connection.
             $config = parse_ini_file('../../private/db-config.ini');
             $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
@@ -165,9 +157,9 @@
                 
                 
                     // Prepare the statement:
-                    $stmt = $conn->prepare("INSERT INTO steam_clone_members (fname, lname, dob, email, password) VALUES (?, ?, ?, ?, ?)");
+                    $stmt = $conn->prepare("INSERT INTO steam_clone_members (fname, lname, dob, email, password, role) VALUES (?, ?, ?, ?, ?, ?)");
                     // Bind & execute the query statement:
-                    $stmt->bind_param("sssss", $fname, $lname, $dob, $email, $hashed_password);
+                    $stmt->bind_param("ssssss", $fname, $lname, $dob, $email, $hashed_password, $role);
                 
                 if (!$stmt->execute())
                 {
