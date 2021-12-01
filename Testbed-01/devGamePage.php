@@ -158,7 +158,7 @@
                     }?>
                     
                     <input type="submit" class="btn btn-danger" name="btnAct" value="Delete">
-                    <a class="btn btn-primary" href="./devGamesList.php" role="button">Cancel</a>
+                    <a class="btn btn-primary" href="./gameslist.php" role="button">Cancel</a>
                 </div>
             </div>
         </form>

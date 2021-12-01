@@ -71,11 +71,15 @@ include "DB_getall.inc.php";
                             <div class="result"></div>
                             <input id="browse_search_button" type="submit" name="submit">
                         </form>
+                        
                     </div>
-                    <div class="col-md-2">
+                    <?php
+                        if($_SESSION["role"] == "dev"){?>
+                        <div class="col-md-2">
                         <!-- <button type="button" class="btn btn-primary"><a Add Game</button> -->
                         <a class="btn btn-primary" href="./devGamePage.php" role="button">Add Game</a>
-                    </div>
+                        </div>
+                    <?php }?>
                 </div>
             </div>
 
@@ -95,6 +99,7 @@ include "DB_getall.inc.php";
                         $db_handle = new DBController();
                         $query = "SELECT * FROM apps_list";
                         $result = $db_handle->runBaseQuery($query);
+                        if($_SESSION['role'] == "dev"){
                         foreach ($result as $row) {
                             echo '<tr class="gameslist-rows" onclick="window.location=\'devGamePage.php?id=' . $row["appid"] . '\';">
                                     <td valign="middle" scope="row">
@@ -109,6 +114,19 @@ include "DB_getall.inc.php";
                             //     . '<img class="img-ss-list" src="'.$row["image"].'" />'
                             //     .$row["name"].'</a></td><td>'.$row["developer"].'</td><td>'
                             //     .$row["price"].'</tr>';
+                        }
+                        }else{
+                            foreach ($result as $row) {
+                            echo '<tr class="gameslist-rows" onclick="window.location=\'gamepage.php?id=' . $row["appid"] . '\';">
+                                    <td valign="middle" scope="row">
+                                        <img class="gameslist-thumbnail" src="' . $row["image"] . '" />
+                                    </td>
+                                    <td valign="middle">' . $row["name"] . '</td>
+                                    <td valign="middle" class="gameslist-desc mobile-none">' . $row["description"] . '</td>
+                                    <td valign="middle">' . $row["developer"] . '</td>
+                                    <td valign="middle">' . $row["price"] . '</td>
+                                </tr>';
+                        }
                         }
                         if ($_SERVER["REQUEST_METHOD"] == "GET") {
     require_once "DBController.php";
