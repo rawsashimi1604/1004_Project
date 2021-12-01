@@ -21,7 +21,7 @@
     
     <!-- Custom JS  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="./js/scripts.js"></script>
+    <script defer src="./js/scripts.js"></script>
     
     <!-- Custom Font (Red Hat MONO) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

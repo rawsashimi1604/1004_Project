@@ -23,72 +23,65 @@
 //    });
 //}
 
-function remove_rows($num_of_rows)
-{
-    document.addEventListener("DOMContentLoaded", function()
-    {
-        var tb = document.getElementById("browsing_list"); 
-        while(tb.rows.length > $num_of_rows + 1) { tb.deleteRow(1); }
-    });
+function remove_rows($num_of_rows) {
+  document.addEventListener("DOMContentLoaded", function () {
+    var tb = document.getElementById("browsing_list");
+    while (tb.rows.length > $num_of_rows + 1) {
+      tb.deleteRow(1);
+    }
+  });
 }
 
-$(document).ready(function(){
-    
-    $('.logout').click(function(){
-        var clickBtnValue = $(this).val();
-        var ajaxurl = 'logout.php',
-        data =  {'action': clickBtnValue};
-        $.post(ajaxurl, data, function (response) {
-            // Response div goes here.
-            //alert("action performed successfully");
-            location.reload();
-        });
+$(document).ready(function () {
+
+  $('.logout').click(function () {
+    var clickBtnValue = $(this).val();
+    var ajaxurl = 'logout.php',
+      data = {
+        'action': clickBtnValue
+      };
+    $.post(ajaxurl, data, function (response) {
+      // Response div goes here.
+      //alert("action performed successfully");
+      location.reload();
     });
-    $('body').on('click', function (e) {
-        $('[data-bs-toggle="popover"]').each(function () {
-            // hide any open popovers when the anywhere else in the body is clicked
-            if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-                $(this).popover('hide');
-            }
-        });
+  });
+  $('body').on('click', function (e) {
+    $('[data-bs-toggle="popover"]').each(function () {
+      // hide any open popovers when the anywhere else in the body is clicked
+      if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+        $(this).popover('hide');
+      }
     });
-    // Event handler for active navbar state
-    activateNav();
+  });
+  // Event handler for active navbar state
+  activateNav();
 
 });
 
 function activateNav() {
-    var current_page_URL = location.href;
+  var current_page_URL = location.href;
 
-    $(".navbar-nav a").each(function () {
-      var target_URL = $(this).prop("href");
-      if (target_URL === current_page_URL) {
-        $('nav a').removeClass('active'); 
-        $(this).addClass('active');
-        return false;
-      }
-    })
+  $(".navbar-nav a").each(function () {
+    var target_URL = $(this).prop("href");
+    if (target_URL === current_page_URL) {
+      $('nav a').removeClass('active');
+      $(this).addClass('active');
+      return false;
+    }
+  })
 }
 
-var checkpw = function (){
-    
-      if(document.getElementById('pwd').value === document.getElementById('cfm_pwd').value){
-          document.getElementById('errMsg').style.color = 'green';
-          document.getElementById('errMsg').innerHTML = 'Password match';
-      } else {
-          document.getElementById('errMsg').style.color = 'red';
-          document.getElementById('errMsg').innerHTML = 'Password does not match';
-      }
+var checkpw = function () {
+
+  if (document.getElementById('pwd').value === document.getElementById('cfm_pwd').value) {
+    document.getElementById('errMsg').style.color = 'green';
+    document.getElementById('errMsg').innerHTML = 'Password match';
+  } else {
+    document.getElementById('errMsg').style.color = 'red';
+    document.getElementById('errMsg').innerHTML = 'Password does not match';
+  }
 };
-
-var code = document.getElementById("pwd");
-var strengthbar = document.getElementById("meter");
-var display = document.getElementsByClassName("textbox")[0];
-
-code.addEventListener("keyup", function() {
-    checkpassword(code.value);
-});
-
 
 function checkpassword(password) {
   var strength = 0;
@@ -103,15 +96,6 @@ function checkpassword(password) {
   }
   if (password.match(/[$@#&!]+/)) {
     strength += 1;
-
-  }
-
-  if (password.length < 6) {
-    display.innerHTML = "minimum number of characters is 6";
-  }
-
-  if (password.length > 12) {
-    display.innerHTML = "maximum number of characters is 12";
   }
 
   switch (strength) {
@@ -136,3 +120,11 @@ function checkpassword(password) {
       break;
   }
 }
+
+var code = document.getElementById("pwd");
+var strengthbar = document.getElementById("meter");
+console.log("triggered");
+code.addEventListener("keyup", function () {
+  checkpassword(code.value);
+  console.log("triggered");
+});
