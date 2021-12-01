@@ -59,32 +59,30 @@ include "DB_getall.inc.php";
                     } else {
                         if($_SESSION['role'] != "dev"){
                         foreach ($result as $row) { ?>
-                        <tr class="gameslist-rows" onclick="window.location=\'gamepage.php?id=' . $row["appid"] . '\';">
+                        <tr class="gameslist-rows" onclick="window.location='gamepage.php?id=<?php echo $row["appid"] ?>';">
                             <td class="align-middle">
-                                <img class="gameslist-thumbnail" src="' . $row["image"] . '" alt="' . $row["name"] . ' Mini Image"/>
+                                <img class="gameslist-thumbnail" src="<?php echo  $row["image"] ?>" alt="<?php echo $row["name"] ?> Mini Image"/>
                             </td>
-                            <td class="align-middle"><?php $row["name"]?></td>
-                            <td class="align-middle gameslist-desc mobile-none"><?php $row["description"] ?></td>
-                            <td class="align-middle"><?php $row["developer"] ?></td>
-                            <td class="align-middle"><?php $row["price"] ?></td>
+                            <td class="align-middle"><?php echo $row["name"]?></td>
+                            <td class="align-middle gameslist-desc mobile-none"><?php echo $row["description"] ?></td>
+                            <td class="align-middle"><?php echo $row["developer"] ?></td>
+                            <td class="align-middle"><?php echo $row["price"] ?></td>
                         </tr>
 
                     <?php }
                         } else {
                             foreach ($result as $row) { ?>
-                            <tr class="gameslist-rows" onclick="window.location=\'devGamePage.php?id=' . $row["appid"] . '\';">
+                            <tr class="gameslist-rows" onclick="window.location='devGamePage.php?id=<?php echo $row["appid"] ?>';">
                             <td class="align-middle">
-                                <img class="gameslist-thumbnail" src="' . $row["image"] . '" alt="' . $row["name"] . ' Mini Image"/>
+                                <img class="gameslist-thumbnail" src="<?php echo  $row["image"] ?>" alt="<?php echo $row["name"] ?> Mini Image"/>
                             </td>
-                            <td class="align-middle"><?php $row["name"]?></td>
-                            <td class="align-middle gameslist-desc mobile-none"><?php $row["description"] ?></td>
-                            <td class="align-middle"><?php $row["developer"] ?></td>
-                            <td class="align-middle"><?php $row["price"] ?></td>
-                            </tr>
+                            <td class="align-middle"><?php echo $row["name"]?></td>
+                            <td class="align-middle gameslist-desc mobile-none"><?php echo $row["description"] ?></td>
+                            <td class="align-middle"><?php echo $row["developer"] ?></td>
+                            <td class="align-middle"><?php echo $row["price"] ?></td>
+                        </tr>
                     <?php }
-                        }
-                    ?>
-                    <?php } ?>
+                        } } ?>
                 </tbody>
             </table>
         </section>
