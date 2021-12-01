@@ -60,6 +60,8 @@
                 </div>
                 <button type="submit" class="btn btn-light register-btn">Register</button>
             </form>
+
+            <script src="./js/register.js"></script>t
         </main>
         <!-- FOOTER -->
         <?php
