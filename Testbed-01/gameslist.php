@@ -1,40 +1,10 @@
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
-
-<html lang="EN">
+<!DOCTYPE html>
+<html lang="en">
 <!-- HEAD SETUP -->
 <?php
 include "head.inc.php";
 session_start();
 ?>
-
-<script>
-$(document).ready(function(){
-    $('.search-box input[type="text"]').on("keyup input", function(){
-        /* Get input value on change */
-        var inputVal = $(this).val();
-        var resultDropdown = $(this).siblings(".result");
-        if(inputVal.length){
-            $.get("DB_livesearch.php", {term: inputVal}).done(function(data){
-                // Display the returned data in browser
-                resultDropdown.html(data);
-            });
-        } else{
-            resultDropdown.empty();
-        }
-    });
-    
-    // Set search input value on click of result item
-    $(document).on("click", ".result p", function(){
-        $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-        $(this).parent(".result").empty();
-    });
-});
-</script>
 
 <!-- MySQL Database Connect get ALL -->
 <?php
@@ -60,7 +30,7 @@ include "DB_getall.inc.php";
                     <span class="search-txt mobile-none">Search:</span>
                     <input type="text" name="search" autocomplete="off" class="form-control input-sm" placeholder="Enter search term" aria-controls="browsing_list">
                     <div class="result"></div>
-                    <input id="browse_search_button" type="submit" name="submit">
+                    <button id="browse_search_button" type="submit" name="submit" class="btn btn-light">Search</button>
                 </form>
             </div>
 
@@ -76,30 +46,26 @@ include "DB_getall.inc.php";
                 </thead>
                 <tbody>
                     <?php
-                        require_once "DBController.php";
-                        $db_handle = new DBController();
-                        $query = "SELECT * FROM apps_list";
-                        $result = $db_handle->runBaseQuery($query);
-                        foreach ($result as $row) {
-                            echo '<tr class="gameslist-rows" onclick="window.location=\'gamepage.php?id=' . $row["appid"] . '\';">
-                                    <td valign="middle">
-                                        <img class="gameslist-thumbnail" src="' . $row["image"] . '" />
+                    require_once "DBController.php";
+                    $db_handle = new DBController();
+                    $query = "SELECT * FROM apps_list";
+                    $result = $db_handle->runBaseQuery($query);
+                    foreach ($result as $row) {
+                        echo '<tr class="gameslist-rows" onclick="window.location=\'gamepage.php?id=' . $row["appid"] . '\';">
+                                    <td class="align-items-center">
+                                        <img class="gameslist-thumbnail" src="' . $row["image"] . '" alt="' . $row["name"] . ' Mini Image"/>
                                     </td>
-                                    <td valign="middle">' . $row["name"] . '</td>
-                                    <td valign="middle" class="gameslist-desc mobile-none">' . $row["description"] . '</td>
-                                    <td valign="middle">' . $row["developer"] . '</td>
-                                    <td valign="middle">' . $row["price"] . '</td>
+                                    <td class="align-items-center">' . $row["name"] . '</td>
+                                    <td class="align-items-center gameslist-desc mobile-none">' . $row["description"] . '</td>
+                                    <td class="align-items-center">' . $row["developer"] . '</td>
+                                    <td class="align-items-center">' . $row["price"] . '</td>
                                 </tr>';
-                            // echo '<tr aria-controls="browsing_list"><a href="gamepage.php?id='.$row["appid"].'">'
-                            //     . '<img class="img-ss-list" src="'.$row["image"].'" />'
-                            //     .$row["name"].'</a></td><td>'.$row["developer"].'</td><td>'
-                            //     .$row["price"].'</tr>';
-                        }
-                        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                            include "DB_search.inc.php";
-                        }
-                        echo
-                        '</tbody>
+                    }
+                    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                        include "DB_search.inc.php";
+                    }
+                    echo
+                    '</tbody>
                         </table>';
                     ?>
         </section>
@@ -108,5 +74,29 @@ include "DB_getall.inc.php";
     include "footer.inc.php";
     ?>
 </body>
+<script>
+    $(document).ready(function() {
+        $('.search-box input[type="text"]').on("keyup input", function() {
+            /* Get input value on change */
+            var inputVal = $(this).val();
+            var resultDropdown = $(this).siblings(".result");
+            if (inputVal.length) {
+                $.get("DB_livesearch.php", {
+                    term: inputVal
+                }).done(function(data) {
+                    // Display the returned data in browser
+                    resultDropdown.html(data);
+                });
+            } else {
+                resultDropdown.empty();
+            }
+        });
 
+        // Set search input value on click of result item
+        $(document).on("click", ".result p", function() {
+            $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+            $(this).parent(".result").empty();
+        });
+    });
+</script>
 </html>
