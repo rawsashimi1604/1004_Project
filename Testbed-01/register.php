@@ -15,11 +15,11 @@
             <form action="doRegister.php" method="post">
                 <!-- First name and last name -->
                 <div class="row register-row">
-                    <div class="col">
+                    <div class="col-md">
                         <label for="fname" class="form-label">First Name</label>
                         <input type="text" class="form-control" aria-label="First name" id="fname" name="fname">
                     </div>
-                    <div class="col">
+                    <div class="col-md">
                         <label for="lname" class="form-label">Last Name</label>
                         <input type="text" class="form-control" aria-label="Last name" id="lname" name="lname">
                     </div>
@@ -27,11 +27,11 @@
 
                 <!-- Password and confirm password -->
                 <div class="row register-row">
-                    <div class="col">
+                    <div class="col-md">
                         <label for="pwd" class="form-label">Password</label>
                         <input type="password" class="form-control" aria-label="First name" id="pwd" name="pwd" onkeyup="checkpw();">
                     </div>
-                    <div class="col">
+                    <div class="col-md">
                         <label for="cfm_pwd" class="form-label">Confirm Password</label>
                         <input type="password" class="form-control" aria-label="Last name" id="cfm_pwd" name="cfm_pwd" onkeyup="checkpw();">
                         <span id='errMsg'></span>
@@ -40,11 +40,11 @@
 
                 <!-- Date of birth and email -->
                 <div class="row register-row">
-                    <div class="col register-dob">
+                    <div class="col-md register-dob">
                         <label for="dateofbirth">Date Of Birth</label>
-                        <input type="date" class="form-control" name="dateofbirth" id="dateofbirth" name="dateofbirth">
+                        <input type="date" class="form-control" name="dateofbirth" id="dateofbirth">
                     </div>
-                    <div class="col">
+                    <div class="col-md">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
                     </div>

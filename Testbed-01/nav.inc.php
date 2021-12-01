@@ -40,7 +40,7 @@ $cart = new Cart;
           <!--<a class="nav-link" href="./account.php">Account</a>-->
           <?php
               if ($isLoggedIn){ 
-                  echo "<a class='nav-link' href='./account.php'>" . $_SESSION['lname'] . "</a>";
+                  echo "<a class='nav-link' href='./account.php'>" . $userName . "</a>";
               }
           ?>
         <!-- </li> -->

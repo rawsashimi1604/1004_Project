@@ -30,10 +30,12 @@
                 <div class="search-box">
                     <form method="post">
                         <label><b>Search:</b></label>
-                        <input type="text" name="search" autocomplete="off" 
-                                        class="form-control input-sm" 
-                                        placeholder="Enter search term" 
-                                        aria-controls="browsing_list">
+                        <input  type="text" 
+                                name="search" 
+                                autocomplete="off" 
+                                class="form-control input-sm" 
+                                placeholder="Enter search term" 
+                                aria-controls="browsing_list">
                         <input id="browse_search_button" type="submit" name="submit">
                     </form>
                 </div>
