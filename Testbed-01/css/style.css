@@ -379,6 +379,10 @@
         margin-bottom: 1rem;
     }
 
+    .register-row input {
+        font-family: 'Red Hat Mono', sans-serif;
+    }
+
     .register-check {
         margin-top: 2rem;
         margin-bottom: 2rem;
