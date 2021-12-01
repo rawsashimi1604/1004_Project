@@ -4,28 +4,28 @@
         <!-- Section: Social media -->
         <div class="mb-4">
             <!-- Facebook -->
-            <a class="footer-btn" target="_blank" href="https://www.facebook.com/" role="button"><i class="bi bi-facebook"></i></a>
+            <a class="footer-btn" id="Facebooklink" rel="noopener" target="_blank" href="https://www.facebook.com/" role="button"><i class="bi bi-facebook"></i></a>
 
             <!-- Twitter -->
-            <a class="footer-btn" target="_blank" href="https://twitter.com/?lang=en" role="button"><i class="bi bi-twitter"></i></a>
+            <a class="footer-btn" id="Twitterlink" rel="noopener" target="_blank" href="https://twitter.com/?lang=en" role="button"><i class="bi bi-twitter"></i></a>
 
             <!-- Google -->
-            <a class="footer-btn" target="_blank" href="https://www.google.com/" role="button"><i class="bi bi-google"></i></a>
+            <a class="footer-btn" id="Googlelink" target="_blank" href="https://www.google.com/" role="button"><i class="bi bi-google"></i></a>
 
             <!-- Instagram -->
-            <a class="footer-btn" target="_blank" href="https://www.instagram.com/" role="button"><i class="bi bi-instagram"></i></a>
+            <a class="footer-btn" id="Instagramlink" rel="noopener" target="_blank" href="https://www.instagram.com/" role="button"><i class="bi bi-instagram"></i></a>
 
             <!-- Linkedin -->
-            <a class="footer-btn" target="_blank" href="https://sg.linkedin.com/" role="button"><i class="bi bi-linkedin"></i></a>
+            <a class="footer-btn" id="LinkedInlink" rel="noopener" target="_blank" href="https://sg.linkedin.com/" role="button"><i class="bi bi-linkedin"></i></a>
 
             <!-- Github -->
-            <a class="footer-btn" target="_blank" href="https://github.com/rawsashimi1604/1004_Project" role="button"><i class="bi bi-github"></i></a>
+            <a class="footer-btn" id="Githublink" rel="noopener" target="_blank" href="https://github.com/rawsashimi1604/1004_Project" role="button"><i class="bi bi-github"></i></a>
         </div>
         <!-- Section: Social media -->
 
         <!-- Section: Form -->
         <div class="">
-            <form action="">
+            <form action="index.php">
                 <!--Grid row-->
                 <div class="row d-lg-flex justify-content-between">
                     <!--Grid column-->
@@ -63,9 +63,7 @@
         <!-- Section: Text -->
         <div class="mb-4">
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-                repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-                eum harum corrupti dicta, aliquam sequi voluptate quas.
+                .
             </p>
         </div>
     </div>
@@ -74,7 +72,7 @@
     <!-- Copyright -->
     <div class="text-center p-3 footer-copy">
         © 2021 Copyright:
-        <a class="" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        <a class="" href="https://github.com/rawsashimi1604/1004_Project">GamesDex.com</a>
     </div>
     <!-- Copyright -->
 </footer>
