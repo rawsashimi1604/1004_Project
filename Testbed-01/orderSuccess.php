@@ -14,9 +14,6 @@ if(!$isLoggedIn) {
     header("Location: ./index.php");
 }
 
-// Include PHPMailer function file
-include_once 'email.php';
-
 // Include PayPal configuration file 
 include_once 'paypal_config.php';  
 
@@ -26,6 +23,10 @@ require_once 'DBController.php';
 // Initialize shopping cart class 
 include_once 'Cart.inc.php'; 
 $cart = new Cart; 
+
+//$config = parse_ini_file('../../private/db-config.ini');
+//$db = new mysqli($config['servername'], $config['username'],
+        //$config['password'], $config['dbname']);
 
 // Ensure only logged in users can access this page
 $userId = $_SESSION['member_id'];
@@ -49,6 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
     $db_handle = new DBController();
     
+    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    echo "<script>alert(". $actual_link .")</script>";
+    $_SESSION["temp_link"] = $actual_link;
+    
+    
     // Transaction History redirect from Accounts Page clause
     $payment_id = $_GET['id'];
     if(!empty($payment_id)){
@@ -57,30 +63,92 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
         foreach ($payment_history as $row) {
             $txn_id  = $row['txn_id'];
         }
+        
+//        $result = $db->query("SELECT r.*, c.fname, c.lname, c.email FROM user_payments as r LEFT JOIN steam_clone_members as c ON c.member_id = r.customer_id WHERE r.id = ".$payment_id); 
+//        if($result->num_rows > 0){ 
+//            $orderInfo = $result->fetch_assoc(); 
+//            if ($userId != $orderInfo['customer_id']){
+//                echo "<script>alert('You are not authorized!');</script>";
+//                header("Location: index.php"); 
+//            }
+//        }else{ 
+//            header("Location: index.php"); 
+//        }
+    }
+
+    // Fetch order details from database 
+    
+     
+    // Get product info from the database 
+    //    $query = "SELECT * FROM apps_list WHERE appid = '".$item_number."'"; 
+    //    $productResult = $db_handle->runBaseQuery($query);
+    //    $productRow = $productResult->fetch_assoc(); 
+    
+
 } else {
     header("Location: ./index.php");
 }
+/*
+if (isset($_SESSION['isgift'])){
+    echo "<script>alert('HELLO WORLD IS GIFT WORKING')</script>";
+}*/
+
+// Get status message from session 
+
+$sessData = !empty($_SESSION['sessData'])?$_SESSION['sessData']:''; 
+if(!empty($sessData['status']['msg'])){ 
+    $statusMsg = $sessData['status']['msg']; 
+    $statusMsgType = $sessData['status']['type']; 
+    unset($_SESSION['sessData']['status']); 
 }
+// Get posted data from session 
+$postData = !empty($_SESSION['postData'])?$_SESSION['postData']:array(); 
+unset($_SESSION['postData']); 
+
+
 
 ?>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+    function changeText(event){
+        var a = event.target;
+        console.log(a);
+        if (a.value === "Gift!"){
+            a.value = "For Me!";
+        }
+        else
+            a.value = "Gift!";
+    }
+</script>
+
 
 <!DOCTYPE html>
-<html lang="EN">
-<title>GamesDex: Order Successful</title>
-<meta name="Successful Order" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 <?php
     include "head.inc.php";
 ?>
 
 <body class="bg-dark">
     <?php
-            include "nav.inc.php";
-        ?>
+        //include "nav.inc.php";
+    ?>
     
     <main class="container jumbotron text-center mb-0 ord-container">
         <h1>Your Order Details</h1>
+        <form method="post" action="cartAction.php">
         <div class="col-12">
-            <?php 
+            <?php if(!empty($statusMsg) && ($statusMsgType == 'success')) {?>
+                <div class="col-md-12">
+                    <div class="alert alert-success"><?php echo $statusMsg; ?></div>
+                </div>
+            <?php } ?>
+            <?php if (!empty($statusMsg) && ($statusMsgType == 'error')) { ?>
+                <div class="col-md-12">
+                    <div class="alert alert-danger"><?php echo $statusMsg; ?></div>
+                </div>
+            <?php } ?>
+            <?php
                 // Check if transaction data exists with the same TXN ID. 
                 if(!empty($txn_id)){ 
                     $query = "SELECT * FROM user_payments WHERE txn_id = '$txn_id'"; 
@@ -105,92 +173,37 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                         foreach ($result as $row) {
                             $payment_id = $row['payment_id'];
                         }
-                        
-                        $gamekey = generateGameKey();
-                        
-                        //get cart items from session 
-                        $cartItems = $cart->contents(); 
-                        
-                        
-                        $message = "<html>
-                                    <head>
-                                    <title>Heyy</title>
-                                    </head>
-                                    <body>                
-                                    <div style='width:800px;background:#fff;border-style:groove;'>
-                                    <div style='width:50%;text-align:left;'><a href='your website url'> <img 
-                                    src=\"cid:logo_p2t\" height=60 width=200;'></a></div>
-                                    <hr width='100%' size='2' color='#A4168E'>
-                                    <div style='width:50%;height:20px; text-align:right;margin-
-                                    top:-32px;padding-left:390px;'><a href='your url' style='color:#00BDD3;text-
-                                    decoration:none;'> 
-                                    My Bookings</a> | <a href='your url' style='color:#00BDD3;text-
-                                    decoration:none;'>Dashboard </a> </div>
-                                    <h2 style='width:50%;height:40px; text-align:right;margin:0px;padding-
-                                    left:390px;color:#B24909;'>Booking Confirmation</h2>
-                                    <div style='width:50%;text-align:right;margin:0px;padding-
-                                    left:390px;color:#0A903B'> Booking ID:1150 </div>
-                                    <h4 style='color:#ea6512;margin-top:-20px;'> Hello, " .$buyer_name."
-                                    </h4>
-                                    <p>Thank You for booking with us.Your Booking Order is Confirmed Now. Please 
-                                    find the trip details along with the invoice. </p>
-                                    <hr/>
-                                    <div style='height:210px;'>
-                                    <table cellspacing='0' width='100%' >
-                                    <thead>
-                                    <col width='80px' />
-                                    <col width='40px' />
-                                    <col width='40px' />
-                                    <tr>          
-                                    <th style='color:#0A903B;text-align:center;'>" .$txn_id."</th>                           
-                                    <th style='color:#0A903B;text-align:left;'>Traveller Info</th>
-                                    <th style='color:#0A903B;text-align:left;'>Your Pickup Details: </th>                                                                            
-                                    </tr>
-                                    </thead>
-                                    <tbody>   
-                                    <tr>
-                                    <td style='color:#0A903B;text-align:left;padding-bottom:5px;text-
-                                    align:center;'><img src=\"cid:logo_p2t1\" height='90' width='120'></td>
-                                    <td style='text-align:left;'>" .$txn_id." <br> " .$txn_id." 
-                                    <br> " .$txn_id." <br>" .$txn_id." </td>
-                                    <td style='text-align:left;'>" .$txn_id." <br> Pickuptime:" 
-                                    .$txn_id." <br> Pickup Date:" .$txn_id." 
-                                    <br> Dropoff: " .$txn_id."</td>
-                                    </tr>   
-                                    <tr>
-                                    </tbody> 
-                                    </table>                        
-                                    <hr width='100%' size='1' color='black' style='margin-top:10px;'>                          
-                                    <table cellspacing='0' width='100%' style='padding-left:300px;'>
-                                    <thead>                                                                       
-                                    <tr>                                        
-                                    <th style='color:#0A903B;text-align:right;padding-bottom:5px;width:70%'>Base 
-                                    Price:</th>
-                                    <th style='color:black;text-align:left;padding-bottom:5px;padding-
-                                    left:10px;width:30%'>" .$payment_gross."</th>
-                                    </tr>
-                                    <tr>                                        
-                                    <th style='color:#0A903B;text-align:right;padding-bottom:5px;'>GST(5%):</th>
-                                    <th style='color:black;text-align:left;padding-bottom:5px;padding-
-                                    left:10px;'>" .$txn_id."</th>                                        
-                                    </tr>
-                                    <tr>                                        
-                                    <th style='color:#0A903B;text-align:right;'>Total Price:</th>
-                                    <th style='color:black;text-align:left;padding-bottom:5px;padding-
-                                    left:10px;'>" .$payment_gross."</th>                                        
-                                    </tr>
-                                    </thead>   
-                                    </table>             
-                                    </div> 
-                                    </div>              
-                                    </body>
-                                    </html>";
-
-                        
-                        
-                        
-                        // Send email receipt to customer
-                        SendEmail($buyer_email, $buyer_name, $txn_id, $message);
+//                            // Email transaction details to customer
+//                            
+//                            // Always set content-type when sending HTML email
+//                            $headers = "MIME-Version: 1.0" . "\r\n";
+//                            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+//
+//                            // Headers
+//                            $headers .= 'From: <webmaster@example.com>' . "\r\n";
+//                            $to = "2102090@sit.singaporetech.edu.sg";
+//                            $subject = "GameDex: Invoice for Transaction No: '$txn_id'";
+//                            $message = "
+//                            <html>
+//                            <head>
+//                            <title>Transaction Details</title>
+//                            </head>
+//                            <body>
+//                            <p>Testing</p>
+//                            <table>
+//                            <tr>
+//                            <th>Firstname</th>
+//                            <th>Lastname</th>
+//                            </tr>
+//                            <tr>
+//                            <td>John</td>
+//                            <td>Doe</td>
+//                            </tr>
+//                            </table>
+//                            </body>
+//                            </html>
+//                            ";
+//                            mail($to,$subject,$txt,$headers);  
                     } 
 
             ?>
@@ -253,9 +266,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                                     $remarks = $item['gift_id'];
                             ?>
                             <tr>
-                                <td><?php echo $item["name"]; ?></td>           <!-- List name from query -->
+                                <td><?php echo $item["name"]; ?></td>           <!-- List name from cart -->
                                 <td><?php echo '$'.$price; ?></td>              <!-- List name from price -->
-                                <td><?php echo $quantity; ?></td>               <!-- List name from quantity -->
+                                <td>1</td>               <!-- List name from quantity -->
                                 <td><?php echo '$'.$sub_total; ?></td>          <!-- List name from subtotal -->
                                 <td><?php 
                                     //echo "<script>alert(" . $remarks . ");</script>";
@@ -275,18 +288,29 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                                 <?php
                                     } 
                                 } else if($cart->total_items() > 0){                   // Grab all items again from user's cart to display
+                                    //get cart items from session 
+                                    $cartItems = $cart->contents(); 
                                     foreach($cartItems as $item){
                                     ?>
                             <tr>
                                 <td><?php echo $item["name"]; ?></td>           <!-- List name from cart -->
                                 <td><?php echo '$'.$item["price"]; ?></td>      <!-- List name from price -->
-                                <td><?php echo $item["quantity"]; ?></td>       <!-- List name from quantity -->
+                                <td>1</td>       <!-- List name from quantity -->
                                 <td><?php echo '$'.$item["subtotal"]; ?></td>   <!-- List name from subtotal -->
+                                <?php if (isset($_SESSION['isgift'])){
+                                    ?>
+                                <label class="form-check-label" for="gift">This order contains a gift</label>
+                                <td><input class="btn btn-info btn-lg btn-block checkout-gift-btn" id="isgift" type="isgift" name="isgift[]" value="Gift!" onclick="changeText(event);" readonly="readonly"></td>
+                                
+                                <?php
+                                } else {
+                                ?>
+                                
                                 <td><?php 
                                     //echo "<script>alert(" . $remarks . ");</script>";
-                                    if($item['gift_id'] != 0 && !is_null($item['gift_id'])){
+                                    if($remarks != 0 && !is_null($remarks)){
 //                                        //echo "<script>alert('You are authorized!');</script>";
-                                        $query = "SELECT * FROM steam_clone_members where member_id =".$item['gift_id'];
+                                        $query = "SELECT * FROM steam_clone_members where member_id =". $remarks;
                                         $result = $db_handle->runBaseQuery($query);
                                         if (!empty($result)){
                                             foreach ($result as $row) {
@@ -294,24 +318,46 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                                             }
                                         }
                                         echo "A Gift to ". $gift;
-                                    }?>
+                                    } else{
+                                        echo "Game has just been ordered";    
+                                    }
+                                }
+                                    ?>
                                 </td>
                             </tr>
+                            
+                            
                             <?php
-                                } }?>
+                                } 
+                                //echo '<input class="btn btn-light btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Back to Games">';
+                                            }?>
+                            
                         </tbody>
                     </table>
+                    <!--<input class="btn btn-light btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="lol">-->    
                 </div>
+                <?php if (isset($_SESSION['isgift'])){ ?>
+                    <!--<form method="post" action="<?php echo $_SESSION['temp_link']?>">-->
+                    <div class="checkout-gift-container">
+                        <h4>Recipient Details</h4>
+                        <div class="mb-1">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" name="email" placeholder="Email to send gift" value="<?php echo !empty($postData['email'])?$postData['email']:''; ?>" required>
+                    </div>
+                        <!--<input type="submit" value="click to validate email" name="validate">
+                    </form>-->
+                <!--<input class="btn btn-light btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Submit Games">-->
+                <?php } ?>
         </div>
-        <form method="post" action="cartAction.php">
         <input type="hidden" name="action" value="placeOrder"/>
         <input type="hidden" name="orderid" value="<?php echo "$payment_id" ?>"/>
+        <?php if (isset($_SESSION['isgift'])){ ?>
+        <input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Send Gift!"></input>
+        <?php } else {?>
+        <input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Back to games"></input>
         
-        <input type="email" class="form-control" name="email" placeholder="Email to send gift" value="<?php echo !empty($postData['email'])?$postData['email']:''; ?>" required>
-        <input type="hidden" name="action" value="placeOrder"/>
-        <input type="hidden" name="gift"/> 
+        <?php } ?>
         
-        <input class="btn btn-light btn-lg btn-block checkout-main-btn" type="submit" name="checkoutSubmit" value="Back to Games">
         </form>
         <br>
         <?php } else {?>
@@ -326,7 +372,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     
     <!-- FOOTER -->
     <?php
-        include "footer.inc.php";
+        //include "footer.inc.php";
     ?>
 </body>
 </html>

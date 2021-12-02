@@ -44,6 +44,7 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
                 $itemData['name'] = $row['name'];
                 $itemData['price'] = $row['price'];
                 $itemData['image'] = $row["image"];
+                $itemData['publisher'] = $row['publisher'];
             }
         }
         
@@ -81,7 +82,8 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
         $redirectLoc = 'viewCart.php'; 
     }
     elseif($_REQUEST['action'] == 'placeOrder' && $cart->total_items() > 0){
-        $redirectLoc = 'checkout.php'; 
+        //$redirectLoc = 'orderSuccess.php'; 
+        $redirectLoc = $_SESSION["temp_link"];
         
         
         
@@ -103,7 +105,7 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
                     $errorMsg .= "Invalid email format.<br>";
                 }
             }
-            
+            unset($isagift);
             $isagift = array();
             
             foreach($values as $test){
@@ -115,9 +117,11 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
                     $query = "SELECT member_id FROM steam_clone_members WHERE email = '" . $email. "'";
                     $result = $db_handle->runBaseQuery($query);
                     if (!empty($result)){
+                        //echo "<script>alert('hello world')</script>";
                         foreach ($result as $row){
                             // Fetch all the results from our database
                             $test = $row["member_id"];
+                            
                         }
                     }else{
                         $errorMsg .= "Email does not exist.<br>";
@@ -148,18 +152,22 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
 
             // Retrieve cart items 
             $cartItems = $cart->contents(); 
-
+            
+            if(empty($cartItems)){
+                echo "<script>alert('test123')</script>";
+            }
+            
             // Prepare SQL to insert order items 
             $sql = ''; 
                 
             if(!empty($_POST["isgift"])){
-
+                
                 $it = new MultipleIterator;
                 $a1 = new ArrayIterator($cartItems);
                 $a2 = new ArrayIterator($isagift);
                 $it->attachIterator($a1);
                 $it->attachIterator($a2);
-
+                
 
                 foreach($it as $e){ 
                    $sql .= "INSERT INTO order_items (payment_id, product_id, quantity, gift_id) VALUES ('".$orderID."', '".$e[0]['id']."', '1', '".(int)$e[1]."');"; 
@@ -178,9 +186,9 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
              * 
              */ 
 
-            // Insert order items in the database 
+            // Insert order items in the database
             $insertOrderItems = $db->multi_query($sql); 
-
+            
             if($insertOrderItems){ 
                 // Remove all items from cart 
                 $cart->destroy(); 
@@ -188,6 +196,7 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
                 // Redirect to the status page 
                 //$redirectLoc = 'orderSuccess.php?id='.$orderID;
                 $redirectLoc = 'index.php';
+                unset($_SESSION['isgift']);
             }
             // Unable to execute Query
             else{                                                              

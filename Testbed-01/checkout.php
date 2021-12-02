@@ -1,5 +1,7 @@
 <?php 
 
+//include "head.inc.php";
+
 session_start();
 
 require_once "authCookieSessionValidate.php";
@@ -36,6 +38,30 @@ if(!empty($sessData['status']['msg'])){
     $statusMsgType = $sessData['status']['type']; 
     unset($_SESSION['sessData']['status']); 
 } 
+
+if (isset($_POST['gift'])){
+    $_SESSION["isgift"] = "true";
+}
+
+if (isset($_POST['email'])){
+    echo "<script>alert('hello world')</script>";
+    echo "<script>alert(" .$_POST["email"].")</script>";
+    echo "<script>alert('lalalas')</script>";
+    $db_handle = new DBController();
+
+    $query = "SELECT email FROM steam_clone_members WHERE id = '" . $_POST['email']. "'";
+    $result = $db_handle->runBaseQuery($query);
+    if (!empty($result)){
+        echo "<script>alert('hello world')</script>";
+        foreach ($result as $row){
+            // Fetch all the results from our database
+            $test1 = $row["email"];
+            echo "<script>alert(". $test1.")</script>";
+        }
+    }
+}
+
+
 ?>
 
 <script type="text/javascript">
@@ -51,8 +77,6 @@ if(!empty($sessData['status']['msg'])){
 </script>
 
 <html lang="EN">
-    <title>GamesDex: Checkout for your games</title>
-    <meta name="Shopping Cart checkout" content="width=device-width, initial-scale=1.0">
     <?php include "head.inc.php" ?>
     <!-- BODY -->
     <body class="bg-dark">
@@ -89,7 +113,7 @@ if(!empty($sessData['status']['msg'])){
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
                                     <h6 class="my-0"><?php echo $item["name"]; ?></h6>
-                                    <small class="text-muted"><?php echo '$'.$item["price"]; ?>(<?php echo $item["qty"]; ?>)</small>
+                                    <small class="text-muted"><?php echo '$'.$item["price"]; ?></small>
                                 </div>
                                 <span class="text-muted"><?php echo '$'.$item["subtotal"]; ?></span>
                             </li>
@@ -99,19 +123,19 @@ if(!empty($sessData['status']['msg'])){
                                 <strong><?php echo '$'.$cart->total(); ?></strong>
                             </li>
                         </ul>
-                        
+                        <!--
                         <div class="checkout-promo">
                         <h3>Got a promotional code?</h3>
                             <div>
                                 <input type="text" class="form-control" placeholder="Enter your code here">
                                 <button class="btn btn-block btn-light ">Apply</button>
                             </div>
-                        </div>
+                        </div>-->
                         <a href="index.php" class="btn btn-block btn-light checkout-btn">Back to Shopping</a>
                     </div>
 
                     <?php
-                        if (isset($_POST['gift']) || $statusMsg) { // <-- IF THE GIFT OPTION SELECTED
+                        if (isset($_POST['giftefef']) || $statusMsg) { // <-- IF THE GIFT OPTION SELECTED
                     ?>
                     <div class="col-md-7 order-md-1 checkout-left">
                         <h1>Checkout</h1>
@@ -143,7 +167,6 @@ if(!empty($sessData['status']['msg'])){
                                         <span class="col item-qty">Qty: 1</span>
                                         <span class="col item-cancel">
                                             <input class="btn btn-info btn-lg btn-block checkout-gift-btn" id="isgift" type="isgift" name="isgift[]" value="For Me!" onclick="changeText(event);" readonly="readonly">
-                                            
                                         </span>
                                     </div>
                                     <div class="row">
@@ -161,7 +184,7 @@ if(!empty($sessData['status']['msg'])){
                                 <h4>Contact Details</h4>
                                 <div class="mb-1">
                                 <label for="email">Email:</label>
-                                <input type="email" id="inputemail" onkeyup="inputvalue()" class="form-control" name="email" placeholder="Email to send gift" value="<?php echo !empty($postData['email'])?$postData['email']:''; ?>" required>
+                                <input type="email" class="form-control" name="email" placeholder="Email to send gift" value="<?php echo !empty($postData['email'])?$postData['email']:''; ?>" required>
                             </div>
                             </div>
                             <input type="hidden" name="action" value="placeOrder"/>
@@ -219,17 +242,10 @@ if(!empty($sessData['status']['msg'])){
                 </div>
             </div>
         </main>
-        <script>
-            function inputvalue(){
-                /* Get input value on change */
-                var inputVal = document.getElementById("inputemail").value;
-            }
-        </script>
+
         <!-- FOOTER -->
         <?php
             include "footer.inc.php";
         ?>
     </body>
-    
-    
 </html>
