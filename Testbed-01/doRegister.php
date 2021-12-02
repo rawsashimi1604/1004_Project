@@ -79,9 +79,10 @@
                 <br>
                 <main class='container text-light register-success-container'>
                     <h1>Your registration is successful!</h1>
-                    <h4>Thank you for signing up with Steam Clone <?php echo ($fname . " " . $lname)?></h4>
+                    <h4>Thank you for signing up with GamesDéx! <?php echo ($fname . " " . $lname)?></h4>
                     <div class="form-group">
                     <button type="submit" class="btn btn-success">Log In</button>
+                    <button type='button' class='btn btn-secondary' data-bs-toggle='modal' data-bs-target='#loginModal'>Login</button>
                 </div>
                 </main>
                 <?php
