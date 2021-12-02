@@ -89,18 +89,7 @@ function updateGame()
   $conn->close();
 }
 }
-function imageResize($imageResourceId,$width,$height) {
 
-
-    $targetWidth =460;
-    $targetHeight =215;
-
-
-    $targetLayer=imagecreatetruecolor($targetWidth,$targetHeight);
-    imagecopyresampled($targetLayer,$imageResourceId,0,0,0,0,$targetWidth,$targetHeight, $width,$height);
-    
-    return $targetLayer;
-}
 function addGame()
 {
   global $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2;
@@ -110,49 +99,21 @@ function addGame()
       $file_name = $_FILES['image']['name'];
       $file_size = $_FILES['image']['size'];
       $file_tmp = $_FILES['image']['tmp_name'];
-      $file_type = $_FILES['image']['type'];
       $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-      
-      $extensions= array("jpeg","jpg","png");
       
       if(in_array($file_ext,$extensions)=== false){
          $errors[]="extension not allowed, please choose a JPEG or PNG file.";
       }
       
       if($file_size > 2097152) {
-         $errors[]='File size must be excately 2 MB';
+         $errors[]='File size must be exactly 2 MB';
       }
       
       if(empty($errors)==true) {
           $target = "/var/www/html/project/images/";
           $complete_path = $target . basename($_FILES['image']['name']);
-          $file = $_FILES['image']['tmp_name'];
-          $srcProperties = getimagesize($file);
-          $fileNewName = time();
-          $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-          
-          $imageType = $sourceProperties[2];
-          
-          switch ($imageType) {
-              case IMAGETYPE_PNG:
-                  $imageId = imagecreatefrompng($file);
-                  $targetLayer = imageResize($imageId, $sourceProperties[0], $sourceProperties[1]);
-                  imagepng($targetLayer,$target.$fileNewName."_thump.".$ext);
-                  break;
-              
-              case IMAGETYPE_JPEG:
-                  $imageId = imagecreatefromjpeg($file);
-                  $targetLayer = imageResize($imageId, $sourceProperties[0], $sourceProperties[1]);
-                  imagepng($targetLayer,$target.$fileNewName."_thump.".$ext);
-                  break;
-              
-              default:
-                  echo "Invalid Image type";
-                  exit;
-                  break;
-          }
-          
-          move_uploaded_file($file, $complete_path);
+          $file_tmp = $_FILES['image']['tmp_name'];
+          move_uploaded_file($file_tmp, $complete_path);
           echo "File has been uploaded";
       }else{
          print_r($errors);
@@ -188,9 +149,10 @@ function addGame()
           }
           else{
               $filedir = "images/" . $file_name;
-              $stmt = $conn->prepare("INSERT INTO apps_list (appid, name, price, description, image, developer, publisher, windows_requirements, linux_requirements, mac_requirements, genre, category, category2) VALUES ($app_id, '$gameTitle', $gamePrice, '$gameDesc', '$filedir', '$dev', '$publisher', '$windows_requirements', '$linux_requirements', '$mac_requirements', $genre_id, $category_id, $category_id2)");
+              $stmt = $conn->prepare("INSERT INTO apps_list (appid, name, price, description, image, developer, publisher, windows_requirements, linux_requirements, mac_requirements, genre, category, category2) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                      //$app_id, '$gameTitle', $gamePrice, '$gameDesc', '$filedir', '$dev', '$publisher', '$windows_requirements', '$linux_requirements', '$mac_requirements', $genre_id, $category_id, $category_id2)");
               // Bind & execute the query statement:        
-              //$stmt->bind_param("isissssssiii", $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $gameCat, $gameCat2);
+              $stmt->bind_param("isisssssssiii", $app_id, $gameTitle, $gamePrice, $gameDesc, $filedir, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $gameCat, $gameCat2);
               if (!$stmt->execute()) {
                   $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
                   $success = false;
@@ -227,6 +189,7 @@ function deleteGame()
     //$isAuthenticated = false;
     echo "<script>alert('Ooops something wrong with database connection')</script>";
   } else {
+      $fileName = 
       $stmt = $conn->prepare("DELETE FROM apps_list WHERE appid=?");
       // Bind & execute the query statement:        
       $stmt->bind_param("i", $app_id);
@@ -257,6 +220,7 @@ function deleteGame()
           if($btnVal == "Submit")
           {
               echo "<h1>Game details changed successfully</h1>";
+              echo $text;
               echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
               echo "<a href='devGamesList.php' class='btn btn-success'>Return to Home</a>";
           }
@@ -286,65 +250,3 @@ function deleteGame()
     <?php include "footer.inc.php"; ?>
   </body>
 </html>
-<?php
-/*
-if (! empty($_POST["login"])) {
-    $isAuthenticated = false;
-    $username = $_POST["member_name"];
-    $password = $_POST["member_password"];
-    
-    $user = $auth->getMemberByUsername($username);
-    if (password_verify($password, $user[0]["member_password"])) {
-        $isAuthenticated = true;
-    }
-    
-    if ($isAuthenticated) {
-        $_SESSION["member_id"] = $user[0]["member_id"];
-        $isAuthenticated = true;
-        
-    } else {
-        $message = "Invalid Login";
-    }
-}
-?>
-
-<html>
-    <head>
-        <title>Login Results</title>
-        <?php
-            include "head.inc.php";
-        ?>
-    </head>
-    <body class="bg-dark">
-        <?php
-            include "nav.inc.php";
-        ?>
-        <main class="container text-light login-success-container">
-            <?php
-                if ($success) 
-                {
-                    $isAuthenticated = true;
-                    $user = $auth->getMemberByEmail($email);
-                    $_SESSION["member_id"] = $user[0]["member_id"];
-                    
-                    echo "<h1>Login successful!</h1>"; 
-                    echo "<h2>Welcome back, " . $fname . " " . $lname . ".</h2>";
-                    echo "<a href='index.php' class='btn btn-success'>Return to Home</a>";
-                }   
-                else
-                { 
-                    echo "<h1>Oops!</h2>";
-                    echo "<h2>The following errors were detected:</h4>"; 
-                    echo "<p>" . $errorMsg . "</p>";
-                    echo "<p>You can login again at the link below</p>";
-                    echo "<a href='index.php' data-bs-target='#loginModal' class='btn btn-danger' role='button'>Return to Login</a>";
-                }
-            ?>
-        </main>
-        <?php
-            include "footer.inc.php";
-        ?>  
-    </body>
-</html>
-*/
-?>
