@@ -57,6 +57,19 @@
         font-weight: 800;
     }
 
+    nav .nav-acc {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        border-radius: 5px;
+        color: var(--light-6);
+        border: 1px solid var(--dark-3);
+    }
+
+    nav .nav-acc:hover {
+        border-color: white;
+        background-color: var(--dark-4);
+    }
+
     .navbar {
         padding-right: 0.8rem;
         padding-left: 0.8rem;
