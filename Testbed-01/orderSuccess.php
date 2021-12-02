@@ -99,6 +99,22 @@ unset($_SESSION['postData']);
         else
             a.value = "Gift!";
     }
+	
+	function showHint(str) {
+        if (str.length == 0) {
+          document.getElementById("txtHint").innerHTML = "";
+          return;
+        } else {
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+          };
+          xmlhttp.open("GET", "getemail.php?q=" + str, true);
+          xmlhttp.send();
+        }
+    }
 </script>
 
 
@@ -348,7 +364,8 @@ unset($_SESSION['postData']);
                         <h4>Recipient Details</h4>
                         <div class="mb-1">
                         <label for="email">Email:</label>
-                        <input type="email" class="form-control" name="email" placeholder="Email to send gift" value="<?php echo !empty($postData['email'])?$postData['email']:''; ?>" required>
+                        <input type="email" class="form-control" name="email" placeholder="Email to send gift" onkeyup="showHint(this.value)" required>
+                        <p><span id="txtHint"></span></p>
                     </div>
                 <?php } ?>
         </div>
