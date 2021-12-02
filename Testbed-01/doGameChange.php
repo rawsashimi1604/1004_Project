@@ -51,43 +51,38 @@ else
 function updateGame()
 {
   global $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2;
-  //, $price, $desc, $dev, $publisher, $windows_requirements, $linux_requirements
   
   if (empty($gameTitle) || empty($app_id)) {
-    echo "name is empty";
+      echo "name is empty";
   } else {
-  // Create database connection.    
-  $config = parse_ini_file('../../private/db-config.ini');
-  $conn = new mysqli(
-    $config['servername'],
-    $config['username'],
-    $config['password'],
-    $config['dbname']
-  );
-
-  // Check connection    
-  if ($conn->connect_error) {
-    $errorMsg = "Connection failed: " . $conn->connect_error;
-    $success = false;
-    //$isAuthenticated = false;
-    echo "<script>alert('Ooops something wrong with database connection')</script>";
-  } else {
-    // Prepare the statement:
-    $stmt = $conn->prepare("UPDATE apps_list SET name = '$gameTitle', price = $gamePrice, description = '$gameDesc', developer = '$dev', publisher = '$publisher', windows_requirements = '$windows_requirements', linux_requirements = '$linux_requirements', mac_requirements = '$mac_requirements', genre = $genre_id, category = $category_id, category2 = $category_id2 WHERE appid = $app_id");
-    //, price = '$price', description = '$desc', developer = '$developer', publisher = '$publisher', windows_requirement = '$windows_requirements', linux_requirement = '$linux_requirements', mac_requirements = '$mac_requirements', genre = '$genre_id', category = '$category_id', category2 = '$category_id2' 
-    // Bind & execute the query statement:        
-    //$stmt->bind_param("i", $app_id);
-    // $fname, $dob, $email, $userId
-    if (!$stmt->execute()) {
-      $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+      // Create database connection.    
+      $config = parse_ini_file('../../private/db-config.ini');
+      $conn = new mysqli(
+      $config['servername'],
+      $config['username'],
+      $config['password'],
+      $config['dbname']
+              );
+    // Check connection 
+      if ($conn->connect_error) {
+      $errorMsg = "Connection failed: " . $conn->connect_error;
       $success = false;
-      //echo "<script>alert('Failed to update details')</script>";
-    }
-    $stmt->close();
-  }
+      echo "<script>alert('Ooops something wrong with database connection')</script>";
+    } else {
+      // Prepare the statement:
+      $stmt = $conn->prepare("UPDATE apps_list SET name = ?, price = ?, description = ?, developer = ?, publisher = ?, windows_requirements = ?, linux_requirements = ?, mac_requirements = ?, genre = ?, category = ?, category2 = ? WHERE appid = ?");
+      // Bind & execute the query statement:
+      $stmt->bind_param("sissssssiiii", $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2, $app_id);
+      if (!$stmt->execute()) {
+        $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        $success = false;
+      }
+      $stmt->close();
+      }
 
-  $conn->close();
-}
+      $conn->close();
+      
+      }
 }
 
 function addGame()
@@ -227,6 +222,10 @@ function deleteGame()
               echo "<h1>Game details changed successfully</h1>";
               echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
               echo "<a href='gameslist.php' class='btn btn-success'>Return to Home</a>";
+              echo "<br> " . $app_id . "<br> " . $gameTitle . "<br> " 
+                      . $gamePrice . "<br> " . $gameDesc . "<br> " . $dev . "<br> " . $publisher . "<br> " 
+                      . $windows_requirements . "<br> " . $linux_requirements . "<br> " . $mac_requirements 
+                      . "<br> " . $genre_id . "<br> " . $category_id . "<br> " . $category_id2;
           }
           else
           {
