@@ -1269,6 +1269,14 @@
         .ord-info>div {
             margin-bottom: 0.5rem;
         }
+
+        .nav-acc {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            margin-bottom: 0.5rem;
+        }
     }
 
     @media screen and (max-width: 768px) {}
