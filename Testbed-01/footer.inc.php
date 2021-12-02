@@ -86,7 +86,7 @@
         <!-- Section: Form -->
         <div class="">
             
-            <form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
+            <form action="index.php" method="post">
                 <!--Grid row-->
                 <div class="row d-lg-flex justify-content-between">
                     <!--Grid column-->

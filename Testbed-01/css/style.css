@@ -1031,7 +1031,8 @@
     }
 
     .checkout-left .checkout-main-btn {
-        width: 100%;
+        padding: 0;
+        border: 0;
     }
 
     .checkout-container .checkout-right {
