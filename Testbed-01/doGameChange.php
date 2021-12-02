@@ -213,19 +213,12 @@ function deleteGame()
           if($btnVal == "Submit")
           {
               echo "<h1>Game details changed successfully</h1>";
-              echo $text;
-              echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
               echo "<a href='gameslist.php' class='btn btn-success'>Return to Home</a>";
           }
           elseif($btnVal == "Update")
           {
               echo "<h1>Game details changed successfully</h1>";
-              echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
               echo "<a href='gameslist.php' class='btn btn-success'>Return to Home</a>";
-              echo "<br> " . $app_id . "<br> " . $gameTitle . "<br> " 
-                      . $gamePrice . "<br> " . $gameDesc . "<br> " . $dev . "<br> " . $publisher . "<br> " 
-                      . $windows_requirements . "<br> " . $linux_requirements . "<br> " . $mac_requirements 
-                      . "<br> " . $genre_id . "<br> " . $category_id . "<br> " . $category_id2;
           }
           else
           {
