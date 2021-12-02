@@ -5,13 +5,18 @@
 <!-- HEAD -->
 <?php include "head.inc.php"; ?>
 
+
+
 <body class="bg-dark">
-    <!-- Insert Nav bar -->
-    <?php
-    include "nav.inc.php";
+    <!-- NAV -->
+    <?php include "nav.inc.php"; 
+    
+    $userId = $_SESSION['member_id'];
     ?>
+    
     <!-- MySQL Database Connection-->
     <?php
+    //Checking for request to see Game ID
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $id = $_GET['id'];
         // Prepare the statement:
@@ -149,6 +154,7 @@
                 </div>
                 <div class="game-price-details" data-aos="fade-right" data-aos-duration="1500">
                     <span class="game-price"><?php echo '$'."$price" ?></span>
+                    <?php ?>
                     <button type="button" class="btn btn-success" onclick="location.href='cartAction.php?action=addToCart&id=<?php echo "$id" ?>'">
                         Add to Cart
                     </button>

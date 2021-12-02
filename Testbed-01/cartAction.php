@@ -9,7 +9,10 @@ if(!$isLoggedIn) {
 }
 
 $userId = $_SESSION['member_id'];
-
+if (empty($userId)){
+    echo "<script>alert('Please Log in!');</script>";
+    header("Location: index.php");
+}
 
 // Initialize shopping cart class 
 require_once 'Cart.inc.php'; 
