@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     $db_handle = new DBController();
     
     $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    echo "<script>alert(". $actual_link .")</script>";
+    //echo "<script>alert(". $actual_link .")</script>";
     $_SESSION["temp_link"] = $actual_link;
     
     
@@ -253,6 +253,10 @@ unset($_SESSION['postData']);
                             </tr>
                         </thead>
                         <tbody>
+                            <?php if (isset($_SESSION['isgift'])){
+                                    ?>
+                            <label class="form-check-label" for="gift">This order contains a gift</label>
+                            <?php } ?>
                             <?php 
                             // Get order items from the database 
                             $query ="SELECT i.*, p.name, p.price FROM order_items as i LEFT JOIN apps_list as p ON p.appid = i.product_id WHERE i.payment_id = '$payment_id'"; 
@@ -299,7 +303,7 @@ unset($_SESSION['postData']);
                                 <td><?php echo '$'.$item["subtotal"]; ?></td>   <!-- List name from subtotal -->
                                 <?php if (isset($_SESSION['isgift'])){
                                     ?>
-                                <label class="form-check-label" for="gift">This order contains a gift</label>
+                                <!--<label class="form-check-label" for="gift">This order contains a gift</label>-->
                                 <td><input class="btn btn-info btn-lg btn-block checkout-gift-btn" id="isgift" type="isgift" name="isgift[]" value="Gift!" onclick="changeText(event);" readonly="readonly"></td>
                                 
                                 <?php
