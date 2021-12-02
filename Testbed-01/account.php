@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php 
 session_start();
+
 require_once "authCookieSessionValidate.php";
 
 if(!$isLoggedIn) {
@@ -22,8 +23,6 @@ debug_to_console($userId);
 ?>
 
 <html lang="EN">
-    <title>GamesDex: Your Account</title>
-    <meta name="User Accounts Page" content="width=device-width, initial-scale=1.0"> 
     <?php
         include "head.inc.php";
     ?>
@@ -218,13 +217,19 @@ debug_to_console($userId);
                     <hr>
                     <?php 
                     $db_handle = new DBController();
-                   
                     $config = parse_ini_file('../../private/db-config.ini');
                     $db = new mysqli($config['servername'], $config['username'],
                             $config['password'], $config['dbname']);    
                     //$query = "SELECT DISTINCT r.*, o.gift_id FROM steam_clone_members as s INNER JOIN user_payments as r ON r.customer_id = s.member_id INNER JOIN order_items as o ON r.id = o.payment_id WHERE s.member_id = " . $userId . " ORDER BY r.id DESC;";
-                    $query = "SELECT a.*, s.fname, s.lname, i.payment_date FROM order_items as o INNER JOIN apps_list as a ON o.product_id = a.appid INNER JOIN user_payments as i ON o.payment_id = i.id INNER JOIN steam_clone_members as s ON i.customer_id = s.member_id where o.gift_id = " . $userId . " ORDER BY i.payment_date DESC;";
+                    $query = "SELECT a.*, s.fname, s.lname, i.payment_date FROM order_items as o INNER JOIN apps_list as a ON o.product_id = a.appid INNER JOIN user_payments as i ON o.payment_id = i.payment_id INNER JOIN steam_clone_members as s ON i.customer_id = s.member_id where o.gift_id = " . $userId . " ORDER BY i.payment_date DESC;";
                     $result = $db->query($query);
+                    
+                    
+                    //$stmt = $conn->prepare("SELECT a.*, s.fname, s.lname, i.payment_date FROM order_items as o INNER JOIN apps_list as a ON o.product_id = a.appid INNER JOIN user_payments as i ON o.payment_id = i.payment_id INNER JOIN steam_clone_members as s ON i.customer_id = s.member_id where o.gift_id=? ORDER BY i.payment_date DESC;");        
+                    // Bind & execute the query statement:        
+                    //$stmt->bind_param("i", $userId);        
+                    //$stmt->execute();        
+                    //$result = $stmt->get_result();   
                     
                     if($result->num_rows > 0){ 
                         foreach ($result as $row) {
@@ -239,20 +244,20 @@ debug_to_console($userId);
                                     <?php echo 'Game: '. $row["name"]; ?>
                                 </span>
                                 <span class="col item-price">
-                                    <?php echo $row["fname"] . " " . $row["lname"]; ?>
+                                    <?php echo "$".$row["price"]; ?>
                                 </span>
                             </div>
                             <div class="row">
                                 <span class="col-8 item-qty">
                                     <?php echo 'Received on: '.$row["payment_date"]; ?>
                                 </span>
-                                <span class="col item-cancel">
+                                <!--<span class="col item-cancel">
                                     <button class="btn btn-sm btn-success" onclick="window.location.href='#">Accept</button>
-                                </span>
+                                </span>-->
                             </div>
                             <div class="row">
                                 <span class="item-company">
-                                    <?php echo 'Status: '.$row["payment_status"]; ?>
+                                    <?php echo 'Status: Success'; ?>
                                 </span>
                             </div>
                         </div>

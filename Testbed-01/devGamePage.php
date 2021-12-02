@@ -50,7 +50,7 @@
     ?>
     
     <main class="container text-light game-container">
-        <form action="doGameChange.php" method="post" enctype="multipart/form-data"></form>">
+        <form action="doGameChange.php" method="post" enctype="multipart/form-data">
             <table border="0" cellpadding="5" cellspacing="0" width="100%">
                 <?php
                 if(empty($name)){
@@ -162,10 +162,10 @@
                     <?php
                     if (empty($name)){
                         ?><input type="submit" class="btn btn-light" name="btnAct" value="Submit">
-                        <input type="submit" class="btn btn-danger" name="btnAct" value="Delete">
                         <?php
                     }else{
-                        ?><input type="submit" class="btn btn-light" name="btnAct" value="Update"><?php
+                        ?><input type="submit" class="btn btn-light" name="btnAct" value="Update">
+                        <input type="submit" class="btn btn-danger" name="btnAct" value="Delete"><?php
                     }?>
                         
                     <a class="btn btn-primary" href="./gameslist.php" role="button">Cancel</a>

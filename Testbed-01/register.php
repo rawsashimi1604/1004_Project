@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="EN">
-<title>GamesDex: Register Now!</title>
+<title>GamesDéx: Register Now!</title>
 <meta name="Register Page" content="width=device-width, initial-scale=1.0">
     <?php
         include "head.inc.php";

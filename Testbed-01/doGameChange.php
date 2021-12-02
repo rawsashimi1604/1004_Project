@@ -89,6 +89,18 @@ function updateGame()
   $conn->close();
 }
 }
+function imageResize($imageResourceId,$width,$height) {
+
+
+    $targetWidth =460;
+    $targetHeight =215;
+
+
+    $targetLayer=imagecreatetruecolor($targetWidth,$targetHeight);
+    imagecopyresampled($targetLayer,$imageResourceId,0,0,0,0,$targetWidth,$targetHeight, $width,$height);
+    
+    return $targetLayer;
+}
 function addGame()
 {
   global $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2;
@@ -114,8 +126,34 @@ function addGame()
       if(empty($errors)==true) {
           $target = "/var/www/html/project/images/";
           $complete_path = $target . basename($_FILES['image']['name']);
-         move_uploaded_file($file_tmp, $complete_path);
-         echo "File has been uploaded";
+          $file = $_FILES['image']['tmp_name'];
+          $srcProperties = getimagesize($file);
+          $fileNewName = time();
+          $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+          
+          $imageType = $sourceProperties[2];
+          
+          switch ($imageType) {
+              case IMAGETYPE_PNG:
+                  $imageId = imagecreatefrompng($file);
+                  $targetLayer = imageResize($imageId, $sourceProperties[0], $sourceProperties[1]);
+                  imagepng($targetLayer,$target.$fileNewName."_thump.".$ext);
+                  break;
+              
+              case IMAGETYPE_JPEG:
+                  $imageId = imagecreatefromjpeg($file);
+                  $targetLayer = imageResize($imageId, $sourceProperties[0], $sourceProperties[1]);
+                  imagepng($targetLayer,$target.$fileNewName."_thump.".$ext);
+                  break;
+              
+              default:
+                  echo "Invalid Image type";
+                  exit;
+                  break;
+          }
+          
+          move_uploaded_file($file, $complete_path);
+          echo "File has been uploaded";
       }else{
          print_r($errors);
       }

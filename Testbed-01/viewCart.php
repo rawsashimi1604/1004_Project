@@ -3,6 +3,16 @@
 // Initialize shopping cart class 
 include_once 'Cart.inc.php'; 
 $cart = new Cart; 
+/*
+session_start();
+require_once "authCookieSessionValidate.php";
+if(!$isLoggedIn) {
+    header("Location: ./index.php");
+}
+ * 
+ */
+$userId = $_SESSION['member_id'];
+
 ?>
 
 <html lang="EN">
@@ -55,7 +65,7 @@ $cart = new Cart;
                                     </span>
                                 </div>
                                 <div class="row">
-                                    <span class="item-company">Published by Riot Games</span>
+                                    <span class="item-company">Published by <?php echo $item["publisher"]; ?></span>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +131,7 @@ $cart = new Cart;
 
                     <div class="col-md-4 cart-info">
                         <span class="cart-subtotal">Subtotal: <span class="cart-price"><?php echo '$'.$cart->total(); ?></span></span>
-                        <span class="cart-taxfees">Estimated Tax and Fees: <span class="cart-tax">$3.98</span></span>
+                        <!--<span class="cart-taxfees">Estimated Tax and Fees: <span class="cart-tax">$3.98</span></span>-->
                         <hr>
                         <form action="checkout.php" method="post">
                             <div class="form-check cart-check">
