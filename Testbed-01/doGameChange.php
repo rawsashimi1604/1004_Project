@@ -94,6 +94,7 @@ function addGame()
 {
   global $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2;
   
+  //checks if file was sent
   if(isset($_FILES['image'])){
       $errors= array();
       $file_name = $_FILES['image']['name'];
@@ -108,7 +109,7 @@ function addGame()
       if($file_size > 2097152) {
          $errors[]='File size must be exactly 2 MB';
       }
-      
+      //to upload the file into server
       if(empty($errors)==true) {
           $target = "/var/www/html/project/images/";
           $complete_path = $target . basename($_FILES['image']['name']);
@@ -135,7 +136,6 @@ function addGame()
   if ($conn->connect_error) {
     $errorMsg = "Connection failed: " . $conn->connect_error;
     $success = false;
-    //$isAuthenticated = false;
     echo "<script>alert('Ooops something wrong with database connection')</script>";
   } else {
           // Prepare the statement:
@@ -186,10 +186,8 @@ function deleteGame()
   if ($conn->connect_error) {
     $errorMsg = "Connection failed: " . $conn->connect_error;
     $success = false;
-    //$isAuthenticated = false;
     echo "<script>alert('Ooops something wrong with database connection')</script>";
   } else {
-      $fileName = 
       $stmt = $conn->prepare("DELETE FROM apps_list WHERE appid=?");
       // Bind & execute the query statement:        
       $stmt->bind_param("i", $app_id);
@@ -222,18 +220,18 @@ function deleteGame()
               echo "<h1>Game details changed successfully</h1>";
               echo $text;
               echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
-              echo "<a href='devGamesList.php' class='btn btn-success'>Return to Home</a>";
+              echo "<a href='gameslist.php' class='btn btn-success'>Return to Home</a>";
           }
           elseif($btnVal == "Update")
           {
               echo "<h1>Game details changed successfully</h1>";
               echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
-              echo "<a href='devGamesList.php' class='btn btn-success'>Return to Home</a>";
+              echo "<a href='gameslist.php' class='btn btn-success'>Return to Home</a>";
           }
           else
           {
               echo "<h1>Game " . $gameTitle . " has been successfully deleted!</h1></br>";
-              echo "<a href='devGamesList.php' class='btn btn-success'>Return to Home</a>";
+              echo "<a href='gameslist.php' class='btn btn-success'>Return to Home</a>";
           }
           
       } 
