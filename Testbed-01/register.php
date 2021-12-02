@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-md">
                         <label for="lname" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" aria-label="Last name" id="lname" name="lname">
+                        <input type="text" class="form-control" aria-label="Last name" id="lname" name="lname" required>
                     </div>
                 </div>
 
@@ -31,13 +31,13 @@
                 <div class="row register-row">
                     <div class="col-md">
                         <label for="pwd" class="form-label">Password</label>
-                        <input type="password" class="form-control" aria-label="First name" id="pwd" name="pwd" onkeyup="checkpw()">
+                        <input type="password" class="form-control" aria-label="First name" id="pwd" name="pwd" onkeyup="checkpw()" required>
                         <progress max="100" value="0" id="meter"></progress>
                         <div class="textbox text-center"></div>
                     </div>
                     <div class="col-md">
                         <label for="cfm_pwd" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" aria-label="Last name" id="cfm_pwd" name="cfm_pwd" onkeyup="checkpw()">
+                        <input type="password" class="form-control" aria-label="Last name" id="cfm_pwd" name="cfm_pwd" onkeyup="checkpw()" required>
                         <span id='errMsg'></span>
                     </div>
                 </div>
@@ -46,22 +46,22 @@
                 <div class="row register-row">
                     <div class="col-md register-dob">
                         <label for="dateofbirth">Date Of Birth</label>
-                        <input type="date" class="form-control" name="dateofbirth" id="dateofbirth">
+                        <input type="date" class="form-control" name="dateofbirth" id="dateofbirth" required>
                     </div>
                     <div class="col-md">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="email">
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" required>
                     </div>
                 </div>
 
                 <div class="form-check register-check">
-                    <input type="checkbox" class="form-check-input" id="tos">
+                    <input type="checkbox" class="form-check-input" id="tos" required>
                     <label class="form-check-label" for="tos">I Agree to Terms of Service</label>
                 </div>
                 <button type="submit" class="btn btn-light register-btn">Register</button>
             </form>
 
-            <script src="./js/register.js"></script>t
+            <script src="./js/register.js"></script>
         </main>
         <!-- FOOTER -->
         <?php
