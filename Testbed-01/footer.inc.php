@@ -49,7 +49,7 @@
             </html>
         ";
         // Send email
-        SendEmail($input, "Guest", 123, $message, $subject);
+        SendEmail($input, "Guest", $message, $subject);
 
         echo '<div style="position:absolute; left:50%;"class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Email Sent!</strong> Thank you for subscribing to our newsletter :)

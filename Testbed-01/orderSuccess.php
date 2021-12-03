@@ -53,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     $db_handle = new DBController();
     
     $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    //echo "<script>alert(". $actual_link .")</script>";
     $_SESSION["temp_link"] = $actual_link;
     
     
@@ -229,10 +228,10 @@ unset($_SESSION['postData']);
                                     </html>";
 
                         
-                        $subject = "GameDex: Invoice for Transaction No: ".$txn_id."";
+                        $subject = "GamesDex: Invoice for Transaction No: ".$txn_id."";
                         
                         // Send email receipt to customer $user_email
-                        SendEmail($user_email, $buyer_name, $txn_id, $message, $subject);
+                        SendEmail($user_email, $buyer_name, $message, $subject);
                     } 
 
             ?>

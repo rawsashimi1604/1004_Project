@@ -2,7 +2,8 @@
 <html lang="EN">
     <head>
     <?php
-    include "head.inc.php"
+    include "head.inc.php";
+    include "email.php";
     ?>
     </head>
     
@@ -85,6 +86,38 @@
                 </div>
                 </main>
                 <?php
+                $subject = "GamesDex Account Registration Notice";
+                $email = $_POST["email"];
+                $lname = $_POST["lname"];
+                $message = "
+                    <!DOCTYPE html>
+                        <html lang='en'>
+                            <head>
+                                <title>Heyy</title>
+                            </head>
+
+                            <body>
+                                <style>
+
+                                </style>
+
+                                <main>
+                                    <h1>Welcome to GamesDex! ".$lname."</h1>
+                                    <p>This email is to confirm that you have successfully registered with us.
+                                    We hope that we can provide you with the greatest gaming purchasing needs.
+                                    </p>
+                                    <p>
+                                        Thank you for registering with us! Your Email: ".$email."
+                                    </p>
+                                    <p>Visit our <a href='https://github.com/rawsashimi1604/1004_Project/'>Github Page</a> to view our source code!
+                                    </p>
+                                </main>
+                            </body>
+
+                    </html>
+                ";
+                // Send email
+                SendEmail($email, $lname, $message, $subject);
             }  
             else
             {
