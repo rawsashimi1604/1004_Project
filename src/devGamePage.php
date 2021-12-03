@@ -166,7 +166,7 @@
                             <input type="submit" class="btn btn-update btn-success" name="btnAct" value="Update">
                         </div>
                         <div class="col-auto">
-                            <input type="submit" class="btn btn-danger" name="btnAct" value="Delete">
+                            <button type="submit" data-bs-toggle="modal" data-bs-target="#AreYouSure" class="btn btn-danger" name="btnAct" value="Delete">Delete</Button>
                         </div>
                         <div class="col-auto">
                             <a class="btn btn-danger" href="./gameslist.php">Cancel</a>
@@ -177,6 +177,24 @@
                     <a class="btn btn-danger" href="./gameslist.php">Cancel</a>
                 </div> -->
         </form>
+        <div class="modal-content modal-container" id="AreYouSure">
+              <div class="modal-header">
+                <h5 class="modal-title" >Are you sure?</h5>
+
+              </div>
+              <div class="modal-body">
+                  <!-- Login details -->
+                  <div class="row login-row">
+                    <div class="col">
+                      <label for="pwd_" class="form-label">You are about to delete a game!</label>
+                    </div>
+                  </div>
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <a class="btn btn-success" href="" role="button">Yes</a>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+              </div>
+        </div>
     </main>
 
     <!-- FOOTER -->
