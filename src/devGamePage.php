@@ -183,50 +183,30 @@ if($role != "dev" || !$isLoggedIn) {
                     </div>
                     <div>
                     <?php } ?>
-                    <!-- <div class="row mb-3">
-                    <a class="btn btn-danger" href="./gameslist.php">Cancel</a>
-                </div> -->
-        </form>
-        <div class="modal fade " id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content modal-container">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Are you sure?</h5>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Login details -->
-                        <div class="row login-row">
-                            <div class="col">
-                                <label for="pwd_" class="form-label">You are about to delete a game!</label>
+                        <div class="modal fade " id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content modal-container">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Are you sure?</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Login details -->
+                                        <div class="row login-row">
+                                            <div class="col">
+                                                <label for="pwd_" class="form-label">You are about to delete a game!</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-center">
+                                        <input type="submit" class="btn btn-success" name="btnAct" value="Delete" role="button">
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer d-flex justify-content-center">
-                        <a class="btn btn-success" href="" role="button">Yes</a>
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </form>
+        
     </main>
-
-<!-- <div class="modal fade" id="confirmDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div> -->
 
     <!-- FOOTER -->
     <?php
