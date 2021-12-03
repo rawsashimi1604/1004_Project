@@ -144,7 +144,7 @@ function addGame()
               $stmt = $conn->prepare("INSERT INTO apps_list (appid, name, price, description, image, developer, publisher, windows_requirements, linux_requirements, mac_requirements, genre, category, category2) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
                       
               // Bind & execute the query statement:        
-              $stmt->bind_param("isisssssssiii", $app_id, $gameTitle, $gamePrice, $gameDesc, $filedir, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $gameCat, $gameCat2);
+              $stmt->bind_param("isisssssssiii", $app_id, $gameTitle, $gamePrice, $gameDesc, $filedir, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2);
               if (!$stmt->execute()) {
                   $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
                   $success = false;

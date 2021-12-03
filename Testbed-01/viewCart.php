@@ -62,7 +62,7 @@ $cart = new Cart;
                                 <div class="row">
                                     <span class="col item-qty">Qty: 1</span>
                                     <span class="col item-cancel">
-                                        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')?window.location.href='cartAction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>':false;"><img src="images/remove.png"></i> </button>
+                                        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')?window.location.href='cartAction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>':false;"><img alt="Remove from Cart" src="images/remove.png"></i> </button>
                                     </span>
                                 </div>
                                 <div class="row">

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php 
 
 session_start();
@@ -73,10 +74,12 @@ if (isset($_POST['email'])){
     }
 </script>
 
+
 <html lang="EN">
     <head>
         <?php include "head.inc.php" ?>
         <title>GamesDex: Checkout</title>
+        <meta name="Order Cart" http-equiv="X-UA-Compatible" content="IE=edge">
     </head>
     
     <!-- BODY -->

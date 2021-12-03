@@ -25,7 +25,7 @@ $cart = new Cart;
       <div class="d-flex navbar-nav p-2 align-items-lg-center">
           <?php
               if ($cart->total_items() > 0){ 
-                  echo "<a style='text-decoration:none; color:#FFFFFF' href='./viewCart.php'> <img src='images/cart.png'>"; 
+                  echo "<a style='text-decoration:none; color:#FFFFFF' href='./viewCart.php'> <img alt='Shopping Cart' src='images/cart.png'>"; 
                   echo " (";
                   echo ($cart->total_items() > 0)?$cart->total_items().' Items':'Empty';
                   echo ") ";

@@ -11,7 +11,7 @@ if(!$isLoggedIn) {
 $userId = $_SESSION['member_id'];
 $total = 0;
 ?>
-
+<!DOCTYPE html>
 <html lang="EN">
     <head>
         <?php
