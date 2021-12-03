@@ -1,26 +1,22 @@
-# Installation
+# GamesDex - An ICT 1004 Project
 
-- [Install Git](https://git-scm.com/download/win) on your computer and pull the repo into your local machine.
+![HomePage Image](./homepage.PNG)
+## Who we are
+We are a team of students from *Singapore Institute of Technology* currently studying **ICT1004 (Web Systems and Techonologies)**. We hope that through this project, we would be able to apply what we have learnt in class and improve our Web Development skills.
 
-- Pull from this repository using `git`
-```
-  git clone https://github.com/rawsashimi1604/1004_Project.git
-```
+For our project, we decided to do a gaming ecommerce site as we were all passionate about video games.
 
-- From there you should be good to go to start coding!
+The main technologies we used were:
 
-- To add to the codebase use Git! `git add .` adds all changes, `git status` checks status of Git, `git commit -m ...` adds a message to your commit for better referencing, `git push origin master` pushes your code to our master branch! To add individual files, use `git add <file_name>`
+- **HTML** -> HTML templating
+- **CSS** -> Styling
+- **Bootstrap** -> CSS library to accelarate styling process
+- **Vanilla JS** -> Client-side scripting
+- **PHP** -> Main Server-side technology
+- **Google Cloud** -> Cloud hosting service
+- **Apache** -> Web server software
+- **MySQL** -> Database management system (DBMS)
 
-```
-  git add .
-  git status
-  git commit -m "<enter your message here>"
-  git push origin master
-```
+View our website [here](http://34.126.181.163/project/index.php)!
 
-- To pull from existing codebase (get our latest updates), this will pull anything from master into your current master branch.
 
-```
-  git pull
-  git merge origin/master
-```
