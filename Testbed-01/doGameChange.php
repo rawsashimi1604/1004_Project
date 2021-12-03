@@ -39,10 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 }
 else
 {
-    echo "<h2>This page is not meant to be run directly.</h2>";
-    echo "<p>You can login at the link below:</p>";
-    echo "<a href='login.php'>Go to Sign Up page...</a>";
-    exit();
+    header("Location: http://34.126.181.163/project/gameslist.php");
 }
 
 function updateGame()
@@ -111,7 +108,8 @@ function addGame()
           move_uploaded_file($file_tmp, $complete_path);
           echo "File has been uploaded";
       }else{
-         print_r($errors);
+          
+          print_r($errors);
       }
    }
   if (empty($gameTitle) || empty($app_id) || empty($gamePrice) || empty($gameDesc) || empty($dev) || empty($windows_requirements) || empty($linux_requirements) || empty($mac_requirements) || empty($genre_id) || empty($category_id) || empty($category_id2)) {

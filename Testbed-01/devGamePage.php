@@ -53,19 +53,18 @@
     
     <main class="container text-light game-container">
         <form action="doGameChange.php" method="post" enctype="multipart/form-data">
-            <table border="0" cellpadding="5" cellspacing="0" width="100%">
-                <?php
+            <?php
                 if(empty($name)){
-                    ?><h1 class="game-header">Add a new Game</h1><?php
+                    ?><p class="game-header text-white">Add a new Game</p><?php
                 }else{
-                    ?><h1 class="game-header"><?php echo "$name" ?></h1><?php
+                    ?><p class="game-header"><?php echo "$name" ?></p><?php
                 }?>
-                
+            <table>
                 <tbody>
                     <?php if(empty($name)){
                         ?>
                     <tr>
-                        <td width ="130" valign='top'>Game ID</td>
+                        <td>Game ID</td>
                         <td>
                             <input type='text' name='gameID'>
                         </td>
@@ -82,76 +81,76 @@
                     ?>
                     
                     <tr>
-                        <td width ="130" valign='top'>Game Title</td>
+                        <td>Game Title</td>
                         <td>
                             <input type='text' name='gameName' value='<?php echo "$name"?>'>
                         </td>
 
                     </tr>
                     <tr>
-                        <td width ="130" valign='top'>Game Price</td>
+                        <td>Game Price</td>
                         <td>
                             <input type='text' name='gamePrice' value='<?php echo "$price"?>'>
                         </td>
                     </tr>
                     <tr>
-                        <td width ="130" valign='top'>Game Description</td>
+                        <td>Game Description</td>
                         <td>
-                            <textarea name='gameDesc' rows='4' cols='50'><?php echo "$description"?></textarea>
+                            <textarea name='gameDesc'  ><?php echo "$description"?></textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td width ="130" valign='top'>Game Developer</td>
+                        <td>Game Developer</td>
                         <td>
                             <input type='text' name='gameDev' value='<?php echo "$developer"?>'>
                         </td>
                     </tr>
                     <tr>
-                        <td width ="130" valign='top'>Game Publisher</td>
+                        <td>Game Publisher</td>
                         <td>
                             <input type='text' name='gamePublisher' value='<?php echo "$publisher"?>'>
                         </td>
                     </tr>
                     <tr>
-                        <td width ="130" valign='top'>Windows Requirements</td>
+                        <td>Windows Requirements</td>
                         <td>
-                            <textarea name='gameWindows' rows='4' cols='50'><?php echo "$windows_requirements"?></textarea>
+                            <textarea name='gameWindows'><?php echo "$windows_requirements"?></textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td width ="130" valign='top'>Linux Requirements</td>
+                        <td>Linux Requirements</td>
                         <td>
-                            <textarea name='gameLinux' rows='4' cols='50'><?php echo "$linux_requirements"?></textarea>
+                            <textarea name='gameLinux'><?php echo "$linux_requirements"?></textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td width ="130" valign='top'>Mac Requirements</td>
+                        <td>Mac Requirements</td>
                         <td>
-                            <textarea name='gameMac' rows='4' cols='50'><?php echo "$mac_requirements"?></textarea>
+                            <textarea name='gameMac'><?php echo "$mac_requirements"?></textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td width ="130" valign='top'>Game Genre</td>
+                        <td>Game Genre</td>
                         <td>
-                            <input type='text' rows='4' cols='50' name='genre_id' value='<?php echo "$genre_id"?>'>
+                            <input type='text' name='genre_id' value='<?php echo "$genre_id"?>'>
                         </td>
                     </tr>
                     <tr>
-                        <td width ="130" valign='top'>Game Category</td>
+                        <td>Game Category</td>
                         <td>
-                            <input type='text' rows='4' cols='50' name='category' value='<?php echo "$gameCat"?>'>
+                            <input type='text' name='category' value='<?php echo "$gameCat"?>'>
                         </td>
                     </tr>
                     <tr>
-                        <td width ="130" valign='top'>Game Category 2</td>
+                        <td>Game Category 2</td>
                         <td>
-                            <input type='text' name='category2' rows='4' cols='50' name='category2' value='<?php echo "$gameCat2"?>'>
+                            <input type='text' name='category2' value='<?php echo "$gameCat2"?>'>
                         </td>
                     </tr>
                     <?php
                     if(empty($name)){?>
                         <tr>
-                            <td width ="130" valign='top'>Game image</td>
+                            <td>Game image</td>
                             <td>
                                 <input type="file" name="image" />
                             </td>
