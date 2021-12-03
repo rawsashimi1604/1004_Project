@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php 
 /*
  * 
@@ -117,13 +118,14 @@ unset($_SESSION['postData']);
 </script>
 
 
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <?php
         include "head.inc.php";
     ?>
     <title>GamesDex: Order Success!</title>
+    <meta name="Order Details" http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 
 
@@ -390,5 +392,10 @@ unset($_SESSION['postData']);
         <br>
         <?php } ?>
     </main>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
+
 </html>
