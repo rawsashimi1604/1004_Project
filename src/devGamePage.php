@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<?php
+session_start();
+
+require_once "authCookieSessionValidate.php";
+$role = $_SESSION['role'];
+
+if($role != "dev" || !$isLoggedIn) {
+    header("Location: ./index.php");
+} else {
+?>
 <html lang="en">
 <!-- HEAD -->
 
@@ -66,136 +76,157 @@
                         <input class="form-control" type='text' name='gameID'>
                     </div>
                 </div>
-                    <?php } else { ?>
-                        <div class="col-md-7">
-                            <input class="form-control" type='hidden' name='gameID' value='<?php echo "$id" ?>'>
-                        </div>
-                <?php } ?>
-                <div class="row mb-3">
-                    <label class="col-md-3 form-label" for="gameName">Game Title</label>
-                    <div class="col-md-7">
-                        <input class="form-control" type='text' name='gameName' value='<?php echo "$name" ?>'>
-                    </div>
+            <?php } else { ?>
+                <div class="col-md-7">
+                    <input class="form-control" type='hidden' name='gameID' value='<?php echo "$id" ?>'>
                 </div>
+            <?php } ?>
+            <div class="row mb-3">
+                <label class="col-md-3 form-label" for="gameName">Game Title</label>
+                <div class="col-md-7">
+                    <input class="form-control" type='text' name='gameName' value='<?php echo "$name" ?>'>
+                </div>
+            </div>
 
-                <div class="row mb-3">
-                    <label class="col-md-3 form-label" for="gamePrice">Game Price</label>
-                    <div class="col-md-7">
-                        <input class="form-control" type='text' name='gamePrice' value='<?php echo "$price" ?>'>
-                    </div>
+            <div class="row mb-3">
+                <label class="col-md-3 form-label" for="gamePrice">Game Price</label>
+                <div class="col-md-7">
+                    <input class="form-control" type='text' name='gamePrice' value='<?php echo "$price" ?>'>
                 </div>
+            </div>
 
-                <div class="row mb-3">
-                    <label class="col-md-3 form-label" for="gameDesc">Game Description</label>
-                    <div class="col-md-7">
-                        <textarea type="text" type class="form-control" name='gameDesc' rows="7" maxlength="1024"><?php echo "$description" ?></textarea>
-                    </div>
+            <div class="row mb-3">
+                <label class="col-md-3 form-label" for="gameDesc">Game Description</label>
+                <div class="col-md-7">
+                    <textarea type="text" type class="form-control" name='gameDesc' rows="7" maxlength="1024"><?php echo "$description" ?></textarea>
                 </div>
+            </div>
 
-                <div class="row mb-3">
-                    <label class="col-md-3 form-label" for="gameDev">Game Developer</label>
-                    <div class="col-md-7">
-                        <input class="form-control" type='text' name='gameDev' value='<?php echo "$developer" ?>'>
-                    </div>
+            <div class="row mb-3">
+                <label class="col-md-3 form-label" for="gameDev">Game Developer</label>
+                <div class="col-md-7">
+                    <input class="form-control" type='text' name='gameDev' value='<?php echo "$developer" ?>'>
                 </div>
+            </div>
 
-                <div class="row mb-3">
-                    <label class="col-md-3 form-label" for="gamePublisher">Game Publisher</label>
-                    <div class="col-md-7">
-                        <input class="form-control" type='text' name='gamePublisher' value='<?php echo "$publisher" ?>'>
-                    </div>
+            <div class="row mb-3">
+                <label class="col-md-3 form-label" for="gamePublisher">Game Publisher</label>
+                <div class="col-md-7">
+                    <input class="form-control" type='text' name='gamePublisher' value='<?php echo "$publisher" ?>'>
                 </div>
+            </div>
 
-                <div class="row mb-3">
-                    <label class="col-md-3 form-label" for="gameWindows">Windows Requirements</label>
-                    <div class="col-md-7">
-                        <textarea type="text" class="form-control" name='gameWindows' rows="7" maxlength="1024"><?php echo "$windows_requirements" ?></textarea>
-                    </div>
+            <div class="row mb-3">
+                <label class="col-md-3 form-label" for="gameWindows">Windows Requirements</label>
+                <div class="col-md-7">
+                    <textarea type="text" class="form-control" name='gameWindows' rows="7" maxlength="1024"><?php echo "$windows_requirements" ?></textarea>
                 </div>
+            </div>
 
-                <div class="row mb-3">
-                    <label class="col-md-3 form-label" for="gameLinux">Linux Requirements</label>
-                    <div class="col-md-7">
-                        <textarea type="text" class="form-control" name='gameLinux' rows="7" maxlength="1024"><?php echo "$linux_requirements" ?></textarea>
-                    </div>
+            <div class="row mb-3">
+                <label class="col-md-3 form-label" for="gameLinux">Linux Requirements</label>
+                <div class="col-md-7">
+                    <textarea type="text" class="form-control" name='gameLinux' rows="7" maxlength="1024"><?php echo "$linux_requirements" ?></textarea>
                 </div>
+            </div>
 
-                <div class="row mb-3">
-                    <label class="col-md-3 form-label" for="gameMac">Mac Requirements</label>
-                    <div class="col-md-7">
-                        <textarea type="text" class="form-control" name='gameMac' rows="7" maxlength="1024"><?php echo "$mac_requirements" ?></textarea>
-                    </div>
+            <div class="row mb-3">
+                <label class="col-md-3 form-label" for="gameMac">Mac Requirements</label>
+                <div class="col-md-7">
+                    <textarea type="text" class="form-control" name='gameMac' rows="7" maxlength="1024"><?php echo "$mac_requirements" ?></textarea>
                 </div>
+            </div>
 
-                <div class="row mb-3">
-                    <label class="col-md-3 form-label" for="genre_id">Game Genre</label>
-                    <div class="col-md-7">
-                        <input class="form-control" type='text' name='genre_id' value='<?php echo "$genre_id" ?>'>
-                    </div>
+            <div class="row mb-3">
+                <label class="col-md-3 form-label" for="genre_id">Game Genre</label>
+                <div class="col-md-7">
+                    <input class="form-control" type='text' name='genre_id' value='<?php echo "$genre_id" ?>'>
                 </div>
+            </div>
 
-                <div class="row mb-3">
-                    <label class="col-md-3 form-label" for="category">Game Category</label>
-                    <div class="col-md-7">
-                        <input class="form-control" type='text' name='category' value='<?php echo "$gameCat" ?>'>
-                    </div>
+            <div class="row mb-3">
+                <label class="col-md-3 form-label" for="category">Game Category</label>
+                <div class="col-md-7">
+                    <input class="form-control" type='text' name='category' value='<?php echo "$gameCat" ?>'>
                 </div>
+            </div>
 
+            <div class="row mb-3">
+                <label class="col-md-3 form-label" for="category2">Game Category 2</label>
+                <div class="col-md-7">
+                    <input class="form-control" type='text' name='category2' value='<?php echo "$gameCat2" ?>'>
+                </div>
+            </div>
+            <?php if (empty($name)) { ?>
                 <div class="row mb-3">
-                    <label class="col-md-3 form-label" for="category2">Game Category 2</label>
+                    <label class="col-md-3 form-label" for="game_image">Game image</label>
                     <div class="col-md-7">
-                        <input class="form-control" type='text' name='category2' value='<?php echo "$gameCat2" ?>'>
+                        <input class="form-control" type="file" name="game_image" />
                     </div>
                 </div>
-                <?php if (empty($name)) { ?>
-                    <div class="row mb-3">
-                        <label class="col-md-3 form-label" for="game_image">Game image</label>
-                        <div class="col-md-7">
-                            <input class="form-control" type="file" name="game_image"/>
-                        </div>
+                <div class="row mb-3">
+                    <input type="submit" class="btn btn-primary col-md-2" name="btnAct" value="Submit">
+                    <div class="col-md-2">
+                        <a class="btn btn-danger" href="./gameslist.php">Cancel</a>
                     </div>
-                    <div class="row mb-3">
-                        <input type="submit" class="btn btn-primary col-md-2" name="btnAct" value="Submit">
-                        <div class="col-md-2">
-                            <a class="btn btn-danger" href="./gameslist.php">Cancel</a>
-                        </div>
+                </div>
+            <?php } else { ?>
+                <div class="row mb-3">
+                    <div class="col-auto">
+                        <input type="submit" class="btn btn-update btn-success" name="btnAct" value="Update">
                     </div>
-                <?php } else { ?>
-                    <div class="row mb-3">
-                        <div class="col-auto">
-                            <input type="submit" class="btn btn-update btn-success" name="btnAct" value="Update">
-                        </div>
-                        <div class="col-auto">
-                            <button type="submit" data-bs-toggle="modal" data-bs-target="#AreYouSure" class="btn btn-danger" name="btnAct" value="Delete">Delete</Button>
-                        </div>
-                        <div class="col-auto">
-                            <a class="btn btn-danger" href="./gameslist.php">Cancel</a>
-                        </div>
+                    <div class="col-auto">
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#confirmDelete" class="btn btn-danger" name="btnAct" value="Delete">Delete</Button>
+                    </div>
+                    <div class="col-auto">
+                        <a class="btn btn-danger" href="./gameslist.php">Cancel</a>
+                    </div>
                     <div>
-                <?php } ?>
-                <!-- <div class="row mb-3">
+                    <?php } ?>
+                    <!-- <div class="row mb-3">
                     <a class="btn btn-danger" href="./gameslist.php">Cancel</a>
                 </div> -->
         </form>
-        <div class="modal-content modal-container" id="AreYouSure">
-              <div class="modal-header">
-                <h5 class="modal-title" >Are you sure?</h5>
-
-              </div>
-              <div class="modal-body">
-                  <!-- Login details -->
-                  <div class="row login-row">
-                    <div class="col">
-                      <label for="pwd_" class="form-label">You are about to delete a game!</label>
+        <div class="modal fade " id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content modal-container">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Are you sure?</h5>
                     </div>
-                  </div>
-              </div>
-              <div class="modal-footer d-flex justify-content-center">
-                <a class="btn btn-success" href="" role="button">Yes</a>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-              </div>
+                    <div class="modal-body">
+                        <!-- Login details -->
+                        <div class="row login-row">
+                            <div class="col">
+                                <label for="pwd_" class="form-label">You are about to delete a game!</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <a class="btn btn-success" href="" role="button">Yes</a>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
+
+<!-- <div class="modal fade" id="confirmDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div> -->
 
     <!-- FOOTER -->
     <?php
@@ -214,3 +245,5 @@
 </body>
 
 </html>
+
+<?php } ?>
