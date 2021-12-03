@@ -1,7 +1,6 @@
 <?php
 
 //Define and initialize variables to hold our form data:
-//ini_set('display_errors', 1);
 session_start();
 
 require_once "authCookieSessionValidate.php";
@@ -28,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $checkOriginalPassword = checkOriginalPassword();
     }
     
-    #Validation for pwd and pwd_confirm input
+    //Validation for pwd and pwd_confirm input
     if(strcmp($_POST['new_pwd'], $_POST['cfm_pwd'])!= 0)
     {
         $errorMsg .= "Passwords do not match...<br>";
@@ -46,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         //NOTE: we do not sanitize the password since this could strip out characters
         //that are meant to be part of the password. Instead, we will hash the password
         //before sorting it in our database, and NEVER output the plaintext password to the web page.
-        
        
         $pwd_hashed = password_hash($_POST["new_pwd"], PASSWORD_DEFAULT); 
         

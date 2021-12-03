@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-
-    
     <?php 
     // Include configuration file 
     include_once 'paypal_config.php'; 

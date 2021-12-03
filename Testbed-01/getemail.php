@@ -2,11 +2,7 @@
 
 // Include the database config file 
 require_once 'DBController.php'; 
-/*
-ini_set('display_errors', 'on');
-error_reporting(E_ALL);
- * 
- */
+
 $test = "";
 $email = $_REQUEST["q"];
 

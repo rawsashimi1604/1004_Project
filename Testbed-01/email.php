@@ -27,13 +27,13 @@ function generateGameKey($length = 16) {
 
 function SendEmail($recipient_email, $recipient_name, $message, $subject){
     $mail = new PHPMailer;
-    $mail->SMTPDebug = 3;                                           // Enable verbose debug output
+    $mail->SMTPDebug = 3;                                               // Enable verbose debug output
     $mail->isSMTP();                                                    // Set mailer to use SMTP
     $mail->Host = 'smtp.gmail.com';                                     // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                                             // Enable SMTP authentication
-    $mail->Username = 'dummy2ict1004@gmail.com';                         // SMTP username
-    $mail->Password = 'jszzsmceqouiqnmd';                                  // SMTP password
-    $mail->SMTPSecure = 'tls';                                         // Enable TLS encryption, `ssl` also accepted
+    $mail->Username = 'dummy2ict1004@gmail.com';                        // SMTP username
+    $mail->Password = 'jszzsmceqouiqnmd';                               // SMTP password
+    $mail->SMTPSecure = 'tls';                                          // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                                  // TCP port to connect to
 
     $mail->addAddress($recipient_email, $recipient_name);               // Add a recipient
@@ -44,7 +44,6 @@ function SendEmail($recipient_email, $recipient_name, $message, $subject){
 
     $mail->Subject = $subject;
     $mail->Body = $message;
-    //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     if(!$mail->send()) {
         $errormessage = 'Message could not be sent. Mailer Error: ' . $mail->ErrorInfo;

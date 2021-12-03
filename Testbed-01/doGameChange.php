@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $category_id = $_POST['category'];
     $category_id2 = $_POST['category2'];
     $btnVal = $_POST['btnAct'];
-    //echo $btnVal;
+
     if($btnVal == "Submit"){
         addGame();
     }
@@ -49,37 +49,38 @@ function updateGame()
 {
   global $app_id, $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2;
   
+  
   if (empty($gameTitle) || empty($app_id)) {
-      echo "name is empty";
+    echo "name is empty";
   } else {
-      // Create database connection.    
-      $config = parse_ini_file('../../private/db-config.ini');
-      $conn = new mysqli(
-      $config['servername'],
-      $config['username'],
-      $config['password'],
-      $config['dbname']
-              );
-    // Check connection 
-      if ($conn->connect_error) {
-      $errorMsg = "Connection failed: " . $conn->connect_error;
-      $success = false;
-      echo "<script>alert('Ooops something wrong with database connection')</script>";
-    } else {
-      // Prepare the statement:
-      $stmt = $conn->prepare("UPDATE apps_list SET name = ?, price = ?, description = ?, developer = ?, publisher = ?, windows_requirements = ?, linux_requirements = ?, mac_requirements = ?, genre = ?, category = ?, category2 = ? WHERE appid = ?");
-      // Bind & execute the query statement:
-      $stmt->bind_param("sissssssiiii", $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2, $app_id);
-      if (!$stmt->execute()) {
-        $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-        $success = false;
-      }
-      $stmt->close();
-      }
+  // Create database connection.    
+  $config = parse_ini_file('../../private/db-config.ini');
+  $conn = new mysqli(
+    $config['servername'],
+    $config['username'],
+    $config['password'],
+    $config['dbname']
+  );
 
-      $conn->close();
-      
-      }
+  // Check connection    
+  if ($conn->connect_error) {
+    $errorMsg = "Connection failed: " . $conn->connect_error;
+    $success = false;
+    //$isAuthenticated = false;
+    echo "<script>alert('Ooops something wrong with database connection')</script>";
+  } else {
+    // Prepare the statement:
+    $stmt = $conn->prepare("UPDATE apps_list SET name = '$gameTitle', price = $gamePrice, description = '$gameDesc', developer = '$dev', publisher = '$publisher', windows_requirements = '$windows_requirements', linux_requirements = '$linux_requirements', mac_requirements = '$mac_requirements', genre = $genre_id, category = $category_id, category2 = $category_id2 WHERE appid = $app_id");
+
+    if (!$stmt->execute()) {
+      $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+      $success = false;
+    }
+    $stmt->close();
+  }
+
+  $conn->close();
+}
 }
 
 function addGame()
@@ -142,7 +143,8 @@ function addGame()
           else{
               $filedir = "images/" . $file_name;
               $stmt = $conn->prepare("INSERT INTO apps_list (appid, name, price, description, image, developer, publisher, windows_requirements, linux_requirements, mac_requirements, genre, category, category2) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                    
+                      
+              // Bind & execute the query statement:        
               $stmt->bind_param("isisssssssiii", $app_id, $gameTitle, $gamePrice, $gameDesc, $filedir, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $gameCat, $gameCat2);
               if (!$stmt->execute()) {
                   $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
@@ -209,11 +211,14 @@ function deleteGame()
           if($btnVal == "Submit")
           {
               echo "<h1>Game details changed successfully</h1>";
+              echo $text;
+              echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
               echo "<a href='gameslist.php' class='btn btn-success'>Return to Home</a>";
           }
           elseif($btnVal == "Update")
           {
               echo "<h1>Game details changed successfully</h1>";
+              echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
               echo "<a href='gameslist.php' class='btn btn-success'>Return to Home</a>";
           }
           else

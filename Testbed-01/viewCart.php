@@ -77,7 +77,7 @@ $cart = new Cart;
                         <?php } ?>
                         <?php if($cart->total_items() > 0){ ?>
                         <tr>
-                            <!--<td class="text-right"><strong><?php echo '$'.$cart->total(); ?></strong></td>-->
+                        <?php echo '$'.$cart->total(); ?>
                         </tr>
                         <?php } ?>
                         

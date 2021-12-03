@@ -38,6 +38,7 @@ $cart = new Cart;
                   echo "<a class='nav-link nav-acc' href='./account.php'>Welcome Back, " . $userName . "</a>";
               }
           ?>
+
           <?php
               if (! $isLoggedIn){ 
                   echo "<a class='nav-link' href='./register.php'>Register</a>";
