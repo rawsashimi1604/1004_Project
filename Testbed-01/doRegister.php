@@ -130,11 +130,7 @@
                     <?php 
                     echo "<p>" . $errorMsg . "</p>";
                     ?>
-                    <div class="form-group">
-                        <a href="register.php">
-                            <button class="btn btn-danger">Return to Sign Up</button>
-                        </a>
-                    </div>
+                    <a class="btn btn-danger" href="./register.php" role="button">Return to Sign Up</a>
                 </main>
 
             <?php
@@ -150,11 +146,7 @@
                 <?php 
                 echo "<p>" . $errorMsg . "</p>";
                 ?>
-                <div class="form-group">
-                    <a href="register.php">
-                        <button class="btn btn-danger">Return to Sign Up</button>
-                    </a>
-                </div>
+                <a class="btn btn-danger" href="./register.php" role="button">Return to Sign Up</a>
             </main>
         
         <?php

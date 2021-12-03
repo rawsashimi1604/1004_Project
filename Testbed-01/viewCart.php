@@ -20,7 +20,7 @@ $cart = new Cart;
             include "nav.inc.php";
             $userId = $_SESSION['member_id'];
             if (empty($userId)){
-                echo '<div style="position:absolute; left:50%;"class="alert alert-danger alert-dismissible fade show" role="alert">
+                echo '<div style="position: absolute; left: 50%;" class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>Error!</strong> Please sign in before proceeding to checkout.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                       </div>';

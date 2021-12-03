@@ -5,6 +5,7 @@
 <head>
     <?php
         include "head.inc.php";
+        header("Location: http://34.126.181.163/project/index.php");
     ?>
     <title>GamesDex: Login</title>
     <meta name="Login Page" content="width=device-width, initial-scale=1.0">

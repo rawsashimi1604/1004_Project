@@ -42,10 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 }
 else
 {
-    echo "<h2>This page is not meant to be run directly.</h2>";
-    echo "<p>You can login at the link below:</p>";
-    echo "<a href='login.php'>Go to Sign Up page...</a>";
-    exit();
+    header("Location: http://34.126.181.163/project/register.php");
 }
 
 function sanitize_input($data) 

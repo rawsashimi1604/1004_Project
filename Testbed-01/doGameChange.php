@@ -70,14 +70,15 @@ function updateGame()
     echo "<script>alert('Ooops something wrong with database connection')</script>";
   } else {
     // Prepare the statement:
-    $stmt = $conn->prepare("UPDATE apps_list SET name = '$gameTitle', price = $gamePrice, description = '$gameDesc', developer = '$dev', publisher = '$publisher', windows_requirements = '$windows_requirements', linux_requirements = '$linux_requirements', mac_requirements = '$mac_requirements', genre = $genre_id, category = $category_id, category2 = $category_id2 WHERE appid = $app_id");
-
-    if (!$stmt->execute()) {
-      $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-      $success = false;
-    }
-    $stmt->close();
-  }
+    $stmt = $conn->prepare("UPDATE apps_list SET name = ?, price = ?, description = ?, developer = ?, publisher = ?, windows_requirements = ?, linux_requirements = ?, mac_requirements = ?, genre = ?, category = ?, category2 = ? WHERE appid = ?");
+      // Bind & execute the query statement:
+      $stmt->bind_param("sissssssiiii", $gameTitle, $gamePrice, $gameDesc, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $category_id, $category_id2, $app_id);
+      if (!$stmt->execute()) {
+        $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        $success = false;
+      }
+      $stmt->close();
+      }
 
   $conn->close();
 }
@@ -211,14 +212,11 @@ function deleteGame()
           if($btnVal == "Submit")
           {
               echo "<h1>Game details changed successfully</h1>";
-              echo $text;
-              echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
               echo "<a href='gameslist.php' class='btn btn-success'>Return to Home</a>";
           }
           elseif($btnVal == "Update")
           {
               echo "<h1>Game details changed successfully</h1>";
-              echo "<a href='devGamePage.php?id=".$app_id."' class='btn btn-success'>Back</a>";
               echo "<a href='gameslist.php' class='btn btn-success'>Return to Home</a>";
           }
           else
