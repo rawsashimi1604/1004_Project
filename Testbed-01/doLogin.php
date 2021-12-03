@@ -169,5 +169,10 @@ if (! empty($_POST["login"])) {
         <?php
             include "footer.inc.php";
         ?>  
+
+        <script>
+            var hiddenElement = document.querySelector(".navbar").querySelectorAll(".d-flex")[1];
+            hiddenElement.classList.toggle('display-hide');
+        </script>
     </body>
 </html>
