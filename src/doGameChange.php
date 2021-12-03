@@ -92,6 +92,7 @@ function addGame()
       $file_size = $_FILES['image']['size'];
       $file_tmp = $_FILES['image']['tmp_name'];
       $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
+      $extensions= array("jpeg","jpg","png");
       
       if(in_array($file_ext,$extensions)=== false){
          $errors[]="extension not allowed, please choose a JPEG or PNG file.";
