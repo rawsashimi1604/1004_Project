@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="EN">
-<title>GamesDéx: Register Now!</title>
-<meta name="Register Page" content="width=device-width, initial-scale=1.0">
+
+<head>
     <?php
         include "head.inc.php";
     ?>
+    <title>GamesDéx: Register Now!</title>
+    <meta name="Register Page" content="width=device-width, initial-scale=1.0">
+</head>
+    
     <!-- BODY -->
     <body class="bg-dark">
         <?php

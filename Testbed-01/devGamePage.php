@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>GamesDex: Developer Game Page</title>
-<meta name="Developers Page" content="width=device-width, initial-scale=1.0">
-
 <!-- HEAD -->
-<?php include "head.inc.php"; ?>
+<head>
+    <?php include "head.inc.php"; ?>
+    <title>GamesDex: Developer Game Page</title>
+    <meta name="Developers Page" content="width=device-width, initial-scale=1.0">
+</head>
+
 
 <body class="bg-dark">
     <!-- Insert Nav bar -->

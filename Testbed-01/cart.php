@@ -1,7 +1,11 @@
 <html lang="EN">
-    <?php
-        include "head.inc.php";
-    ?>
+    <head>
+        <?php
+            include "head.inc.php";
+        ?>
+        <title>GamesDex: Cart</title>
+    </head>
+    
     <!-- BODY -->
     <body class="bg-dark">
         <?php

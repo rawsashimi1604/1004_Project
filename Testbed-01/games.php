@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <!-- HEAD SETUP -->
-    <?php
-        include "head.inc.php"
-    ?>
+    <head>
+        <?php
+            include "head.inc.php"
+        ?>
+        <title>GamesDex: Games</title>
+    </head>
+    
     
     <!-- MySQL Database Connect -->
     <?php

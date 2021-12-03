@@ -119,9 +119,13 @@ unset($_SESSION['postData']);
 
 <!DOCTYPE html>
 <html lang="en">
-<?php
-    include "head.inc.php";
-?>
+<head>
+    <?php
+        include "head.inc.php";
+    ?>
+    <title>GamesDex: Order Success!</title>
+</head>
+
 
 <body class="bg-dark">
     <main class="container jumbotron text-center mb-0 ord-container">

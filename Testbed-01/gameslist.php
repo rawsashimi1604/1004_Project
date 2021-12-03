@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>GamesDex: Search for your favourite games!</title>
-<meta name="List of Games" content="width=device-width, initial-scale=1.0">
+
 <!-- HEAD SETUP -->
-<?php
-include "head.inc.php";
-session_start();
-?>
+<head>
+    <?php
+        include "head.inc.php";
+        session_start();
+    ?>
+    <title>GamesDex: Search for your favourite games!</title>
+    <meta name="List of Games" content="width=device-width, initial-scale=1.0">
+</head>
+
 
 <!-- MySQL Database Connect get ALL -->
 <?php

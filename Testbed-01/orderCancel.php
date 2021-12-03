@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>GamesDex: Order Cancelled</title>
-<meta name="Cancelled Order" content="width=device-width, initial-scale=1.0">
+
 <head>
-    <meta charset="utf-8">
+    <?php include "head.inc.php" ?> 
+    <title>GamesDex: Order Cancelled</title>
+    <meta name="Cancelled Order" content="width=device-width, initial-scale=1.0">
 </head>
-<?php include "head.inc.php" ?> 
+
 <body class="bg-dark">
     <?php include "nav.inc.php" ?>
     <header class="container jumbotron text-center mb-0 home-container">

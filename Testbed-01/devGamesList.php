@@ -4,15 +4,18 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
-
 <html lang="EN">
-<title>GamesDex: Developers List</title>
-<meta name="List of Games" content="width=device-width, initial-scale=1.0">
+
 <!-- HEAD SETUP -->
-<?php
-include "head.inc.php";
-session_start();
-?>
+<head>
+    <?php
+        include "head.inc.php";
+        session_start();
+    ?>
+    <title>GamesDex: Developers List</title>
+    <meta name="List of Games" content="width=device-width, initial-scale=1.0">
+</head>
+    
 
 <script>
 $(document).ready(function() {

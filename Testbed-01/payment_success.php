@@ -47,7 +47,11 @@
 
 <html lang="EN">
     <!--HEAD-->
-    <?php include "head.inc.php" ?>
+    <head>
+        <?php include "head.inc.php" ?>
+        <title>GamesDex: Payment Successful!</title>
+    </head>
+    
     
     <!--BODY-->
     <body>

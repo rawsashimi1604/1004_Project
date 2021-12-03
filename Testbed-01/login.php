@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="EN">
-<title>GamesDex: Login</title>
-<meta name="Login Page" content="width=device-width, initial-scale=1.0">
 
-    <!-- HEAD -->
+<!-- HEAD -->
+<head>
     <?php
         include "head.inc.php";
     ?>
+    <title>GamesDex: Login</title>
+    <meta name="Login Page" content="width=device-width, initial-scale=1.0">
+</head>
+    
     <!-- BODY -->
     <body class="bg-dark">
         <?php

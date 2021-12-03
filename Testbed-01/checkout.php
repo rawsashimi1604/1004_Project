@@ -74,7 +74,11 @@ if (isset($_POST['email'])){
 </script>
 
 <html lang="EN">
-    <?php include "head.inc.php" ?>
+    <head>
+        <?php include "head.inc.php" ?>
+        <title>GamesDex: Checkout</title>
+    </head>
+    
     <!-- BODY -->
     <body class="bg-dark">
         <?php

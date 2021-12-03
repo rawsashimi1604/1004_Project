@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="EN">
     <head>
-    <?php
-    include "head.inc.php";
-    include "email.php";
-    ?>
+        <?php
+        include "head.inc.php";
+        include "email.php";
+        ?>
+        <title>Thank you for registering!</title>
     </head>
     
     <body class="bg-dark">
