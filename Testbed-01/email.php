@@ -27,7 +27,7 @@ function generateGameKey($length = 16) {
 
 function SendEmail($recipient_email, $recipient_name, $message, $subject){
     $mail = new PHPMailer;
-    $mail->SMTPDebug = 3;                                               // Enable verbose debug output
+    $mail->SMTPDebug = false;                                               // Enable verbose debug output
     $mail->isSMTP();                                                    // Set mailer to use SMTP
     $mail->Host = 'smtp.gmail.com';                                     // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                                             // Enable SMTP authentication
