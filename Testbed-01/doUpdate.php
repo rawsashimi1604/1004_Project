@@ -19,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function updateDetails()
 {
   global $lname, $fname, $dob, $email, $userId, $errorMsg;
-  // , $fname, $dob, $email, $userId, $errorMsg, $success;
 
   if (empty($lname)) {
     echo "last name is empty";
@@ -46,7 +45,6 @@ function updateDetails()
     if (!$stmt->execute()) {
       $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
       $success = false;
-      //echo "<script>alert('Failed to update details')</script>";
     }
     $stmt->close();
   }

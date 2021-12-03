@@ -13,9 +13,6 @@ $email = $_REQUEST["q"];
 if ($email !== ""){
     $db_handle = new DBController();
     
-    //$query = "SELECT * FROM user_payments WHERE txn_id = '$txn_id'"; 
-    //$prevPaymentResult = $db_handle->runBaseQuery($query);
-    
     $query = "SELECT member_id FROM steam_clone_members WHERE email = '$email';";
     $result = $db_handle->runBaseQuery($query);
     if (!empty($result)){

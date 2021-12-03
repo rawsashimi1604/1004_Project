@@ -10,16 +10,6 @@ if(!$isLoggedIn) {
 
 $userId = $_SESSION['member_id'];
 $total = 0;
-/*
-function debug_to_console($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-
-    echo "<script>alert('Debug Objects: " . $output . "' );</script>";
-}
-debug_to_console($userId);
-*/
 ?>
 
 <html lang="EN">
@@ -108,20 +98,6 @@ debug_to_console($userId);
                     <button type="submit" class="btn btn-light account-btn">Change password</button>
                 </form>
             </div>
-
-            <!-- Account statistics -->
-            <!--
-            <div class="container account-container">
-                <h2>Account Transactions</h2>
-                <hr>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ad placeat nesciunt esse voluptatum nemo
-                    ut! Laboriosam fugiat molestias, impedit officiis quasi culpa quam consequatur optio veniam eius sed
-                    nulla, magnam beatae itaque amet in nobis repellat reiciendis quibusdam aliquam vel quos quis? Quisquam
-                    perferendis incidunt libero voluptatum id provident?
-                </p>
-            </div>
-            -->
             
             <div class="row container account-container">
                 <div class="col-md-8 cart-main">
@@ -136,7 +112,6 @@ debug_to_console($userId);
                     $config = parse_ini_file('../../private/db-config.ini');
                     $db = new mysqli($config['servername'], $config['username'],
                             $config['password'], $config['dbname']);    
-                    //$query = "SELECT DISTINCT r.*, o.gift_id FROM steam_clone_members as s INNER JOIN user_payments as r ON r.customer_id = s.member_id INNER JOIN order_items as o ON r.id = o.payment_id WHERE s.member_id = " . $userId . " ORDER BY r.id DESC;";
                     $query = "SELECT r.* FROM steam_clone_members as s INNER JOIN user_payments as r ON r.customer_id = s.member_id WHERE s.member_id = " . $userId . " ORDER BY r.payment_id DESC;";
                     $result = $db->query($query);
                     
@@ -196,7 +171,6 @@ debug_to_console($userId);
                     <tr>
                         <td></td>
                         <td></td>
-                        <!--<td><strong>Cart Total</strong></td>-->
                         <!--<td class="text-right"><strong><?php echo '$'.$cart->total(); ?></strong></td>-->
                         <td></td>
                     </tr>
@@ -220,16 +194,8 @@ debug_to_console($userId);
                     $config = parse_ini_file('../../private/db-config.ini');
                     $db = new mysqli($config['servername'], $config['username'],
                             $config['password'], $config['dbname']);    
-                    //$query = "SELECT DISTINCT r.*, o.gift_id FROM steam_clone_members as s INNER JOIN user_payments as r ON r.customer_id = s.member_id INNER JOIN order_items as o ON r.id = o.payment_id WHERE s.member_id = " . $userId . " ORDER BY r.id DESC;";
                     $query = "SELECT a.*, s.fname, s.lname, i.payment_date FROM order_items as o INNER JOIN apps_list as a ON o.product_id = a.appid INNER JOIN user_payments as i ON o.payment_id = i.payment_id INNER JOIN steam_clone_members as s ON i.customer_id = s.member_id where o.gift_id = " . $userId . " ORDER BY i.payment_date DESC;";
                     $result = $db->query($query);
-                    
-                    
-                    //$stmt = $conn->prepare("SELECT a.*, s.fname, s.lname, i.payment_date FROM order_items as o INNER JOIN apps_list as a ON o.product_id = a.appid INNER JOIN user_payments as i ON o.payment_id = i.payment_id INNER JOIN steam_clone_members as s ON i.customer_id = s.member_id where o.gift_id=? ORDER BY i.payment_date DESC;");        
-                    // Bind & execute the query statement:        
-                    //$stmt->bind_param("i", $userId);        
-                    //$stmt->execute();        
-                    //$result = $stmt->get_result();   
                     
                     if($result->num_rows > 0){ 
                         foreach ($result as $row) {
@@ -251,9 +217,6 @@ debug_to_console($userId);
                                 <span class="col-8 item-qty">
                                     <?php echo 'Received on: '.$row["payment_date"]; ?>
                                 </span>
-                                <!--<span class="col item-cancel">
-                                    <button class="btn btn-sm btn-success" onclick="window.location.href='#">Accept</button>
-                                </span>-->
                             </div>
                             <div class="row">
                                 <span class="item-company">
@@ -274,7 +237,7 @@ debug_to_console($userId);
         
         <!-- FOOTER -->
         <?php
-        include "footer.inc.php";
+            include "footer.inc.php";
         ?>
     </body>
 </html>

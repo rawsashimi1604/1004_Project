@@ -13,7 +13,6 @@ class DBController {
 	}	
 	
     function connectDB() {
-        //$conn = mysqli_connect($this->host,$this->user,$this->password,$this->database);
         $config = parse_ini_file('../../private/db-config.ini');
         $conn = new mysqli($config['servername'], $config['username'],
         $config['password'], $config['dbname']);

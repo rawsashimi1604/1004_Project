@@ -25,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
     else
     {
-        //$hashed_password = password_hash($_POST['old_pwd'], PASSWORD_DEFAULT);
         $checkOriginalPassword = checkOriginalPassword();
     }
     
@@ -147,33 +146,13 @@ function updateUserPassword()
         {
             $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
             $success = false;
-            //echo "<script>alert('Failed to update password')</script>";
         }     
         $stmt->close();    
     }   
     
     $conn->close();   
 }
-/*
-if (! empty($_POST["login"])) {
-    $isAuthenticated = false;
-    $username = $_POST["member_name"];
-    $password = $_POST["member_password"];
-    
-    $user = $auth->getMemberByUsername($username);
-    if (password_verify($password, $user[0]["member_password"])) {
-        $isAuthenticated = true;
-    }
-    
-    if ($isAuthenticated) {
-        $_SESSION["member_id"] = $user[0]["member_id"];
-        $isAuthenticated = true;
-        
-    } else {
-        $message = "Invalid Login";
-    }
-}
-*/
+
 ?>
 <html>
     <head>

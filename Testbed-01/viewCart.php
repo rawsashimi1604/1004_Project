@@ -45,7 +45,6 @@ $cart = new Cart;
                         <div class="cart-item row">
                             <div class="col-3 item-img">
                                 <img src="<?php echo $item['image'] ?>" alt="item1">
-                                <!--<img src="./images/about_game.jpg" alt="item 1">-->
                             </div>
                             <div class="col-9 item-info">
                                 <div class="row">
@@ -74,62 +73,14 @@ $cart = new Cart;
                         <?php } ?>
                         <?php if($cart->total_items() > 0){ ?>
                         <tr>
-                            <!--<td><strong>Cart Total</strong></td>-->
                             <!--<td class="text-right"><strong><?php echo '$'.$cart->total(); ?></strong></td>-->
                         </tr>
                         <?php } ?>
                         
-                        
-                        
-                        <!--
-                        <div class="cart-item row">
-                            <div class="col-3 item-img">
-                                <img src="./images/about_game.jpg" alt="item 1">
-                            </div>
-                            <div class="col-9 item-info">
-                                <div class="row">
-                                    <span class="col item-name">
-                                        My Item Name
-                                    </span>
-                                    <span class="col item-price">
-                                        $10.00
-                                    </span>
-                                </div>
-                                <div class="row">
-                                    <span class="col item-qty">Qty: 1</span>
-                                </div>
-                                <div class="row">
-                                    <span class="item-company">Published by Riot Games</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cart-item row">
-                            <div class="col-3 item-img">
-                                <img src="./images/about_game.jpg" alt="item 1">
-                            </div>
-                            <div class="col-9 item-info">
-                                <div class="row">
-                                    <span class="col item-name">
-                                        My Item Name
-                                    </span>
-                                    <span class="col item-price">
-                                        $10.00
-                                    </span>
-                                </div>
-                                <div class="row">
-                                    <span class="col item-qty">Qty: 1</span>
-                                </div>
-                                <div class="row">
-                                    <span class="item-company">Published by Riot Games</span>
-                                </div>
-                            </div>
-                        </div>
-                        -->
                     </div>
 
                     <div class="col-md-4 cart-info">
                         <span class="cart-subtotal">Subtotal: <span class="cart-price"><?php echo '$'.$cart->total(); ?></span></span>
-                        <!--<span class="cart-taxfees">Estimated Tax and Fees: <span class="cart-tax">$3.98</span></span>-->
                         <hr>
                         <form action="checkout.php" method="post">
                             <div class="form-check cart-check">

@@ -11,8 +11,6 @@
         include "DB_getall.inc.php";
     ?>
     
-
-    
     <!-- BODY -->
     <body>
         <?php

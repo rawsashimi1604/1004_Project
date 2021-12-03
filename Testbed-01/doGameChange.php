@@ -27,10 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $btnVal = $_POST['btnAct'];
     //echo $btnVal;
     if($btnVal == "Submit"){
-        //if($app_id)
         addGame();
-        //echo "<h1>New Game added!</h1>";
-        //echo "GameID: " . $app_id . "<br>Game Title: " . $gameTitle . "<br>Game Price: " . $gamePrice . "<br>GameDesc: " . $gameDesc . "<br>Gamedev: " . $dev . "<br>Publisher: " . $publisher . "<br>winreq: " . $windows_requirements . "<br>linreq: " . $linux_requirements . "<br>Macreq: " . $mac_requirements . "<br>GenreID: " . $genre_id . "<br>Cat1: " . $category_id . "<br>Cat2: " . $category_id2;
     }
     elseif($btnVal == "Update"){
         updateGame();
@@ -145,8 +142,7 @@ function addGame()
           else{
               $filedir = "images/" . $file_name;
               $stmt = $conn->prepare("INSERT INTO apps_list (appid, name, price, description, image, developer, publisher, windows_requirements, linux_requirements, mac_requirements, genre, category, category2) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                      //$app_id, '$gameTitle', $gamePrice, '$gameDesc', '$filedir', '$dev', '$publisher', '$windows_requirements', '$linux_requirements', '$mac_requirements', $genre_id, $category_id, $category_id2)");
-              // Bind & execute the query statement:        
+                    
               $stmt->bind_param("isisssssssiii", $app_id, $gameTitle, $gamePrice, $gameDesc, $filedir, $dev, $publisher, $windows_requirements, $linux_requirements, $mac_requirements, $genre_id, $gameCat, $gameCat2);
               if (!$stmt->execute()) {
                   $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
