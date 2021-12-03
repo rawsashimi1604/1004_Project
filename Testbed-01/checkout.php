@@ -1,7 +1,5 @@
 <?php 
 
-//include "head.inc.php";
-
 session_start();
 
 require_once "authCookieSessionValidate.php";
@@ -23,7 +21,6 @@ if($cart->total_items() <= 0){
 }
 
 if(!$isLoggedIn) {
-    //echo "<script type='text/javascript'>alert('Please login before purchasing!');</script>";
     header("Location: ./index.php");
 }
  
@@ -123,14 +120,6 @@ if (isset($_POST['email'])){
                                 <strong><?php echo '$'.$cart->total(); ?></strong>
                             </li>
                         </ul>
-                        <!--
-                        <div class="checkout-promo">
-                        <h3>Got a promotional code?</h3>
-                            <div>
-                                <input type="text" class="form-control" placeholder="Enter your code here">
-                                <button class="btn btn-block btn-light ">Apply</button>
-                            </div>
-                        </div>-->
                         <a href="index.php" class="btn btn-block btn-light checkout-btn">Back to Shopping</a>
                     </div>
 
@@ -234,7 +223,6 @@ if (isset($_POST['email'])){
                             <input type="hidden" name="cancel_return" value="<?php echo PAYPAL_CANCEL_URL; ?>">
                             <input type="hidden" name="notify_url" value="<?php echo PAYPAL_NOTIFY_URL; ?>">
 
-                            <!--<input class="btn btn-success btn-lg btn-block checkout-main-btn" type="submit" name="submit" value="Place Order">-->
                             <button type="submit" name="submit" value="Place Order" alt="Check out with PayPal" class="btn btn-success btn-lg btn-block checkout-main-btn"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal"></button>
                             </form>
                             <?php } ?>

@@ -29,9 +29,7 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
         $db_handle = new DBController();
         
         $query = "SELECT * FROM apps_list WHERE appid = " . $productID;
-        
-        
-        
+
         $result = $db_handle->runBaseQuery($query);
         if (!empty($result)){
             foreach ($result as $row){
@@ -44,8 +42,6 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
                 $itemData['publisher'] = $row['publisher'];
             }
         }
-        
-        
         if(empty($itemData)){
             
         }
@@ -78,7 +74,6 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
         $redirectLoc = 'viewCart.php'; 
     }
     elseif($_REQUEST['action'] == 'placeOrder' && $cart->total_items() > 0){
-        //$redirectLoc = 'orderSuccess.php'; 
         $redirectLoc = $_SESSION["temp_link"];
         
         
@@ -113,11 +108,9 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
                     $query = "SELECT member_id FROM steam_clone_members WHERE email = '" . $email. "'";
                     $result = $db_handle->runBaseQuery($query);
                     if (!empty($result)){
-                        //echo "<script>alert('hello world')</script>";
                         foreach ($result as $row){
                             // Fetch all the results from our database
-                            $test = $row["member_id"];
-                            
+                            $test = $row["member_id"]; 
                         }
                     }else{
                         $errorMsg .= "Email does not exist.<br>";
@@ -171,13 +164,6 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
                     $sql .= "INSERT INTO order_items (payment_id, product_id, quantity) VALUES ('".$orderID."', '".$item['id']."', '1');"; 
                 }  
             }
-            /*
-            //foreach($values as $test)
-            foreach($cartItems as $item){ 
-                $sql .= "INSERT INTO order_items (payment_id, product_id, quantity) VALUES ('".$orderID."', '".$item['id']."', '1');"; 
-            }
-             * 
-             */ 
 
             // Insert order items in the database
             $insertOrderItems = $db->multi_query($sql); 
@@ -186,8 +172,6 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
                 // Remove all items from cart 
                 $cart->destroy(); 
 
-                // Redirect to the status page 
-                //$redirectLoc = 'orderSuccess.php?id='.$orderID;
                 $redirectLoc = 'index.php';
                 unset($_SESSION['isgift']);
             }
@@ -195,11 +179,7 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
             else{                                                              
                 $sessData['status']['type'] = 'error'; 
                 $sessData['status']['msg'] = 'An internal error has occurred, please contact our support, and try again.'.$orderID; 
-            } 
-//            }else{ 
-//                $sessData['status']['type'] = 'error'; 
-//                $sessData['status']['msg'] = 'Some problem occurred, please try again.2'; 
-//            }      
+            }     
         } else{ 
             $sessData['status']['type'] = 'error'; 
             $sessData['status']['msg'] = 'Please correct the following mistakes.<br>'.$errorMsg;

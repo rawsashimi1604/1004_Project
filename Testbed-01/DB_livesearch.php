@@ -1,7 +1,10 @@
 <?php
-    /* Attempt MySQL server connection. Assuming you are running MySQL
-    server with default setting (user 'root' with no password) */
-    //$link = mysqli_connect("localhost", "root", "", "demo");
+/*
+ * This file contains the AJAX live search feature found in GamesList
+ * The file is called by the javascript function in GamesList that waits for keyup events
+ */
+
+    //Connection to DB
     $config = parse_ini_file('../../private/db-config.ini');
     $conn = new mysqli($config['servername'], $config['username'],
     $config['password'], $config['dbname']); 
@@ -15,7 +18,7 @@
     }
 
    
-
+    //If the search term was entered, perform the query using it from request
     if(isset($_REQUEST["term"])){
     
         $param_term = strtolower($_REQUEST["term"]);

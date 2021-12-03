@@ -75,21 +75,10 @@ class Cart {
                 /* 
                  * Insert Item 
                  */ 
-                // prep the quantity 
-                //$item['qty'] = (float) $item['qty']; 
-                //if($item['qty'] == 0){ 
-                //    return FALSE; 
-                //} 
-                // prep the price 
-               
-                
                 $item['price'] = number_format((float) ltrim($item['price'], '$'), 2, '.', ''); 
                 // create a unique identifier for the item being inserted into the cart 
                 $rowid = md5($item['id']); 
                 // get quantity if it's already there and add it on 
-                //$old_qty = isset($this->cart_contents[$rowid]['qty']) ? (int) $this->cart_contents[$rowid]['qty'] : 0; 
-                
-                //$old_qty = 1;
                 // re-create the entry with unique identifier and updated quantity 
                 $item['rowid'] = $rowid; 
                 //$item['qty'] += $old_qty; 
@@ -118,16 +107,6 @@ class Cart {
                 return FALSE; 
             }else{ 
                 // prep the quantity 
-                /*
-                if(isset($item['qty'])){ 
-                    $item['qty'] = (float) $item['qty']; 
-                    // remove the item from the cart, if quantity is zero 
-                    if ($item['qty'] == 0){ 
-                        unset($this->cart_contents[$item['rowid']]); 
-                        return TRUE; 
-                    } 
-                } */
-                 
                 // find updatable keys 
                 $keys = array_intersect(array_keys($this->cart_contents[$item['rowid']]), array_keys($item)); 
                 // prep the price 

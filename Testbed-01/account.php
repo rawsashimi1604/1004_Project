@@ -98,7 +98,7 @@ $total = 0;
                     <button type="submit" class="btn btn-light account-btn">Change password</button>
                 </form>
             </div>
-            
+  
             <div class="row container account-container">
                 <div class="col-md-8 cart-main">
 
@@ -112,6 +112,7 @@ $total = 0;
                     $config = parse_ini_file('../../private/db-config.ini');
                     $db = new mysqli($config['servername'], $config['username'],
                             $config['password'], $config['dbname']);    
+                    
                     $query = "SELECT r.* FROM steam_clone_members as s INNER JOIN user_payments as r ON r.customer_id = s.member_id WHERE s.member_id = " . $userId . " ORDER BY r.payment_id DESC;";
                     $result = $db->query($query);
                     
@@ -121,7 +122,6 @@ $total = 0;
                     ?>
                     <div class="cart-item row">
                         <div class="col-md-3 item-img">
-                            <!--<img src="<?php //echo $item['image'] ?>" alt="item1">-->
                             <img src="./images/about_game.jpg" alt="item 1">
                         </div>
                         <div class="col-md-9 item-info">
@@ -163,15 +163,14 @@ $total = 0;
                         </div>
                     </div>
                     <?php } }
-                    else{ 
-                    ?>
+                    else{ ?>
                         <tr><td colspan="5"><p>Your cart is empty.....</p></td>
                     <?php } ?>
                     <?php if($cart->total_items() > 0){ ?>
                     <tr>
                         <td></td>
                         <td></td>
-                        <!--<td class="text-right"><strong><?php echo '$'.$cart->total(); ?></strong></td>-->
+                        <?php echo '$'.$cart->total(); ?>
                         <td></td>
                     </tr>
                     <?php } ?>
@@ -193,10 +192,11 @@ $total = 0;
                     $db_handle = new DBController();
                     $config = parse_ini_file('../../private/db-config.ini');
                     $db = new mysqli($config['servername'], $config['username'],
-                            $config['password'], $config['dbname']);    
+                            $config['password'], $config['dbname']);
+                    
                     $query = "SELECT a.*, s.fname, s.lname, i.payment_date FROM order_items as o INNER JOIN apps_list as a ON o.product_id = a.appid INNER JOIN user_payments as i ON o.payment_id = i.payment_id INNER JOIN steam_clone_members as s ON i.customer_id = s.member_id where o.gift_id = " . $userId . " ORDER BY i.payment_date DESC;";
                     $result = $db->query($query);
-                    
+
                     if($result->num_rows > 0){ 
                         foreach ($result as $row) {
                     ?>
@@ -237,7 +237,7 @@ $total = 0;
         
         <!-- FOOTER -->
         <?php
-            include "footer.inc.php";
+        include "footer.inc.php";
         ?>
     </body>
 </html>

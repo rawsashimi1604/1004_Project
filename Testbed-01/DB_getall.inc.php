@@ -1,4 +1,7 @@
 <?php
+    /*
+     * Get all game items from DB function include file
+     */
     // Setup connection configuration
     $config = parse_ini_file('../../private/db-config.ini');
     $conn = new mysqli($config['servername'], $config['username'],
